@@ -7,5 +7,4 @@
     $bg["version"]    =       "Version 0.07";
 	
 	$bg['sprache']	  = "deutsch";
-	$bg1['test']	  = "test";
 ?>
