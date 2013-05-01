@@ -43,9 +43,10 @@
 					$monster=$row_monster;
 				}
 //Kampfsystem
-				
-				
-				
+				echo '<pre>';
+				var_dump($monster);
+				var_dump($char);			
+				echo '</pre>';
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
                                         aktion_id=0,
