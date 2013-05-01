@@ -12,6 +12,9 @@ body {
 input[type=text],textarea {
     background-color: #000000;
 }
+input[type=password],textarea {
+    background-color: #000000;
+}
 .page {
 	width: 850px;
 }
