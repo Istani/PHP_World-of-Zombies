@@ -254,4 +254,21 @@
         }
 
     }
+    function get_player_status($char_id) {
+        // Alle Char daten für den Kampf!
+	$vhar=array();
+        global $mysql;
+        mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+	$sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
+	$query_char_normal=mysql_query($sql_char_normal);
+	while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
+	    // Einzelne Status Werte
+            $char['gesundheit']=$row_char_normal['gesundheit'];
+	    $char['min_schaden']=0;
+	    $char['max_schaden']=0;
+            $char['ruestung']=0;
+	}
+	return $char;
+    }
 ?>

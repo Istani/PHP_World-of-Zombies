@@ -43,10 +43,12 @@
 					$monster=$row_monster;
 				}
 //Kampfsystem
+				$char=get_player_status($_SESSION['userID']);
 				echo '<pre>';
 				var_dump($monster);
 				var_dump($char);			
 				echo '</pre>';
+
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
                                         aktion_id=0,
@@ -74,7 +76,7 @@
                     echo '&nbsp;'.text_ausgabe("item", $row['abbaugebiet']['itemID'], $bg['sprache']).'<br><br>';
                 }
                 break;
-			case 'KAMPF_MOB':
+            case 'KAMPF_MOB':
                 echo '<h2>'.text_ausgabe("kampf", 0, $bg['sprache']).'</h2>';
                 echo text_ausgabe("kampf_text", 0, $bg['sprache']).'<br>';
                 break;

@@ -1,4 +1,5 @@
 <?php
+	$kampfzeit=1;
 	$queryString = strstr($_SERVER['REQUEST_URI'], '?');
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
 	
@@ -27,7 +28,7 @@
 				SET aktion='KAMPF_MOB',
 					aktion_id=".$monster.",
 					aktion_start=".time().",
-					aktion_ende=".(time()+(60))."
+					aktion_ende=".(time()+($kampfzeit))."
 				WHERE userID=".$_SESSION["userID"];
 			mysql_query($sql['user_aktion']);
 			echo "<meta http-equiv='refresh' content='0; URL=index.php' />";
