@@ -87,7 +87,7 @@
 				   echo "Du hast das Monster besiegt!";
 				   // EXP und so hinzufügen!	
 				   //var_dump($monster); 
-				   $sql_char_update="UPDATE `char` SET exp=exp+".$monster['mob_exp'];
+				   $sql_char_update="UPDATE `char` SET exp=exp+".$monster['mob_exp']." WHERE userID=".$_SESSION["userID"];
 				   mysql_query($sql_char_update);
 				   echo '<br>';
 				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
