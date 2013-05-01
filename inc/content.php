@@ -25,6 +25,9 @@ if (!isset($_SESSION['userID'])) {
             case "inventory":
                 include("site/inventory.php");
                 break;
+	    case "skills":
+		include("site/char_skills.php");
+		break;
             case "nachricht":
                 include("site/nachricht.php");
                 break;

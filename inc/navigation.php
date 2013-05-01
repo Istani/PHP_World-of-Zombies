@@ -15,6 +15,7 @@
 	<h3><?php echo text_ausgabe("NAVIGATION", 0, $bg['sprache']); ?></h3>
 	<a href="index.php?map=<?php echo $lastmap; ?>"><?php echo text_ausgabe("NAVIGATION", 1, $bg['sprache']); ?></a><br>
 	<a href="index.php?site=inventory"><?php echo text_ausgabe("NAVIGATION", 2, $bg['sprache']); ?></a><br>
+	<a href="index.php?site=skills"><?php echo text_ausgabe("NAVIGATION", 9, $bg['sprache']); ?></a><br>
     <a href="index.php?site=ladder"><?php echo text_ausgabe("NAVIGATION", 6, $bg['sprache']); ?></a><br>		
 	<a href="index.php?site=nachricht"><?php echo text_ausgabe("NAVIGATION", 3, $bg['sprache']); ?></a><br>
     <a href="index.php?site=guild"><?php echo text_ausgabe("NAVIGATION", 7, $bg['sprache']); ?></a><br>	
