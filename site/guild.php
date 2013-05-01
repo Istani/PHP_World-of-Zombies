@@ -75,7 +75,7 @@
         <td colspan="6" style="height: 300px; width: 600px;"><textarea name="guild_desc" cols="80" rows="15"></textarea></td>
     </tr>
     <tr>
-        <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" value="Submit"> </td>
+        <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" name="guild_id" value="Speichern"> </td>
     </tr>
 </table>
 </form>
