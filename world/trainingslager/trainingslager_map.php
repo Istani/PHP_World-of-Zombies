@@ -10,7 +10,7 @@
 	$sql_query = "SELECT * FROM `char` WHERE userID = '" . $_SESSION['userID'] . "'";
 	$result = mysql_query($sql_query);
 	$dsatz = mysql_fetch_assoc($result);
-	echo text_ausgabe("map", 1, $bg['sprache']); ?>&nbsp;<a href="../../index.php?map=weltkarte"><?php echo text_ausgabe("map", 0, $bg['sprache']); 
+	echo text_ausgabe("map", 1, $bg['sprache']); ?>&nbsp;<a href="index.php?map=weltkarte"><?php echo text_ausgabe("map", 0, $bg['sprache']); 
 	?></a>
 <table class="karte">
 	<tr>
