@@ -20,7 +20,11 @@
 		echo $skill_level.'/'.$row_skills['maxlvl'];
 		echo '</td>';
 		echo '<td>';
-		echo 'SPÄTER&nbsp;ERLERNEN';
+		if ($row_skills['erlernbar']==1) {
+			echo text_ausgabe("erlernbar", 0, $bg['sprache']);
+		} else {
+			echo text_ausgabe("erlernbar", 1, $bg['sprache']);
+		}
 		echo '</td>';
 		echo '</tr>';
 		echo '<tr>';
