@@ -1,5 +1,5 @@
 <?php
-	$kampfzeit=1;
+	$kampfzeit=180;
 	$queryString = strstr($_SERVER['REQUEST_URI'], '?');
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
 	

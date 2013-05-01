@@ -193,7 +193,8 @@
 		$restmenge=$menge-$stack_frei;
 		
 		$reststack=ceil($restmenge/$item_max);
-		if ($platz_frei>$reststack) {
+		// Hier ist doch ein Feheler!
+		if ($platz_frei>=$reststack) {
 			// ture
 			if (($stack_id>0) && ($stack_frei>0)) {
                 if ($menge+$temp_stack>$item_max) {
@@ -208,6 +209,11 @@
 				mysql_query($sql_update_stack);
 				$menge=$ueber;
 			}
+			// Wenn er menge hat aber keinen Stack mehr anlegen kann!
+			if ($menge==0) {
+			return true;
+			}else {
+			if ($menge>0 && $platz_frei>0) {
 			while ($menge>0) {
 				if ($menge>$item_max) {
 					$tmenge=$item_max;
@@ -219,6 +225,10 @@
 				$menge=$menge-$tmenge;
 			}
 			return true;
+		} else {
+			return false;
+		}
+		} 
 		}	else {
 			return false;
 		}
