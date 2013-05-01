@@ -44,11 +44,34 @@
 				}
 //Kampfsystem
 				$char=get_player_status($_SESSION['userID']);
+				/*
 				echo '<pre>';
 				var_dump($monster);
 				var_dump($char);			
 				echo '</pre>';
-
+				*/
+				// KAMPF
+				while ($monster['mob_leben']>0 or $char['gesundheit']>0) {
+				    //WAFFE UND MUNITONSBERECHNUNG - Später
+			            $waffenart=0;
+				    $sql_waffenschaden="SELECT mindmg, maxdmg FROM `item_db` WHERE itemID=".$char['waffe'][$waffenart];
+				    $query_waffenschaden=mysql_query($sql_waffenschaden);
+				    $char['min_schaden']=mysql_result($query_waffenschaden,0,0);
+				    $char['max_schaden']=mysql_result($query_waffenschaden,0,1);
+				    if($waffenart==0) {
+   				        $mob_schaden=rand($monster['min_schaden'],$monster['max_schaden']);
+				        $mob_schaden=$mobschaden*(1+($char['ruestung']/100));
+					$char['gesundheit']=$char['gesundheit']-$mob_schaden;
+					$char_schaden=rand($char['min_schaden'], $char['max_schaden']);
+					$monster['mob_leben']=$monster['mob_leben']-$char_schaden;
+			            }
+				}
+				if ($char['gesundheit']<=0) {
+				   //Spieler verliert
+				} else {
+				   //Spieler gewinnt
+				}    
+				
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
                                         aktion_id=0,
