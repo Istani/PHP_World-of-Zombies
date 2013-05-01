@@ -51,25 +51,45 @@
 				echo '</pre>';
 				*/
 				// KAMPF
-				while ($monster['mob_leben']>0 or $char['gesundheit']>0) {
+				$runde=0;
+				while ($monster['mob_leben']>0 AND $char['gesundheit']>0) {
+				    $runde++;
+				    echo '<b>Runde '.$runde.':</b><br>';
 				    //WAFFE UND MUNITONSBERECHNUNG - Später
-			            $waffenart=0;
-				    $sql_waffenschaden="SELECT mindmg, maxdmg FROM `item_db` WHERE itemID=".$char['waffe'][$waffenart];
+			            $waffenart=1;
+				    $sql_waffenschaden="SELECT mindmg, maxdmg FROM `item_db` WHERE itemID=".$char['waffen'][$waffenart];
+//				    echo $sql_waffenschaden;
+				    $item_name=text_ausgabe("item", $char['waffen'][$waffenart], $bg['sprache']);
 				    $query_waffenschaden=mysql_query($sql_waffenschaden);
-				    $char['min_schaden']=mysql_result($query_waffenschaden,0,0);
-				    $char['max_schaden']=mysql_result($query_waffenschaden,0,1);
-				    if($waffenart==0) {
+				    if (mysql_num_rows($query_waffenschaden)>0) {
+				        $char['min_schaden']=@mysql_result($query_waffenschaden,0,0);
+				        $char['max_schaden']=@mysql_result($query_waffenschaden,0,1);
+				    }
+				    echo 'Du benutzt: '.$item_name.'<br>';
+				    if($waffenart==1) {
    				        $mob_schaden=rand($monster['min_schaden'],$monster['max_schaden']);
-				        $mob_schaden=$mobschaden*(1+($char['ruestung']/100));
+				        $mob_schaden=$mob_schaden*(1+($char['ruestung']/100));
+					$mob_schaden=(int)$mob_schaden;
 					$char['gesundheit']=$char['gesundheit']-$mob_schaden;
 					$char_schaden=rand($char['min_schaden'], $char['max_schaden']);
+					$char_schaden=(int)$char_schaden;
 					$monster['mob_leben']=$monster['mob_leben']-$char_schaden;
+					//$char['gesundheit']=(int)$char['gesundheit'];
+					//$monster['mob_lebel']=(int)$monster['mob_lebel'];
+					echo "Das Monster trifft dich mit ".$mob_schaden." Schadenspunkte! (Noch ".$char['gesundheit'].")";
+					echo "Du triffst das Monster mit ".$char_schaden." Schadenspunkte! (Noch ".$monster['mob_leben'].")";
+					echo '<br>';
+					echo '<br>';
 			            }
 				}
-				if ($char['gesundheit']<=0) {
+				if ($char['gesundheit']>0) {
 				   //Spieler verliert
+				   echo "Du haben das Monster besiegt!";
+				   // EXP und so hinzufügen!	
+				   
 				} else {
 				   //Spieler gewinnt
+				   echo "Verloren, Looser!";
 				}    
 				
 				$sql['user_aktion']="UPDATE `char`

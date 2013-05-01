@@ -265,8 +265,8 @@
 	while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
 	    // Einzelne Status Werte
             $char['gesundheit']=$row_char_normal['gesundheit'];
-	    $char['min_schaden']=0;
-	    $char['max_schaden']=0;
+	    $char['min_schaden']=1;
+	    $char['max_schaden']=1;
             $char['ruestung']=0;
 	    $waffe[0]=$row_char_normal['schusswaffe']; //Fernkampfwaffe, falls Muniton vorhanden - Also erstmal egal
 	    $waffe[1]=$row_char_normal['nahkampf']; //Nahkampfwaffe, weil erstmal keine Muniton ;)
