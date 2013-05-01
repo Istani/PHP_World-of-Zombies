@@ -17,6 +17,7 @@
       <li><a href="#tabs-3">Memberliste</a></li>
   </ul>
   <div id="tabs-1">
+<form action="site/guilddesc.php" method="post">
 <table border="1" cellpadding="0" cellspacing="0" summary="">
     <tr>
         <td style="width: 100px;">Gilde:</td>
@@ -33,7 +34,7 @@
         <td style="width: 100px;">&nbsp;</td>
     </tr>
     <tr>
-        <td style="height: 100px; width: 100px;">F&auml;higkeiten:</td>
+        <td style="height: 100px; width: 100px;">Skills:</td>
         <td style="width: 100px;">Skill 1</td>
         <td style="width: 100px;">Skill 2</td>
         <td style="width: 100px;">Skill 3</td>
@@ -41,14 +42,43 @@
         <td style="width: 100px;">Skill 5</td>
     </tr>
     <tr>
-        <td style="height:50px; width: 100px;"></td>
-        <td style="width: 100px;"></td>
-        <td style="width: 100px;"></td>
-        <td style="width: 100px;"></td>
-        <td style="width: 100px;"></td>
-        <td style="width: 100px;"></td>
+        <td style="height: 25px; width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="height:20px; width: 100px;">Info</td>
+        <td style="width: 100px;">Info</td>
+        <td style="width: 100px;">Info</td>
+        <td style="width: 100px;">Info</td>
+        <td style="width: 100px;">Info</td>
+        <td style="width: 100px;">Info</td>
+    </tr>
+    <tr>
+        <td style="height: 25px; width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height:50px; width: 300px;">Gildenbeschreibung: <br>(max. 1000 zeichen)</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+        <td style="width: 100px;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="6" style="height: 300px; width: 600px;"><textarea name="guild_desc" cols="80" rows="15"></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" value="Submit"> </td>
     </tr>
 </table>
+</form>
     </div>
     <div id="tabs-2">
 <table>

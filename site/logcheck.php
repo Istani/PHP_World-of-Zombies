@@ -8,7 +8,7 @@ include("../_mysql.php");
             . "Sie m&uuml;ssen alle Felder ausf&uuml;llen<br />"
             . "Bitten warten sie einen Moment. Sie werden automatisch weitergeleitet.<br />"
             . "Falls dies nicht der Fall seinen sollte.<br />"
-            . "<a href='index.php?site=login'>Zur&uuml;ck</a>"
+            . "<a href='../index.php?site=login'>Zur&uuml;ck</a>"
             . "<meta http-equiv='refresh' content='3; URL=../index.php' />"
             . "</center>";
 
@@ -17,7 +17,7 @@ include("../_mysql.php");
         $pw = $_POST["pw"];
         $pw = md5($pw);
 
-        //�berpr�fung der Anmelde daten SELECT
+        //?berpr?fung der Anmelde daten SELECT
         $sql_query = "SELECT * FROM login WHERE `loginName` = '" . $_POST['username'] . "' and `passwort` = '$pw'";
         $result = mysql_query($sql_query);
         $dsatz = mysql_fetch_assoc($result);
