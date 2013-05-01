@@ -84,9 +84,18 @@
 				}
 				if ($char['gesundheit']>0) {
 				   //Spieler verliert
-				   echo "Du haben das Monster besiegt!";
+				   echo "Du hast das Monster besiegt!";
 				   // EXP und so hinzufügen!	
-				   
+				   //var_dump($monster); 
+				   $sql_char_update="UPDATE `char` SET exp=exp+".$monster['mob_exp'];
+				   mysql_query($sql_char_update);
+				   echo '<br>';
+				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
+				   if (inventory_add($_SESSION['userID'], 9, 1)) {
+				     echo '1 x '.text_ausgabe("item", 9, $bg['sprache']).' erhalten.<br>';
+				   } else {
+				     echo 'Leider nicht genug Platz um 1 x '.text_ausgabe("item", 9, $bg['sprache']).' zu erhalten.<br>';
+				   }
 				} else {
 				   //Spieler gewinnt
 				   echo "Verloren, Looser!";
