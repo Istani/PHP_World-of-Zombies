@@ -35,13 +35,14 @@
                                     WHERE userID=".$_SESSION["userID"];
                 mysql_query($sql['user_aktion']);
                 break;
-			case 'KAMPF_MOB':
+            case 'KAMPF_MOB':
                 echo '<h2>'.text_ausgabe("kampf", 0, $bg['sprache']).'</h2>';
-                $sql_monster="SELEFCT * FROM mob_db WHERE mob_id='".$aktion['aktion_id']."'";
+                $sql_monster="SELECT * FROM mob_db WHERE mob_id='".$aktion['aktion_id']."'";
 				$query_monster=mysql_query($sql_monster);
 				while ($row_monster=mysql_fetch_assoc($query_monster)) {
 					$monster=$row_monster;
 				}
+//Kampfsystem
 				
 				
 				

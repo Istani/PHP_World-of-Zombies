@@ -22,12 +22,8 @@
         if (!file_exists("picture/items/".$item.".png")) {
             $item=0;
         }
-<<<<<<< HEAD
 	// picture/items/0.png;
-	if (file_exists("picture/items/".$item.".png")) {
-=======
         if (file_exists("picture/items/".$item.".png")) {
->>>>>>> 9e2b41ffb0f7ea0bddd1669d27ae9c78998d297b
             $oBild=imagecreatefrompng("picture/items/".$item.".png");
             $oBreite = imageSX($oBild);
             if ($art=="inv") {
@@ -53,17 +49,14 @@
             elseif ($menge>99) {
                 imagestring($bild, 1, 8, $nBreite-9, $menge, $schwarz);
             }
-<<<<<<< HEAD
             @imagejpeg($bild,"picture/items/temp.jpg");
             $content = @file_get_contents("picture/items/".'temp.jpg');
             $content=base64_encode($content);
             @unlink("picture/items/".'temp.jpg');
-=======
-            imagejpeg($bild,"picture/items/".'temp.jpg');
+            @imagejpeg($bild,"picture/items/".'temp.jpg');
             $content = file_get_contents("picture/items/".'temp.jpg');
             $content=base64_encode($content);
             unlink("picture/items/".'temp.jpg');
->>>>>>> 9e2b41ffb0f7ea0bddd1669d27ae9c78998d297b
             $posting='<img src="data:image/jpg;base64,'.$content.'" alt="base64 Test" '. $title.'>';
             return $posting;
         }
