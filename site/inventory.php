@@ -30,7 +30,7 @@
                     mysql_query($sql_update);
                     $sql_update="UPDATE `char` SET ".$wert."=100 WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">100";
                     mysql_query($sql_update);
-                    echo '<meta http-equiv="refresh" content="0; URL=../index.php?'.$queryString.'">';
+                    echo '<meta http-equiv="refresh" content="0; URL=index.php?'.$queryString.'">';
                 }
             }
         }
