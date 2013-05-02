@@ -20,7 +20,7 @@
                 aktion_ende=".(time()+$gebiet['dauer'])."
             WHERE userID=".$_SESSION["userID"];
         mysql_query($sql['user_aktion']);
-        echo "<meta http-equiv='refresh' content='0; URL=../index.php' />";
+        echo "<meta http-equiv='refresh' content='0; URL=index.php' />";
         die();
     }
 

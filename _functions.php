@@ -179,7 +179,7 @@
 		global $mysql;
         mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
-		$sql_char_normal="SELECT wasser FROM `char` WHERE userID='".$char_id."'";
+		$sql_char_normal="SELECT wasser FROM `char` WHERE userID='".$user."'";
 		$query_char_normal=mysql_query($sql_char_normal);
 		if (mysql_num_rows($query_char_normal)>0) {
 			$wasser=mysql_result($query_char_normal,0,0);
