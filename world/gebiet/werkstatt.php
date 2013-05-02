@@ -62,7 +62,7 @@
                     foreach ($abgezogen as $item) {
                         $sql_produkt="SELECT item, menge FROM crafting_rezepte WHERE produkt=".$_GET["craft"]." AND item=".$item;
                         $query_produkt=mysql_query($sql_produkt);
-                        while ($row_produkt=mysql_fetch_assoc($query_crafting)) {
+                        while ($row_produkt=mysql_fetch_assoc($query_produkt)) {
                             inventory_add($_SESSION['userID'], $row_produkt["item"], $row_produkt["menge"]);
                         }
                     }
