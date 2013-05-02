@@ -26,8 +26,24 @@
                 //inventory_add
                 inventory_add($_SESSION['userID'], $gebiet['itemID'], $abbau);
                 echo $abbau.' '.text_ausgabe("item", $gebiet['itemID'], $bg['sprache']).' '.text_ausgabe("abbauen", 3, $bg['sprache']);
+				$sql_char_level="SELECT `level` FROM `char` WHERE userID='".$_SESSION["userID"]."'";
+				$query_char_level=mysql_query($sql_char_level);
+				$level=mysql_result($query_char_level,0,0)-1;
+				$sql_mob="SELECT mob_exp FROM mob_db WHERE mob_level='".$level."' ORDER BY RAND( )";
+				$query_mob=mysql_query($sql_mob);
+				if (mysql_num_rows($query_mob)>0) {
+					$exp=mysql_result($query_mob,0,0);
+				} else {
+					$sql_mob="SELECT mob_exp FROM mob_db WHERE mob_level<'".$level."' ORDER BY mob_exp DESC LIMIT 0,1";
+					$query_mob=mysql_query($sql_mob);
+					if (mysql_num_rows($query_mob)>0) {
+						$exp=mysql_result($query_mob,0,0);
+					}
+				}
+				
                 $sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
+										exp=exp+".$exp.",
 										wasser=wasser-5,
                                         aktion_id=0,
                                         aktion_start=0,
