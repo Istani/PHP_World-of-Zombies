@@ -40,7 +40,7 @@
         echo '&nbsp;'.text_ausgabe("item", $row['abbaugebiet']['itemID'], $bg['sprache']).'<br><br>';
      }
     echo text_ausgabe("dauer", 0, $bg['sprache']).':'.zeit_anzeigen($gebiet['dauer']).'<br>';
-    if (player_inventar_frei( $_SESSION['userID'])>0) {
+    if ((player_inventar_frei($_SESSION['userID'])>0) && (player_wasser_status($_SESSION['userID'])>5)) {
         echo '<a href="index.php?'.$queryString.'&abbau=self">'.text_ausgabe("abbauen", 1, $bg['sprache']).'</a><br><br>';
     } else {
         echo text_ausgabe("not_abbauen", 0, $bg['sprache']).'<br><br>';

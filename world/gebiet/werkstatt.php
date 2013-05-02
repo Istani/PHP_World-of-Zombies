@@ -37,7 +37,8 @@
                 } else {
                     echo item_bilder($_GET["craft"], "show", $pr_menge).'&nbsp;'.text_ausgabe("item", $_GET["craft"], $bg['sprache']).'&nbsp;'.text_ausgabe("hergestellt", 0, $bg['sprache']).'<br><br>';
 					$sql['user_aktion']="UPDATE `char`
-                                    SET Items_Crafting=Items_Crafting+".$pr_menge."
+                                    SET Items_Crafting=Items_Crafting+".$pr_menge.", 
+										wasser=wasser-5
                                     WHERE userID=".$_SESSION["userID"];
 					mysql_query($sql['user_aktion']);
                 }
@@ -59,25 +60,29 @@
     }
 
 
-    $query_crafting=mysql_query($sql_crafting);
-    $last_item="";
-    echo '<table border="1" width="100%">';
-    while ($row_crafting=mysql_fetch_assoc($query_crafting)) {
-        echo '<tr>';
-        echo '<td width="100%">';
-        if ($last_item!=$row_crafting["produkt"]) {
-            echo item_bilder($row_crafting['produkt'], "show", $row_crafting['produkt_menge']).'&nbsp;'.text_ausgabe("item", $row_crafting['produkt'], $bg['sprache']);
-            $last_item=$row_crafting["produkt"];
-            echo '<br>';
-            echo '<a href="index.php?map='.$_GET["map"].'&craft='.$row_crafting['produkt'].'">'.text_ausgabe("herstellen", 0, $bg['sprache']).'</a>';
-        } else {
-            echo '&nbsp;';
-        }
-        echo '</td>';
-        echo '<td>';
-        echo item_bilder($row_crafting['item'], "show", $row_crafting['menge']);
-        echo '</td>';
-        echo '</tr>';
-    }
-    echo '</table>';
+$query_crafting=mysql_query($sql_crafting);
+$last_item="";
+if (player_wasser_status($_SESSION['userID'])>5) {
+	echo '<table border="1" width="100%">';
+	while ($row_crafting=mysql_fetch_assoc($query_crafting)) {
+		echo '<tr>';
+		echo '<td width="100%">';
+		if ($last_item!=$row_crafting["produkt"]) {
+			echo item_bilder($row_crafting['produkt'], "show", $row_crafting['produkt_menge']).'&nbsp;'.text_ausgabe("item", $row_crafting['produkt'], $bg['sprache']);
+			$last_item=$row_crafting["produkt"];
+			echo '<br>';
+			echo '<a href="index.php?map='.$_GET["map"].'&craft='.$row_crafting['produkt'].'">'.text_ausgabe("herstellen", 0, $bg['sprache']).'</a>';
+		} else {
+			echo '&nbsp;';
+		}
+		echo '</td>';
+		echo '<td>';
+		echo item_bilder($row_crafting['item'], "show", $row_crafting['menge']);
+		echo '</td>';
+		echo '</tr>';
+	}
+	echo '</table>';
+} else {
+	echo text_ausgabe("kein_wasser", 0, $bg['sprache']);
+}
 ?>
