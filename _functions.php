@@ -16,7 +16,6 @@
 		$text=nl2br(utf8_encode($text));
 		return $text;
 	}
-
     function item_bilder($item, $art="show", $menge=0) {
         $title='title="'.item_hover($item).'"';
         if (!file_exists("picture/items/".$item.".png")) {
@@ -56,7 +55,6 @@
             return $posting;
         }
     }
-
     function item_hover($item) {
         //text_ausgabe($title, $id, $sprache)
         global $mysql, $bg;
@@ -104,7 +102,6 @@
             return $return;
         }
     }
-	
 	function inventar_platz($rucksack) {
 		$max_plaetze=0;
 		global $mysql;
@@ -115,7 +112,6 @@
 		$max_plaetze=mysql_result($query_rucksack,0,0);
 		return $max_plaetze;
 	}
-	
 	function player_inventar_platz($user) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -126,14 +122,12 @@
 		$plaetze_max=inventar_platz($rucksack_id);
 		return $plaetze_max; 
 	}
-
     function player_inventar_frei($user) {
         $max=player_inventar_platz($user);
         $plaetze_belegt=inventar_belegt($user);
         $frei=$max-$plaetze_belegt;
         return $frei;
     }
-	
 	function inventar_belegt($user) {
 		$stack=0;
 		global $mysql;
@@ -144,7 +138,6 @@
 		$stack=mysql_num_rows($query_rucksack);
 		return $stack;
 	}
-	
 	function item_stacknum($item) {
 		$stack=0;
 		global $mysql;
@@ -155,7 +148,6 @@
 		$stack=mysql_result($query_rucksack,0,0);
 		return $stack;
 	}
-	
 	function zeit_anzeigen($sekunden) {
 		$merken=$sekunden;
 		$stunden=(int)($sekunden/60/60);
@@ -168,12 +160,10 @@
 		//return $stunden.":".$minuten.":".$sekunden." (".$merken.")";
 		return $stunden.":".$minuten.":".$sekunden;
 	}
-
     function player_abbau_faktor($user, $art) {
 
         return 1;
     }
-	
 	function player_wasser_status($user) {
 		$wasser=0;
 		global $mysql;
@@ -186,7 +176,6 @@
 		}
 		return $wasser;
     }
-	
 	function inventory_add($user, $item, $menge) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -246,7 +235,6 @@
 			return false;
 		}
 	}
-
     function inventory_remove($user, $item, $menge) {
         global $mysql;
         mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -319,4 +307,14 @@
 	// Und Werte zurückgeen!
 	return $char;
     }
+	function array_set_mysqlstring($array) {
+		$sql_string="";
+		if (is_array($array)) {
+			foreach ($array as $key => $value) {
+				$sql_string=$sql_string."`".$key."`='".$value."', ";
+			}
+			$sql_string=substr($sql_string, 0, strlen($sql_string)-2);
+		}
+		return $sql_string;
+	}
 ?>

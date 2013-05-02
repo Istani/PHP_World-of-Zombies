@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS `abbau_gebiet` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=3 ;
 
+CREATE TABLE IF NOT EXISTS `abfall` (
+  `zeitpunkt` int(20) NOT NULL,
+  `item` int(11) NOT NULL,
+  `menge` int(11) NOT NULL,
+  `spieler` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE IF NOT EXISTS `char` (
   `userID` int(11) NOT NULL,
   `klasse` int(11) NOT NULL,
@@ -99,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `itemID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=64 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=69 ;
 
 CREATE TABLE IF NOT EXISTS `item_db` (
   `itemID` int(11) NOT NULL AUTO_INCREMENT,

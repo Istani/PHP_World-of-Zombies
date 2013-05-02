@@ -70,6 +70,12 @@ if (!isset($_SESSION['userID'])) {
                 case "see":
                     include("world/gebiet/see.php");
                     break;
+				case "gabfall":
+                    include("world/gebiet/abfall_gamer.php");
+                    break;
+				case "abfall":
+                    include("world/gebiet/abfall.php");
+                    break;
 				case "wohngebiet":
                     include("world/gebiet/wohngebiet.php");
                     break;

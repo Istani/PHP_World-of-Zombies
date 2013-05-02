@@ -52,6 +52,39 @@
                                     WHERE userID=".$_SESSION["userID"];
                 mysql_query($sql['user_aktion']);
                 break;
+			case 'MÜLL':
+				echo '<h2>'.text_ausgabe("muell_sammeln", 0, $bg['sprache']).'</h2>';
+				// MÜLL AUSWÄHLEN
+				if ($aktion['aktion_id']>0) {
+					$sql['muell']="SELECT * FROM abfall WHERE spieler=".$aktion['aktion_id']." ORDER BY RAND () LIMIT 0,1";
+				} else {
+					$sql['muell']="SELECT * FROM abfall ORDER BY RAND () LIMIT 0,1";
+				}
+				$query['muell']=mysql_query($sql['muell']);
+				while ($row['muell']=mysql_fetch_assoc($query['muell'])) {
+					//inventory_add($user, $item, $menge)
+					if (inventory_add($_SESSION["userID"], $row['muell']['item'], $row['muell']['menge'])) {
+						echo text_ausgabe("muell_ok", 0, $bg['sprache']).'<br>';
+						echo text_ausgabe("item_erhalten", 0, $bg['sprache']).'<br><br>';
+						echo $row['muell']['menge'].' x '.text_ausgabe("item", $row['muell']['item'], $bg['sprache']).'<br>';
+						$tmp_sql=array_set_mysqlstring($row['muell']);
+						$tmp_sql=str_replace(", ", " AND ", $tmp_sql);
+						$sql['muell_done']="DELETE FROM abfall WHERE ".$tmp_sql;
+						mysql_query($sql['muell_done']);
+					} else {
+						echo text_ausgabe("muell_fail", 0, $bg['sprache']).'<br>';
+					}
+				}
+				// AKTION WIEDER BEENDEN
+				$sql['user_aktion']="UPDATE `char`
+                                    SET aktion='',
+										wasser=wasser-5,
+                                        aktion_id=0,
+                                        aktion_start=0,
+                                        aktion_ende=0
+                                    WHERE userID=".$_SESSION["userID"];
+                mysql_query($sql['user_aktion']);
+				break;
             case 'KAMPF_MOB':
                 echo '<h2>'.text_ausgabe("kampf", 0, $bg['sprache']).'</h2>';
                 $sql_monster="SELECT * FROM mob_db WHERE mob_id='".$aktion['aktion_id']."'";
@@ -145,6 +178,10 @@
                     echo item_bilder($row['abbaugebiet']['itemID'], $art="show");
                     echo '&nbsp;'.text_ausgabe("item", $row['abbaugebiet']['itemID'], $bg['sprache']).'<br><br>';
                 }
+                break;
+			case 'MÜLL':
+                echo '<h2>'.text_ausgabe("sammel_müll", 0, $bg['sprache']).'</h2>';
+                echo text_ausgabe("sammel_müll_text", 0, $bg['sprache']).'<br>';
                 break;
             case 'KAMPF_MOB':
                 echo '<h2>'.text_ausgabe("kampf", 0, $bg['sprache']).'</h2>';

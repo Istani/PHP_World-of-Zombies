@@ -55,7 +55,7 @@
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
-		<td class="karte_celle">&nbsp;</td>
+		<td class="karte_celle"><a href="index.php?map=gabfall"><?php echo text_ausgabe("ort", 3, $bg['sprache']); ?></a></td>
 		<td class="karte_celle">&nbsp;</td>
 	</tr>
 	<tr>
