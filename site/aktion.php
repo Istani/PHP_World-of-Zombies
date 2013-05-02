@@ -28,6 +28,7 @@
                 echo $abbau.' '.text_ausgabe("item", $gebiet['itemID'], $bg['sprache']).' '.text_ausgabe("abbauen", 3, $bg['sprache']);
                 $sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
+										wasser=wasser-5,
                                         aktion_id=0,
                                         aktion_start=0,
                                         aktion_ende=0,
@@ -103,6 +104,7 @@
 				
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
+										wasser=wasser-5,
                                         aktion_id=0,
                                         aktion_start=0,
                                         aktion_ende=0
