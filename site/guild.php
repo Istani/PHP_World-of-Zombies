@@ -1,4 +1,16 @@
 <?php
+        $sql_query1 = "SELECT `guild_db`.*, `login`.`loginName` FROM `guild_db` LEFT JOIN `login` ON `guild_db`.`guild_master`=`login`.`userID` WHERE `guild_db`.`guild_name` = '" . $_SESSION['guildName'] . "'";
+        $result1 = mysql_query($sql_query1);
+        $dsatz1 = mysql_fetch_assoc($result1);
+
+        $guildid    =   $dsatz1['guild_id'];
+
+        $sql_query_desc = "UPDATE `guild_db`
+				SET
+					`guild_desc` = '" . $_POST["guild_desc"] . "'
+				WHERE
+				     `guild_id` = '$guildid'";
+        mysql_query($sql_query_desc);
          
     if($_SESSION['guildName'] != ""){
 
@@ -18,7 +30,7 @@
       <li><a href="#tabs-3">Memberliste</a></li>
   </ul>
   <div id="tabs-1">
-<form action="site/guilddesc.php" method="post">
+<form method="post">
 <table border="1" cellpadding="0" cellspacing="0" summary="">
     <tr>
         <td style="width: 100px;">Gilde:</td>
