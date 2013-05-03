@@ -1,4 +1,5 @@
 <?php
+if (isset ($_POST['guild_desc'])){
         $sql_query1 = "SELECT `guild_db`.*, `login`.`loginName` FROM `guild_db` LEFT JOIN `login` ON `guild_db`.`guild_master`=`login`.`userID` WHERE `guild_db`.`guild_name` = '" . $_SESSION['guildName'] . "'";
         $result1 = mysql_query($sql_query1);
         $dsatz1 = mysql_fetch_assoc($result1);
@@ -21,7 +22,7 @@
     
     $guildid    =   $dsatz['guild_id'];
     $guilddesc  =   $dsatz['guild_desc'];
-    
+ }   
 ?>
         <div id="tabs">
   <ul>
@@ -91,7 +92,7 @@
         <td colspan="6" style="height: 300px; width: 600px;"><textarea name="guild_desc" cols="80" rows="15"><?php echo $guilddesc; ?></textarea></td>
     </tr>
     <tr>
-        <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" name="guild_id" value="Speichern"> </td>
+        <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" name="guild_desc" value="Speichern"> </td>
     </tr>
 <?php  
         }else{
