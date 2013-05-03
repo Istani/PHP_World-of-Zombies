@@ -9,7 +9,7 @@ include("../_mysql.php");
         echo "Du wirst in 2 Sekunden weitegeleitet.";
         echo "<br />";
         echo "Sollte dies nicht der fall sein <a href='index.php'>HIER KLICKEN</a>";
-        echo '<meta http-equiv="refresh" content="2; URL=../index.php?site=guild">';
+        echo '<meta http-equiv="refresh" content="2; URL=index.php?site=guild">';
         echo "</center>";
         
         }else{
@@ -20,7 +20,7 @@ include("../_mysql.php");
 
         $guildid    =   $dsatz['guild_id']; 
     
-    if (!$dsatz['guild_desc']){
+    if ($dsatz['guild_desc']){
         
         $sql_query = "UPDATE `guild_db`
 				SET
