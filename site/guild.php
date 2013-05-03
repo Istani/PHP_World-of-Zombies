@@ -1,10 +1,10 @@
 <?php
 if (isset ($_POST['guild_desc'])){
-        $sql_query1 = "SELECT `guild_db`.*, `login`.`loginName` FROM `guild_db` LEFT JOIN `login` ON `guild_db`.`guild_master`=`login`.`userID` WHERE `guild_db`.`guild_name` = '" . $_SESSION['guildName'] . "'";
-        $result1 = mysql_query($sql_query1);
-        $dsatz1 = mysql_fetch_assoc($result1);
+        $sql_query_guild = "SELECT `guild_db`.*, `login`.`loginName` FROM `guild_db` LEFT JOIN `login` ON `guild_db`.`guild_master`=`login`.`userID` WHERE `guild_db`.`guild_name` = '" . $_SESSION['guildName'] . "'";
+        $result_guild = mysql_query($sql_query_guild);
+        $dsatz_guild = mysql_fetch_assoc($result_guild);
 
-        $guildid    =   $dsatz1['guild_id'];
+        $guildid    =   $dsatz_guild['guild_id'];
 
         $sql_query_desc = "UPDATE `guild_db`
 				SET
@@ -12,7 +12,8 @@ if (isset ($_POST['guild_desc'])){
 				WHERE
 				     `guild_id` = '$guildid'";
         mysql_query($sql_query_desc);
-         
+} 
+       
     if($_SESSION['guildName'] != ""){
 
  //Gilden check
@@ -22,7 +23,7 @@ if (isset ($_POST['guild_desc'])){
     
     $guildid    =   $dsatz['guild_id'];
     $guilddesc  =   $dsatz['guild_desc'];
- }   
+   
 ?>
         <div id="tabs">
   <ul>
@@ -109,7 +110,31 @@ if (isset ($_POST['guild_desc'])){
     </div>
     <div id="tabs-2">
 <table>
-<?php
+<?php  
+    //Gilden check
+    $sql_query_chat = "SELECT * FROM guild_db WHERE `guild_name` = '" . $_SESSION['guildName'] . "'";
+    $result_chat = mysql_query($sql_query_chat);
+    $dsatz_chat = mysql_fetch_assoc($result_chat);
+
+    // Hier wird ?berpr?ft ob alle Felder ausgef?llt sind
+    if (isset($_POST['guildmsg'])){
+    if (!$_POST['guildmsg']){
+            
+            $errorinfo = "Bitte geb ein Text ein!";
+            
+            }else{
+            
+            $errorinfo = "";
+            $sql_query = "INSERT INTO `guild_chat`
+				SET
+					`guild_id`='$guildid',
+					`time`='" . time() . "',
+					`nachricht`='" . $_POST['guildmsg'] . "',
+					`poster`='" . $_SESSION['userID'] . "'
+                    ";
+            mysql_query($sql_query);
+    }
+}
     //Gilden check
     $sql_query1 = "SELECT `guild_chat`.*, `login`.`loginName` FROM `guild_chat` LEFT JOIN `login` ON `guild_chat`.`poster`=`login`.`userID` WHERE `guild_chat`.`guild_id` = '$guildid' ORDER BY `time` ";
     $result1 = mysql_query($sql_query1);
@@ -133,12 +158,25 @@ $i++;
 ?>
 
 </table>
-<form action="site/guildmsg.php" method="post">
+<form method="post">
     <table>
         <tr>
             <td><input placeholder="Deine Nachricht" maxlength="500" size="65" name="guildmsg" type="text" /></td>
             <td><input type="submit" value="Absenden"/></td>
         </tr>
+        
+<?php  
+        if (!$errorinfo){    
+        }else{
+?>
+        <tr>
+            <td><font color="#FF0000"><?php echo $errorinfo; ?> </font></td>
+        </tr>    
+<?php
+        } 
+?>
+        
+
     </table>
 </form>
 
