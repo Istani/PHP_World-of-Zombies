@@ -8,6 +8,7 @@
     $dsatz = mysql_fetch_assoc($result);
     
     $guildid    =   $dsatz['guild_id'];
+    $guilddesc  =   $dsatz['guild_desc'];
     
 ?>
         <div id="tabs">
@@ -66,17 +67,30 @@
         <td style="width: 100px;">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="3" style="height:50px; width: 300px;">Gildenbeschreibung: <br>(max. 1000 zeichen)</td>
+        <td colspan="3" style="height:50px; width: 300px;">Gildenbeschreibung:</td>
         <td style="width: 100px;">&nbsp;</td>
         <td style="width: 100px;">&nbsp;</td>
         <td style="width: 100px;">&nbsp;</td>
     </tr>
+<?php  
+    if($dsatz['loginName'] == $_SESSION['loginName']){
+?>
     <tr>
         <td colspan="6" style="height: 300px; width: 600px;"><textarea name="guild_desc" cols="80" rows="15"></textarea></td>
     </tr>
     <tr>
         <td colspan="6" style="height: 25px; width: 600px;"><input type="submit" name="guild_id" value="Speichern"> </td>
     </tr>
+<?php  
+        }else{
+?>    
+    <tr>
+        <td colspan="6" style="height: 300px; width: 600px;"><?php echo $guilddesc; ?></td>
+    </tr>
+    
+<?php 
+    }
+?>
 </table>
 </form>
     </div>
