@@ -274,8 +274,8 @@
 	$sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
 	$query_char_normal=mysql_query($sql_char_normal);
 	while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
-	    // Einzelne Status Werte
-            $char['gesundheit']=$row_char_normal['gesundheit'];
+	    // Einzelne Status Wert
+            $char['nahrung']=$row_char_normal['nahrung'];
 	    $char['min_schaden']=1;
 	    $char['max_schaden']=1;
             $char['ruestung']=0;

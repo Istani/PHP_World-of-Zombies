@@ -102,7 +102,7 @@
 				*/
 				// KAMPF
 				$runde=0;
-				while ($monster['mob_leben']>0 AND $char['gesundheit']>0) {
+				while ($monster['mob_leben']>0 AND $char['nahrung']>0) {
 				    $runde++;
 				    echo '<b>Runde '.$runde.':</b><br>';
 				    //WAFFE UND MUNITONSBERECHNUNG - Später
@@ -120,19 +120,19 @@
    				        $mob_schaden=rand($monster['min_schaden'],$monster['max_schaden']);
 				        $mob_schaden=$mob_schaden*(1+($char['ruestung']/100));
 					$mob_schaden=(int)$mob_schaden;
-					$char['gesundheit']=$char['gesundheit']-$mob_schaden;
+					$char['nahrung']=$char['nahrung']-$mob_schaden;
 					$char_schaden=rand($char['min_schaden'], $char['max_schaden']);
 					$char_schaden=(int)$char_schaden;
 					$monster['mob_leben']=$monster['mob_leben']-$char_schaden;
 					//$char['gesundheit']=(int)$char['gesundheit'];
 					//$monster['mob_lebel']=(int)$monster['mob_lebel'];
-					echo "Das Monster trifft dich mit ".$mob_schaden." Schadenspunkte! (Noch ".$char['gesundheit'].")";
+					echo "Das Monster trifft dich mit ".$mob_schaden." Schadenspunkte! (Noch ".$char['nahrung'].")";
 					echo "Du triffst das Monster mit ".$char_schaden." Schadenspunkte! (Noch ".$monster['mob_leben'].")";
 					echo '<br>';
 					echo '<br>';
 			            }
 				}
-				if ($char['gesundheit']>0) {
+				if ($char['nahrung']>0) {
 				   //Spieler verliert
 				   echo "Du hast das Monster besiegt!";
 				   // EXP und so hinzufügen!	
@@ -149,11 +149,13 @@
 				} else {
 				   //Spieler gewinnt
 				   echo "Verloren, Looser!";
+				   $char['nahrung']=1;
 				}    
 				
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
-										wasser=wasser-5,
+					wasser=wasser-5,
+					nahrung=".$char['nahrung'].",
                                         aktion_id=0,
                                         aktion_start=0,
                                         aktion_ende=0
