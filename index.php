@@ -3,7 +3,12 @@
 	include("_mysql.php");
 	include("_functions.php");
 	include("site/cookiecheck.php");
-
+	$array['quest']=2;
+	$array['exp']=10;
+	$array['goldklumpen']=5;
+	$tmp=serialize($array);
+	echo $tmp;
+	echo '<hr>';
     if (isset($_SESSION['userID'])) {
         $get_lastaktion="SELECT lastAktion FROM login WHERE userID=".$_SESSION['userID'];
         $query_lastaction=mysql_query($get_lastaktion);
