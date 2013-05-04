@@ -73,6 +73,21 @@ CREATE TABLE `char` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `char_quest`
+--
+
+DROP TABLE IF EXISTS `char_quest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `char_quest` (
+  `cquest_userID` int(11) NOT NULL,
+  `cquest_questID` int(11) NOT NULL,
+  `cquest_gelesen` int(1) NOT NULL DEFAULT '0',
+  `cquest_erledigt` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `char_skill`
 --
 
@@ -297,7 +312,8 @@ DROP TABLE IF EXISTS `quest_db`;
 CREATE TABLE `quest_db` (
   `quest_id` int(11) NOT NULL,
   `quest_belohnung` text NOT NULL,
-  `quest_vorraussetzung` text NOT NULL
+  `quest_vorraussetzung` text NOT NULL,
+  `quest_isStory` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -314,7 +330,7 @@ CREATE TABLE `skill_db` (
   `erlernbar` int(11) NOT NULL DEFAULT '1',
   `bonus` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`skill_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -341,4 +357,4 @@ CREATE TABLE `texte` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-05-04 11:25:03
+-- Dump completed on 2013-05-04 13:43:49
