@@ -322,7 +322,33 @@
 		global $mysql;
 	        mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         	mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
- 		$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$user.", cquest_questID=".$quest;
-		mysql_query($sql_quest_add);
+		$sql_check="SELECT * FROM char_quest WHERE cquest_questID=".$quest." AND cquest_userID=".$user;
+		$query_check=mysql_query($sql_check);
+		if (mysql_num_rows($query_check)==0) {
+			$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$user.", cquest_questID=".$quest;
+			mysql_query($sql_quest_add);
+		}
+	}
+	function erledige_quest($quest, $user) {
+		global $mysql;
+		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+                mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+		// Bla
+		$sql_quest_erledigen="UPDATE char_quest SET cquest_erledigt=1 WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
+		// Belohnungen erhalten
+		$sql_belohnung="SELECT quest_belohnung FROM quest_db WHERE quest_id=".$quest;
+		$query_belohnung=mysql_query($sql_belohnung);
+		$belohnung_text=@mysql_result($query_belohnung,0,0);
+		$belohnung=unserialize($belohnung_text);
+		foreach ($belohnung as $key => $value) {
+			if ($key=="quest") {
+				erhalte_quest($value, $user);
+			}
+			// Alle anderen Belohnungen 
+			if (($key=="exp") OR ($key=="goldklumpen")) {
+				mysql_query("UPDATE `char` SET ".$key."=".$value);
+			}	
+		}
+		mysql_query($sql_quest_erledigen);
 	}
 ?>

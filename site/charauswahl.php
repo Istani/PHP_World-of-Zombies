@@ -21,6 +21,7 @@
 
                 // Quest 1 Abschließen & Quest 2 anzeigen
                 // Weil Quest 1 Quest 2 freigibt
+		erledige_quest(1, $_SESSION['userID']);
                 
                 echo "<center>";
                 echo $_SESSION['loginName'] ." , du hast ein Charakter erfolgreich gespeichert.";
@@ -32,10 +33,12 @@
                 echo "</center>";
                 die();
         }
-
-	// Besonderheit weil die Quest schon als gelesen markiert sein soll (wahrscheinlich bei Storyquest öfters mal... mal sehen
-	$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$_SESSION['userID'].", cquest_questID=1, cquest_gelesen=1";
-        @mysql_query($sql_quest_add);
+	$sql_check="SELECT * FROM char_quest WHERE cquest_questID=1 AND cquest_userID=".$_SESSION['userID'];
+        $query_check=mysql_query($sql_check);
+        if (mysql_num_rows($query_check)==0) {
+        	$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$_SESSION['userID'].", cquest_questID=1, cquest_gelesen=1";
+		@mysql_query($sql_quest_add);        
+        }
 ?>
 
 
