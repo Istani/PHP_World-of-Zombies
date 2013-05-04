@@ -4,7 +4,7 @@
 	ini_set('display_errors', 1);
     $bg["title"]      =       "World of Zombies";
     $bg["author"]     =       "ZoDIkarus & ZoD-Istani";
-    $bg["version"]    =       "Version 0.09";
+    $bg["version"]    =       "Version 0.10";
 	
 	$bg['sprache']	  = "deutsch";
 ?>

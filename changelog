@@ -1,3 +1,6 @@
+git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s"
+fd887a0 - Sat May 4 13:57:25 2013 - Sascha Kaufmann : Änderungen auf Server Übertragen
+467717a - Sat May 4 13:43:49 2013 - Sascha Kaufmann : Zwischenstandt Commiten
 8e61ec0 - Sat May 4 13:43:28 2013 - Sascha Kaufmann : Skills bei Charerstellung
 cd197ff - Sat May 4 13:14:22 2013 - Sascha Kaufmann : Quest 1
 8a0e60b - Sat May 4 12:42:47 2013 - Sascha Kaufmann : BugFix: Quest1 überprüfung

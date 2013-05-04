@@ -33,6 +33,21 @@ CREATE TABLE `abbau_gebiet` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `abfall`
+--
+
+DROP TABLE IF EXISTS `abfall`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `abfall` (
+  `zeitpunkt` int(20) NOT NULL,
+  `item` int(11) NOT NULL,
+  `menge` int(11) NOT NULL,
+  `spieler` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `char`
 --
 
@@ -84,7 +99,7 @@ CREATE TABLE `char_quest` (
   `cquest_questID` int(11) NOT NULL,
   `cquest_gelesen` int(1) NOT NULL DEFAULT '0',
   `cquest_erledigt` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +214,7 @@ CREATE TABLE `inventory` (
   `itemID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +238,7 @@ CREATE TABLE `item_db` (
   `platz` int(11) NOT NULL,
   `munitonsart` int(11) NOT NULL,
   PRIMARY KEY (`itemID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +258,7 @@ CREATE TABLE `login` (
   `lastAktion` int(20) NOT NULL DEFAULT '0',
   `onlineTimer` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +329,7 @@ CREATE TABLE `quest_db` (
   `quest_belohnung` text NOT NULL,
   `quest_vorraussetzung` text NOT NULL,
   `quest_isStory` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -357,4 +372,4 @@ CREATE TABLE `texte` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-05-04 13:43:49
+-- Dump completed on 2013-05-04 13:58:38
