@@ -1,4 +1,3 @@
-git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s"
 8e61ec0 - Sat May 4 13:43:28 2013 - Sascha Kaufmann : Skills bei Charerstellung
 cd197ff - Sat May 4 13:14:22 2013 - Sascha Kaufmann : Quest 1
 8a0e60b - Sat May 4 12:42:47 2013 - Sascha Kaufmann : BugFix: Quest1 überprüfung
