@@ -32,7 +32,12 @@
                 echo "</center>";
                 die();
         }
+
+	// Besonderheit weil die Quest schon als gelesen markiert sein soll (wahrscheinlich bei Storyquest öfters mal... mal sehen
+	$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$_SESSION['userID'].", cquest_questID=1, cquest_gelesen=1";
+        @mysql_query($sql_quest_add);
 ?>
+
 
 <!-- Registration -->
     <form method="post">

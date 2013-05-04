@@ -317,4 +317,12 @@
 		}
 		return $sql_string;
 	}
+	function erhalte_quest($quest, $user) {
+		// Einfacher Code, wird aber bestimmt öfters gebraucht
+		global $mysql;
+	        mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+        	mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+ 		$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$user.", cquest_questID=".$quest;
+		mysql_query($sql_quest_add);
+	}
 ?>
