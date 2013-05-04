@@ -67,6 +67,14 @@
             <td align="center"><br><?php echo text_ausgabe("char_klasse_text", 2, $bg['sprache']); ?></td>
             <td align="center"><br><?php echo text_ausgabe("char_klasse_text", 3, $bg['sprache']); ?></td>
         </tr>
+	<tr><td><br /></td></tr>
+	<tr>
+		<td><b><?php echo text_ausgabe("skill", 2, $bg['sprache']); ?></b><br><?php echo text_ausgabe("skill_beschreibung", 2, $bg['sprache']); ?></td>
+		<td><b><?php echo text_ausgabe("skill", 3, $bg['sprache']); ?></b><br><?php echo text_ausgabe("skill_beschreibung", 3, $bg['sprache']); ?></td>
+		<td><b><?php echo text_ausgabe("skill", 4, $bg['sprache']); ?></b><br><?php echo text_ausgabe("skill_beschreibung", 4, $bg['sprache']); ?></td>
+
+		
+	</tr>
 	<tr>
             <td align="center"><input type="submit" name="class_1" value="Klasse_1"/></td>
             <td align="center"><input type="submit" name="class_2" value="Klasse_2"/></td>
