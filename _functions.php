@@ -346,7 +346,7 @@
 			}
 			// Alle anderen Belohnungen 
 			if (($key=="exp") OR ($key=="goldklumpen")) {
-				mysql_query("UPDATE `char` SET ".$key."=".$value);
+				mysql_query("UPDATE `char` SET ".$key."=".$value." WHERE userID=".$user);
 			}	
 		}
 		mysql_query($sql_quest_erledigen);
