@@ -3,7 +3,7 @@
 	echo '<table width="100%" border="1">';
 	
 	// SQL Alle Skills
-	$sql_skills="SELECT `skill_db`.*, `char_skill`.`lvl` FROM `skill_db` INNER JOIN `char_skill` ON `skill_db`.`skill_ID`=`char_skill`.`skillID` WHERE userID=".$_SESSION['userID']." ORDER BY `erlernbar`, `maxlvl` DESC";
+	$sql_skills="SELECT `skill_db`.*, `char_skill`.`lvl` FROM `skill_db` INNER JOIN `char_skill` ON `skill_db`.`skill_ID`=`char_skill`.`skillID` WHERE userID=".$_SESSION['userID']." ORDER BY `erlernbar` DESC, `maxlvl` DESC";
 	$query_skills=mysql_query($sql_skills);
 	while ($row_skills=mysql_fetch_assoc($query_skills)) {
 		echo '<tr>';

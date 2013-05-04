@@ -351,4 +351,37 @@
 		}
 		mysql_query($sql_quest_erledigen);
 	}
+	function skill_change($user, $skill, $skill_level=1, $kostenlos=0) {
+		// Wenn kostenlos=1 dann kostet es keinen Skillpunkt, also verwenden wenn durch bsp. Quest
+		// skill_level falls Skill erhöht werden soll
+		global $mysql;
+		 mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+                mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+		$skill_bekommen=false;
+		// Check Skill Vorhanden
+		$sql_check="SELECT `lvl` FROM char_skill WHERE skillID=".$skill." AND userID=".$user;
+		$query_check=mysql_query($sql_check);
+		$vorhandenes_level=0;
+		if (mysql_num_rows($query_check)>0) {
+			$vorhandenes_level=mysql_result($query_check,0,0);
+		}
+		if ($vorhandenes_level!=$skill_level) {
+			if ($kostenlos==1) {
+				// Char Skillpunkt abzug oder dazu, aber momentan gibt es noch keine Skillpunkte
+			}
+			if ($vorhandenes_level==0) {
+				$sql_insert="INSERT INTO ";
+				$sql_where="";
+			} else {
+				$sql_insert="UPDATE ";
+				$sql_where=" WHERE skillID=".$skill." AND userID=".$user;
+			}
+			$sql_insert=$sql_insert." char_skill SET userID=".$user.", skillID=".$skill.", `lvl`=".$skill_level.$sql_where;
+			mysql_query($sql_insert);
+			$skill_bekommen=true;
+		}
+		return $skill_bekommen;	
+	}
+
+	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>

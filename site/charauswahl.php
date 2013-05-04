@@ -15,9 +15,13 @@
                 if(isset($dsatz["klasse"])){
                         $_SESSION["class"] = $dsatz["klasse"];
                 }
+		skill_change($_SESSION['userID'], 1, 1, 1);
                 inventory_add($_SESSION['userID'], 5, 10);
                 inventory_add($_SESSION['userID'], 6, 10);
                 // Skills Klassenspezifisch erlernen
+		if ($_SESSION['class']==1) {skill_change($_SESSION['userID'], 2, 1, 1);}
+		if ($_SESSION['class']==2) {skill_change($_SESSION['userID'], 3, 1, 1);}
+		if ($_SESSION['class']==3) {skill_change($_SESSION['userID'], 4, 1, 1);}
 
                 // Quest 1 Abschließen & Quest 2 anzeigen
                 // Weil Quest 1 Quest 2 freigibt
