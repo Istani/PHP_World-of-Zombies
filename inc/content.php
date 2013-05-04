@@ -11,6 +11,13 @@ if (!isset($_SESSION['userID'])) {
 		include("site/start.php");
 	}
 } else {
+	// Wenn Quest 1 nicht abgeschlossen, dann muss der Char neu erstellt werden!
+	$sql_check_quest="SELECT 1 as check FROM char_quest WHERE cquest_userID=".$_SESSION['userID']." AND cquest_questID=1 AND cquest_erledigt=1";
+	$query_check_quest=mysql_query($sql_check_quest);
+	if (mysql_num_rows($query_check_quest)==0) {
+		mysql_query("DELETE * FROM `char` WHERE userID=".$_SESSION['userID']);
+	}
+
 	$sql_char="SELECT * FROM `char` WHERE userID=".$_SESSION['userID'];
 	$query_char=mysql_query($sql_char);
 	if (mysql_num_rows($query_char)==0) {
