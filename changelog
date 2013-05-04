@@ -1,4 +1,9 @@
 git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s"
+ccfb45f - Sat May 4 18:54:19 2013 - Sascha Kaufmann : NUN: Gesundheit = MaxWert, Nahrung=Leben
+f79e880 - Sat May 4 18:41:53 2013 - Sascha Kaufmann : ADD: Skill auswirkungen
+336698c - Sat May 4 17:41:43 2013 - Alex Amling : Guild: Bugfix
+6b0c3cf - Sat May 4 14:05:54 2013 - Sascha Kaufmann : BugFix: Quest beenden
+f908cff - Sat May 4 13:58:38 2013 - Sascha Kaufmann : Zwischenstandt Commiten
 fd887a0 - Sat May 4 13:57:25 2013 - Sascha Kaufmann : Änderungen auf Server Übertragen
 467717a - Sat May 4 13:43:49 2013 - Sascha Kaufmann : Zwischenstandt Commiten
 8e61ec0 - Sat May 4 13:43:28 2013 - Sascha Kaufmann : Skills bei Charerstellung
