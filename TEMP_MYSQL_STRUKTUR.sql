@@ -1,23 +1,45 @@
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+-- MySQL dump 10.13  Distrib 5.5.31, for debian-linux-gnu (i686)
+--
+-- Host: 127.0.0.1    Database: zodgame
+-- ------------------------------------------------------
+-- Server version	5.5.27
 
-CREATE TABLE IF NOT EXISTS `abbau_gebiet` (
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `abbau_gebiet`
+--
+
+DROP TABLE IF EXISTS `abbau_gebiet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `abbau_gebiet` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `gebiet` text COLLATE latin1_german2_ci NOT NULL,
   `dauer` int(11) NOT NULL,
   `grundwert` int(11) NOT NULL,
   `itemID` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `abfall` (
-  `zeitpunkt` int(20) NOT NULL,
-  `item` int(11) NOT NULL,
-  `menge` int(11) NOT NULL,
-  `spieler` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Table structure for table `char`
+--
 
-CREATE TABLE IF NOT EXISTS `char` (
+DROP TABLE IF EXISTS `char`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `char` (
   `userID` int(11) NOT NULL,
   `klasse` int(11) NOT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
@@ -48,15 +70,31 @@ CREATE TABLE IF NOT EXISTS `char` (
   `aktion_ende` int(11) NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `char_skill` (
+--
+-- Table structure for table `char_skill`
+--
+
+DROP TABLE IF EXISTS `char_skill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `char_skill` (
   `userID` int(11) NOT NULL,
   `skillID` int(11) NOT NULL,
   `lvl` int(11) NOT NULL,
   PRIMARY KEY (`userID`,`skillID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `crafting_rezepte` (
+--
+-- Table structure for table `crafting_rezepte`
+--
+
+DROP TABLE IF EXISTS `crafting_rezepte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `crafting_rezepte` (
   `item` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   `produkt` int(11) NOT NULL,
@@ -64,8 +102,16 @@ CREATE TABLE IF NOT EXISTS `crafting_rezepte` (
   `skill_level` int(11) NOT NULL,
   PRIMARY KEY (`item`,`produkt`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `guild_chat` (
+--
+-- Table structure for table `guild_chat`
+--
+
+DROP TABLE IF EXISTS `guild_chat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guild_chat` (
   `guild_id` int(11) NOT NULL,
   `msg_id` int(11) NOT NULL AUTO_INCREMENT,
   `time` int(11) NOT NULL,
@@ -74,9 +120,17 @@ CREATE TABLE IF NOT EXISTS `guild_chat` (
   PRIMARY KEY (`msg_id`),
   UNIQUE KEY `msg_id` (`msg_id`),
   KEY `guild_id` (`guild_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `guild_db` (
+--
+-- Table structure for table `guild_db`
+--
+
+DROP TABLE IF EXISTS `guild_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guild_db` (
   `guild_id` int(11) NOT NULL AUTO_INCREMENT,
   `guild_name` varchar(155) COLLATE latin1_german2_ci NOT NULL,
   `guild_kurz` varchar(6) COLLATE latin1_german2_ci NOT NULL,
@@ -84,31 +138,63 @@ CREATE TABLE IF NOT EXISTS `guild_db` (
   `emblem` int(11) NOT NULL DEFAULT '0',
   `guild_master` varchar(155) COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`guild_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `guild_ranking` (
+--
+-- Table structure for table `guild_ranking`
+--
+
+DROP TABLE IF EXISTS `guild_ranking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guild_ranking` (
   `guild_id` int(11) NOT NULL,
   `title` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   PRIMARY KEY (`guild_id`,`userID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `guild_skill_db` (
+--
+-- Table structure for table `guild_skill_db`
+--
+
+DROP TABLE IF EXISTS `guild_skill_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guild_skill_db` (
   `skill_ID` int(11) NOT NULL AUTO_INCREMENT,
   `max_lvl` int(11) NOT NULL,
   `bonus` int(11) NOT NULL,
   PRIMARY KEY (`skill_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `inventory` (
+--
+-- Table structure for table `inventory`
+--
+
+DROP TABLE IF EXISTS `inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventory` (
   `invID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `itemID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=69 ;
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `item_db` (
+--
+-- Table structure for table `item_db`
+--
+
+DROP TABLE IF EXISTS `item_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `item_db` (
   `itemID` int(11) NOT NULL AUTO_INCREMENT,
   `art` int(11) NOT NULL,
   `stack` int(11) NOT NULL,
@@ -122,9 +208,17 @@ CREATE TABLE IF NOT EXISTS `item_db` (
   `platz` int(11) NOT NULL,
   `munitonsart` int(11) NOT NULL,
   PRIMARY KEY (`itemID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `login` (
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
   `userID` int(10) NOT NULL AUTO_INCREMENT,
   `loginName` varchar(50) COLLATE latin1_german2_ci NOT NULL,
   `passwort` varchar(50) COLLATE latin1_german2_ci NOT NULL,
@@ -134,9 +228,17 @@ CREATE TABLE IF NOT EXISTS `login` (
   `lastAktion` int(20) NOT NULL DEFAULT '0',
   `onlineTimer` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `mob_db` (
+--
+-- Table structure for table `mob_db`
+--
+
+DROP TABLE IF EXISTS `mob_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mob_db` (
   `mob_id` int(11) NOT NULL AUTO_INCREMENT,
   `min_schaden` int(11) NOT NULL,
   `max_schaden` int(11) NOT NULL,
@@ -144,9 +246,17 @@ CREATE TABLE IF NOT EXISTS `mob_db` (
   `mob_level` int(11) NOT NULL,
   `mob_exp` int(11) NOT NULL,
   PRIMARY KEY (`mob_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `nachricht_ausgang` (
+--
+-- Table structure for table `nachricht_ausgang`
+--
+
+DROP TABLE IF EXISTS `nachricht_ausgang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nachricht_ausgang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) NOT NULL,
   `empfaenger` int(11) NOT NULL,
@@ -155,9 +265,17 @@ CREATE TABLE IF NOT EXISTS `nachricht_ausgang` (
   `betreff` text COLLATE latin1_german2_ci NOT NULL,
   `nachricht` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `nachricht_eingang` (
+--
+-- Table structure for table `nachricht_eingang`
+--
+
+DROP TABLE IF EXISTS `nachricht_eingang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nachricht_eingang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) NOT NULL,
   `empfaenger` int(11) NOT NULL,
@@ -166,19 +284,47 @@ CREATE TABLE IF NOT EXISTS `nachricht_eingang` (
   `betreff` text COLLATE latin1_german2_ci NOT NULL,
   `nachricht` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `skill_db` (
+--
+-- Table structure for table `skill_db`
+--
+
+DROP TABLE IF EXISTS `skill_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skill_db` (
   `skill_ID` int(11) NOT NULL AUTO_INCREMENT,
   `maxlvl` int(11) NOT NULL DEFAULT '10',
   `erlernbar` int(11) NOT NULL DEFAULT '1',
   `bonus` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`skill_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `texte` (
+--
+-- Table structure for table `texte`
+--
+
+DROP TABLE IF EXISTS `texte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `texte` (
   `kurz` varchar(255) COLLATE latin1_german2_ci NOT NULL,
   `id` int(10) NOT NULL DEFAULT '0',
   `deutsch` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`kurz`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-05-04  9:21:01

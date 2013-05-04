@@ -1,5 +1,5 @@
 <?php
-	$mysql['host']  =   "localhost";
+	$mysql['host']  =   "127.0.0.1";
 	$mysql['user']  =   "root";
 	$mysql['pw']    =   "";
 	$mysql['db']    =   "zodgame";

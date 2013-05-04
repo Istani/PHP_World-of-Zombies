@@ -1,44 +1,43 @@
-9b4510d - vor 13 Stunden : Bugfix: Gilden Chat,Desc
-3b07375 - vor 13 Stunden : Bug in Guild.php
-3aedd78 - vor 13 Stunden : Bugfix: Guild
-5c5a5b4 - vor 13 Stunden : BugFix: Gildentext speichern
-48daca1 - vor 14 Stunden : BugFix: Gildentext
-60b0f3f - vor 14 Stunden : Merge branch 'master' of https://github.com/Zombies-of-Destruction/zod
-6bf468a - vor 14 Stunden : guild
-287dd59 - vor 23 Stunden : Script Test
-b6f74fd - vor 34 Stunden : BugFix: Werkstatt - Stand auf FTP geupdatet
-1f658eb - vor 34 Stunden : CSS reicht so schon Alex -.-
-4d6ce7f - vor 34 Stunden : Version 0.09
-4f50eac - vor 35 Stunden : Mühlhalde hinzugefügt
-859d76a - vor 2 Tagen : MYSQL STRUKTUR um änderungen festzustellen
-b089fef - vor 2 Tagen : Aktionen bringen jetzt EXP
-de17cdd - vor 2 Tagen : BugFix: Link Item Benutzen
-e23971c - vor 2 Tagen : BugFix: Link abbauen
-3a9cf37 - vor 2 Tagen : Crafting und Abbau ueberprueft Wasser
-4c5c3de - vor 2 Tagen : Aktionen benoetigen nun Wasser
-f7b08aa - vor 2 Tagen : guild
-02926eb - vor 2 Tagen : Beendigung der Arbeit von heute ^SK
-3a984d8 - vor 2 Tagen : Fix: Textausgaben bei Skills
-1f1c495 - vor 3 Tagen : Add: Char Skills Anzeige
-3af7f76 - vor 3 Tagen : BugFix: Natürlich nur sich selbst XP geben beim Kampf
-6716121 - vor 3 Tagen : BugFix: Linkfehler in Traingslager
-fd09848 - vor 3 Tagen : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird
-5423009 - vor 3 Tagen : BugFix: Items einsammeln
-71393ce - vor 3 Tagen : Items und EXP von Monster erhalten
-b85a418 - vor 3 Tagen : Kampfzeit erstmal auf 3 Minuten gesetzt
-941e40e - vor 3 Tagen : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
-9859c76 - vor 3 Tagen : Ein einfaches Kampfsystem
-49ab517 - vor 3 Tagen : Da
-977d6b1 - vor 3 Tagen : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
-2c7589f - vor 3 Tagen : Das neue Spiel "SUCH DEN FEHLER"
-9953498 - vor 3 Tagen : Kampfsystem TEST
-84204d7 - vor 3 Tagen : Werte Berechnung Char
-1ad9c71 - vor 3 Tagen : Kampfzeit auf 1 SEK zum testen
-1269807 - vor 3 Tagen : Warum löscht der die Datei nicht~
-eaff447 - vor 3 Tagen : Irgendwie 2 Functionen^^ + KSystem1
-38a1632 - vor 3 Tagen : Fehlermeldung Aktion - Kampf
-c907fa6 - vor 3 Tagen : Login - Passwortfeld Farbe
-6defd8a - vor 3 Tagen : Funktion Fehlermeldung Bilder
-601b3d8 - vor 3 Tagen : Lokale Mysql Einstellungen
-4afcc68 - vor 3 Tagen : test behoben xD
-9e2b41f - vor 3 Tagen : test
+git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s"
+6212bd9 - Sat May 4 09:11:34 2013 - Sascha Kaufmann : Guten Morgen
+9b4510d - Fri May 3 20:23:21 2013 - Alex Amling : Bugfix: Gilden Chat,Desc
+3b07375 - Fri May 3 20:03:11 2013 - Alex Amling : Bug in Guild.php
+3aedd78 - Fri May 3 19:57:43 2013 - Alex Amling : Bugfix: Guild
+5c5a5b4 - Fri May 3 19:45:35 2013 - Sascha Kaufmann : BugFix: Gildentext speichern
+48daca1 - Fri May 3 19:16:11 2013 - Sascha Kaufmann : BugFix: Gildentext
+6bf468a - Fri May 3 19:05:36 2013 - Alex Amling : guild
+287dd59 - Fri May 3 10:37:47 2013 - Sascha Kaufmann : Script Test
+b6f74fd - Thu May 2 23:26:46 2013 - Sascha Kaufmann : BugFix: Werkstatt - Stand auf FTP geupdatet
+1f658eb - Thu May 2 23:10:02 2013 - Sascha Kaufmann : CSS reicht so schon Alex -.-
+4d6ce7f - Thu May 2 22:58:37 2013 - Sascha Kaufmann : Version 0.09
+4f50eac - Thu May 2 22:19:07 2013 - Sascha Kaufmann : Mühlhalde hinzugefügt
+859d76a - Thu May 2 20:58:58 2013 - Sascha Kaufmann : MYSQL STRUKTUR um änderungen festzustellen
+b089fef - Thu May 2 19:11:57 2013 - Sascha Kaufmann : Aktionen bringen jetzt EXP
+de17cdd - Thu May 2 18:43:55 2013 - Sascha Kaufmann : BugFix: Link Item Benutzen
+e23971c - Thu May 2 18:41:00 2013 - Sascha Kaufmann : BugFix: Link abbauen
+3a9cf37 - Thu May 2 13:36:52 2013 - Sascha Kaufmann : Crafting und Abbau ueberprueft Wasser
+4c5c3de - Thu May 2 13:19:59 2013 - Sascha Kaufmann : Aktionen benoetigen nun Wasser
+f7b08aa - Wed May 1 22:52:02 2013 - Alex Amling : guild
+02926eb - Wed May 1 22:07:29 2013 - Sascha Kaufmann : Beendigung der Arbeit von heute ^SK
+3a984d8 - Wed May 1 21:52:58 2013 - Sascha Kaufmann : Fix: Textausgaben bei Skills
+1f1c495 - Wed May 1 21:37:56 2013 - Sascha Kaufmann : Add: Char Skills Anzeige
+3af7f76 - Wed May 1 20:16:38 2013 - Sascha Kaufmann : BugFix: Natürlich nur sich selbst XP geben beim Kampf
+6716121 - Wed May 1 19:56:16 2013 - Sascha Kaufmann : BugFix: Linkfehler in Traingslager
+fd09848 - Wed May 1 19:50:52 2013 - Sascha Kaufmann : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird
+5423009 - Wed May 1 19:46:42 2013 - Sascha Kaufmann : BugFix: Items einsammeln
+71393ce - Wed May 1 19:36:21 2013 - Sascha Kaufmann : Items und EXP von Monster erhalten
+b85a418 - Wed May 1 19:13:26 2013 - Sascha Kaufmann : Kampfzeit erstmal auf 3 Minuten gesetzt
+9859c76 - Wed May 1 19:10:50 2013 - Sascha Kaufmann : Ein einfaches Kampfsystem
+49ab517 - Wed May 1 18:47:08 2013 - Alex Amling : Da
+2c7589f - Wed May 1 18:42:16 2013 - Alex Amling : Das neue Spiel "SUCH DEN FEHLER"
+9953498 - Wed May 1 18:42:12 2013 - Sascha Kaufmann : Kampfsystem TEST
+84204d7 - Wed May 1 18:21:16 2013 - Sascha Kaufmann : Werte Berechnung Char
+1ad9c71 - Wed May 1 18:03:12 2013 - Sascha Kaufmann : Kampfzeit auf 1 SEK zum testen
+1269807 - Wed May 1 17:43:59 2013 - Sascha Kaufmann : Warum löscht der die Datei nicht~
+eaff447 - Wed May 1 17:41:46 2013 - Sascha Kaufmann : Irgendwie 2 Functionen^^ + KSystem1
+38a1632 - Wed May 1 17:30:18 2013 - Sascha Kaufmann : Fehlermeldung Aktion - Kampf
+c907fa6 - Wed May 1 17:22:37 2013 - Alex Amling : Login - Passwortfeld Farbe
+6defd8a - Wed May 1 17:18:18 2013 - Sascha Kaufmann : Funktion Fehlermeldung Bilder
+601b3d8 - Wed May 1 17:16:53 2013 - Sascha Kaufmann : Lokale Mysql Einstellungen
+4afcc68 - Wed May 1 17:14:39 2013 - Alex Amling : test behoben xD
+9e2b41f - Wed May 1 17:06:16 2013 - Alex Amling : test
