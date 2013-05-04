@@ -3,9 +3,8 @@
 	include("_mysql.php");
 	include("_functions.php");
 	include("site/cookiecheck.php");
-	$array['quest']=2;
-	$array['exp']=10;
-	$array['goldklumpen']=5;
+	$array['crafting']="1";
+	$array['abbauen']="10";
 	$tmp=serialize($array);
 	echo $tmp;
 	echo '<hr>';
