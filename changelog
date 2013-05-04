@@ -1,24 +1,44 @@
-3a984d8 - vor 14 Minuten : Fix: Textausgaben bei Skills
-1f1c495 - vor 29 Minuten : Add: Char Skills Anzeige
-3af7f76 - vor 2 Stunden : BugFix: Natürlich nur sich selbst XP geben beim Kampf
-6716121 - vor 2 Stunden : BugFix: Linkfehler in Traingslager
-fd09848 - vor 2 Stunden : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird
-5423009 - vor 2 Stunden : BugFix: Items einsammeln
-71393ce - vor 3 Stunden : Items und EXP von Monster erhalten
-b85a418 - vor 3 Stunden : Kampfzeit erstmal auf 3 Minuten gesetzt
-941e40e - vor 3 Stunden : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
-9859c76 - vor 3 Stunden : Ein einfaches Kampfsystem
-49ab517 - vor 3 Stunden : Da
-977d6b1 - vor 3 Stunden : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
-2c7589f - vor 3 Stunden : Das neue Spiel "SUCH DEN FEHLER"
-9953498 - vor 3 Stunden : Kampfsystem TEST
-84204d7 - vor 4 Stunden : Werte Berechnung Char
-1ad9c71 - vor 4 Stunden : Kampfzeit auf 1 SEK zum testen
-1269807 - vor 4 Stunden : Warum löscht der die Datei nicht~
-eaff447 - vor 4 Stunden : Irgendwie 2 Functionen^^ + KSystem1
-38a1632 - vor 5 Stunden : Fehlermeldung Aktion - Kampf
-c907fa6 - vor 5 Stunden : Login - Passwortfeld Farbe
-6defd8a - vor 5 Stunden : Funktion Fehlermeldung Bilder
-601b3d8 - vor 5 Stunden : Lokale Mysql Einstellungen
-4afcc68 - vor 5 Stunden : test behoben xD
-9e2b41f - vor 5 Stunden : test
+9b4510d - vor 13 Stunden : Bugfix: Gilden Chat,Desc
+3b07375 - vor 13 Stunden : Bug in Guild.php
+3aedd78 - vor 13 Stunden : Bugfix: Guild
+5c5a5b4 - vor 13 Stunden : BugFix: Gildentext speichern
+48daca1 - vor 14 Stunden : BugFix: Gildentext
+60b0f3f - vor 14 Stunden : Merge branch 'master' of https://github.com/Zombies-of-Destruction/zod
+6bf468a - vor 14 Stunden : guild
+287dd59 - vor 23 Stunden : Script Test
+b6f74fd - vor 34 Stunden : BugFix: Werkstatt - Stand auf FTP geupdatet
+1f658eb - vor 34 Stunden : CSS reicht so schon Alex -.-
+4d6ce7f - vor 34 Stunden : Version 0.09
+4f50eac - vor 35 Stunden : Mühlhalde hinzugefügt
+859d76a - vor 2 Tagen : MYSQL STRUKTUR um änderungen festzustellen
+b089fef - vor 2 Tagen : Aktionen bringen jetzt EXP
+de17cdd - vor 2 Tagen : BugFix: Link Item Benutzen
+e23971c - vor 2 Tagen : BugFix: Link abbauen
+3a9cf37 - vor 2 Tagen : Crafting und Abbau ueberprueft Wasser
+4c5c3de - vor 2 Tagen : Aktionen benoetigen nun Wasser
+f7b08aa - vor 2 Tagen : guild
+02926eb - vor 2 Tagen : Beendigung der Arbeit von heute ^SK
+3a984d8 - vor 2 Tagen : Fix: Textausgaben bei Skills
+1f1c495 - vor 3 Tagen : Add: Char Skills Anzeige
+3af7f76 - vor 3 Tagen : BugFix: Natürlich nur sich selbst XP geben beim Kampf
+6716121 - vor 3 Tagen : BugFix: Linkfehler in Traingslager
+fd09848 - vor 3 Tagen : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird
+5423009 - vor 3 Tagen : BugFix: Items einsammeln
+71393ce - vor 3 Tagen : Items und EXP von Monster erhalten
+b85a418 - vor 3 Tagen : Kampfzeit erstmal auf 3 Minuten gesetzt
+941e40e - vor 3 Tagen : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
+9859c76 - vor 3 Tagen : Ein einfaches Kampfsystem
+49ab517 - vor 3 Tagen : Da
+977d6b1 - vor 3 Tagen : Merge branch 'master' of github.com:Zombies-of-Destruction/zod
+2c7589f - vor 3 Tagen : Das neue Spiel "SUCH DEN FEHLER"
+9953498 - vor 3 Tagen : Kampfsystem TEST
+84204d7 - vor 3 Tagen : Werte Berechnung Char
+1ad9c71 - vor 3 Tagen : Kampfzeit auf 1 SEK zum testen
+1269807 - vor 3 Tagen : Warum löscht der die Datei nicht~
+eaff447 - vor 3 Tagen : Irgendwie 2 Functionen^^ + KSystem1
+38a1632 - vor 3 Tagen : Fehlermeldung Aktion - Kampf
+c907fa6 - vor 3 Tagen : Login - Passwortfeld Farbe
+6defd8a - vor 3 Tagen : Funktion Fehlermeldung Bilder
+601b3d8 - vor 3 Tagen : Lokale Mysql Einstellungen
+4afcc68 - vor 3 Tagen : test behoben xD
+9e2b41f - vor 3 Tagen : test
