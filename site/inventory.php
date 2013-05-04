@@ -13,6 +13,8 @@
 		$char_handschuhe	=		$dsatz['handschuhe'];
 		$char_schuhe		=		$dsatz['schuhe'];
 		$char_fahrzeug		=		$dsatz['fahrzeug'];
+		
+		$max_wert_ausdauer = $dsatz['gesundheit'];
 
     $queryString = strstr($_SERVER['REQUEST_URI'], '?');
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
@@ -28,8 +30,10 @@
                     $menge=$item_row['refill'];
                     $sql_update="UPDATE `char` SET ".$wert."=".$wert."+".$menge." WHERE `userID` = '" . $_SESSION['userID'] . "'";
                     mysql_query($sql_update);
-                    $sql_update="UPDATE `char` SET ".$wert."=100 WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">100";
+		    $max_wert= get_wert_plus_bonus($_SESSION['userID'], strtolower($wert), $max_wert_ausdauer);
+		    $sql_update="UPDATE `char` SET ".$wert."=".$max_wert." WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">".$max_wert;
                     mysql_query($sql_update);
+
                     echo '<meta http-equiv="refresh" content="0; URL=index.php?'.$queryString.'">';
                 }
             }

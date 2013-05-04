@@ -382,6 +382,32 @@
 		}
 		return $skill_bekommen;	
 	}
+	function get_wert_plus_bonus($user, $bonuswert, $wert) {
+		// Bonuswert ist der Wert um den es geht (Crafting, Abbau, Wasser etc.)
+		// Wert ist der aktuelle Wert und als Rückgabe kommt dann ein neuer Wert
+		global $mysql;
+		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+                mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+
+		// Schauen ob der User Skills hat, die diesen Wert beeinflussen:
+		$sql_skillliste="SELECT char_skill.`lvl`, skill_db.bonus FROM char_skill INNER JOIN skill_db ON char_skill.skillID=skill_db.skill_ID  WHERE userID=".$user." AND bonus like '%".$bonuswert."%'";
+		$query_skillliste=mysql_query($sql_skillliste);
+		$fest_wert=0;
+		while ($row_skills=mysql_fetch_assoc($query_skillliste)) {
+			$tmp_werte=unserialize($row_skills['bonus']);
+			$add_wert=$tmp_werte[$bonuswert];
+			$test_prozent=str_replace("%", "", $add_wert);
+			if ($test_prozent==$add_wert) {
+				$fest_wert=$fest_wert+$add_wert;
+			} else {
+				$fest_wert=$fest_wert+($wert*($test_prozent/100));
+			}
+		}
+		$skill_zuwachs=$fest_wert;
+			
+		$ausgabewert=$wert+$skill_zuwachs;
+		return $ausgabewert;
+	}
 
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>

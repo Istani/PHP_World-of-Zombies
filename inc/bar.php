@@ -8,6 +8,7 @@
         $result = mysql_query($sql_query);
         $dsatz = mysql_fetch_assoc($result);
 
+	$max_wert_ausdauer = $dsatz['gesundheit'];
         $char_wasser	=	$dsatz['wasser'];
         $char_nahrung	=	$dsatz['nahrung'];
         $char_gold		=	$dsatz['goldklumpen'];
@@ -61,7 +62,7 @@
 		$jq(function() {
 			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar" ).progressbar({
 				value: <?php echo $char_wasser; ?>,
-				max: 100
+				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
 			});
 		});
 	</script>
@@ -82,7 +83,7 @@
 		$jq(function() {
             $jq( "#<?php echo text_ausgabe("char_status", 1, $bg['sprache']) ?>_bar" ).progressbar({
 				value: <?php echo $char_nahrung; ?>,
-				max: 100
+				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
 			});
 		});
 	</script>
