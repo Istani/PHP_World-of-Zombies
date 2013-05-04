@@ -44,13 +44,13 @@ CREATE TABLE `char` (
   `klasse` int(11) NOT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
   `exp` int(11) NOT NULL DEFAULT '0',
-  `gesundheit` int(11) NOT NULL,
+  `gesundheit` int(11) NOT NULL DEFAULT '100',
   `nahrung` int(11) NOT NULL DEFAULT '100',
   `wasser` int(11) NOT NULL DEFAULT '100',
-  `nahkampf` int(11) NOT NULL DEFAULT '1',
+  `nahkampf` int(11) NOT NULL DEFAULT '0',
   `schusswaffe` int(11) NOT NULL DEFAULT '0',
   `rucksack` int(11) NOT NULL DEFAULT '0',
-  `goldklumpen` int(11) NOT NULL,
+  `goldklumpen` int(11) NOT NULL DEFAULT '0',
   `helm` int(11) NOT NULL DEFAULT '0',
   `amor` int(11) NOT NULL DEFAULT '0',
   `handschuhe` int(11) NOT NULL DEFAULT '0',
@@ -58,12 +58,12 @@ CREATE TABLE `char` (
   `fahrzeug` int(11) NOT NULL DEFAULT '0',
   `geld` int(10) NOT NULL DEFAULT '0',
   `gilde` varchar(155) COLLATE latin1_german2_ci NOT NULL,
-  `last_map` varchar(255) COLLATE latin1_german2_ci NOT NULL DEFAULT 'weltkarte',
-  `zombieslave` int(11) NOT NULL DEFAULT '1',
+  `last_map` varchar(255) COLLATE latin1_german2_ci NOT NULL DEFAULT 'trainingslager',
+  `zombieslave` int(11) NOT NULL DEFAULT '0',
   `zombieslave_aktiv` int(11) NOT NULL DEFAULT '0',
   `zombieslave_gebiet` text COLLATE latin1_german2_ci NOT NULL,
-  `Items_Abbau` int(11) NOT NULL,
-  `Items_Crafting` int(11) NOT NULL,
+  `Items_Abbau` int(11) NOT NULL DEFAULT '0',
+  `Items_Crafting` int(11) NOT NULL DEFAULT '0',
   `aktion` text COLLATE latin1_german2_ci NOT NULL,
   `aktion_id` int(10) NOT NULL,
   `aktion_start` int(11) NOT NULL,
@@ -184,7 +184,7 @@ CREATE TABLE `inventory` (
   `itemID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +228,7 @@ CREATE TABLE `login` (
   `lastAktion` int(20) NOT NULL DEFAULT '0',
   `onlineTimer` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +288,20 @@ CREATE TABLE `nachricht_eingang` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `quest_db`
+--
+
+DROP TABLE IF EXISTS `quest_db`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `quest_db` (
+  `quest_id` int(11) NOT NULL,
+  `quest_belohnung` text NOT NULL,
+  `quest_vorraussetzung` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `skill_db`
 --
 
@@ -327,4 +341,4 @@ CREATE TABLE `texte` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-05-04  9:21:01
+-- Dump completed on 2013-05-04 11:25:03

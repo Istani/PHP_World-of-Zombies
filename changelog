@@ -1,4 +1,6 @@
 git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s"
+ef5c13b - Sat May 4 11:18:13 2013 - Sascha Kaufmann : Charerstellung üerarbeitet & vorbereitung Quests
+06e290e - Sat May 4 09:40:40 2013 - Sascha Kaufmann : Scripte anpassen
 6212bd9 - Sat May 4 09:11:34 2013 - Sascha Kaufmann : Guten Morgen
 9b4510d - Fri May 3 20:23:21 2013 - Alex Amling : Bugfix: Gilden Chat,Desc
 3b07375 - Fri May 3 20:03:11 2013 - Alex Amling : Bug in Guild.php
