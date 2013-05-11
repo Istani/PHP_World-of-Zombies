@@ -65,11 +65,18 @@ a img {
 	padding: 0px;
 	margin: 0px;	
 }
-#nahrung_bar .ui-progressbar-value, .nahrung_bg {
+#nahrung_bar_status, #wasser_bar_status {
+	min-width:200px;
+	height:5px;
+	float:left;	
+	padding: 0px;
+	margin: 0px;	
+}
+#nahrung_bar .ui-progressbar-value,#nahrung_bar_status .ui-progressbar-value, .nahrung_bg {
 	background-color:#ff6633;	
 	background-image: url(picture/hunger.png);
 }
-#wasser_bar .ui-progressbar-value, .hunger_bg {
+#wasser_bar .ui-progressbar-value,#wasser_bar_status .ui-progressbar-value, .hunger_bg {
 	background-color:#3366ff;
 	background-image: url(picture/wasser.png);
 }

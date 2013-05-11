@@ -14,6 +14,8 @@
 		$char_schuhe		=		$dsatz['schuhe'];
 		$char_fahrzeug		=		$dsatz['fahrzeug'];
 
+		$char_wasser	=	$dsatz['wasser'];
+        $char_nahrung	=	$dsatz['nahrung'];
 		$max_wert_ausdauer = $dsatz['gesundheit'];
 	
 	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
@@ -66,8 +68,23 @@
         <td style="width: 150px;"><?php echo $dsatz['wasser']; ?></td>
     </tr>
     <tr>
-        <td rowspan="2" style="width: 150px;"></td>
-        <td rowspan="2" style="width: 150px;"></td>
+        <td colspan="2" style="width: 150px;">
+	
+		</td>
+        <td colspan="2" style="width: 150px;">
+		<?php
+echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+?>
+	<script>
+		var $jq = jQuery.noConflict();
+		$jq(function() {
+			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar_status" ).progressbar({
+				value: <?php echo $char_wasser; ?>,
+				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
+			});
+		});
+	</script>
+		</td>
 
     </tr>
     <tr>
