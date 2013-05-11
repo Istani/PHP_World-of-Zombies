@@ -8,16 +8,24 @@
         $result = mysql_query($sql_query);
         $dsatz = mysql_fetch_assoc($result);
 
-	$max_wert_ausdauer = $dsatz['gesundheit'];
+	$max_wert_ausdauer  =   $dsatz['gesundheit'];
         $char_wasser	=	$dsatz['wasser'];
         $char_nahrung	=	$dsatz['nahrung'];
+        $char_exp   	=	$dsatz['exp'];
         $char_gold		=	$dsatz['goldklumpen'];
         $char_slave		=	$dsatz['zombieslave'];
+        $char_lvl       =   $dsatz['level'];
 		
 		$sql_skill="INSERT INTO char_skill SET userID=".$_SESSION['userID'].", lvl=1, skillID=1";
 		mysql_query($sql_skill);
     }
-	
+    
+	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
+	$result_exp = mysql_query($sql_exp);
+	$dsatz_exp = mysql_fetch_assoc($result_exp);
+    
+    $needxp     =   $dsatz_exp["exp"];
+    	
 	echo '<table width="100%">';
 	echo '<tr>';
 	
@@ -54,7 +62,7 @@
         echo '|';
         echo '</td>';
 
-        echo '<td style="text-align:center; width:120px;">';
+        echo '<td style="text-align:center; width:140px;">';
 		echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
 ?>
 	<script>
@@ -74,7 +82,7 @@
         echo '|';
         echo '</td>';
 
-		echo '<td style="text-align:center; width:120px;">';
+		echo '<td style="text-align:center; width:140px;">';
 		
 		echo '<div id="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bar" class="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bg"></div>';
 ?>
@@ -91,6 +99,19 @@
     echo '&nbsp;<span class="'.text_ausgabe("char_status", 1, $bg['sprache']).'_text">' . text_ausgabe("char_status", 1, $bg['sprache']) . '</font>';
 	echo '</td>';
 
+echo '<div id="' . text_ausgabe("char_status", 5, $bg['sprache']) . '_bar" class="' . text_ausgabe("char_status", 5, $bg['sprache']) . '_bg"></div>';
+?>
+    <script>
+		var $jq = jQuery.noConflict();
+		$jq(function() {
+            $jq( "#<?php echo text_ausgabe("char_status", 5, $bg['sprache']) ?>_bar" ).progressbar({
+				value: <?php echo $char_exp; ?>,
+				max: <?php echo $needxp; ?>,
+				progressLabel.text( "<?php echo "Level: " . $char_lvl . "|" . $char_exp . "/" . $needxp;?>" )
+			});
+		});
+	</script>
+<?php
     }
 	echo '</tr>';
 	echo '</table>';
