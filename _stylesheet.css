@@ -72,11 +72,18 @@ a img {
 
 #exp_bar {
 	min-width:1000px;
-	height:5px;
+	height:15px;
 	float:left;
 	padding: 0px;
 	margin: 0px;
 }
+.exp-text {
+    position: absolute;
+    left: 50%;
+    top: 1px;
+	font-size: 10px;
+  }
+
 
 #nahrung_bar_status, #wasser_bar_status {
 	min-width:200px;
@@ -104,6 +111,9 @@ a img {
 #exp_bar .ui-progressbar-value,#exp_bar_status .ui-progressbar-value, .hunger_bg {
 	background-color:#005544;
 	background-image: url(picture/exp.png);
+}
+.ui-progressbar {
+    position: relative;
 }
 .wasser_text {
 	color:#3366ff;

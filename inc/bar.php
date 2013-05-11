@@ -98,21 +98,24 @@
 <?php
     echo '&nbsp;<span class="'.text_ausgabe("char_status", 1, $bg['sprache']).'_text">' . text_ausgabe("char_status", 1, $bg['sprache']) . '</font>';
 	echo '</td>';
+	echo '</tr>';
+	echo '</table>';
 
-echo '<div id="' . text_ausgabe("char_status", 5, $bg['sprache']) . '_bar" class="' . text_ausgabe("char_status", 5, $bg['sprache']) . '_bg"></div>';
+echo '<div id="exp_bar" class="exp_bg"><div class="exp-text"></div></div>';
 ?>
     <script>
 		var $jq = jQuery.noConflict();
+		progressLabel = $jq( ".exp-text" );
 		$jq(function() {
-            $jq( "#<?php echo text_ausgabe("char_status", 5, $bg['sprache']) ?>_bar" ).progressbar({
+			var progressLabel = $jq( ".exp-text" );
+            $jq( "#exp_bar" ).progressbar({
 				value: <?php echo $char_exp; ?>,
-				max: <?php echo $needxp; ?>,
-				progressLabel.text( "<?php echo "Level: " . $char_lvl . "|" . $char_exp . "/" . $needxp;?>" )
+				max: <?php echo $needxp; ?>
 			});
 		});
+		progressLabel.text( "<?php echo "Level: " . $char_lvl . "|" . $char_exp . "/" . $needxp;?>" );
 	</script>
 <?php
     }
-	echo '</tr>';
-	echo '</table>';
+	
 ?>
