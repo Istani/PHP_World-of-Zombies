@@ -1,1 +1,1 @@
-   <img src="picture/header.jpg">
+   <img src="picture/header.png">
