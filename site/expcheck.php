@@ -1,5 +1,5 @@
 <div id="dialog-levelup" title="Level UP">
-    <form name="item_use" action="index.php?<?php echo $queryString; ?>" method="post">
+    <form name="level_up" action="index.php?<?php echo $queryString; ?>" method="post">
         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Herzlichen Glückwunsch!<br> Du bist nun Level: <?php echo $_SESSION['lvl']+1; ?></p>
     </form>
 </div>

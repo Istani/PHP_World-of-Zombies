@@ -13,7 +13,8 @@ if (!isset($_SESSION['userID'])) {
 } else {
 	// Exp Nur wenn man eingeloggt ist:
 	include("site/expcheck.php");
-		
+	include("site/questcheck.php");
+	
 	// Wenn Quest 1 nicht abgeschlossen, dann muss der Char neu erstellt werden!
 	$sql_check_quest="SELECT 1 as checkaaa FROM char_quest WHERE cquest_userID=".$_SESSION['userID']." AND cquest_questID=1 AND cquest_erledigt=1";
 	$query_check_quest=mysql_query($sql_check_quest);
