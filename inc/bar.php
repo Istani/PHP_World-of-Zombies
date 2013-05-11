@@ -63,18 +63,17 @@
         echo '</td>';
 
         echo '<td style="text-align:center; width:180px;">';
-		echo '<div id="Wasser_bar" class="Wasser_bg"></div>';
+		echo '<div id="wasser_bar" class="Wasser_bg"><div class="wasser-text"></div></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
 		progressLabel = $jq( ".wasser-text" );
 		$jq(function() {
-			$jq( "#Wasser_bar" ).progressbar({
+			$jq( "#wasser_bar" ).progressbar({
 				value: <?php echo $char_wasser; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
 			});
 		});
-				});
 		progressLabel.text( "<?php echo $char_wasser . " / " . get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer);?>" );
 	</script>
 <?php
