@@ -10,6 +10,10 @@ body {
     background-color: #000000;
 }
 
+h1 {
+    font-size: 15pt;
+}
+
 #header {
 padding-left: 175px;
 }
@@ -72,6 +76,13 @@ a img {
 	padding: 0px;
 	margin: 0px;	
 }
+#exp_bar_status {
+	min-width:485px;
+	height:5px;
+	float:left;
+	padding: 0px;
+	margin: 0px;
+}
 #nahrung_bar .ui-progressbar-value,#nahrung_bar_status .ui-progressbar-value, .nahrung_bg {
 	background-color:#ff6633;	
 	background-image: url(picture/hunger.png);
@@ -79,6 +90,11 @@ a img {
 #wasser_bar .ui-progressbar-value,#wasser_bar_status .ui-progressbar-value, .hunger_bg {
 	background-color:#3366ff;
 	background-image: url(picture/wasser.png);
+}
+
+#exp_bar .ui-progressbar-value,#exp_bar_status .ui-progressbar-value, .hunger_bg {
+	background-color:#005544;
+	background-image: url(picture/exp.png);
 }
 .wasser_text {
 	color:#3366ff;

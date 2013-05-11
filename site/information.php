@@ -30,10 +30,12 @@
 <li><a href="#tabs-3">F&auml;higkeiten</a></li>
 </ul>
 <div id="tabs-1">
+<h1>Information</h1>
+<hr />
 <table>
     <tr>
         <td style="width: 150px;"><b><?php echo $_SESSION['loginName']; ?></b></td>
-        <td style="width: 150px;"></td>
+        <td style="width: 150px;">Level: <?php echo $dsatz["level"]; ?></td>
         <td style="width: 150px;">Klasse:</td>
         <td style="width: 150px;"><?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
     </tr>
@@ -41,22 +43,41 @@
         <td colspan="4" style="width: 600px;"><hr /></td>
     </tr>
     <tr>
-        <td style="width: 150px;">Level:</td>
-        <td style="width: 150px;"><?php echo $dsatz["level"]; ?></td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
-    </tr>
-    <tr>
-        <td style="width: 150px;">Erfahrung:</td>
-        <td style="width: 150px;"><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
+        <td colspan="4" style="width: 600px;">&nbsp;</td>
     </tr>
     <tr>
         <td style="width: 150px;">&nbsp;</td>
         <td style="width: 150px;"></td>
         <td style="width: 150px;"></td>
         <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;">Erfahrung:</td>
+        <td style="width: 150px;"><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
+        <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td colspan="4" style="width: 600px;">
+        <?php
+echo '<div id="'.text_ausgabe("char_status", 5, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 5, $bg['sprache']) . '_bg"></div>';
+?>
+	<script>
+		var $jq = jQuery.noConflict();
+		$jq(function() {
+			$jq( "#<?php echo text_ausgabe("char_status", 5, $bg['sprache']) ?>_bar_status" ).progressbar({
+				value: <?php echo $dsatz["exp"]; ?>,
+				max: <?php echo $dsatz_exp["exp"]; ?>
+			});
+		});
+	</script>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" style="width: 600px;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="width: 600px;">&nbsp;</td>
     </tr>
     <tr>
         <td style="width: 150px;">Nahrung:</td>
@@ -96,9 +117,11 @@ echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" 
     <tr>
         <td colspan="4" style="width: 600px;">&nbsp;</td>
     </tr>
+    <tr>
+        <td colspan="4" style="width: 600px;">&nbsp;</td>
     </tr>
     <tr>
-        <td style="width: 150px;">Sachen hergestellt:</td>
+        <td style="width: 150px;">Gegenst&auml;nde hergestellt:</td>
         <td style="width: 150px;"><?php echo $dsatz["Items_Crafting"]; ?></td>
         <td style="width: 150px;">Rohstoffe abgebaut:</td>
         <td style="width: 150px;"><?php echo $dsatz["Items_Abbau"]; ?></td>
@@ -106,6 +129,8 @@ echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" 
 </table>
 </div>
 <div id="tabs-2">
+<h1>Inventar</h1>
+<hr /><br>
 <?php
     $queryString = strstr($_SERVER['REQUEST_URI'], '?');
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
@@ -257,7 +282,7 @@ echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" 
 </div>
 <div id="tabs-3">
 <?php
-	echo '<h1>F&auml;higkeiten</h1>';
+	echo '<h1>F&auml;higkeiten</h1><hr /><br>';
 	echo '<table width="100%" border="1">';
 
 	// SQL Alle Skills
