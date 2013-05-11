@@ -39,6 +39,9 @@ if (!isset($_SESSION['userID'])) {
             case "nachricht":
                 include("site/nachricht.php");
                 break;
+			case "questbook":
+                include("site/questbook.php");
+                break;	
             case "guild":
                 include("site/guild.php");
                 break;
