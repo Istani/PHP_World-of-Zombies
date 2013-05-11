@@ -1,13 +1,3 @@
-<div id="tabs">
-<ul>
-<li><a href="#tabs-1">Information</a></li>
-<li><a href="#tabs-2">Inventar</a></li>
-<li><a href="#tabs-3">Skills</a></li>
-</ul>
-<div id="tabs-1">
-<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-</div>
-<div id="tabs-2">
 <?php
 	//items auslesen
 	$sql_query = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
@@ -25,7 +15,71 @@
 		$char_fahrzeug		=		$dsatz['fahrzeug'];
 
 		$max_wert_ausdauer = $dsatz['gesundheit'];
+	
+	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
+	$result_exp = mysql_query($sql_exp);
+	$dsatz_exp = mysql_fetch_assoc($result_exp);
+?>
 
+<div id="tabs">
+<ul>
+<li><a href="#tabs-1">Information</a></li>
+<li><a href="#tabs-2">Inventar</a></li>
+<li><a href="#tabs-3">F&auml;higkeiten</a></li>
+</ul>
+<div id="tabs-1">
+<table>
+    <tr>
+        <td style="width: 150px;"><b><?php echo $_SESSION['loginName']; ?></b></td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;">Klasse:</td>
+        <td style="width: 150px;"><?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;">&nbsp;</td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;">Level:</td>
+        <td style="width: 150px;"><?php echo $dsatz["level"]; ?></td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;">Erfahrung:</td>
+        <td style="width: 150px;"><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;">&nbsp;</td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+        <td style="width: 150px;"></td>
+    </tr>
+    <tr>
+        <td style="width: 150px;">Nahrung:</td>
+        <td style="width: 150px;"><?php echo $dsatz['nahrung']; ?></td>
+        <td style="width: 150px;">Wasser:</td>
+        <td style="width: 150px;"><?php echo $dsatz['wasser']; ?></td>
+    </tr>
+    <tr>
+        <td rowspan="2" style="width: 150px;"></td>
+        <td rowspan="2" style="width: 150px;"></td>
+
+    </tr>
+    <tr>
+        <td style="width: 150px;">Sachen hergestellt:</td>
+        <td style="width: 150px;"><?php echo $dsatz["Items_Crafting"]; ?></td>
+        <td style="width: 150px;">Rohstoffe abgebaut:</td>
+        <td style="width: 150px;"><?php echo $dsatz["Items_Abbau"]; ?></td>
+    </tr>
+</table>
+</div>
+<div id="tabs-2">
+<?php
     $queryString = strstr($_SERVER['REQUEST_URI'], '?');
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
     //echo var_dump($_POST);
@@ -175,9 +229,42 @@
 
 </div>
 <div id="tabs-3">
-<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+<?php
+	echo '<h1>F&auml;higkeiten</h1>';
+	echo '<table width="100%" border="1">';
+
+	// SQL Alle Skills
+	$sql_skills="SELECT `skill_db`.*, `char_skill`.`lvl` FROM `skill_db` INNER JOIN `char_skill` ON `skill_db`.`skill_ID`=`char_skill`.`skillID` WHERE userID=".$_SESSION['userID']." ORDER BY `erlernbar` DESC, `maxlvl` DESC";
+	$query_skills=mysql_query($sql_skills);
+	while ($row_skills=mysql_fetch_assoc($query_skills)) {
+		echo '<tr>';
+		echo '<td width="100%">';
+		echo skill_bilder($row_skills['skill_ID']);
+		echo text_ausgabe("skill", $row_skills['skill_ID'], $bg['sprache']);
+		echo '</td>';
+		echo '<td>';
+		echo $row_skills['lvl'].'/'.$row_skills['maxlvl'];
+		echo '</td>';
+		echo '<td>';
+		if ($row_skills['erlernbar']==1) {
+			echo text_ausgabe("erlernbar", 0, $bg['sprache']);
+		} else {
+			echo text_ausgabe("erlernbar", 1, $bg['sprache']);
+		}
+		echo '</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td colspan="3">';
+		echo text_ausgabe("skill_beschreibung", $row_skills['skill_ID'], $bg['sprache']);
+		echo '</td>';
+		echo '</tr>';
+	}
+	echo '</table>';
+
+
+?>
 </div>
+
 </div>
 
 
