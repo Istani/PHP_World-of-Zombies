@@ -2,9 +2,9 @@
 	include("_settings.php");
 	include("_mysql.php");
 	include("_functions.php");
+	include("site/expcheck.php");
 	include("site/cookiecheck.php");
-
-if (isset($_SESSION['userID'])) {
+    if (isset($_SESSION['userID'])) {
         $get_lastaktion="SELECT lastAktion FROM login WHERE userID=".$_SESSION['userID'];
         $query_lastaction=mysql_query($get_lastaktion);
         $lastaktion=mysql_result($query_lastaction,0,0);
