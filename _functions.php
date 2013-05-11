@@ -55,6 +55,28 @@
             return $posting;
         }
     }
+    function skill_bilder($skill, $art="show", $menge=0) {
+        $title='title="'.skill_hover($skill).'"';
+        if (!file_exists("picture/skills/".$skill.".png")) {
+            $skill=0;
+        }
+        if (file_exists("picture/skillss/".$skill.".png")) {
+            $oBild=imagecreatefrompng("picture/skills/".$skill.".png");
+            $oBreite = imageSX($oBild);
+                $faktor=75/$oBreite;
+                $title.=' class="skill"';
+            $nBreite=$oBreite*$faktor;
+            $bild = imagecreatetruecolor($nBreite,$nBreite);
+            imageCopyResampled($bild, $oBild, 0, 0, 0, 0, $nBreite, $nBreite, $oBreite, $oBreite);
+            $schwarz = imagecolorallocate($bild, 0, 0, 0);
+            imagejpeg($bild,"picture/skills/".'temp.jpg');
+            $content = file_get_contents("picture/skills/".'temp.jpg');
+            $content=base64_encode($content);
+            unlink("picture/skills/".'temp.jpg');
+            $posting='<img src="data:image/jpg;base64,'.$content.'" alt="base64 Test" '. $title.'>';
+            return $posting;
+        }
+    }
     function item_hover($item) {
         //text_ausgabe($title, $id, $sprache)
         global $mysql, $bg;
