@@ -60,12 +60,12 @@
     <tr>
         <td colspan="4" style="width: 600px;">
         <?php
-echo '<div id="'.text_ausgabe("char_status", 5, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 5, $bg['sprache']) . '_bg"></div>';
+echo '<div id="Exp_bar_status" class="Exp_bg"></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
 		$jq(function() {
-			$jq( "#<?php echo text_ausgabe("char_status", 5, $bg['sprache']) ?>_bar_status" ).progressbar({
+			$jq( "#Exp_bar_status" ).progressbar({
 				value: <?php echo $dsatz["exp"]; ?>,
 				max: <?php echo $dsatz_exp["exp"]; ?>
 			});
@@ -88,12 +88,12 @@ echo '<div id="'.text_ausgabe("char_status", 5, $bg['sprache']) . '_bar_status" 
     <tr>
         <td colspan="2" style="width: 150px;">
 	    <?php
-echo '<div id="'.text_ausgabe("char_status", 1, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+echo '<div id="Nahrung_bar_status" class="Nahrung_bg"></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
 		$jq(function() {
-			$jq( "#<?php echo text_ausgabe("char_status", 1, $bg['sprache']) ?>_bar_status" ).progressbar({
+			$jq( "#Nahrung_bar_status" ).progressbar({
 				value: <?php echo $char_nahrung; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
 			});
@@ -102,12 +102,12 @@ echo '<div id="'.text_ausgabe("char_status", 1, $bg['sprache']) . '_bar_status" 
 		</td>
         <td colspan="2" style="width: 150px;">
 		<?php
-echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
 		$jq(function() {
-			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar_status" ).progressbar({
+			$jq( "#Wasser_bar_status" ).progressbar({
 				value: <?php echo $char_wasser; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
 			});
