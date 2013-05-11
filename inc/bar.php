@@ -29,7 +29,7 @@
 	echo '<table width="100%">';
 	echo '<tr>';
 	
-	echo '<td>';
+	echo '<td style="width: 300px;">';
 	echo text_ausgabe("Willkommen", 0, $bg['sprache']);
     if (isset($_SESSION['loginName'])) {
         echo $_SESSION['loginName'];
@@ -41,7 +41,7 @@
         echo '</td>';
 
         echo '<td>';
-        echo '|';
+        echo '';
         echo '</td>';
 
         echo '<td style="text-align:center; ">';
@@ -50,7 +50,7 @@
         echo '</td>';
 
         echo '<td>';
-        echo '|';
+        echo '';
         echo '</td>';
 
         echo '<td style="text-align:center; ">';
@@ -59,30 +59,33 @@
         echo '</td>';
 
         echo '<td>';
-        echo '|';
+        echo '';
         echo '</td>';
 
-        echo '<td style="text-align:center; width:140px;">';
-		echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+        echo '<td style="text-align:center; width:180px;">';
+		echo '<div id="Wasser_bar" class="Wasser_bg"></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
+		progressLabel = $jq( ".wasser-text" );
 		$jq(function() {
-			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar" ).progressbar({
+			$jq( "#Wasser_bar" ).progressbar({
 				value: <?php echo $char_wasser; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
 			});
 		});
+				});
+		progressLabel.text( "<?php echo $char_wasser . " / " . get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer);?>" );
 	</script>
 <?php
         echo '&nbsp;<span class="'.text_ausgabe("char_status", 0, $bg['sprache']).'_text">' . text_ausgabe("char_status", 0, $bg['sprache']) . '</font>';
         echo '</td>';
 
         echo '<td>';
-        echo '|';
+        echo '';
         echo '</td>';
 
-		echo '<td style="text-align:center; width:140px;">';
+		echo '<td style="text-align:center; width:180px;">';
 		
 		echo '<div id="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bar" class="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bg"></div>';
 ?>
@@ -113,7 +116,7 @@ echo '<div id="exp_bar" class="exp_bg"><div class="exp-text"></div></div>';
 				max: <?php echo $needxp; ?>
 			});
 		});
-		progressLabel.text( "<?php echo "Level: " . $char_lvl . "|" . $char_exp . "/" . $needxp;?>" );
+		progressLabel.text( "<?php echo "Level: " . $char_lvl . " - " . $char_exp . "/" . $needxp;?>" );
 	</script>
 <?php
     }
