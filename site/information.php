@@ -67,12 +67,12 @@
     <tr>
         <td colspan="2" style="width: 150px;">
 	    <?php
-echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+echo '<div id="'.text_ausgabe("char_status", 1, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
 		$jq(function() {
-			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar_status" ).progressbar({
+			$jq( "#<?php echo text_ausgabe("char_status", 1, $bg['sprache']) ?>_bar_status" ).progressbar({
 				value: <?php echo $char_nahrung; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
 			});
