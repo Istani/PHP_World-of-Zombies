@@ -18,6 +18,6 @@
         $dsatz1 = @mysql_fetch_assoc($result1);
 		
 		$_SESSION["guildName"] = $dsatz1["gilde"];
-		
+		$_SESSION["lvl"] = $dsatz1["level"];
 	}
 ?>

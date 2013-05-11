@@ -37,6 +37,7 @@ include("../_mysql.php");
         $dsatz1 = mysql_fetch_assoc($result1);
         
         $_SESSION["guildName"] = $dsatz1["gilde"];
+        $_SESSION["lvl"] = $dsatz1["level"];
         
 		setcookie("loginName", $_POST['username'] , time()+60*60*24*30, "/");
 		setcookie("passwort", $pw , time()+60*60*24*30, "/");
