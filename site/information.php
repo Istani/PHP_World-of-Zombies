@@ -38,10 +38,7 @@
         <td style="width: 150px;"><?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
     </tr>
     <tr>
-        <td style="width: 150px;">&nbsp;</td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
+        <td colspan="4" style="width: 600px;"><hr /></td>
     </tr>
     <tr>
         <td style="width: 150px;">Level:</td>
@@ -69,7 +66,18 @@
     </tr>
     <tr>
         <td colspan="2" style="width: 150px;">
-	
+	    <?php
+echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" class="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bg"></div>';
+?>
+	<script>
+		var $jq = jQuery.noConflict();
+		$jq(function() {
+			$jq( "#<?php echo text_ausgabe("char_status", 0, $bg['sprache']) ?>_bar_status" ).progressbar({
+				value: <?php echo $char_nahrung; ?>,
+				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
+			});
+		});
+	</script>
 		</td>
         <td colspan="2" style="width: 150px;">
 		<?php
@@ -85,7 +93,9 @@ echo '<div id="'.text_ausgabe("char_status", 0, $bg['sprache']) . '_bar_status" 
 		});
 	</script>
 		</td>
-
+    <tr>
+        <td colspan="4" style="width: 600px;">&nbsp;</td>
+    </tr>
     </tr>
     <tr>
         <td style="width: 150px;">Sachen hergestellt:</td>
