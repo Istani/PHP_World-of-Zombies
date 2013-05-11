@@ -9,6 +9,11 @@
 body {
     background-color: #000000;
 }
+
+#header {
+padding-left: 175px;
+}
+
 input[type=password],input[type=text],input[type=submit],textarea {
     background-color: #000000;
 }
