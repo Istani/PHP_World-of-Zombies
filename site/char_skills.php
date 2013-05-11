@@ -8,6 +8,7 @@
 	while ($row_skills=mysql_fetch_assoc($query_skills)) {
 		echo '<tr>';
 		echo '<td width="100%">';
+		echo skill_bilder($row_skills['skill_ID']);
 		echo text_ausgabe("skill", $row_skills['skill_ID'], $bg['sprache']);
 		echo '</td>';
 		echo '<td>';
@@ -29,5 +30,5 @@
 	}
 	echo '</table>';
 	
-	echo skill_bilder($row_skills['skill_ID'], "skill");
+	
 ?>
