@@ -222,12 +222,6 @@ $i++;
     </table>
     </div>
 </div>
-    <script>
-        var $jq = jQuery.noConflict();
-        $jq(function() {
-            $jq( "#tabs" ).tabs();
-        });
-    </script>
 <?php 
         }else{
 ?>        
@@ -297,3 +291,7 @@ $i++;
 <?php 
 }
  ?>
+<script>
+var $jq = jQuery.noConflict();
+$jq( "#tabs" ).tabs();
+</script>
