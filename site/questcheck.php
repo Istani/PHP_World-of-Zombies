@@ -6,7 +6,7 @@
 	$quest_title = text_ausgabe("quest", $zeige_an, $bg['sprache']);
 	$quest_text  = text_ausgabe("quest_text", $zeige_an, $bg['sprache']);
 	
-	$sql_quest_aktiv	= "UPDATE `char_quest` SET `cquest_gelesen`=1 WHERE `cquest_userID`= '" . $_SESSION['userID'] . "'";
+	$sql_quest_aktiv	= "UPDATE `char_quest` SET `cquest_gelesen`=1 WHERE `cquest_userID`= '" . $_SESSION['userID'] . "' AND cquest_questID=".$zeige_an;
 	
 ?>
 
