@@ -34,7 +34,7 @@ if (isset ($_POST['guild_btn'])){
   </ul>
   <div id="tabs-1">
 <form method="post">
-<table border="1" cellpadding="0" cellspacing="0" summary="">
+<table border="0" cellpadding="0" cellspacing="0" summary="">
     <tr>
         <td style="width: 100px;">Gilde:</td>
         <td colspan="3" style="width: 300px;"><?php echo $_SESSION['guildName'] ;?></td>

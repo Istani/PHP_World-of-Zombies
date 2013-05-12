@@ -7,7 +7,7 @@ $sql_user_level="SELECT lvl FROM `char_skill` WHERE userID='".$_SESSION['userID'
 $query_user_level=mysql_query($sql_user_level);
 $skill_level=mysql_result($query_user_level,0,0);
 
-$sql_crafting="SELECT * FROM crafting_rezepte WHERE produkt=8 ORDER BY produkt, item ";
+$sql_crafting="SELECT * FROM crafting_rezepte WHERE produkt=3 ORDER BY produkt, item ";
 $query_crafting_moeglich=mysql_query($sql_crafting);
 while ($row_crafting_moeglich=mysql_fetch_assoc($query_crafting_moeglich)) {
     $moeglich[]=$row_crafting_moeglich['produkt'];

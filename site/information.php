@@ -163,7 +163,7 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Sind Sie sicher das Sie Das item benutzen wollen</p>
     </form>
 </div>
-<table border=1>
+<table>
 	<tr>
 		<td style="width:75px; height:75px;">&nbsp;</td>
 		<td style="width:75px; height:75px;">&nbsp;</td>

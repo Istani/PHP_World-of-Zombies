@@ -86,16 +86,18 @@
 
 		echo '<td style="text-align:center; width:180px;">';
 		
-		echo '<div id="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bar" class="' . text_ausgabe("char_status", 1, $bg['sprache']) . '_bg"></div>';
+		echo '<div id="nahrung_bar" class="Nahrung_bg"><div class="nahrung-text"></div></div>';
 ?>
 	<script>
 		var $jq = jQuery.noConflict();
+		progressLabel = $jq( ".nahrung-text" );
 		$jq(function() {
-            $jq( "#<?php echo text_ausgabe("char_status", 1, $bg['sprache']) ?>_bar" ).progressbar({
+            $jq( "#nahrung_bar" ).progressbar({
 				value: <?php echo $char_nahrung; ?>,
 				max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
 			});
 		});
+		progressLabel.text( "<?php echo $char_nahrung . " / " . get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer);?>" );
 	</script>
 <?php
     echo '&nbsp;<span class="'.text_ausgabe("char_status", 1, $bg['sprache']).'_text">' . text_ausgabe("char_status", 1, $bg['sprache']) . '</font>';

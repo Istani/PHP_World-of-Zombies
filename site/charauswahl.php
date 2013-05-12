@@ -6,7 +6,7 @@
                 $sql_query = "INSERT INTO `char` SET 
                         `userID`        ='" . $_SESSION["userID"] . "',  
                         ".$sql_differenz."
-                        `rucksack`      ='2'";
+                        `rucksack`      ='5000'";
                 mysql_query($sql_query);
                 //setzten der Session
                 $sql_query = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
@@ -16,8 +16,8 @@
                         $_SESSION["class"] = $dsatz["klasse"];
                 }
 		skill_change($_SESSION['userID'], 1, 1, 1);
-                inventory_add($_SESSION['userID'], 5, 10);
-                inventory_add($_SESSION['userID'], 6, 10);
+                inventory_add($_SESSION['userID'], 1, 10);
+                inventory_add($_SESSION['userID'], 2, 10);
                 // Skills Klassenspezifisch erlernen
 		if ($_SESSION['class']==1) {skill_change($_SESSION['userID'], 2, 1, 1);}
 		if ($_SESSION['class']==2) {skill_change($_SESSION['userID'], 3, 1, 1);}
