@@ -21,11 +21,16 @@
                     $gebiet=$row['gebiet'];
                 }
                 echo text_ausgabe("gebiet", $gebiet['ID'], $bg['sprache']).'</h2>';
-                $faktor=player_abbau_faktor($_SESSION['userID'], 1);
-                $abbau=$gebiet['grundwert']*$faktor;
-                //inventory_add
-                inventory_add($_SESSION['userID'], $gebiet['itemID'], $abbau);
-                echo $abbau.' '.text_ausgabe("item", $gebiet['itemID'], $bg['sprache']).' '.text_ausgabe("abbauen", 3, $bg['sprache']);
+				$sql['gebiet']="SELECT * FROM abbau_gebiet WHERE gebiet='".$gebiet['gebiet']."'";
+                $query['gebiet']=mysql_query($sql['gebiet']);
+				while ($row['gebiet']=mysql_fetch_assoc($query['gebiet'])) {
+					$gebiet=$row['gebiet'];
+					$faktor=player_abbau_faktor($_SESSION['userID'], 1);
+					$abbau=$gebiet['grundwert']*$faktor;
+					if (inventory_add($_SESSION['userID'], $gebiet['itemID'], $abbau)) {
+						echo $abbau.' '.text_ausgabe("item", $gebiet['itemID'], $bg['sprache']).' '.text_ausgabe("abbauen", 3, $bg['sprache']).'<br>';
+					}
+				}
 				$sql_char_level="SELECT `level` FROM `char` WHERE userID='".$_SESSION["userID"]."'";
 				$query_char_level=mysql_query($sql_char_level);
 				$level=mysql_result($query_char_level,0,0)-1;
@@ -175,11 +180,11 @@
                 }
                 echo text_ausgabe("gebiet", $gebiet['ID'], $bg['sprache']).'</h2>';
                 echo text_ausgabe("abbauen", 0, $bg['sprache']).'<br>';
-                $sql['abbaugebiet']="SELECT * FROM abbau_gebiet WHERE ID='".$aktion['aktion_id']."'";
+                $sql['abbaugebiet']="SELECT * FROM abbau_gebiet WHERE gebiet='".$gebiet['gebiet']."'";
                 $query['abbaugebiet']=mysql_query($sql['abbaugebiet']);
                 while ($row['abbaugebiet']=mysql_fetch_assoc($query['abbaugebiet'])) {
                     echo item_bilder($row['abbaugebiet']['itemID'], $art="show");
-                    echo '&nbsp;'.text_ausgabe("item", $row['abbaugebiet']['itemID'], $bg['sprache']).'<br><br>';
+                    echo '&nbsp;'.text_ausgabe("item", $row['abbaugebiet']['itemID'], $bg['sprache']).'<br>';
                 }
                 break;
 			case 'MÜLL':
