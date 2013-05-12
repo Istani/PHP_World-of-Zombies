@@ -349,6 +349,13 @@
 			$sql_quest_add="INSERT INTO char_quest SET cquest_userID=".$user.", cquest_questID=".$quest;
 			mysql_query($sql_quest_add);
 		}
+		
+		// TEMP QUEST Erstellen
+		$sql_check="SELECT * FROM quest_db WHERE quest_id=".$quest;
+		$query_check=mysql_query($sql_check);
+		if (mysql_num_rows($query_check)==0) {
+			mysql_query("INSERT INTO quest_db SET quest_id=".$quest.", quest_belohnung='a:2:{s:5:\"quest\";i:".($quest+1).";s:3:\"exp\";i:10;}'");
+		}
 	}
 	function erledige_quest($quest, $user) {
 		global $mysql;
