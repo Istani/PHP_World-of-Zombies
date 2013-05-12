@@ -25,7 +25,12 @@
     }
 
     echo '<h1>'.text_ausgabe("gebiet", $gebiet['ID'], $bg['sprache']).'</h1>';
-    echo text_ausgabe("gebiet_text", $gebiet['ID'], $bg['sprache']).'<br><br>';
+	if (!check_quest(4, $_SESSION['userID'])) {
+		echo '<p>'.text_ausgabe("quest_text_beendung", 3, $bg['sprache']).'</p>';
+		erledige_quest(4, $_SESSION['userID']);
+		echo '<br>';
+	}
+	echo '<p>'.text_ausgabe("gebiet_text", $gebiet['ID'], $bg['sprache']).'</p>';
 ?>
     <table border="1" width="100%">
         <tr>

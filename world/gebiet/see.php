@@ -1,5 +1,10 @@
 <?php
 echo '<h1>'.text_ausgabe("ort", 1, $bg['sprache']).'</h1>';
+if (!check_quest(4, $_SESSION['userID'])) {
+	echo '<p>'.text_ausgabe("quest_text_beendung", 3, $bg['sprache']).'</p>';
+	erledige_quest(4, $_SESSION['userID']);
+	echo '<br>';
+}
 echo '<p>'.text_ausgabe("ort_text", 1, $bg['sprache']).'</p>';
 echo '<br>';
 

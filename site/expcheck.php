@@ -34,7 +34,7 @@
 	
 	$sql_neues_level="SELECT `level` FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
 	$query_neues_level=mysql_query($sql_neues_level);
-	if ($_SESSION['lvl']<>mysql_result($query_neues_level,0,0)) {
+	if ($_SESSION['lvl']<>@mysql_result($query_neues_level,0,0)) {
 		echo '<script type="text/javascript" >exp_aufrufen()</script>';
 		$_SESSION['lvl']=mysql_result($query_neues_level,0,0);
 	}

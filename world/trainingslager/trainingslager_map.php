@@ -25,8 +25,8 @@
 	<tr>
 		<td class="karte_ueber_spalte">1</td>
 		<td class="karte_celle">&nbsp;</td>
-		<td class="karte_celle"><a href="index.php?map=wald"><?php echo text_ausgabe("gebiet", 1, $bg['sprache']); ?></a></td>
-        <td class="karte_celle"><a href="index.php?map=see"><?php echo text_ausgabe("ort", 1, $bg['sprache']); ?></a></td>
+		<td class="karte_celle"><?php if (check_quest(3, $_SESSION['userID'])) { ?><a href="index.php?map=wald"><?php echo text_ausgabe("gebiet", 1, $bg['sprache']); ?></a><?php } ?></td>
+        <td class="karte_celle"><?php if (check_quest(4, $_SESSION['userID'])) { ?><a href="index.php?map=see"><?php echo text_ausgabe("ort", 1, $bg['sprache']); ?></a><?php } ?></td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
@@ -46,7 +46,7 @@
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
-        <td class="karte_celle"><a href="index.php?map=werkstatt"><?php echo text_ausgabe("ort", 0, $bg['sprache']); ?></a></td>
+        <td class="karte_celle"><?php if (check_quest(3, $_SESSION['userID'])) { ?><a href="index.php?map=werkstatt"><?php echo text_ausgabe("ort", 0, $bg['sprache']); ?></a><?php } ?></td>
 		<td class="karte_celle">&nbsp;</td>
 	</tr>
 	<tr>
@@ -63,7 +63,7 @@
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
-		<td class="karte_celle"><a href="index.php?map=schrottplatz"><?php echo text_ausgabe("gebiet", 2, $bg['sprache']); ?></a></td>
+		<td class="karte_celle"><?php if (check_quest(3, $_SESSION['userID'])) { ?><a href="index.php?map=schrottplatz"><?php echo text_ausgabe("gebiet", 2, $bg['sprache']); ?></a><?php } ?></td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 	</tr>

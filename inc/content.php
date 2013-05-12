@@ -20,6 +20,8 @@ if (!isset($_SESSION['userID'])) {
 	$query_check_quest=mysql_query($sql_check_quest);
 	if (mysql_num_rows($query_check_quest)==0) {
 		mysql_query("DELETE FROM `char` WHERE userID=".$_SESSION['userID']);
+		mysql_query("DELETE FROM `char_skill` WHERE userID=".$_SESSION['userID']);
+		mysql_query("DELETE FROM `inventory` WHERE userID=".$_SESSION['userID']);
 	}
 
 	$sql_char="SELECT * FROM `char` WHERE userID=".$_SESSION['userID'];
