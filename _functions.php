@@ -353,7 +353,7 @@
 	function erledige_quest($quest, $user) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-                mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		// Bla
 		$sql_quest_erledigen="UPDATE char_quest SET cquest_erledigt=1 WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
 		// Belohnungen erhalten
@@ -371,6 +371,18 @@
 			}	
 		}
 		mysql_query($sql_quest_erledigen);
+	}
+	function check_quest($quest, $user) {
+		global $mysql;
+		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+		$sql_zeig="SELECT cquest_erledigt FROM char_quest WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
+		$query_zeig=mysql_query($sql_zeig);
+		if (@mysql_result($query_zeig)==1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	function skill_change($user, $skill, $skill_level=1, $kostenlos=0) {
 		// Wenn kostenlos=1 dann kostet es keinen Skillpunkt, also verwenden wenn durch bsp. Quest
