@@ -141,8 +141,8 @@
 				   mysql_query($sql_char_update);
 				   echo '<br>';
 				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
-				   if (inventory_add($_SESSION['userID'], 9, 1)) {
-				     echo '1 x '.text_ausgabe("item", 9, $bg['sprache']).' erhalten.<br>';
+				   if (inventory_add($_SESSION['userID'], 20000, 1)) {
+				     echo '1 x '.text_ausgabe("item", 20000, $bg['sprache']).' erhalten.<br>';
 				   } else {
 				     echo 'Leider nicht genug Platz um 1 x '.text_ausgabe("item", 9, $bg['sprache']).' zu erhalten.<br>';
 				   }
