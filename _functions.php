@@ -367,7 +367,7 @@
 			}
 			// Alle anderen Belohnungen 
 			if (($key=="exp") OR ($key=="goldklumpen")) {
-				mysql_query("UPDATE `char` SET ".$key."=".$value." WHERE userID=".$user);
+				mysql_query("UPDATE `char` SET ".$key."=".$key."+".$value." WHERE userID=".$user);
 			}	
 		}
 		mysql_query($sql_quest_erledigen);
@@ -378,7 +378,7 @@
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		$sql_zeig="SELECT cquest_erledigt FROM char_quest WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
 		$query_zeig=mysql_query($sql_zeig);
-		if (@mysql_result($query_zeig)==1) {
+		if (@mysql_result($query_zeig,0,0)==1) {
 			return true;
 		} else {
 			return false;

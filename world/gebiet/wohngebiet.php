@@ -4,7 +4,13 @@
     $queryString = ($queryString===false) ? '' : substr($queryString,1);
 	
     echo '<h1>'.text_ausgabe("ort", 2, $bg['sprache']).'</h1>';
-	echo '<p>'.text_ausgabe("ort_text", 2, $bg['sprache']).'</p>';
+	if (!check_quest(2, $_SESSION['userID'])) {
+		// Das wird angezeigt wenn Quest 2 nicht erledigt!
+		echo '<p>'.text_ausgabe("quest_text_beendung", 2, $bg['sprache']).'</p>';
+		erledige_quest(2, $_SESSION['userID']);
+	} else {
+		echo '<p>'.text_ausgabe("ort_text", 2, $bg['sprache']).'</p>';
+	}
     echo '<br>';
 	if (isset($_GET['status'])) {
 		$sql_char_level="SELECT `level` FROM `char` WHERE userID='".$_SESSION["userID"]."'";

@@ -51,7 +51,7 @@
 	</tr>
 	<tr>
 		<td class="karte_ueber_spalte">4</td>
-		<td class="karte_celle"><a href="index.php?map=wohngebiet"><?php echo text_ausgabe("ort", 2, $bg['sprache']); ?></a></td>
+		<td class="karte_celle"><?php if (check_quest(1, $_SESSION['userID'])) { ?><a href="index.php?map=wohngebiet"><?php echo text_ausgabe("ort", 2, $bg['sprache']); ?></a><?php } ?></td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
 		<td class="karte_celle">&nbsp;</td>
