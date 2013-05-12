@@ -34,7 +34,12 @@
     }
 	
 	echo '<h1>'.text_ausgabe("muell", 0, $bg['sprache']).'</h1>';
-    echo text_ausgabe("muell_text", 0, $bg['sprache']).'<br><br>';
+	if (!check_quest(3, $_SESSION['userID'])) {
+		echo '<p>'.text_ausgabe("quest_text_beendung", 3, $bg['sprache']).'</p>';
+		erledige_quest(3, $_SESSION['userID']);
+	} else {
+		echo '<p>'.text_ausgabe("muell_text", 0, $bg['sprache']).'</p>';
+	}
 ?>
     <table border="1" width="100%">
         <tr>
