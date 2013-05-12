@@ -144,7 +144,7 @@
 				   if (inventory_add($_SESSION['userID'], 20000, 1)) {
 				     echo '1 x '.text_ausgabe("item", 20000, $bg['sprache']).' erhalten.<br>';
 				   } else {
-				     echo 'Leider nicht genug Platz um 1 x '.text_ausgabe("item", 9, $bg['sprache']).' zu erhalten.<br>';
+				     echo 'Leider nicht genug Platz um 1 x '.text_ausgabe("item", 20000, $bg['sprache']).' zu erhalten.<br>';
 				   }
 				} else {
 				   //Spieler gewinnt
@@ -154,8 +154,9 @@
 				
 				$sql['user_aktion']="UPDATE `char`
                                     SET aktion='',
-					wasser=wasser-5,
-					nahrung=".$char['nahrung'].",
+										wasser=wasser-5,
+										nahrung=".$char['nahrung'].",
+										Monster_Wins=Monster_Wins+1,
                                         aktion_id=0,
                                         aktion_start=0,
                                         aktion_ende=0
