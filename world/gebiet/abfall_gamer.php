@@ -37,9 +37,10 @@
 	if (!check_quest(3, $_SESSION['userID'])) {
 		echo '<p>'.text_ausgabe("quest_text_beendung", 3, $bg['sprache']).'</p>';
 		erledige_quest(3, $_SESSION['userID']);
-	} else {
-		echo '<p>'.text_ausgabe("muell_text", 0, $bg['sprache']).'</p>';
+		echo '<br>';
 	}
+	echo '<p>'.text_ausgabe("muell_text", 0, $bg['sprache']).'</p>';
+	echo '<br>';
 ?>
     <table border="1" width="100%">
         <tr>
