@@ -427,7 +427,7 @@
 		// Wert ist der aktuelle Wert und als Rückgabe kommt dann ein neuer Wert
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-                mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 
 		// Schauen ob der User Skills hat, die diesen Wert beeinflussen:
 		$sql_skillliste="SELECT char_skill.`lvl`, skill_db.bonus FROM char_skill INNER JOIN skill_db ON char_skill.skillID=skill_db.skill_ID  WHERE userID=".$user." AND bonus like '%".$bonuswert."%'";
@@ -448,6 +448,74 @@
 		$ausgabewert=$wert+$skill_zuwachs;
 		return $ausgabewert;
 	}
-
+	function gen_item($org_item, $quality=0) {
+		//Quality 0 weil wegen random!
+		global $mysql;
+		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+		if ($quality==0) {
+			$rnd_zahl=rand(0,100);
+			$sql_random_quality="SELECT quality FROM item_quality WHERE chance>=".$rnd_zahl." ORDER BY chance LIMIT 0,1";
+			$query_random_quality=mysql_query($sql_random_quality);
+			$quality=mysql_result($query_random_quality,0,0);
+		}
+		$neu_setID=0;
+		$neu_setBonus="";
+		if ($quality>=6) {
+			// Es können nicht alle Items Set oder Legendär werden!
+			//Abfrage SET
+			$sql_isSet="SELECT setID FROM item_sets WHERE itemID=".$org_item;
+			$query_isSet=mysql_query($sql_isSet);
+			if (mysql_num_rows($query_isSet)>0) {
+				// Alles OK
+				//$neu_setID= SETZEN!
+			} else {
+				//CHECK legendär
+				
+				// WENN NICHT
+				$quality=5;
+			}
+		}
+		// Brauch Item Art! & Level!
+		$sql_art="SELECT art, min_lvl, maxLlvl FROM item_db WHERE itemID=".$org_item;
+		$query_art=mysql_query($sql_art);
+		$item_art=mysql_result($query_art,0,0);
+		$item_min=mysql_result($query_art,0,1);
+		$item_max=mysql_result($query_art,0,2);
+		$neues_level=rand($item_min,$item_max);
+		
+		//Anzahl Boni
+		$rnd_zahl=rand(0,100);
+		$sql_random_quality="SELECT anzahl_stats FROM item_chance_stats WHERE chance_stats>=".$rnd_zahl." ORDER BY chance_stats LIMIT 0,1";
+		$query_random_quality=mysql_query($sql_random_quality);
+		$stats_anz=mysql_result($query_random_quality,0,0);
+		
+		//Bonus auswählen
+		$bonus=array();
+		$sql_getBonus="SELECT stat FROM item_stats WHERE art=".$item_art." AND min_quality<=".$quality." GROUP BY stat ORDER BY RAND() LIMIT 0,".$stats_anz;
+		$query_getBonus=mysql_query($sql_getBonus);
+		while ($row_stats=mysql_fetch_assoc($query_getBonus)) {
+			$sql_BonusWerte="SELECT minwert, maxwert FROM item_stats WHERE stat='".$row_stats['stat']."' AND art=".$item_art." AND min_quality<=".$quality." ORDER BY min_quality DESC LIMIT 0,1";
+			$query_BonusWerte=mysql_query($sql_BonusWerte);
+			$min_wert=mysql_result($query_BonusWerte,0,0);
+			$max_wert=mysql_result($query_BonusWerte,0,1);
+			$min_wert=$min_wert*$neues_level;
+			$max_wert=$max_wert*$neues_level;
+			$bonus[$row_stats['stat']]=rand($min_wert, $max_wert);
+		}
+		$bonus_text=serialize($bonus);
+		
+		// Item hinzufügen
+		//Spalte Item brauchen wir eigentlich nicht unbedingt...
+		$sql_add="INSERT INTO item_list SET 
+			quality=".$quality.",
+			bonus='".$bonus_text."',
+			setID=".$neu_setID.",
+			setBonus='".$neu_setBonus."'";
+		mysql_query($sql_add);
+		$id=mysql_insert_id();
+		return $id;
+	}
+	gen_item(1000);
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
