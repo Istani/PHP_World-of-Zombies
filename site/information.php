@@ -21,6 +21,14 @@
 	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
 	$result_exp = mysql_query($sql_exp);
 	$dsatz_exp = mysql_fetch_assoc($result_exp);
+	
+	$sql_time = "SELECT * FROM `login` WHERE `userID` = '" . $_SESSION['userID'] . "'";
+	$result_time = mysql_query($sql_time);
+	$dsatz_time = mysql_fetch_assoc($result_time);
+
+    $tage       =   (int)($dsatz_time['onlineTimer']/60/60/24);
+    $stunden    =   number_format($dsatz_time['onlineTimer']/60/60);
+    $min        =   number_format($dsatz_time['onlineTimer']/60);
 ?>
 
 <div id="tabs">
@@ -34,31 +42,35 @@
 <hr />
 <table>
     <tr>
-        <td style="width: 150px;"><b><?php echo $_SESSION['loginName']; ?></b></td>
-        <td style="width: 150px;">Level: <?php echo $dsatz["level"]; ?></td>
-        <td style="width: 150px;">Klasse:</td>
-        <td style="width: 150px;"><?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
+        <td style="width: 200px;"><b><?php echo $_SESSION['loginName']; ?></b></td>
+        <td style="width: 200px;"></td>
+        <td colspan="2" style="width: 400px;"><b>Spielzeit:</b></td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;"><hr /></td>
+        <td>Level: <?php echo $dsatz['level']; ?></td>
+        <td>Klasse: <?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
+        <td colspan="2" ><?php echo $tage;?> Tage <?php echo $stunden - $tage*24;?> Std. <?php echo $min - $stunden*60;?> Min.</td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;">&nbsp;</td>
+        <td colspan="4"><hr /></td>
     </tr>
     <tr>
-        <td style="width: 150px;">&nbsp;</td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;"></td>
+        <td colspan="4">&nbsp;</td>
     </tr>
     <tr>
-        <td style="width: 150px;"></td>
-        <td style="width: 150px;">Erfahrung:</td>
-        <td style="width: 150px;"><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
-        <td style="width: 150px;"></td>
+        <td>&nbsp;</td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;">
+        <td></td>
+        <td>Erfahrung:</td>
+        <td><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">
         <?php
 echo '<div id="Exp_bar_status" class="Exp_bg"></div>';
 ?>
@@ -74,19 +86,19 @@ echo '<div id="Exp_bar_status" class="Exp_bg"></div>';
         </td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;">&nbsp;</td>
+        <td colspan="4">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;">&nbsp;</td>
+        <td colspan="4">&nbsp;</td>
     </tr>
     <tr>
-        <td style="width: 150px;">Nahrung:</td>
-        <td style="width: 150px;"><?php echo $dsatz['nahrung']; ?></td>
-        <td style="width: 150px;">Wasser:</td>
-        <td style="width: 150px;"><?php echo $dsatz['wasser']; ?></td>
+        <td>Nahrung:</td>
+        <td><?php echo $dsatz['nahrung']; ?></td>
+        <td>Wasser:</td>
+        <td><?php echo $dsatz['wasser']; ?></td>
     </tr>
     <tr>
-        <td colspan="2" style="width: 150px;">
+        <td colspan="2">
 	    <?php
 echo '<div id="Nahrung_bar_status" class="Nahrung_bg"></div>';
 ?>
@@ -100,7 +112,7 @@ echo '<div id="Nahrung_bar_status" class="Nahrung_bg"></div>';
 		});
 	</script>
 		</td>
-        <td colspan="2" style="width: 150px;">
+        <td colspan="2">
 		<?php
 echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 ?>
@@ -115,21 +127,21 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 	</script>
 		</td>
     <tr>
-        <td colspan="4" style="width: 600px;">&nbsp;</td>
+        <td colspan="4">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="4" style="width: 600px;">&nbsp;</td>
+        <td colspan="4">&nbsp;</td>
     </tr>
     <tr>
-        <td style="width: 150px;">Gegenst&auml;nde hergestellt:</td>
-        <td style="width: 150px;"><?php echo $dsatz["Items_Crafting"]; ?></td>
-        <td style="width: 150px;">Rohstoffe abgebaut:</td>
-        <td style="width: 150px;"><?php echo $dsatz["Items_Abbau"]; ?></td>
+        <td>Gegenst&auml;nde hergestellt:</td>
+        <td><?php echo $dsatz["Items_Crafting"]; ?></td>
+        <td>Rohstoffe abgebaut:</td>
+        <td><?php echo $dsatz["Items_Abbau"]; ?></td>
     </tr>
 </table>
 </div>
 <div id="tabs-2">
-<h1>Inventar</h1>
+<h1>Ausr&uuml;stung</h1>
 <hr /><br>
 <?php
     $queryString = strstr($_SERVER['REQUEST_URI'], '?');
@@ -165,59 +177,88 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 </div>
 <table>
 	<tr>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:100px;">Helm</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;">Fahrzeug</td>
+	</tr>
+	<tr>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_helm;
 		$title='title="'.item_hover($equip).'"';
 		echo '<img class="equip" '.$title.' src="picture/items/'.$equip.'.png">';
 		?></td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_fahrzeug;
         echo item_bilder($equip, "equip");
 		?></td>
 	</tr>
 	<tr>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:100px;">Nahkampf</td>
+		<td style="width:100px;">Fernkampf</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;">Handschuhe</td>
+		<td style="width:100px;">R&uuml;stung</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;"></td>
+	</tr>
+	<tr>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_nahkampf;
         echo item_bilder($equip, "equip");
 		?></td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_schusswaffe;
         echo item_bilder($equip, "equip");
 		?></td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_handschuhe;
         echo item_bilder($equip, "equip");
 		?></td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_amor;
         echo item_bilder($equip, "equip");
 		?></td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;">&nbsp;</td>
 	</tr>
 	<tr>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:100px;"></td>
+		<td style="width:100px;"></td>
+		<td style="width:25px;"></td>
+		<td style="width:100px;"></td>
+		<td style="width:100px;">Schuhe</td>
+		<td style="width:25px;"></td>
+		<td style="width:100px;">Rucksack</td>
+	</tr>
+	<tr>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_schuhe;
         echo item_bilder($equip, "equip");
 		?></td>
-		<td style="width:75px; height:75px;">&nbsp;</td>
-		<td style="width:75px; height:75px;"><?php
+		<td style="width:25px; height:75px;">&nbsp;</td>
+		<td style="width:100px; height:75px;"><?php
 		$equip=$char_rucksack;
         echo item_bilder($equip, "equip");
 		?></td>
 	</tr>
 </table>
 <br>
+<h1>Inventar</h1>
+<hr /><br>
 <?php
 	$max_row=25;
 	$i=0;$j=1;
