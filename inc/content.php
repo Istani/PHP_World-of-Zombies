@@ -35,8 +35,11 @@ if (!isset($_SESSION['userID'])) {
 
         // Seiten die ausgeführt werden können auch wenn Aktionen gemacht werden:
         switch($_GET['site']) {
-            case "information":
+            case "account":
                 include("site/information.php");
+                break;
+            case "charakter":
+                include("site/charakter.php");
                 break;
             case "nachricht":
                 include("site/nachricht.php");
