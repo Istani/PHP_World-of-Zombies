@@ -197,7 +197,7 @@
 		}
 		return $wasser;
     }
-	function inventory_add($user, $item, $menge) {
+	function inventory_add($user, $item, $menge, $uniq_id=0, $item_level=0) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
 		mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -243,7 +243,12 @@
 				} else {
 					$tmenge=$menge;
 				}
-				$sql_update_stack="INSERT INTO `inventory` SET menge=".$tmenge.", userID=".$user.", itemID=".$item;
+				if (($tmenge==1) && ($uniq_id==0)) {
+					$uniq=gen_item($item, $quality=0, $item_level=0);
+				} else {
+					$uniq=$uniq_id;
+				}
+				$sql_update_stack="INSERT INTO `inventory` SET uniqID=".$uniq.", menge=".$tmenge.", userID=".$user.", itemID=".$item;
 				mysql_query($sql_update_stack);
 				$menge=$menge-$tmenge;
 			}
@@ -448,7 +453,7 @@
 		$ausgabewert=$wert+$skill_zuwachs;
 		return $ausgabewert;
 	}
-	function gen_item($org_item, $quality=0) {
+	function gen_item($org_item, $quality=0, $item_level=0) {
 		//Quality 0 weil wegen random!
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -482,7 +487,11 @@
 		$item_art=mysql_result($query_art,0,0);
 		$item_min=mysql_result($query_art,0,1);
 		$item_max=mysql_result($query_art,0,2);
-		$neues_level=rand($item_min,$item_max);
+		if ($item_level>0) {
+			$neues_level=$item_level;
+		} else {
+			$neues_level=rand($item_min,$item_max);
+		}
 		
 		//Anzahl Boni
 		$rnd_zahl=rand(0,100);
@@ -510,12 +519,16 @@
 		$sql_add="INSERT INTO item_list SET 
 			quality=".$quality.",
 			bonus='".$bonus_text."',
+			item_lvl=".$neues_level.",
 			setID=".$neu_setID.",
 			setBonus='".$neu_setBonus."'";
 		mysql_query($sql_add);
 		$id=mysql_insert_id();
 		return $id;
 	}
-	gen_item(1000);
+	
+	//gen_item(1000);
+	inventory_add(1, 1000, 1);
+	
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
