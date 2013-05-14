@@ -213,6 +213,15 @@ $i++;
         ?>
             <td style="text-align: center; vertical-align: middle; width:100px;"><?php echo $guildtitle; ?></td>
             <td style="text-align: center; vertical-align: middle; width:150px;"><?php echo $row2['loginName'] ;?></td>
+            <?php 
+            
+            if ($row2['userID']==$_SESSION['loginName']){
+                echo '<td><a href=""></a></td>'
+                }else{
+                    
+                } 
+            
+            ?>
         </tr>
     <?php
     $i++;

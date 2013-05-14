@@ -454,7 +454,7 @@
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		if ($quality==0) {
-			$rnd_zahl=rand(0,100);
+			$rnd_zahl=rand(0,1000);
 			$sql_random_quality="SELECT quality FROM item_quality WHERE chance>=".$rnd_zahl." ORDER BY chance LIMIT 0,1";
 			$query_random_quality=mysql_query($sql_random_quality);
 			$quality=mysql_result($query_random_quality,0,0);
