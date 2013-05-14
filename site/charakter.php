@@ -30,7 +30,17 @@
     $stunden    =   number_format($dsatz_time['onlineTimer']/60/60);
     $min        =   number_format($dsatz_time['onlineTimer']/60);
 ?>
+<script type="text/javascript">
+function handleCardDrop( event, ui ) {
+	var $jq = jQuery.noConflict();
+	var slotNumber = $jq(this).data( 'SID' );
+	var cardNumber = ui.draggable.data( 'IID' );
+	$jq("#hidden").load("change_item.php?slot="+slotNumber+"&slot_id="+cardNumber);
+}
+</script>
 
+<div id="hidden"></div>
+	    
 <div id="tabs">
 
 <ul>
@@ -213,10 +223,25 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 		<td style="width:100px;"></td>
 	</tr>
 	<tr>
-		<td style="width:100px; height:75px;"><?php
-		$equip=$char_nahkampf;
+		<td style="width:100px; height:75px;">
+        
+       	<div id="slot_<?php echo $nahkampf_slot; ?>" onclick="document.getElementById('slot_auswahl').value=<?php echo $nahkampf_slot; ?>;document.getElementById('AufgabeID').value=0;AlleAktl();">
+        <?php
+        $equip=$char_nahkampf;
         echo item_bilder($equip, "equip");
-		?></td>
+		?>
+        </div>
+        
+        <script type="text/javascript">
+		var $jq = jQuery.noConflict();
+		$jq('#slot_<?php echo $nahkampf_slot; ?>').data( 'SID', <?php echo $nahkampf_slot; ?> ).droppable( {
+			accept: 'div',
+			hoverClass: 'hovered',
+			drop: handleCardDrop
+		} );
+	    </script>
+        
+        </td>
 		<td style="width:100px; height:75px;"><?php
 		$equip=$char_schusswaffe;
         echo item_bilder($equip, "equip");
@@ -270,7 +295,7 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 	$sql_inv="SELECT inventory.*, item_db.art FROM inventory INNER JOIN item_db ON inventory.itemID = item_db.itemID WHERE inventory.userID = '".$_SESSION['userID']."' ORDER BY inventory.itemID, menge DESC";
 	$query_inv=mysql_query($sql_inv);
 	while ($row_inv=mysql_fetch_assoc($query_inv)) {
-		echo '<td style="width:24px; height:24px;">';
+		echo '<td style="width:50px; height:50px;">';
         if ($row_inv['art']==3) {
             echo '<span OnClick="dialog_aufrufen('.$row_inv['itemID'].')">';
         } else {
