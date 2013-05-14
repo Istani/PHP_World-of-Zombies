@@ -34,8 +34,9 @@
 function handleCardDrop( event, ui ) {
 	var $jq = jQuery.noConflict();
 	var slotNumber = $jq(this).data( 'SID' );
-	var cardNumber = ui.draggable.data( 'IID' );
-	$jq("#hidden").load("change_item.php?slot="+slotNumber+"&slot_id="+cardNumber);
+    var cardNumber = ui.draggable.data( 'IID' ).item;
+    var uniqid = ui.draggable.data( 'IID' ).uniq;
+    $jq("#hidden").load("change_item.php?slot="+slotNumber+"&slot_id="+cardNumber+"&slot_uniq="+uniqid);
 }
 </script>
 
@@ -225,7 +226,7 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 	<tr>
 		<td style="width:100px; height:75px;">
         
-       	<div id="slot_<?php echo $nahkampf_slot; ?>" onclick="document.getElementById('slot_auswahl').value=<?php echo $nahkampf_slot; ?>;document.getElementById('AufgabeID').value=0;AlleAktl();">
+       	<div id="slot_nahkampf">
         <?php
         $equip=$char_nahkampf;
         echo item_bilder($equip, "equip");
@@ -234,7 +235,7 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
         
         <script type="text/javascript">
 		var $jq = jQuery.noConflict();
-		$jq('#slot_<?php echo $nahkampf_slot; ?>').data( 'SID', <?php echo $nahkampf_slot; ?> ).droppable( {
+		$jq('#slot_nahkampf').data( 'SID', "nahkampf").droppable( {
 			accept: 'div',
 			hoverClass: 'hovered',
 			drop: handleCardDrop
@@ -302,13 +303,13 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
             echo '<span>';
         }
 ?>      
-        <div id="item_<?php echo $row_inv['invID']; ?>" onclick="document.getElementById('inv_item').value=<?php echo $row_inv['invID']; ?>;">
+        <div id="item_<?php echo $row_inv['invID']; ?>">
         <?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
         </div>
         
         <script type="text/javascript">
 				var $jq = jQuery.noConflict();
-				$jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', <?php echo $row_inv['invID']; ?>).draggable( {
+                  $jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', { item: <?php echo $row_inv['itemID']; ?>, uniq: <?php echo $row_inv['uniqID']; ?>}).draggable( {
 				  cursor: 'move',
 				  revert: true
 				} );

@@ -216,7 +216,7 @@ $i++;
             <?php 
             
             if ($row2['userID']==$_SESSION['loginName']){
-                echo '<td><a href=""></a></td>'
+                echo '<td><a href=""></a></td>';
                 }else{
                     
                 } 

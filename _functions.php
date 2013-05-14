@@ -25,10 +25,10 @@
             $oBild=imagecreatefrompng("picture/items/".$item.".png");
             $oBreite = imageSX($oBild);
             if ($art=="inv") {
-                $faktor=25/$oBreite;
+                $faktor=50/$oBreite;
                 $title.=' class="item"';
             } elseif ($art=="show") {
-                $faktor=25/$oBreite;
+                $faktor=50/$oBreite;
                 $title.=' class="item"';
             } elseif ($art=="equip") {
                 $faktor=75/$oBreite;
@@ -528,7 +528,7 @@
 	}
 	
 	//gen_item(1000);
-	inventory_add(1, 1000, 1);
+	inventory_add(2, 1000, 1);
 	
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
