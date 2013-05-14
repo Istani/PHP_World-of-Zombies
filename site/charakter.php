@@ -276,7 +276,19 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
         } else {
             echo '<span>';
         }
-        echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']);
+?>      
+        <div id="item_<?php echo $row_inv['invID']; ?>" onclick="document.getElementById('inv_item').value=<?php echo $row_inv['invID']; ?>;">
+        <?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
+        </div>
+        
+        <script type="text/javascript">
+				var $jq = jQuery.noConflict();
+				$jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', <?php echo $row_inv['invID']; ?>).draggable( {
+				  cursor: 'move',
+				  revert: true
+				} );
+		</script>
+<?php
         echo '</span>';
 		echo '</td>';
 		$i++;$j++;
