@@ -17,9 +17,11 @@
     }
 	$string='a:3:{s:5:"quest";i:2;s:3:"exp";i:10;s:11:"goldklumpen";i:5;}';
 	$bla=unserialize($string);
-	$bla["item"]=1000;
-	$bla["item_quality"]=1;
-	$bla["item_level"]=1;
+	$bla["get_item"]=true;
+	$bla["item"][1]['id']=1000;
+	$bla["item"][1]['menge']=5;
+	$bla["item"][1]['quality']=1000;
+	$bla["item"][1]['level']=1000;
 	$bla["quest"]=3;
 	echo '<pre>';
 	var_dump($bla);

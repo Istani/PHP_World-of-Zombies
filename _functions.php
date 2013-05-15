@@ -374,23 +374,20 @@
 		$belohnung_text=@mysql_result($query_belohnung,0,0);
 		$belohnung=unserialize($belohnung_text);
 		foreach ($belohnung as $key => $value) {
-			if ($key=="item") {
-				if (!isset($belohnung['item_menge'])) {
-					$tmp_menge=1;
-				} else {
-					$tmp_menge=$belohnung['item_menge'];
+			if ($key=="get_item") {
+				foreach ($belohnung["item"] as $tmp_item) {
+					if (!isset($tmp_item['menge'])) {
+						$tmp_item['menge']=1;
+					}
+					if (!isset($tmp_item['quality'])) {
+						$tmp_item['quality']=0;
+					}
+					if (!isset($tmp_item['level'])) {
+						$tmp_item['level']=0;
+					}
+					inventory_add($user, $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level']);
+					//echo '1_';
 				}
-				if (!isset($belohnung['item_quality'])) {
-					$tmp_quality=0;
-				} else {
-					$tmp_quality=$belohnung['item_quality'];
-				}
-				if (!isset($belohnung['item_level'])) {
-					$tmp_level=0;
-				} else {
-					$tmp_level=$belohnung['item_level'];
-				}
-				inventory_add($user, $value, $tmp_menge, 0, $tmp_quality, $tmp_level);
 			}
 			if ($key=="quest") {
 				erhalte_quest($value, $user);
