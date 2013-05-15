@@ -8,7 +8,7 @@
         $result = mysql_query($sql_query);
         $dsatz = mysql_fetch_assoc($result);
 
-	$max_wert_ausdauer  =   $dsatz['gesundheit'];
+		$max_wert_ausdauer  =   $dsatz['gesundheit'];
         $char_wasser	=	$dsatz['wasser'];
         $char_nahrung	=	$dsatz['nahrung'];
         $char_exp   	=	$dsatz['exp'];
@@ -18,13 +18,15 @@
 		
 		$sql_skill="INSERT INTO char_skill SET userID=".$_SESSION['userID'].", lvl=1, skillID=1";
 		mysql_query($sql_skill);
+		
+		$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
+		$result_exp = mysql_query($sql_exp);
+		$dsatz_exp = mysql_fetch_assoc($result_exp);
+		
+		$needxp     =   $dsatz_exp["exp"];
     }
     
-	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
-	$result_exp = mysql_query($sql_exp);
-	$dsatz_exp = mysql_fetch_assoc($result_exp);
-    
-    $needxp     =   $dsatz_exp["exp"];
+	
     	
 	echo '<table width="100%">';
 	echo '<tr>';
