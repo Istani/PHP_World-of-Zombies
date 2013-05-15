@@ -197,7 +197,7 @@
 		}
 		return $wasser;
     }
-	function inventory_add($user, $item, $menge, $uniq_id=0, $item_level=0) {
+	function inventory_add($user, $item, $menge, $uniq_id=0, $item_quality=0, $item_level=0) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
 		mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -244,7 +244,7 @@
 					$tmenge=$menge;
 				}
 				if (($tmenge==1) && ($uniq_id==0)) {
-					$uniq=gen_item($item, $quality=0, $item_level=0);
+					$uniq=gen_item($item, $item_quality, $item_level);
 				} else {
 					$uniq=$uniq_id;
 				}
@@ -374,6 +374,24 @@
 		$belohnung_text=@mysql_result($query_belohnung,0,0);
 		$belohnung=unserialize($belohnung_text);
 		foreach ($belohnung as $key => $value) {
+			if ($key=="item") {
+				if (!isset($belohnung['item_menge'])) {
+					$tmp_menge=1;
+				} else {
+					$tmp_menge=$belohnung['item_menge'];
+				}
+				if (!isset($belohnung['item_quality'])) {
+					$tmp_quality=0;
+				} else {
+					$tmp_quality=$belohnung['item_quality'];
+				}
+				if (!isset($belohnung['item_level'])) {
+					$tmp_level=0;
+				} else {
+					$tmp_level=$belohnung['item_level'];
+				}
+				inventory_add($user, $value, $tmp_menge, 0, $tmp_quality, $tmp_level);
+			}
 			if ($key=="quest") {
 				erhalte_quest($value, $user);
 			}
@@ -528,7 +546,7 @@
 	}
 	
 	//gen_item(1000);
-	inventory_add(2, 1000, 1);
+	//inventory_add(2, 1000, 1);
 	
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
