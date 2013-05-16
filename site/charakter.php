@@ -227,10 +227,12 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 		<td style="width:100px; height:75px;">
         
        	<div id="slot_nahkampf">
+        <div id="item_<?php echo $char_nahkampf; ?>">
         <?php
         $equip=$char_nahkampf;
         echo item_bilder($equip, "equip");
 		?>
+        </div>
         </div>
         
         <script type="text/javascript">
@@ -240,7 +242,15 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 			hoverClass: 'hovered',
 			drop: handleCardDrop
 		} );
-	    </script>
+	    </script>     
+
+        <script type="text/javascript">
+				var $jq = jQuery.noConflict();
+                  $jq('#item_<?php echo $char_nahkampf; ?>').data( 'IID', { item: <?php echo $char_nahkampf; ?>, uniq: <?php echo $char_nahkampf; ?>}).draggable( {
+				  cursor: 'move',
+				  revert: true
+				} );
+		</script>
         
         </td>
 		<td style="width:100px; height:75px;"><?php
@@ -314,6 +324,15 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 				  revert: true
 				} );
 		</script>
+		
+		<script type="text/javascript">
+		var $jq = jQuery.noConflict();
+		$jq('#inv_<?php echo $row_inv['invID']; ?>').data( 'SID', "<?php echo $row_inv['invID']; ?>").droppable( {
+			accept: 'div',
+			hoverClass: 'hovered',
+			drop: handleCardDrop
+		} );
+	    </script>
 <?php
         echo '</span>';
 		echo '</td>';
