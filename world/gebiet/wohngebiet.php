@@ -46,8 +46,11 @@
 		echo '<br>';
 		echo '<br>';
 	}
+if (player_wasser_status($_SESSION['userID'])>5) {
 	echo '<a href="index.php?'.$queryString.'&status=low">'.text_ausgabe("fight", 0, $bg['sprache']).'</a>&nbsp;'.text_ausgabe("mob_low", 0, $bg['sprache']).'<br>';
 	echo '<a href="index.php?'.$queryString.'&status=mid">'.text_ausgabe("fight", 0, $bg['sprache']).'</a>&nbsp;'.text_ausgabe("mob_mid", 0, $bg['sprache']).'<br>';
 	echo '<a href="index.php?'.$queryString.'&status=high">'.text_ausgabe("fight", 0, $bg['sprache']).'</a>&nbsp;'.text_ausgabe("mob_high", 0, $bg['sprache']).'<br>';
-	
+} else {
+	echo text_ausgabe("kein_wasser", 0, $bg['sprache']);
+}
 ?>
