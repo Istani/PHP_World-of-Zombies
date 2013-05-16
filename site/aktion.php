@@ -132,7 +132,9 @@
 					//$char['gesundheit']=(int)$char['gesundheit'];
 					//$monster['mob_lebel']=(int)$monster['mob_lebel'];
 					echo "Das Monster trifft dich mit ".$mob_schaden." Schadenspunkte! (Noch ".$char['nahrung'].")";
-					echo "Du triffst das Monster mit ".$char_schaden." Schadenspunkte! (Noch ".$monster['mob_leben'].")";
+					if ($char['nahrung']>0) {
+						echo "Du triffst das Monster mit ".$char_schaden." Schadenspunkte! (Noch ".$monster['mob_leben'].")";
+					}
 					echo '<br>';
 					echo '<br>';
 			            }
@@ -146,11 +148,27 @@
 				   mysql_query($sql_char_update);
 				   echo '<br>';
 				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
-				   if (inventory_add($_SESSION['userID'], 20000, 1)) {
-				     echo '1 x '.text_ausgabe("item", 20000, $bg['sprache']).' erhalten.<br>';
-				   } else {
-				     echo 'Leider nicht genug Platz um 1 x '.text_ausgabe("item", 20000, $bg['sprache']).' zu erhalten.<br>';
-				   }
+						//$monster['mob_drop'];
+					$belohnung=unserialize($monster['mob_drop']);
+					foreach ($belohnung as $key => $value) {
+						if ($key=="get_item") {
+							foreach ($belohnung["item"] as $tmp_item) {
+								if (!isset($tmp_item['menge'])) {
+									$tmp_item['menge']=1;
+								}
+								if (!isset($tmp_item['quality'])) {
+									$tmp_item['quality']=0;
+								}
+								if (!isset($tmp_item['level'])) {
+									$tmp_item['level']=0;
+								}
+								if (inventory_add($_SESSION["userID"], $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level'])) {
+									echo $tmp_item['menge'].' x '.text_ausgabe("item", $tmp_item['id'], $bg['sprache']).' erhalten.<br>';
+								}
+								//echo '1_';
+							}
+						}	
+					}	
 				} else {
 				   //Spieler gewinnt
 				   echo "Verloren, Looser!";

@@ -15,7 +15,7 @@
         $set_lastaktion="UPDATE login SET lastAktion=".time()." WHERE userID=".$_SESSION['userID'];
         mysql_query($set_lastaktion);
     }
-	/*
+/*
 	$string='a:3:{s:5:"quest";i:2;s:3:"exp";i:10;s:11:"goldklumpen";i:5;}';
 	$bla=unserialize($string);
 	$bla["get_item"]=true;
@@ -23,13 +23,16 @@
 	$bla["item"][1]['menge']=5;
 	$bla["item"][1]['quality']=1000;
 	$bla["item"][1]['level']=1000;
-	$bla["quest"]=3;
+	$bla["item"][2]['id']=1;
+	$bla["item"][2]['menge']=5;
+	$bla["item"][3]['id']=2;
+	$bla["item"][3]['menge']=5;
 	echo '<pre>';
 	var_dump($bla);
 	echo '</pre>';
 	$string=serialize($bla);
 	echo $string;
-	*/
+*/	
 ?>
 <html>
     <head>
