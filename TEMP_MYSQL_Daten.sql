@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.7deb7
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: wp388.webpack.hosteurope.de
--- Erstellungszeit: 17. Mai 2013 um 18:31
--- Server Version: 5.5.30
--- PHP-Version: 5.3.3-7+squeeze14
+-- Host: 127.0.0.1
+-- Erstellungszeit: 17. Mai 2013 um 18:36
+-- Server Version: 5.5.27
+-- PHP-Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Datenbank: `db11106940-game`
+-- Datenbank: `zodgame`
 --
 
 -- --------------------------------------------------------
@@ -25,6 +26,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tabellenstruktur für Tabelle `abbau_gebiet`
 --
 
+DROP TABLE IF EXISTS `abbau_gebiet`;
 CREATE TABLE IF NOT EXISTS `abbau_gebiet` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `gebiet` text COLLATE latin1_german2_ci NOT NULL,
@@ -49,6 +51,7 @@ INSERT INTO `abbau_gebiet` (`ID`, `gebiet`, `dauer`, `grundwert`, `itemID`) VALU
 -- Tabellenstruktur für Tabelle `abfall`
 --
 
+DROP TABLE IF EXISTS `abfall`;
 CREATE TABLE IF NOT EXISTS `abfall` (
   `zeitpunkt` int(20) NOT NULL,
   `item` int(11) NOT NULL,
@@ -56,17 +59,13 @@ CREATE TABLE IF NOT EXISTS `abfall` (
   `spieler` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `abfall`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `char`
 --
 
+DROP TABLE IF EXISTS `char`;
 CREATE TABLE IF NOT EXISTS `char` (
   `userID` int(11) NOT NULL,
   `klasse` int(11) NOT NULL,
@@ -121,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `char` (
 --
 
 INSERT INTO `char` (`userID`, `klasse`, `stpoints`, `skpoints`, `level`, `exp`, `gesundheit`, `nahrung`, `wasser`, `nahkampf`, `nahkampf_uniq`, `schusswaffe`, `schusswaffe_uniq`, `rucksack`, `rucksack_uniq`, `goldklumpen`, `amulett`, `amulett_uniq`, `ring_L`, `ring_L_uniq`, `ring_R`, `ring_R_uniq`, `helm`, `helm_uniq`, `amor`, `amor_uniq`, `handschuhe`, `hanschuhe_uniq`, `schuhe`, `schuhe_uniq`, `fahrzeug`, `fahrzeug_uniq`, `geld`, `gilde`, `last_map`, `zombieslave`, `zombieslave_aktiv`, `zombieslave_gebiet`, `Items_Abbau`, `Items_Crafting`, `Monster_Wins`, `aktion`, `aktion_id`, `aktion_start`, `aktion_ende`) VALUES
-(13, 3, 0, 1, 2, 68, 100, 1, 70, 0, 0, 0, 0, 5000, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Zombies of Destruction', 'trainingslager', 0, 0, '', 215, 18, 3, 'ABBAUEN', 1, 1368779371, 1368782971),
+(13, 3, 0, 1, 2, 68, 100, 1, 70, 0, 0, 0, 0, 5000, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Zombies of Destruction', 'trainingslager', 0, 0, '', 215, 18, 3, '', 0, 0, 0),
 (14, 1, 0, 0, 1, 85, 100, 100, 115, 0, 0, 0, 0, 5000, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 'trainingslager', 0, 0, '', 110, 2, 0, 'ABBAUEN', 1, 1368623639, 1368627239),
 (4, 1, 0, 0, 1, 0, 100, 100, 100, 1, 0, 0, 0, 5000, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 'Zombies of Destruction', 'trainingslager', 1, 0, '', 0, 0, 0, '', 0, 0, 0),
 (5, 2, 0, 0, 1, 0, 125, 100, 100, 1, 0, 0, 0, 5000, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, '', 'weltkarte', 1, 0, '', 0, 0, 0, '', 0, 0, 0),
@@ -131,8 +130,8 @@ INSERT INTO `char` (`userID`, `klasse`, `stpoints`, `skpoints`, `level`, `exp`, 
 (3, 1, 0, 0, 1, 0, 100, 100, 100, 1, 0, 0, 0, 5000, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, '', 'weltkarte', 1, 0, '', 0, 0, 0, '', 0, 0, 0),
 (8, 1, 0, 0, 1, 0, 100, 100, 100, 1, 0, 0, 0, 5000, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, '', 'trainingslager', 1, 0, '', 30, 4, 0, 'KAMPF_MOB', 2, 1362565077, 1362565137),
 (12, 1, 0, 0, 1, 0, 100, 100, 100, 1, 0, 0, 0, 5000, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 'Zombies of Destruction', 'trainingslager', 1, 0, '', 0, 0, 0, '', 0, 0, 0),
-(2, 2, 0, 1, 2, 213, 100, 1, 60, 0, 0, 0, 0, 5000, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Zombies of Destruction', 'trainingslager', 0, 0, '', 185, 20, 6, '', 0, 0, 0),
-(1, 1, 0, 2, 3, 92, 100, 1, 0, 0, 0, 0, 0, 5000, 0, 982, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Gnaaadenlos', 'trainingslager', 0, 0, '', 150, 38, 3, '', 0, 0, 0),
+(2, 2, 0, 1, 2, 213, 100, 1, 40, 0, 0, 0, 0, 5000, 0, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Zombies of Destruction', 'trainingslager', 0, 0, '', 185, 20, 6, '', 0, 0, 0),
+(1, 1, 0, 2, 3, 412, 100, 86, 65, 1000, 42, 0, 0, 5000, 0, 1032, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Gnaaadenlos', 'trainingslager', 0, 0, '', 180, 38, 11, '', 0, 0, 0),
 (15, 3, 0, 0, 1, 90, 100, 100, 75, 0, 0, 0, 0, 5000, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 'trainingslager', 0, 0, '', 40, 4, 0, 'KAMPF_MOB', 1, 1368304715, 1368304895),
 (16, 1, 0, 0, 1, 60, 100, 45, 75, 0, 0, 0, 0, 5000, 0, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 'trainingslager', 0, 0, '', 40, 2, 1, '', 0, 0, 0),
 (18, 2, 0, 0, 1, 10, 100, 100, 100, 0, 0, 0, 0, 5000, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 'trainingslager', 0, 0, '', 0, 0, 0, '', 0, 0, 0),
@@ -145,6 +144,7 @@ INSERT INTO `char` (`userID`, `klasse`, `stpoints`, `skpoints`, `level`, `exp`, 
 -- Tabellenstruktur für Tabelle `char_exp`
 --
 
+DROP TABLE IF EXISTS `char_exp`;
 CREATE TABLE IF NOT EXISTS `char_exp` (
   `level` int(11) NOT NULL,
   `exp` int(11) NOT NULL
@@ -362,6 +362,7 @@ INSERT INTO `char_exp` (`level`, `exp`) VALUES
 -- Tabellenstruktur für Tabelle `char_quest`
 --
 
+DROP TABLE IF EXISTS `char_quest`;
 CREATE TABLE IF NOT EXISTS `char_quest` (
   `cquest_userID` int(11) NOT NULL,
   `cquest_questID` int(11) NOT NULL,
@@ -374,26 +375,11 @@ CREATE TABLE IF NOT EXISTS `char_quest` (
 --
 
 INSERT INTO `char_quest` (`cquest_userID`, `cquest_questID`, `cquest_gelesen`, `cquest_erledigt`) VALUES
-(1, 2, 1, 0),
+(1, 2, 1, 1),
 (1, 1, 1, 1),
-(2, 1, 1, 1),
-(2, 2, 1, 0),
-(13, 1, 1, 1),
-(13, 2, 1, 0),
-(14, 1, 1, 1),
-(14, 2, 1, 0),
-(15, 1, 1, 1),
-(15, 2, 0, 0),
-(16, 1, 1, 1),
-(16, 2, 1, 0),
-(6, 1, 1, 1),
-(6, 2, 1, 0),
-(18, 1, 1, 1),
-(18, 2, 1, 0),
-(19, 1, 1, 1),
-(19, 2, 1, 0),
-(20, 1, 1, 1),
-(20, 2, 1, 0);
+(1, 5, 1, 0),
+(1, 4, 1, 1),
+(1, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -401,6 +387,7 @@ INSERT INTO `char_quest` (`cquest_userID`, `cquest_questID`, `cquest_gelesen`, `
 -- Tabellenstruktur für Tabelle `char_skill`
 --
 
+DROP TABLE IF EXISTS `char_skill`;
 CREATE TABLE IF NOT EXISTS `char_skill` (
   `userID` int(11) NOT NULL,
   `skillID` int(11) NOT NULL,
@@ -444,6 +431,7 @@ INSERT INTO `char_skill` (`userID`, `skillID`, `lvl`) VALUES
 -- Tabellenstruktur für Tabelle `crafting_rezepte`
 --
 
+DROP TABLE IF EXISTS `crafting_rezepte`;
 CREATE TABLE IF NOT EXISTS `crafting_rezepte` (
   `item` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
@@ -468,6 +456,7 @@ INSERT INTO `crafting_rezepte` (`item`, `menge`, `produkt`, `produkt_menge`, `sk
 -- Tabellenstruktur für Tabelle `guild_chat`
 --
 
+DROP TABLE IF EXISTS `guild_chat`;
 CREATE TABLE IF NOT EXISTS `guild_chat` (
   `guild_id` int(11) NOT NULL,
   `msg_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -502,6 +491,7 @@ INSERT INTO `guild_chat` (`guild_id`, `msg_id`, `time`, `nachricht`, `poster`) V
 -- Tabellenstruktur für Tabelle `guild_db`
 --
 
+DROP TABLE IF EXISTS `guild_db`;
 CREATE TABLE IF NOT EXISTS `guild_db` (
   `guild_id` int(11) NOT NULL AUTO_INCREMENT,
   `guild_name` varchar(155) COLLATE latin1_german2_ci NOT NULL,
@@ -526,6 +516,7 @@ INSERT INTO `guild_db` (`guild_id`, `guild_name`, `guild_kurz`, `guild_desc`, `e
 -- Tabellenstruktur für Tabelle `guild_exp`
 --
 
+DROP TABLE IF EXISTS `guild_exp`;
 CREATE TABLE IF NOT EXISTS `guild_exp` (
   `level` int(11) NOT NULL,
   `exp` int(11) NOT NULL
@@ -793,6 +784,7 @@ INSERT INTO `guild_exp` (`level`, `exp`) VALUES
 -- Tabellenstruktur für Tabelle `guild_ranking`
 --
 
+DROP TABLE IF EXISTS `guild_ranking`;
 CREATE TABLE IF NOT EXISTS `guild_ranking` (
   `guild_id` int(11) NOT NULL,
   `title` int(11) NOT NULL,
@@ -819,16 +811,12 @@ INSERT INTO `guild_ranking` (`guild_id`, `title`, `userID`) VALUES
 -- Tabellenstruktur für Tabelle `guild_skill`
 --
 
+DROP TABLE IF EXISTS `guild_skill`;
 CREATE TABLE IF NOT EXISTS `guild_skill` (
   `guild_id` int(11) NOT NULL,
   `skill_id` int(11) NOT NULL,
   `lvl` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
-
---
--- Daten für Tabelle `guild_skill`
---
-
 
 -- --------------------------------------------------------
 
@@ -836,6 +824,7 @@ CREATE TABLE IF NOT EXISTS `guild_skill` (
 -- Tabellenstruktur für Tabelle `guild_skill_db`
 --
 
+DROP TABLE IF EXISTS `guild_skill_db`;
 CREATE TABLE IF NOT EXISTS `guild_skill_db` (
   `skill_ID` int(11) NOT NULL AUTO_INCREMENT,
   `max_lvl` int(11) NOT NULL,
@@ -843,17 +832,13 @@ CREATE TABLE IF NOT EXISTS `guild_skill_db` (
   PRIMARY KEY (`skill_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
 
---
--- Daten für Tabelle `guild_skill_db`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `inventory`
 --
 
+DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
   `invID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
@@ -861,56 +846,20 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `uniqID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=194 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=53 ;
 
 --
 -- Daten für Tabelle `inventory`
 --
 
 INSERT INTO `inventory` (`invID`, `userID`, `itemID`, `uniqID`, `menge`) VALUES
-(159, 14, 2, 0, 10),
-(95, 2, 3, 0, 2),
-(6, 4, 3, 0, 5),
-(150, 16, 20000, 0, 2),
-(161, 18, 2, 0, 10),
-(147, 6, 1, 0, 10),
-(15, 6, 3, 0, 5),
-(47, 10, 3, 0, 5),
-(51, 12, 3, 0, 5),
-(20, 7, 3, 0, 5),
-(157, 13, 11000, 0, 60),
-(156, 13, 2, 0, 15),
-(188, 1, 3, 0, 1),
-(132, 2, 10000, 0, 85),
-(145, 16, 10000, 0, 15),
-(187, 1, 3, 0, 1),
-(148, 6, 2, 0, 10),
-(149, 1, 20000, 0, 4),
-(106, 13, 3, 0, 4),
-(160, 18, 1, 0, 10),
-(158, 14, 10000, 0, 20),
-(144, 16, 2, 0, 8),
-(143, 16, 1, 0, 9),
-(117, 14, 3, 0, 3),
-(151, 1, 2, 0, 40),
-(155, 13, 10000, 0, 30),
-(154, 14, 11000, 0, 20),
-(130, 2, 11000, 0, 17),
-(136, 2, 15000, 0, 5),
-(163, 2, 20000, 0, 2),
-(164, 19, 1, 0, 10),
-(165, 19, 2, 0, 10),
-(166, 20, 1, 0, 10),
-(167, 20, 2, 0, 15),
-(168, 20, 10000, 0, 10),
-(169, 1, 11000, 0, 8),
-(186, 1, 3, 0, 1),
-(189, 1, 3, 0, 1),
-(184, 1, 15000, 0, 5),
-(183, 1, 15000, 0, 5),
-(185, 1, 3, 0, 1),
-(191, 16, 11000, 0, 17),
-(193, 16, 3, 0, 1);
+(47, 1, 1000, 49, 1),
+(48, 1, 1000, 50, 1),
+(51, 1, 1, 0, 5),
+(49, 1, 1000, 51, 1),
+(50, 1, 1000, 52, 1),
+(52, 1, 2, 0, 5),
+(46, 1, 1000, 48, 1);
 
 -- --------------------------------------------------------
 
@@ -918,6 +867,7 @@ INSERT INTO `inventory` (`invID`, `userID`, `itemID`, `uniqID`, `menge`) VALUES
 -- Tabellenstruktur für Tabelle `item_chance_stats`
 --
 
+DROP TABLE IF EXISTS `item_chance_stats`;
 CREATE TABLE IF NOT EXISTS `item_chance_stats` (
   `anzahl_stats` int(11) NOT NULL,
   `chance_stats` int(11) NOT NULL
@@ -941,6 +891,7 @@ INSERT INTO `item_chance_stats` (`anzahl_stats`, `chance_stats`) VALUES
 -- Tabellenstruktur für Tabelle `item_db`
 --
 
+DROP TABLE IF EXISTS `item_db`;
 CREATE TABLE IF NOT EXISTS `item_db` (
   `Info` text COLLATE latin1_german2_ci NOT NULL,
   `itemID` int(11) NOT NULL AUTO_INCREMENT,
@@ -982,6 +933,7 @@ INSERT INTO `item_db` (`Info`, `itemID`, `min_lvl`, `maxLlvl`, `art`, `stack`, `
 -- Tabellenstruktur für Tabelle `item_list`
 --
 
+DROP TABLE IF EXISTS `item_list`;
 CREATE TABLE IF NOT EXISTS `item_list` (
   `uniqID` int(11) NOT NULL AUTO_INCREMENT,
   `item` int(11) NOT NULL,
@@ -992,12 +944,24 @@ CREATE TABLE IF NOT EXISTS `item_list` (
   `setBonus` text NOT NULL,
   PRIMARY KEY (`uniqID`),
   UNIQUE KEY `uniqID` (`uniqID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
 
 --
 -- Daten für Tabelle `item_list`
 --
 
+INSERT INTO `item_list` (`uniqID`, `item`, `item_lvl`, `quality`, `bonus`, `setID`, `setBonus`) VALUES
+(52, 0, 1000, 5, 'a:5:{s:7:"schaden";i:7846;s:12:"attack_speed";i:12342;s:8:"aggro_up";i:6088;s:21:"attack_speed_decrease";i:10614;s:15:"damage_decrease";i:9905;}', 0, ''),
+(48, 0, 1000, 5, 'a:4:{s:15:"damage_decrease";i:7183;s:21:"attack_speed_decrease";i:12928;s:12:"attack_speed";i:5994;s:7:"schaden";i:6022;}', 0, ''),
+(49, 0, 1000, 5, 'a:4:{s:12:"attack_speed";i:9951;s:21:"attack_speed_decrease";i:8487;s:15:"damage_decrease";i:17649;s:16:"defense_decrease";i:11030;}', 0, ''),
+(50, 0, 1000, 5, 'a:2:{s:7:"schaden";i:9513;s:21:"attack_speed_decrease";i:8333;}', 0, ''),
+(51, 0, 1000, 5, 'a:5:{s:8:"aggro_up";i:7800;s:21:"attack_speed_decrease";i:4909;s:7:"schaden";i:1017;s:12:"attack_speed";i:14770;s:16:"defense_decrease";i:7617;}', 0, ''),
+(47, 0, 1000, 5, 'a:4:{s:16:"defense_decrease";i:14734;s:12:"attack_speed";i:7469;s:8:"aggro_up";i:5426;s:21:"attack_speed_decrease";i:12514;}', 0, ''),
+(44, 0, 1000, 5, 'a:2:{s:16:"defense_decrease";i:16629;s:21:"attack_speed_decrease";i:12970;}', 0, ''),
+(45, 0, 1000, 5, 'a:3:{s:8:"aggro_up";i:5143;s:21:"attack_speed_decrease";i:14259;s:15:"damage_decrease";i:13815;}', 0, ''),
+(46, 0, 1000, 5, 'a:4:{s:12:"attack_speed";i:14073;s:16:"defense_decrease";i:19848;s:7:"schaden";i:4124;s:21:"attack_speed_decrease";i:8617;}', 0, ''),
+(42, 0, 1000, 5, 'a:5:{s:15:"damage_decrease";i:19452;s:7:"schaden";i:3592;s:8:"aggro_up";i:4210;s:21:"attack_speed_decrease";i:9145;s:16:"defense_decrease";i:12598;}', 0, ''),
+(43, 0, 1000, 5, 'a:3:{s:16:"defense_decrease";i:9233;s:7:"schaden";i:1240;s:15:"damage_decrease";i:3857;}', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1005,6 +969,7 @@ CREATE TABLE IF NOT EXISTS `item_list` (
 -- Tabellenstruktur für Tabelle `item_quality`
 --
 
+DROP TABLE IF EXISTS `item_quality`;
 CREATE TABLE IF NOT EXISTS `item_quality` (
   `quality` int(11) NOT NULL,
   `beschreibung` text NOT NULL,
@@ -1030,6 +995,7 @@ INSERT INTO `item_quality` (`quality`, `beschreibung`, `chance`) VALUES
 -- Tabellenstruktur für Tabelle `item_sets`
 --
 
+DROP TABLE IF EXISTS `item_sets`;
 CREATE TABLE IF NOT EXISTS `item_sets` (
   `setID` int(11) NOT NULL,
   `itemID` int(11) NOT NULL,
@@ -1037,17 +1003,13 @@ CREATE TABLE IF NOT EXISTS `item_sets` (
   `Info` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `item_sets`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `item_stats`
 --
 
+DROP TABLE IF EXISTS `item_stats`;
 CREATE TABLE IF NOT EXISTS `item_stats` (
   `stat` text NOT NULL,
   `min_quality` int(11) NOT NULL,
@@ -1074,6 +1036,7 @@ INSERT INTO `item_stats` (`stat`, `min_quality`, `art`, `minwert`, `maxwert`) VA
 -- Tabellenstruktur für Tabelle `mob_db`
 --
 
+DROP TABLE IF EXISTS `mob_db`;
 CREATE TABLE IF NOT EXISTS `mob_db` (
   `mob_id` int(11) NOT NULL AUTO_INCREMENT,
   `min_schaden` int(11) NOT NULL,
@@ -1081,6 +1044,7 @@ CREATE TABLE IF NOT EXISTS `mob_db` (
   `mob_leben` int(11) NOT NULL,
   `mob_level` int(11) NOT NULL,
   `mob_exp` int(11) NOT NULL,
+  `mob_drop` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`mob_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=12 ;
 
@@ -1088,18 +1052,18 @@ CREATE TABLE IF NOT EXISTS `mob_db` (
 -- Daten für Tabelle `mob_db`
 --
 
-INSERT INTO `mob_db` (`mob_id`, `min_schaden`, `max_schaden`, `mob_leben`, `mob_level`, `mob_exp`) VALUES
-(1, 1, 1, 25, 0, 5),
-(2, 1, 2, 48, 1, 10),
-(3, 1, 4, 60, 2, 20),
-(5, 1, 2, 500, 6, 30),
-(4, 1, 1, 2, 0, 1),
-(6, 10, 100, 200, 30, 350),
-(7, 3, 7, 75, 7, 35),
-(8, 2, 14, 35, 5, 25),
-(9, 1, 4, 16, 2, 15),
-(10, 1, 15, 50, 6, 35),
-(11, 3, 5, 12, 2, 15);
+INSERT INTO `mob_db` (`mob_id`, `min_schaden`, `max_schaden`, `mob_leben`, `mob_level`, `mob_exp`, `mob_drop`) VALUES
+(1, 1, 1, 25, 0, 5, ''),
+(2, 1, 2, 48, 1, 10, ''),
+(3, 1, 4, 60, 2, 20, 'a:2:{s:8:"get_item";b:1;s:4:"item";a:3:{i:1;a:4:{s:2:"id";i:1000;s:5:"menge";i:5;s:7:"quality";i:1000;s:5:"level";i:1000;}i:2;a:2:{s:2:"id";i:1;s:5:"menge";i:5;}i:3;a:2:{s:2:"id";i:2;s:5:"menge";i:5;}}}'),
+(5, 1, 2, 500, 6, 30, ''),
+(4, 1, 1, 2, 0, 1, ''),
+(6, 10, 100, 200, 30, 350, ''),
+(7, 3, 7, 75, 7, 35, ''),
+(8, 2, 14, 35, 5, 25, ''),
+(9, 1, 4, 16, 2, 15, 'a:2:{s:8:"get_item";b:1;s:4:"item";a:3:{i:1;a:4:{s:2:"id";i:1000;s:5:"menge";i:5;s:7:"quality";i:1000;s:5:"level";i:1000;}i:2;a:2:{s:2:"id";i:1;s:5:"menge";i:5;}i:3;a:2:{s:2:"id";i:2;s:5:"menge";i:5;}}}'),
+(10, 1, 15, 50, 6, 35, ''),
+(11, 3, 5, 12, 2, 15, 'a:2:{s:8:"get_item";b:1;s:4:"item";a:3:{i:1;a:4:{s:2:"id";i:1000;s:5:"menge";i:5;s:7:"quality";i:1000;s:5:"level";i:1000;}i:2;a:2:{s:2:"id";i:1;s:5:"menge";i:5;}i:3;a:2:{s:2:"id";i:2;s:5:"menge";i:5;}}}');
 
 -- --------------------------------------------------------
 
@@ -1107,6 +1071,7 @@ INSERT INTO `mob_db` (`mob_id`, `min_schaden`, `max_schaden`, `mob_leben`, `mob_
 -- Tabellenstruktur für Tabelle `nachricht_ausgang`
 --
 
+DROP TABLE IF EXISTS `nachricht_ausgang`;
 CREATE TABLE IF NOT EXISTS `nachricht_ausgang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) NOT NULL,
@@ -1138,6 +1103,7 @@ INSERT INTO `nachricht_ausgang` (`id`, `sender`, `empfaenger`, `zeit`, `status`,
 -- Tabellenstruktur für Tabelle `nachricht_eingang`
 --
 
+DROP TABLE IF EXISTS `nachricht_eingang`;
 CREATE TABLE IF NOT EXISTS `nachricht_eingang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) NOT NULL,
@@ -1169,6 +1135,7 @@ INSERT INTO `nachricht_eingang` (`id`, `sender`, `empfaenger`, `zeit`, `status`,
 -- Tabellenstruktur für Tabelle `quest_db`
 --
 
+DROP TABLE IF EXISTS `quest_db`;
 CREATE TABLE IF NOT EXISTS `quest_db` (
   `quest_id` int(11) NOT NULL,
   `quest_belohnung` text NOT NULL,
@@ -1182,7 +1149,10 @@ CREATE TABLE IF NOT EXISTS `quest_db` (
 
 INSERT INTO `quest_db` (`quest_id`, `quest_belohnung`, `quest_vorraussetzung`, `quest_isStory`) VALUES
 (1, 'a:3:{s:5:"quest";i:2;s:3:"exp";i:10;s:11:"goldklumpen";i:5;}', '', 1),
-(2, '', '', 1);
+(2, 'a:5:{s:5:"quest";i:3;s:3:"exp";i:10;s:11:"goldklumpen";i:5;s:8:"get_item";b:1;s:4:"item";a:1:{i:1;a:4:{s:2:"id";i:1000;s:5:"menge";i:1;s:7:"quality";i:0;s:5:"level";i:1;}}}', '', 1),
+(3, 'a:2:{s:5:"quest";i:4;s:3:"exp";i:10;}', '', 0),
+(4, 'a:2:{s:5:"quest";i:5;s:3:"exp";i:10;}', '', 0),
+(5, 'a:2:{s:5:"quest";i:6;s:3:"exp";i:10;}', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1190,6 +1160,7 @@ INSERT INTO `quest_db` (`quest_id`, `quest_belohnung`, `quest_vorraussetzung`, `
 -- Tabellenstruktur für Tabelle `skill_db`
 --
 
+DROP TABLE IF EXISTS `skill_db`;
 CREATE TABLE IF NOT EXISTS `skill_db` (
   `skill_ID` int(11) NOT NULL AUTO_INCREMENT,
   `maxlvl` int(11) NOT NULL DEFAULT '10',
@@ -1214,6 +1185,7 @@ INSERT INTO `skill_db` (`skill_ID`, `maxlvl`, `erlernbar`, `bonus`) VALUES
 -- Tabellenstruktur für Tabelle `texte`
 --
 
+DROP TABLE IF EXISTS `texte`;
 CREATE TABLE IF NOT EXISTS `texte` (
   `kurz` varchar(255) COLLATE latin1_german2_ci NOT NULL,
   `id` int(10) NOT NULL DEFAULT '0',
@@ -1351,4 +1323,16 @@ INSERT INTO `texte` (`kurz`, `id`, `deutsch`) VALUES
 ('item_text', 15000, 'Ein Leere Holzeimer... Man könnte ihn mit Wasser füllen, wenn den irgendwo etwas wie ein See wäre...'),
 ('item', 20000, 'Zombiehaut'),
 ('item_text', 20000, 'item_text'),
-('not_abbauen', 0, 'not_abbauen');
+('not_abbauen', 0, 'not_abbauen'),
+('quest_text_beendung', 2, 'quest_text_beendung'),
+('quest', 3, 'quest'),
+('quest_text', 3, 'quest_text'),
+('quest_text_beendung', 3, 'quest_text_beendung'),
+('quest', 4, 'quest'),
+('quest_text', 4, 'quest_text'),
+('quest', 5, 'quest'),
+('quest_text', 5, 'quest_text');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
