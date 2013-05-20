@@ -1,4 +1,9 @@
 <?php
+
+/*
+	Bisher kann nur Nahkampf ausgerüstet werden!
+*/
+
 //items auslesen
 $sql_query = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
 $result = mysql_query($sql_query);
