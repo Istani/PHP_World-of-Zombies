@@ -5,6 +5,7 @@ $result = mysql_query($sql_query);
 $dsatz = mysql_fetch_assoc($result);
 
 $char_nahkampf	=	$dsatz['nahkampf'];
+$char_nahkampf_uniq = $dsatz['nahkampf_uniq'];;
 $char_schusswaffe	=	$dsatz['schusswaffe'];
 
 $char_rucksack	=	$dsatz['rucksack'];
@@ -15,7 +16,7 @@ $char_schuhe	=	$dsatz['schuhe'];
 $char_fahrzeug	=	$dsatz['fahrzeug'];
 
 $char_wasser	=	$dsatz['wasser'];
-        $char_nahrung	=	$dsatz['nahrung'];
+$char_nahrung	=	$dsatz['nahrung'];
 $max_wert_ausdauer = $dsatz['gesundheit'];
 
 $sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
@@ -26,17 +27,18 @@ $sql_time = "SELECT * FROM `login` WHERE `userID` = '" . $_SESSION['userID'] . "
 $result_time = mysql_query($sql_time);
 $dsatz_time = mysql_fetch_assoc($result_time);
 
-    $tage = (int)($dsatz_time['onlineTimer']/60/60/24);
-    $stunden = number_format($dsatz_time['onlineTimer']/60/60);
-    $min = number_format($dsatz_time['onlineTimer']/60);
+$tage = (int)($dsatz_time['onlineTimer']/60/60/24);
+$stunden = number_format($dsatz_time['onlineTimer']/60/60);
+$min = number_format($dsatz_time['onlineTimer']/60);
+
 ?>
 <script type="text/javascript">
 function handleCardDrop( event, ui ) {
-var $jq = jQuery.noConflict();
-var slotNumber = $jq(this).data( 'SID' );
-var cardNumber = ui.draggable.data( 'IID' ).item;
-var uniqid = ui.draggable.data( 'IID' ).uniq;
-$jq("#hidden").load("change_item.php?slot="+slotNumber+"&slot_id="+cardNumber+"&slot_uniq="+uniqid);
+	var $jq = jQuery.noConflict();
+	var slotNumber = $jq(this).data( 'SID' );
+	var cardNumber = ui.draggable.data( 'IID' ).item;
+	var uniqid = ui.draggable.data( 'IID' ).uniq;
+	$jq("#hidden").load("change_item.php?slot="+slotNumber+"&slot_id="+cardNumber+"&slot_uniq="+uniqid);
 }
 </script>
 
@@ -88,11 +90,11 @@ echo '<div id="Exp_bar_status" class="Exp_bg"></div>';
 ?>
 <script>
 var $jq = jQuery.noConflict();
-$jq(function() {
-$jq( "#Exp_bar_status" ).progressbar({
-value: <?php echo $dsatz["exp"]; ?>,
-max: <?php echo $dsatz_exp["exp"]; ?>
-});
+	$jq(function() {
+	$jq( "#Exp_bar_status" ).progressbar({
+		value: <?php echo $dsatz["exp"]; ?>,
+		max: <?php echo $dsatz_exp["exp"]; ?>
+	});
 });
 </script>
 </td>
@@ -116,11 +118,11 @@ echo '<div id="Nahrung_bar_status" class="Nahrung_bg"></div>';
 ?>
 <script>
 var $jq = jQuery.noConflict();
-$jq(function() {
-$jq( "#Nahrung_bar_status" ).progressbar({
-value: <?php echo $char_nahrung; ?>,
-max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
-});
+	$jq(function() {
+	$jq( "#Nahrung_bar_status" ).progressbar({
+		value: <?php echo $char_nahrung; ?>,
+		max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?>
+	});
 });
 </script>
 </td>
@@ -130,11 +132,11 @@ echo '<div id="Wasser_bar_status" class="Wasser_bg"></div>';
 ?>
 <script>
 var $jq = jQuery.noConflict();
-$jq(function() {
-$jq( "#Wasser_bar_status" ).progressbar({
-value: <?php echo $char_wasser; ?>,
-max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
-});
+	$jq(function() {
+	$jq( "#Wasser_bar_status" ).progressbar({
+		value: <?php echo $char_wasser; ?>,
+		max: <?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?>
+	});
 });
 </script>
 </td>
@@ -225,17 +227,24 @@ $equip=$char_fahrzeug;
 <tr>
 <td style="width:100px; height:75px;">
 <div id="slot_nahkampf">
-<?php
-        $equip=$char_nahkampf;
-        echo item_bilder($equip, "equip");
-?>
+	<div id="slot_dropme_nakampf">
+	<?php
+			$equip=$char_nahkampf;
+			$equip_uniq=$char_nahkampf_uniq;
+			echo item_bilder($equip, "equip");
+	?>
+	</div>
 </div>
 <script type="text/javascript">
 var $jq = jQuery.noConflict();
 $jq('#slot_nahkampf').data( 'SID', "nahkampf").droppable( {
-accept: 'div',
-hoverClass: 'hovered',
-drop: handleCardDrop
+	accept: 'div',
+	hoverClass: 'hovered',
+	drop: handleCardDrop
+} );
+$jq('#slot_dropme_nakampf').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+	cursor: 'move',
+	revert: true
 } );
 </script>
 </td>
@@ -299,28 +308,49 @@ echo '<td style="width:50px; height:50px;">';
             echo '<span>';
         }
 ?>
-<div id="item_<?php echo $row_inv['invID']; ?>">
-<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
+<div id="slot_inventar_<?php echo $i; ?>">
+	<div id="item_<?php echo $row_inv['invID']; ?>">
+		<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
+	</div>
 </div>
 <script type="text/javascript">
 var $jq = jQuery.noConflict();
 $jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', { item: <?php echo $row_inv['itemID']; ?>, uniq: <?php echo $row_inv['uniqID']; ?>}).draggable( {
-cursor: 'move',
-revert: true
+	cursor: 'move',
+	revert: true
+} );
+
+var $jq = jQuery.noConflict();
+$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
+	accept: 'div',
+	hoverClass: 'hovered',
+	drop: handleCardDrop
 } );
 </script>
 <?php
-        echo '</span>';
-echo '</td>';
-$i++;$j++;
-if ($i==$max_row) {
-echo '</tr><tr>';
-$i=0;
+		echo '</span>';
+	echo '</td>';
+	$i++;$j++;
+	if ($i==$max_row) {
+		echo '</tr><tr>';
+		$i=0;
+	}
 }
-}
+
 //$max_felder=ceil($max_felder/$max_row)*$max_row;
 while ($j<=$max_felder) {
-echo '<td style="width:24px; height:24px;">&nbsp;</td>';
+?>
+<td style="width:24px; height:24px;" id="slot_inventar_<?php echo $i; ?>">
+	<script type="text/javascript">
+	var $jq = jQuery.noConflict();
+	$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
+		accept: 'div',
+		hoverClass: 'hovered',
+		drop: handleCardDrop
+	} );
+	</script>
+<?php
+echo '</td>';
 $i++;$j++;
 if ($i==$max_row) {
 echo '</tr><tr>';
