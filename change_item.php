@@ -13,14 +13,14 @@
 
 if ($_GET['slot']=="inventar") { 
 	// Item wird ins inventar gelegt...
-	$item_add="INSERT INTO `inventory` SET itemID='" .$_GET['slot_id'] ."', uniqID='".$_GET['slot_uniq']."', userID='".$_SESSION['userID']."', menge=1";
-	mysql_query($item_add);
 	foreach ($item_dsatz as $key => $value) {
 		if ((@$item_dsatz[$key]==$_GET['slot_id']) && (@$item_dsatz[$key.'_uniq']==$_GET['slot_uniq'])) {
 			$auswahl=$key;
 		}
 	}
 	if ($auswahl!="") {
+		$item_add="INSERT INTO `inventory` SET itemID='" .$_GET['slot_id'] ."', uniqID='".$_GET['slot_uniq']."', userID='".$_SESSION['userID']."', menge=1";
+		mysql_query($item_add);
 		$item_change="UPDATE `char` SET ".$auswahl."='0', ".$auswahl."_uniq='0' WHERE userID='".$_SESSION['userID']."'";
 		mysql_query($item_change);
 	}
