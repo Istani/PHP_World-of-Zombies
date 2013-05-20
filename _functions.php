@@ -39,13 +39,13 @@
             imageCopyResampled($bild, $oBild, 0, 0, 0, 0, $nBreite, $nBreite, $oBreite, $oBreite);
             $schwarz = imagecolorallocate($bild, 0, 0, 0);
             if (($menge>0) && ($menge<10)) {
-                imagestring($bild, 1, 19, $nBreite-9, $menge, $schwarz);
+                imagestring($bild, 2, $nBreite-10, $nBreite-14, $menge, $schwarz);
             }
             elseif (($menge>9) && ($menge<100)) {
-                imagestring($bild, 1, 14, $nBreite-9, $menge, $schwarz);
+                imagestring($bild, 2, $nBreite-15, $nBreite-14, $menge, $schwarz);
             }
             elseif ($menge>99) {
-                imagestring($bild, 1, 8, $nBreite-9, $menge, $schwarz);
+                imagestring($bild, 2, $nBreite-22, $nBreite-14, $menge, $schwarz);
             }
             imagejpeg($bild,"picture/items/".'temp.jpg');
             $content = file_get_contents("picture/items/".'temp.jpg');
