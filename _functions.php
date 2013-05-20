@@ -543,7 +543,7 @@
 	}
 	
 	//gen_item(1000);
-	//inventory_add(2, 1000, 1);
+	//inventory_add(2, 1001, 1);
 	
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
