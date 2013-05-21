@@ -346,7 +346,7 @@ $jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
 while ($j<=$max_felder) {
 ?>
 <td style="width:24px; height:24px;" id="slot_inventar_<?php echo $i; ?>">
-	LEERES BILD ALEX
+	<?php echo item_bilder(0, "inv"); ?>
 	<script type="text/javascript">
 	var $jq = jQuery.noConflict();
 	$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
