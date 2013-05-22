@@ -97,14 +97,14 @@ a img {
   }
 
 #nahrung_bar_status, #wasser_bar_status {
-	min-width:200px;
+	min-width:275px;
 	height:5px;
 	float:left;	
 	padding: 0px;
 	margin: 0px;	
 }
 #exp_bar_status {
-	min-width:555px;
+	width:560px;
 	height:5px;
 	float:left;
 	padding: 0px;
