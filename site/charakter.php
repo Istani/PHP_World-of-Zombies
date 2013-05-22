@@ -28,7 +28,7 @@
 
 <style>
 .ui-tabs-vertical { 
-	width: 950px; 
+	width: 99%;
 }
 .ui-tabs-vertical .ui-tabs-nav { 
 	padding: .2em .1em .2em .2em; 
