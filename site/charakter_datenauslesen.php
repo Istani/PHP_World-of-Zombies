@@ -3,45 +3,18 @@
 	/*
 		Bisher kann nur Nahkampf ausgerüstet werden!
 	*/
-
-	//items auslesen
-	$sql_query = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
-	$result = mysql_query($sql_query);
-	$dsatz = mysql_fetch_assoc($result);
-
-	$char_nahkampf	=	$dsatz['nahkampf'];
-	$char_nahkampf_uniq = $dsatz['nahkampf_uniq']; // Hättest ja auch ruhig mal alle uniqs auslesen können... FU Alex
 	
-	$char_schusswaffe	=	$dsatz['schusswaffe'];
-	$char_schusswaffe_uniq	=	$dsatz['schusswaffe_uniq'];
-
-	$char_rucksack	=	$dsatz['rucksack'];
-	$char_rucksack_uniq	=	$dsatz['rucksack_uniq'];
-	$char_helm	=	$dsatz['helm'];
-	$char_helm_uniq	=	$dsatz['helm_uniq'];
-	$char_amor	=	$dsatz['amor'];
-	$char_amor_uniq	=	$dsatz['amor_uniq'];
-	$char_handschuhe	=	$dsatz['handschuhe'];
-	$char_handschuhe_uniq	=	$dsatz['handschuhe_uniq'];
-	$char_schuhe	=	$dsatz['schuhe'];
-	$char_schuhe_uniq	=	$dsatz['schuhe_uniq'];
-	$char_fahrzeug	=	$dsatz['fahrzeug'];
-	$char_fahrzeug_uniq	=	$dsatz['fahrzeug_uniq'];
+	//Einfach alle felder auslesen :-P
+	$sql['kd_stamm'] = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
+	$query['kd_stamm']=mysql_query($sql['kd_stamm']);
+	while ($row['kd_stamm']=mysql_fetch_assoc($query['kd_stamm'])) {
+		foreach ($row['kd_stamm'] as $key => $value) {
+			$varb_text="char_".$key;
+			$$varb_text=$value; // Variable Variablenamen!
+		}
+		$max_wert_ausdauer = $row['kd_stamm']['gesundheit'];
+	}
 	
-	$char_ring_L	=	$dsatz['ring_L'];
-	$char_ring_L_uniq	=	$dsatz['ring_L_uniq'];
-	$char_ring_R	=	$dsatz['ring_R'];
-	$char_ring_R_uniq	=	$dsatz['ring_R_uniq'];
-	$char_amulett	=	$dsatz['amulett'];
-	$char_amulett_uniq	=	$dsatz['amulett_uniq'];
-	
-	
-	
-
-	$char_wasser	=	$dsatz['wasser'];
-	$char_nahrung	=	$dsatz['nahrung'];
-	$max_wert_ausdauer = $dsatz['gesundheit'];
-
 	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";
 	$result_exp = mysql_query($sql_exp);
 	$dsatz_exp = mysql_fetch_assoc($result_exp);
