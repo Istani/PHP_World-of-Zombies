@@ -25,10 +25,9 @@ function handleCardDrop( event, ui ) {
                     $menge=$item_row['refill'];
                     $sql_update="UPDATE `char` SET ".$wert."=".$wert."+".$menge." WHERE `userID` = '" . $_SESSION['userID'] . "'";
                     mysql_query($sql_update);
-$max_wert= get_wert_plus_bonus($_SESSION['userID'], strtolower($wert), $max_wert_ausdauer);
-$sql_update="UPDATE `char` SET ".$wert."=".$max_wert." WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">".$max_wert;
+					$max_wert= get_wert_plus_bonus($_SESSION['userID'], strtolower($wert), $max_wert_ausdauer);
+					$sql_update="UPDATE `char` SET ".$wert."=".$max_wert." WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">".$max_wert;
                     mysql_query($sql_update);
-
                     echo '<meta http-equiv="refresh" content="0; URL=index.php?'.$queryString.'">';
                 }
             }
@@ -36,87 +35,151 @@ $sql_update="UPDATE `char` SET ".$wert."=".$max_wert." WHERE `userID` = '" . $_S
     }
 ?>
 <div id="dialog-benutzen" title="Item Benutzen">
-<form name="item_use" action="index.php?<?php echo $queryString; ?>" method="post">
-<input type="hidden" name="aktion" value="item_benutzen">
-<input type="hidden" name="itemid" id="use_item">
-<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Sind Sie sicher das Sie Das item benutzen wollen</p>
-</form>
+	<form name="item_use" action="index.php?<?php echo $queryString; ?>" method="post">
+		<input type="hidden" name="aktion" value="item_benutzen">
+		<input type="hidden" name="itemid" id="use_item">
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Sind Sie sicher das Sie Das item benutzen wollen</p>
+	</form>
 </div>
 <table>
-<tr>
-<td style="width:100px;">&nbsp;</td>
-<td style="width:100px;">&nbsp;</td>
-<td style="width:25px;">&nbsp;</td>
-<td style="width:100px;">&nbsp;</td>
-<td style="width:100px;">Helm</td>
-<td style="width:25px;">&nbsp;</td>
-<td style="width:100px;">Fahrzeug</td>
-</tr>
-<tr>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_helm;
-$title='title="'.item_hover($equip).'"';
-echo '<img class="equip" '.$title.' src="picture/items/'.$equip.'.png">';
-?></td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_fahrzeug;
-        echo item_bilder($equip, "equip");
-?></td>
-</tr>
-<tr>
-<td style="width:100px;">Nahkampf</td>
-<td style="width:100px;">Fernkampf</td>
-<td style="width:25px;">&nbsp;</td>
-<td style="width:100px;">Handschuhe</td>
-<td style="width:100px;">R&uuml;stung</td>
-<td style="width:25px;">&nbsp;</td>
-<td style="width:100px;"></td>
-</tr>
-<tr>
-<td style="width:100px; height:75px;">
-<div id="slot_nahkampf">
-	<div id="slot_dropme_nakampf">
-	<?php
-			$equip=$char_nahkampf;
-			$equip_uniq=$char_nahkampf_uniq;
+	<tr>
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;">&nbsp;</td>
+		<td style="width:100px;">Helm</td>
+		<td style="width:25px;">&nbsp;</td>
+		<td style="width:100px;">Fahrzeug</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td><?php
+			$equip=$char_helm;
 			echo item_bilder($equip, "equip");
-	?>
-	</div>
-</div>
-<script type="text/javascript">
-var $jq = jQuery.noConflict();
-$jq('#slot_nahkampf').data( 'SID', "nahkampf").droppable( {
-	accept: 'div',
-	hoverClass: 'hovered',
-	drop: handleCardDrop
-} );
-$jq('#slot_dropme_nakampf').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
-	cursor: 'move',
-	revert: true
-} );
-</script>
-</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_schusswaffe;
-        echo item_bilder($equip, "equip");
-?></td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_handschuhe;
-        echo item_bilder($equip, "equip");
-?></td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_amor;
-        echo item_bilder($equip, "equip");
-?></td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;">&nbsp;</td>
-</tr>
+		?></td>
+		<td>&nbsp;</td>
+		<td><?php
+			$equip=$char_fahrzeug;
+			echo item_bilder($equip, "equip");
+		?></td>
+	</tr>
+	<tr>
+		<td>Nahkampf</td>
+		<td>Fernkampf</td>
+		<td>&nbsp;</td>
+		<td>Handschuhe</td>
+		<td>R&uuml;stung</td>
+		<td>&nbsp;</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_nahkampf">
+				<div id="slot_dropme_nakampf">
+				<?php
+					$equip=$char_nahkampf;
+					$equip_uniq=$char_nahkampf_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_nahkampf').data( 'SID', "nahkampf").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_nakampf').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_schusswaffe">
+				<div id="slot_dropme_schusswaffe">
+				<?php
+					$equip=$char_schusswaffe;
+					$equip_uniq=$char_schusswaffe_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_schusswaffe').data( 'SID', "schusswaffe").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_schusswaffe').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+		<td>&nbsp;</td>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_handschuhe">
+				<div id="slot_dropme_handschuhe">
+				<?php
+					$equip=$char_handschuhe;
+					$equip_uniq=$char_handschuhe_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_handschuhe').data( 'SID', "handschuhe").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_handschuhe').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_amor">
+				<div id="slot_dropme_amor">
+				<?php
+					$equip=$char_amor;
+					$equip_uniq=$char_amor_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_amor').data( 'SID', "amor").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_amor').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
 <tr>
 <td style="width:100px;"></td>
 <td style="width:100px;"></td>
