@@ -1,9 +1,4 @@
 <?php
-
-	/*
-		Bisher kann nur Nahkampf ausgerüstet werden!
-	*/
-	
 	//Einfach alle felder auslesen :-P
 	$sql['kd_stamm'] = "SELECT * FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
 	$query['kd_stamm']=mysql_query($sql['kd_stamm']);
