@@ -20,8 +20,19 @@ $item_art=mysql_result($query_check_item,0,0);
 //Ausrüstbare Arten
 $art=array(1,2,4,5,6,7,8,9,10,11);
 
+$sql_check_items="SELECT beschreibung FROM item_art WHERE art=".$item_art;
+$query_check_item=mysql_query($sql_check_items);
+$slot_art=mysql_result($query_check_item,0,0);
+// Check item slot!
+$slot_check=false;
+if (str_replace($slot_art,"ikarus ist dumm",$_GET['slot'])!=$_GET['slot']) {
+	$slot_check=true;
+}
+
+
+$wechseldich=true;
 if (in_array($item_art, $art)) {
-	if ($_GET['slot']=="inventar") { 
+	if ($_GET['slot']=="inventar") {
 		// Item wird ins inventar gelegt...
 		foreach ($item_dsatz as $key => $value) {
 			if ((@$item_dsatz[$key]==$_GET['slot_id']) && (@$item_dsatz[$key.'_uniq']==$_GET['slot_uniq'])) {
@@ -34,14 +45,14 @@ if (in_array($item_art, $art)) {
 			$item_change="UPDATE `char` SET ".$auswahl."='0', ".$auswahl."_uniq='0' WHERE userID='".$_SESSION['userID']."'";
 			mysql_query($item_change);
 		}
-	} elseif ($item_dsatz[$_GET['slot']] == '0') {
+	} elseif (($item_dsatz[$_GET['slot']] == '0') && ($slot_check)) {
 		// Zieh dich an !
 		$item_change="UPDATE `char` SET ".$_GET['slot']."='".$_GET['slot_id']."', ".$_GET['slot']."_uniq='".$_GET['slot_uniq']."' WHERE userID='".$_SESSION['userID']."'";
 		if (mysql_query($item_change)){
 			$item_remove="DELETE FROM `inventory` WHERE itemID='" . $_GET['slot_id'] ."' and uniqID='" . $_GET['slot_uniq'] ."'";
 			mysql_query($item_remove);
 		}
-	} else {
+	} elseif ($slot_check) {
 		// Ausrüstung wechsel dich
 		$item_change="UPDATE `char` SET ".$_GET['slot']."='".$_GET['slot_id']."', ".$_GET['slot']."_uniq='".$_GET['slot_uniq']."' WHERE userID='".$_SESSION['userID']."'";
 		if (mysql_query($item_change)){
@@ -50,11 +61,15 @@ if (in_array($item_art, $art)) {
 			$item_add="INSERT INTO `inventory` SET itemID='" .$item_dsatz[$_GET['slot']] ."', uniqID='" .$item_dsatz[$_GET['slot']."_uniq"] ."', userID='".$_SESSION['userID']."', menge=1";
 			mysql_query($item_add);
 		}
+	} else {
+		$wechseldich=false;
 	}
 	//Seite neuladen
-?>
-	<meta http-equiv="refresh" content="0;url=index.php?site=charakter#tabs-3">
-<?php
-	//Nicht neuladen wenn nichts passiert ist
+	if ($wechseldich) {
+		?>
+			<meta http-equiv="refresh" content="0;url=index.php?site=charakter#tabs-3">
+		<?php
 	}
+	//Nicht neuladen wenn nichts passiert ist
+}
 ?>
