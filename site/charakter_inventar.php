@@ -180,70 +180,113 @@ function handleCardDrop( event, ui ) {
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 	</tr>
-<tr>
-<td style="width:100px;"></td>
-<td style="width:100px;"></td>
-<td style="width:25px;"></td>
-<td style="width:100px;"></td>
-<td style="width:100px;">Schuhe</td>
-<td style="width:25px;"></td>
-<td style="width:100px;">Rucksack</td>
-</tr>
-<tr>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_schuhe;
-        echo item_bilder($equip, "equip");
-?></td>
-<td style="width:25px; height:75px;">&nbsp;</td>
-<td style="width:100px; height:75px;"><?php
-$equip=$char_rucksack;
-        echo item_bilder($equip, "equip");
-?></td>
-</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Schuhe</td>
+		<td></td>
+		<td>Rucksack</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_schuhe">
+				<div id="slot_dropme_schuhe">
+				<?php
+					$equip=$char_schuhe;
+					$equip_uniq=$char_schuhe_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_schuhe').data( 'SID', "schuhe").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_schuhe').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+		<td>&nbsp;</td>
+		<td>
+		<!--- Drag & Drop -->
+			<div id="slot_rucksack">
+				<div id="slot_dropme_rucksack">
+				<?php
+					$equip=$char_rucksack;
+					$equip_uniq=$char_rucksack_uniq;
+					echo item_bilder($equip, "equip");
+				?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#slot_rucksack').data( 'SID', "rucksack").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			$jq('#slot_dropme_rucksack').data( 'IID', { item: <?php echo $equip; ?>, uniq: <?php echo $equip_uniq; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
+			</script>
+		<!--- ENDE Drag & Drop -->
+		</td>
+	</tr>
 </table>
+
 <br>
 <h1>Inventar</h1>
 <hr /><br>
 <?php
-$max_row=25;
-$i=0;$j=1;
-$max_felder=player_inventar_platz($_SESSION['userID']);
-echo '<table border="1">';
-echo '<tr>';
-$sql_inv="SELECT inventory.*, item_db.art FROM inventory INNER JOIN item_db ON inventory.itemID = item_db.itemID WHERE inventory.userID = '".$_SESSION['userID']."' ORDER BY inventory.itemID, menge DESC";
-$query_inv=mysql_query($sql_inv);
-while ($row_inv=mysql_fetch_assoc($query_inv)) {
-echo '<td style="width:50px; height:50px;">';
+	$max_row=14; // 25 bei 25px bildern
+	$i=0;$j=1;
+	$max_felder=player_inventar_platz($_SESSION['userID']);
+	echo '<table border="1">';
+	echo '<tr>';
+	$sql_inv="SELECT inventory.*, item_db.art FROM inventory INNER JOIN item_db ON inventory.itemID = item_db.itemID WHERE inventory.userID = '".$_SESSION['userID']."' ORDER BY inventory.itemID, menge DESC";
+	$query_inv=mysql_query($sql_inv);
+	while ($row_inv=mysql_fetch_assoc($query_inv)) {
+	echo '<td>';
         if ($row_inv['art']==3) {
-            echo '<span OnClick="dialog_aufrufen('.$row_inv['itemID'].')">';
+            echo '<span OnClick="dialog_aufrufen('.$row_inv['itemID'].')">';  // wegen benutzen
         } else {
             echo '<span>';
         }
-?>
-<div id="slot_inventar_<?php echo $i; ?>">
-	<div id="item_<?php echo $row_inv['invID']; ?>">
-		<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
-	</div>
-</div>
-<script type="text/javascript">
-var $jq = jQuery.noConflict();
-$jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', { item: <?php echo $row_inv['itemID']; ?>, uniq: <?php echo $row_inv['uniqID']; ?>}).draggable( {
-	cursor: 'move',
-	revert: true
-} );
+			?>
+			<div id="slot_inventar_<?php echo $i; ?>">
+				<div id="item_<?php echo $row_inv['invID']; ?>">
+					<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
+				</div>
+			</div>
+			<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq('#item_<?php echo $row_inv['invID']; ?>').data( 'IID', { item: <?php echo $row_inv['itemID']; ?>, uniq: <?php echo $row_inv['uniqID']; ?>}).draggable( {
+				cursor: 'move',
+				revert: true
+			} );
 
-var $jq = jQuery.noConflict();
-$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
-	accept: 'div',
-	hoverClass: 'hovered',
-	drop: handleCardDrop
-} );
-</script>
-<?php
+			var $jq = jQuery.noConflict();
+			$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
+				accept: 'div',
+				hoverClass: 'hovered',
+				drop: handleCardDrop
+			} );
+			</script>
+			<?php
 		echo '</span>';
 	echo '</td>';
 	$i++;$j++;
@@ -253,51 +296,50 @@ $jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
 	}
 }
 
-//$max_felder=ceil($max_felder/$max_row)*$max_row;
 while ($j<=$max_felder) {
-?>
-<td style="width:24px; height:24px;" id="slot_inventar_<?php echo $i; ?>">
-	<?php echo item_bilder(0, "inv"); ?>
-	<script type="text/javascript">
-	var $jq = jQuery.noConflict();
-	$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
-		accept: 'div',
-		hoverClass: 'hovered',
-		drop: handleCardDrop
-	} );
-	</script>
-<?php
-echo '</td>';
-$i++;$j++;
-if ($i==$max_row) {
-echo '</tr><tr>';
-$i=0;
-}
+	?>
+	<td id="slot_inventar_<?php echo $i; ?>">
+		<?php echo item_bilder(0, "inv"); ?>
+		<script type="text/javascript">
+		var $jq = jQuery.noConflict();
+		$jq('#slot_inventar_<?php echo $i; ?>').data( 'SID', "inventar").droppable( {
+			accept: 'div',
+			hoverClass: 'hovered',
+			drop: handleCardDrop
+		} );
+		</script>
+	<?php
+	echo '</td>';
+	$i++;$j++;
+	if ($i==$max_row) {
+		echo '</tr><tr>';
+		$i=0;
+	}
 }
 echo '</tr></table>';
 ?>
 <script type="text/javascript" >
-var $jq = jQuery.noConflict();
-$jq("#dialog-benutzen").dialog({
-autoOpen: false,
-resizable: false,
-height: 250,
-width: 360,
-modal: true,
-buttons: {
-'Ja': function() {
-document.item_use.submit();
-},
-'Nein': function() {
-$jq(this).dialog("close");
-}
-}
-});
-function dialog_aufrufen($item) {
-var $jq = jQuery.noConflict();
-document.getElementById("use_item").value=$item;
-$jq("#use_item").value=$item;
-$jq("#dialog-benutzen").dialog("open");
-return false;
-};
+	var $jq = jQuery.noConflict();
+	$jq("#dialog-benutzen").dialog({
+		autoOpen: false,
+		resizable: false,
+		height: 250,
+		width: 360,
+		modal: true,
+		buttons: {
+			'Ja': function() {
+				document.item_use.submit();
+			},
+			'Nein': function() {
+				$jq(this).dialog("close");
+			}
+		}
+	});
+	function dialog_aufrufen($item) {
+		var $jq = jQuery.noConflict();
+		document.getElementById("use_item").value=$item;
+		$jq("#use_item").value=$item;
+		$jq("#dialog-benutzen").dialog("open");
+		return false;
+	};
 </script>
