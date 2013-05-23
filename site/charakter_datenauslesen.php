@@ -33,7 +33,10 @@
 	$dsatz_time = mysql_fetch_assoc($result_time);
 
 	$tage = (int)($dsatz_time['onlineTimer']/60/60/24);
-	$stunden = number_format($dsatz_time['onlineTimer']/60/60);
-	$min = number_format($dsatz_time['onlineTimer']/60);
+	$stunden = (int)($dsatz_time['onlineTimer']/60/60-$tage*24);
+	$minuten = (int)($dsatz_time['onlineTimer']/60-($tage*24+$stunden)*60);
+	
+	$stunden=sprintf ( "%02d",$stunden);
+	$minuten=sprintf ( "%02d",$minuten);
 
 ?>

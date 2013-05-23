@@ -1,34 +1,30 @@
 <h1>Status</h1>
 <hr />
-<table>
+<table width="100%">
 	<tr>
-		<td style="width: 200px;"><b><?php echo $_SESSION['loginName']; ?></b></td>
-		<td style="width: 200px;"></td>
-		<td style="width: 200px;"><b>Spielzeit:</b></td>
-		<td style="width: 200px;"></td>
+		<td style="width: 25%"><b><?php echo $_SESSION['loginName']; ?></b></td>
+		<td style="width: 25%"></td>
+		<td style="width: 25%"></td>
+		<td style="width: 25%"><b>Spielzeit:</b></td>
 	</tr>
 	<tr>
 		<td>Level: <?php echo $dsatz['level']; ?></td>
 		<td>Klasse: <?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
-		<td colspan="2" ><?php echo $tage;?> Tage <?php echo $stunden - $tage*24;?> Std. <?php echo $min - $stunden*60;?> Min.</td>
-	</tr>
-	<tr>
-		<td colspan="4"><hr /></td>
-	</tr>
-	<tr>
-		<td colspan="4">&nbsp;</td>
-	</tr>
-	<tr>
 		<td>&nbsp;</td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td><?php echo $tage;?> Tage <?php echo $stunden;?> Std. <?php echo $minuten;?> Min.</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<hr />
+			&nbsp;<br>
+			&nbsp;<br>
+		</td>
 	</tr>
 	<tr>
 		<td>Erfahrung:</td>
 		<td></td>
 		<td></td>
-		<td><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
+		<td class="text_rechts"><?php echo $dsatz["exp"] . "/" . $dsatz_exp["exp"]; ?></td>
 	</tr>
 	<tr>
 		<td colspan="4">
@@ -47,16 +43,16 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="4">&nbsp;</td>
+		<td colspan="4">
+			&nbsp;<br>
+			&nbsp;
+		</td>
 	</tr>
 	<tr>
 		<td>Nahrung:</td>
-		<td><?php echo $dsatz['nahrung']; ?>/<?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?></td>
+		<td class="text_rechts"><?php echo $dsatz['nahrung']; ?>/<?php echo get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer); ?></td>
 		<td>Wasser:</td>
-		<td><?php echo $dsatz['wasser']; ?>/<?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?></td>
+		<td class="text_rechts"><?php echo $dsatz['wasser']; ?>/<?php echo get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer); ?></td>
 	</tr>
 	<tr>
 		<td colspan="2">
@@ -89,15 +85,16 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="4">&nbsp;</td>
+		<td colspan="4">
+			&nbsp;<br>
+			&nbsp;<br>
+			&nbsp;
+		</td>
 	</tr>
 	<tr>
 		<td>Gegenst&auml;nde hergestellt:</td>
-		<td><?php echo $dsatz["Items_Crafting"]; ?></td>
+		<td class="text_rechts"><?php echo $dsatz["Items_Crafting"]; ?></td>
 		<td>Rohstoffe abgebaut:</td>
-		<td><?php echo $dsatz["Items_Abbau"]; ?></td>
+		<td class="text_rechts"><?php echo $dsatz["Items_Abbau"]; ?></td>
 	</tr>
 </table>
