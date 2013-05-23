@@ -51,8 +51,10 @@ if (in_array($item_art, $art)) {
 			mysql_query($item_add);
 		}
 	}
-}
-
-//Seite neuladen
+	//Seite neuladen
 ?>
-<meta http-equiv="refresh" content="0;url=index.php?site=charakter#tabs-3">
+	<meta http-equiv="refresh" content="0;url=index.php?site=charakter#tabs-3">
+<?php
+	//Nicht neuladen wenn nichts passiert ist
+	}
+?>
