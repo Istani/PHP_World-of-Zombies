@@ -130,7 +130,7 @@
 		mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		$sql_rucksack="SELECT platz FROM `item_db` WHERE itemID=".$rucksack;
 		$query_rucksack=mysql_query($sql_rucksack);
-		$max_plaetze=mysql_result($query_rucksack,0,0);
+		$max_plaetze=@mysql_result($query_rucksack,0,0);
 		return $max_plaetze;
 	}
 	function player_inventar_platz($user) {
@@ -464,6 +464,20 @@
 			}
 		}
 		$skill_zuwachs=$fest_wert;
+		
+		// Nun alles Equipment durchgehen
+		$sql['kd_stamm'] = "SELECT * FROM `char` WHERE `userID` = '" .$user . "'";
+		$query['kd_stamm']=mysql_query($sql['kd_stamm']);
+		while ($row['kd_stamm']=mysql_fetch_assoc($query['kd_stamm'])) {
+			foreach ($row['kd_stamm'] as $key => $value) {
+				// Wenn es das Feld und das Feld_uniq gibt, ist es wohl equip!
+				if (isset($row['kd_stamm'][$key]) && isset($row['kd_stamm'][$key.'uniq'])) {
+					$Uniq_ID=$row['kd_stamm'][$key.'uniq'];
+					
+				}
+			}
+			$max_wert_ausdauer = $row['kd_stamm']['gesundheit'];
+		}
 			
 		$ausgabewert=$wert+$skill_zuwachs;
 		return $ausgabewert;
