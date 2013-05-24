@@ -219,8 +219,16 @@
         <script>
             function zeitanzeige() {
                 var $jq = jQuery.noConflict();
-                $jq("#zeitanzeige").load("zeitanzeige.php?start=<?php echo $aktion["aktion_start"]; ?>&ende=<?php echo $aktion["aktion_ende"]; ?>&till=<?php echo time(); ?>");
-                window.setTimeout('zeitanzeige()',500);
+				var $temp1;
+				var $temp2;
+				$temp1=<?php echo $aktion["aktion_ende"]; ?>;
+				$temp2=<?php echo time(); ?>;
+				if ($temp1<=$temp2) {
+					location.reload();
+				} else {
+					$jq("#zeitanzeige").load("zeitanzeige.php?start=<?php echo $aktion["aktion_start"]; ?>&ende=<?php echo $aktion["aktion_ende"]; ?>&till=<?php echo time(); ?>");
+					window.setTimeout('zeitanzeige()',500);
+				}
             }
             zeitanzeige();
         </script>

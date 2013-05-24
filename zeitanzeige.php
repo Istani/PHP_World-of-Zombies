@@ -41,7 +41,9 @@ $dsatz["aktion_ende"]=$_GET['ende'];
             <?php
             if ($value==$max) {
                 ?>
-                <meta http-equiv="refresh" content="0; URL=index.php">
+                <script type="text/javascript">
+					location.reload();
+				</script>';
                 <?php
             }
             ?>
