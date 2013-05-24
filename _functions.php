@@ -511,15 +511,13 @@
 			}
 		}
 		// Brauch Item Art! & Level!
-		$sql_art="SELECT art, min_lvl, max_lvl FROM item_db WHERE itemID=".$org_item;
+		$sql_art="SELECT art FROM item_db WHERE itemID=".$org_item;
 		$query_art=mysql_query($sql_art);
 		$item_art=mysql_result($query_art,0,0);
-		$item_min=mysql_result($query_art,0,1);
-		$item_max=mysql_result($query_art,0,2);
 		if ($item_level>0) {
 			$neues_level=$item_level;
 		} else {
-			$neues_level=rand($item_min,$item_max);
+			$neues_level=rand($quality-1,$quality+1); // Find ich irgendwie toller
 		}
 		
 		//Anzahl Boni
