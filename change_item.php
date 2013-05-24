@@ -69,9 +69,12 @@ if (in_array($item_art, $art)) {
 	//Seite neuladen
 	if ($wechseldich) {
 		?>
-			<script type="text/javascript">
+		<script type="text/javascript">
+			var $jq = jQuery.noConflict();
+			$jq(function() {
 				window.location = 'index.php?site=charakter';
-			</script>
+			});
+		</script>
 		<?php
 	}
 	//Nicht neuladen wenn nichts passiert ist

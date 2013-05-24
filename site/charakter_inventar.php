@@ -28,14 +28,19 @@ function handleCardDrop( event, ui ) {
 					$max_wert= get_wert_plus_bonus($_SESSION['userID'], strtolower($wert), $max_wert_ausdauer);
 					$sql_update="UPDATE `char` SET ".$wert."=".$max_wert." WHERE `userID` = '" . $_SESSION['userID'] . "' AND ".$wert.">".$max_wert;
                     mysql_query($sql_update);
-                    echo '<meta http-equiv="refresh" content="0; URL=index.php?'.$queryString.'">';
+					
+                    echo '<script type="text/javascript">var $jq = jQuery.noConflict();
+						$jq(function() {
+							window.location = \'index.php?site=charakter\';
+						});
+					</script>';
                 }
             }
         }
     }
 ?>
 <div id="dialog-benutzen" title="Item Benutzen">
-	<form name="item_use" action="index.php?<?php echo $queryString; ?>" method="post">
+	<form name="item_use" action="index.php?<?php echo $queryString; ?>#tabs-3" method="post">
 		<input type="hidden" name="aktion" value="item_benutzen">
 		<input type="hidden" name="itemid" id="use_item">
 		<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Sind Sie sicher das Sie Das item benutzen wollen</p>

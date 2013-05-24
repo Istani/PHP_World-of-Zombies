@@ -46,7 +46,9 @@
 		<meta name="generator" content="<?php echo $bg["author"]; ?>" />
 		<title><?php echo $bg['title']; ?></title>
 		<link href="_stylesheet.css" rel="stylesheet" type="text/css" />
-		<?php include("_javascript.php"); ?>
+		<?php 
+		ob_start();
+		include("_javascript.php"); ?>
 	</head>
 	<body>
 		<table class="page">
@@ -74,7 +76,12 @@
 			<tr>
 				<td colspan="2">
 					<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-						<?php include("inc/footer.php"); ?>
+						<?php include("inc/footer.php"); 
+						$page_ausdgabe=ob_get_contents();
+						ob_end_clean();
+						echo $page_ausdgabe;
+						?>
+						
 					</div>
 				</td>
 			</tr>
