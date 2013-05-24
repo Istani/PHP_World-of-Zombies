@@ -22,7 +22,11 @@
 
 <script>
 	var $jq = jQuery.noConflict();
-	$jq("#tabs").tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+	$jq("#tabs").tabs({
+					cookie: {
+						expires: 365
+					}
+				}).addClass( "ui-tabs-vertical ui-helper-clearfix" );
 	$jq("#tabs li").removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 </script>
 
