@@ -511,7 +511,7 @@
 			}
 		}
 		// Brauch Item Art! & Level!
-		$sql_art="SELECT art, min_lvl, maxLlvl FROM item_db WHERE itemID=".$org_item;
+		$sql_art="SELECT art, min_lvl, max_lvl FROM item_db WHERE itemID=".$org_item;
 		$query_art=mysql_query($sql_art);
 		$item_art=mysql_result($query_art,0,0);
 		$item_min=mysql_result($query_art,0,1);
