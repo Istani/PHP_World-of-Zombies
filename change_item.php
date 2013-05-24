@@ -11,6 +11,8 @@
 		- Alle Fehlermeldungen fehlen noch!
 		- Items nur in richtige Slots ausrüsten (item_art aus DB prüfen)
 	*/
+	
+	//var_dump($_GET);
 
 // Alle Items abfangen die nicht ausgerüstet werden
 $sql_check_items="SELECT art FROM item_db WHERE itemID=".$_GET['slot_id'];
@@ -67,7 +69,9 @@ if (in_array($item_art, $art)) {
 	//Seite neuladen
 	if ($wechseldich) {
 		?>
-			<meta http-equiv="refresh" content="0;url=index.php?site=charakter#tabs-3">
+			<script type="text/javascript">
+				window.location = 'index.php?site=charakter';
+			</script>
 		<?php
 	}
 	//Nicht neuladen wenn nichts passiert ist
