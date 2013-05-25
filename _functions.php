@@ -300,13 +300,20 @@
 		$sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
 		$query_char_normal=mysql_query($sql_char_normal);
 		while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
+			// stats?
+			$char['vit']=$row_char_normal['gesundheit'];
+			$char['int']=$row_char_normal['wissen'];
+			$char['dex']=$row_char_normal['treffchance'];
+			$char['luk']=$row_char_normal['glueck'];
+			$char['agi']=$row_char_normal['geschwindigkeit'];
+			$char['str']=$row_char_normal['power'];
+		
 			// Einzelne Status Wert
 			$char['nahrung']=$row_char_normal['nahrung'];
-			$char['min_schaden']=1;
-			$char['max_schaden']=1;
+			$char['min_schaden']=$char['str']*$bg['str_schaden_modifier'];
+			$char['max_schaden']=$char['str']*$bg['str_schaden_modifier'];
 			$char['ruestung']=0;
 			
-			// stats?
 			
 			
 			

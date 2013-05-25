@@ -1,0 +1,4 @@
+Bei Upload ins Live-System unbedingt machen!
+
+MYSQL: 
+UPDATE `char` SET `gesundheit`=5;

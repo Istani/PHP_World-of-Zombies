@@ -149,6 +149,10 @@
 				   echo '<br>';
 				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
 						//$monster['mob_drop'];
+					//Char Drop Berechnung
+					$drop_wert=$char['luk']*$bg['luck_drop_modifier'];
+					$menge_max_wert=$drop_wert;
+					
 					$belohnung=unserialize($monster['mob_drop']);
 					if (is_array($belohnung)) {
 						foreach ($belohnung as $key => $value) {
@@ -163,8 +167,21 @@
 									if (!isset($tmp_item['level'])) {
 										$tmp_item['level']=0;
 									}
-									if (inventory_add($_SESSION["userID"], $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level'])) {
-										echo $tmp_item['menge'].' x '.text_ausgabe("item", $tmp_item['id'], $bg['sprache']).' erhalten.<br>';
+									//Drop es?
+									$drop=false;
+									if ($drop_wert>100) {
+										$drop=true;
+									} else {
+										$chance=rand(0,100);
+										if ($drop_wert>$chance) {
+											$drop=true;
+										}
+									}
+									if ($drop) {
+										if (inventory_add($_SESSION["userID"], $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level'])) {
+											echo $tmp_item['menge'].' x '.text_ausgabe("item", $tmp_item['id'], $bg['sprache']).' erhalten.<br>';
+										}
+										$drop_wert=$drop_wert*$bg['next_drop_modifier'];
 									}
 									//echo '1_';
 								}
@@ -172,7 +189,46 @@
 						}	
 					}
 					// Item dorps von Items
-					$sql_itemdb="SELECT * FROM item_db WHERE min_level<=".$monster." AND max_level>=".$monster." ORDER BY RAND()";
+					$sql_itemdb="SELECT * FROM item_db WHERE min_lvl<=".$monster['mob_level']." AND max_lvl>=".$monster['mob_level']." ORDER BY RAND()";
+					$query_itemdb=mysql_query($sql_itemdb);
+					while ($row_item=mysql_fetch_assoc($query_itemdb)) {
+						$last_drop=0;
+						$drop_menge=1;
+						$menge_wert=$menge_max_wert;
+						$menge_wert=$menge_wert*$bg['next_drop_modifier'];
+						while ($drop_menge>$last_drop) {
+							$last_drop=$drop_menge;
+							if ($menge_wert>100) {
+								$drop_menge++;
+							} else {
+								$chance=rand(0,100);
+								if ($menge_wert>$chance) {
+									$drop_menge++;
+								}
+							}
+							$menge_wert=$menge_wert*$bg['next_drop_modifier'];
+						}
+						// Wenn item hat stackwert 1 dann natürlich keine erhöhe menge sodner nur 1
+						if ($row_item['stack']==1) {
+							$drop_menge=1;
+						}
+						
+						$drop=false;
+						if ($drop_wert>100) {
+							$drop=true;
+						} else {
+							$chance=rand(0,100);
+							if ($drop_wert>$chance) {
+								$drop=true;
+							}
+						}
+						if ($drop) {
+							if (inventory_add($_SESSION["userID"], $row_item['itemID'], $drop_menge, 0, 0, 0)) {
+								echo  $drop_menge.' x '.text_ausgabe("item",$row_item['itemID'], $bg['sprache']).' erhalten.<br>';
+							}
+							$drop_wert=$drop_wert*$bg['next_drop_modifier'];
+						}
+					}
 					
 				} else {
 				   //Spieler gewinnt

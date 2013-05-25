@@ -8,6 +8,7 @@
 	
 	$bg['sprache']	  = "deutsch";
 	$bg['vit_ausdauer_modifier']	  = "20";
+	$bg['str_schaden_modifier']	  = "0.2";
 	$bg['luck_drop_modifier']	  = "15";
-	$bg['next_drop_modifier']	  = "60%";
+	$bg['next_drop_modifier']	  = "0.60";
 ?>
