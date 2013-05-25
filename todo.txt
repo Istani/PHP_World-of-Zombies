@@ -1,4 +1,4 @@
-Bei Upload ins Live-System unbedingt machen!
+*****************Bei Upload ins Live-System unbedingt machen!*****************
 
 MYSQL: 
 UPDATE `char` SET `gesundheit`=5;
@@ -7,6 +7,8 @@ Daten:
 Rucksack auf 28 Plätze oder 14... Damit die Zeile voll ist, von Monster bekommt man jetzt ca immer 2 Items pro Fight (glück abhänig)
 Apfel wieder auf weniger heilung 10 oder 20 eher 10 
 
+
+*****************Demnächst machen*****************
 PHP:
 Schlafen Abbrechen auch heilung
 Craften sollte auch Zeit brauchen
