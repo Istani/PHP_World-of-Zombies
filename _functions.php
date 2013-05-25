@@ -293,45 +293,50 @@
     }
     function get_player_status($char_id) {
         // Alle Char daten für den Kampf!
-	$vhar=array();
-        global $mysql;
+		$char=array();
+        global $mysql, $bg;
         mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
-	$sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
-	$query_char_normal=mysql_query($sql_char_normal);
-	while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
-	    // Einzelne Status Wert
-            $char['nahrung']=$row_char_normal['nahrung'];
-	    $char['min_schaden']=1;
-	    $char['max_schaden']=1;
-            $char['ruestung']=0;
-	    $waffe[0]=$row_char_normal['schusswaffe']; //Fernkampfwaffe, falls Muniton vorhanden - Also erstmal egal
-	    $waffe[1]=$row_char_normal['nahkampf']; //Nahkampfwaffe, weil erstmal keine Muniton ;)
-	    $equip=array(
-		$row_char_normal['helm'],
-		$row_char_normal['amor'],
-		$row_char_normal['handschuhe'],
-		$row_char_normal['schuhe'],	
-		$row_char_normal['rucksack']
-	    );
-	}
-	// ALLES EQUIP DURCHGEHEN
-	// WAFFEN KANN MAN JA NUR IM KAMPFDURCHGEHEN WEIL JEDER HIT 1 MUNITION
-	$char['waffen']=$waffe;
-	// Rüstung
-	$instr_mysql="";
-	foreach ($equip as $key => $value) {
-	    if ($instr_mysql=="") {
-		$instr_mysql=$value;
-	    } else {
-     	        $instr_mysql.=", ".$value;
-	    }
-	} 	
-	$sql_ruestung="SELECT sum(def) FROM `item_db` WHERE itemID in (".$instr_mysql.")";
-	$query_ruestung=mysql_query($sql_ruestung);
-	$char['ruestung']+=mysql_result($query_ruestung,0,0);
-	// Und Werte zurückgeen!
-	return $char;
+		$sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
+		$query_char_normal=mysql_query($sql_char_normal);
+		while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
+			// Einzelne Status Wert
+			$char['nahrung']=$row_char_normal['nahrung'];
+			$char['min_schaden']=1;
+			$char['max_schaden']=1;
+			$char['ruestung']=0;
+			
+			// stats?
+			
+			
+			
+			$waffe[0]=$row_char_normal['schusswaffe']; //Fernkampfwaffe, falls Muniton vorhanden - Also erstmal egal
+			$waffe[1]=$row_char_normal['nahkampf']; //Nahkampfwaffe, weil erstmal keine Muniton ;)
+			$equip=array(
+				$row_char_normal['helm'],
+				$row_char_normal['amor'],
+				$row_char_normal['handschuhe'],
+				$row_char_normal['schuhe'],	
+				$row_char_normal['rucksack']
+			);
+		}
+		// ALLES EQUIP DURCHGEHEN
+		// WAFFEN KANN MAN JA NUR IM KAMPFDURCHGEHEN WEIL JEDER HIT 1 MUNITION
+		$char['waffen']=$waffe;
+		// Rüstung
+		$instr_mysql="";
+		foreach ($equip as $key => $value) {
+			if ($instr_mysql=="") {
+				$instr_mysql=$value;
+			} else {
+				$instr_mysql.=", ".$value;
+			}
+		} 	
+		$sql_ruestung="SELECT sum(def) FROM `item_db` WHERE itemID in (".$instr_mysql.")";
+		$query_ruestung=mysql_query($sql_ruestung);
+		$char['ruestung']+=mysql_result($query_ruestung,0,0);
+		// Und Werte zurückgeen!
+		return $char;
     }
 	function array_set_mysqlstring($array) {
 		$sql_string="";

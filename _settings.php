@@ -7,6 +7,7 @@
     $bg["version"]    =       "Version 0.12";
 	
 	$bg['sprache']	  = "deutsch";
-	$bg['luck_drop_chance']	  = "15";
-	$bg['next_drop_chance']	  = "60%";
+	$bg['vit_ausdauer_modifier']	  = "20";
+	$bg['luck_drop_modifier']	  = "15";
+	$bg['next_drop_modifier']	  = "60%";
 ?>

@@ -5,7 +5,7 @@
     $result = mysql_query($sql_query);
     $dsatz = mysql_fetch_assoc($result);
 	
-	$max_wert_ausdauer  =   $dsatz['gesundheit'];
+	$max_wert_ausdauer  =   $dsatz['gesundheit']*$bg['vit_ausdauer_modifier'];
     $char_wasser	=	$dsatz['wasser'];
     $char_nahrung	=	$dsatz['nahrung'];
 	

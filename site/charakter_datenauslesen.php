@@ -7,7 +7,7 @@
 			$varb_text="char_".$key;
 			$$varb_text=$value; // Variable Variablenamen!
 		}
-		$max_wert_ausdauer = $row['kd_stamm']['gesundheit'];
+		$max_wert_ausdauer = $row['kd_stamm']['gesundheit']*$bg['vit_ausdauer_modifier'];
 	}
 	
 	$sql_exp = "SELECT * FROM `char_exp` WHERE `level` = '" . $_SESSION['lvl'] . "'";

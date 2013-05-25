@@ -150,25 +150,30 @@
 				   echo 'Du hast '.$monster['mob_exp'].' EXP gewonnen.<br>';
 						//$monster['mob_drop'];
 					$belohnung=unserialize($monster['mob_drop']);
-					foreach ($belohnung as $key => $value) {
-						if ($key=="get_item") {
-							foreach ($belohnung["item"] as $tmp_item) {
-								if (!isset($tmp_item['menge'])) {
-									$tmp_item['menge']=1;
+					if (is_array($belohnung)) {
+						foreach ($belohnung as $key => $value) {
+							if ($key=="get_item") {
+								foreach ($belohnung["item"] as $tmp_item) {
+									if (!isset($tmp_item['menge'])) {
+										$tmp_item['menge']=1;
+									}
+									if (!isset($tmp_item['quality'])) {
+										$tmp_item['quality']=0;
+									}
+									if (!isset($tmp_item['level'])) {
+										$tmp_item['level']=0;
+									}
+									if (inventory_add($_SESSION["userID"], $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level'])) {
+										echo $tmp_item['menge'].' x '.text_ausgabe("item", $tmp_item['id'], $bg['sprache']).' erhalten.<br>';
+									}
+									//echo '1_';
 								}
-								if (!isset($tmp_item['quality'])) {
-									$tmp_item['quality']=0;
-								}
-								if (!isset($tmp_item['level'])) {
-									$tmp_item['level']=0;
-								}
-								if (inventory_add($_SESSION["userID"], $tmp_item['id'], $tmp_item['menge'], 0, $tmp_item['quality'], $tmp_item['level'])) {
-									echo $tmp_item['menge'].' x '.text_ausgabe("item", $tmp_item['id'], $bg['sprache']).' erhalten.<br>';
-								}
-								//echo '1_';
-							}
+							}	
 						}	
-					}	
+					}
+					// Item dorps von Items
+					$sql_itemdb="SELECT * FROM item_db WHERE min_level<=".$monster." AND max_level>=".$monster." ORDER BY RAND()";
+					
 				} else {
 				   //Spieler gewinnt
 				   echo "Verloren, Looser!";
