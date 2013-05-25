@@ -1,5 +1,6 @@
-*****************Bei Upload ins Live-System unbedingt machen!*****************
+ALEX DENK IMMER AN SYNC! SONST HÄTTE ICH JETZT HALT DAS ADMIN MENÜ GEMACHT!
 
+*****************Bei Upload ins Live-System unbedingt machen!*****************
 MYSQL: 
 UPDATE `char` SET `gesundheit`=5;
 
