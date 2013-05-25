@@ -108,22 +108,6 @@
                     $return.=$item_row['hit'].'<br>';
                     $return.=text_ausgabe("kritchance", 0, $bg['sprache']).':&nbsp;';
                     $return.=$item_row['crit'].'<br>';
-					$uniqid;
-					$sql['bonuswerte']="SELECT * FROM item_list WHERE uniqID=".$uniqid;
-					$query['bonuswerte']=mysql_query($sql['bonuswerte']);
-					if (mysql_num_rows($query['bonuswerte'])>0) {
-						$return.='<br>'.text_ausgabe("Bonuswerte", 0, $bg['sprache']).':&nbsp;<br>';
-						while ($row_skills=mysql_fetch_assoc($query['bonuswerte'])) {
-							$tmp_werte=unserialize($row_skills['bonus']);
-							foreach ($tmp_werte as $key => $value) {
-								$return.=text_ausgabe($key, 0, $bg['sprache']).':&nbsp;';
-								$return.=$value.'<br>';
-							}
-						}
-						$return.='<br>';
-					}
-					
-					
                     break;
                 case 3:
                     $return.=text_ausgabe("stack", 0, $bg['sprache']).':&nbsp;';
@@ -140,6 +124,19 @@
                     break;
             }
             $return.=text_ausgabe("item_text", $item_row['itemID'], $bg['sprache']).'<br>';
+			$sql['bonuswerte']="SELECT * FROM item_list WHERE uniqID=".$uniqid;
+			$query['bonuswerte']=mysql_query($sql['bonuswerte']);
+			if (mysql_num_rows($query['bonuswerte'])>0) {
+				$return.='<br>'.text_ausgabe("Bonuswerte", 0, $bg['sprache']).':&nbsp;<br>';
+				while ($row_skills=mysql_fetch_assoc($query['bonuswerte'])) {
+					$tmp_werte=unserialize($row_skills['bonus']);
+					foreach ($tmp_werte as $key => $value) {
+						$return.=text_ausgabe($key, 0, $bg['sprache']).':&nbsp;';
+						$return.=$value.'<br>';
+					}
+				}
+				$return.='<br>';
+			}
             return $return;
         } else {
             $return="<strong>".text_ausgabe("item", $item, $bg['sprache'])."</strong><br>";
@@ -652,7 +649,7 @@
     }
 	
 	//gen_item(1000);
-	//inventory_add(2, 1001, 1);
+	//inventory_add(1, 5000, 1);
 	
 	// Functionen sollten wir vielleicht irgendwann mal umschreiben in ne Klasse, aber wahrscheinlich erst viel später
 ?>
