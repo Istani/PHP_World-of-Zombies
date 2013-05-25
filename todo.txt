@@ -9,3 +9,4 @@ Apfel wieder auf weniger heilung 10 oder 20 eher 10
 
 PHP:
 Schlafen Abbrechen auch heilung
+Craften sollte auch Zeit brauchen
