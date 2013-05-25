@@ -4,7 +4,7 @@ MYSQL:
 UPDATE `char` SET `gesundheit`=5;
 
 Daten:
-Rucksack auf 28 Plätze oder 14... Damit die Zeile voll ist, von Monster bekommt man jetzt ca immer 2 Items pro Fight
+Rucksack auf 28 Plätze oder 14... Damit die Zeile voll ist, von Monster bekommt man jetzt ca immer 2 Items pro Fight (glück abhänig)
 
 PHP:
 Schlafen Abbrechen auch heilung
