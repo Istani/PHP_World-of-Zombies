@@ -48,18 +48,7 @@ a img {
 	border-style:solid;
 	border-width:1px;
 }
-.karte_ueber_spalte {
-	width: 13px;
-	vertical-align: middle;
-}
-.karte_ueber_zeile {
-	height: 13px;
-	text-align: center;
-}
-
 .karte_celle {
-	height: 150px;
-	width: 150px;
 	text-align: center;
 	vertical-align: middle;
 }

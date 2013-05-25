@@ -553,6 +553,48 @@
 		$id=mysql_insert_id();
 		return $id;
 	}
+	function get_gebiet_anz($map, $y, $x, $pixel, $user=0) {
+		global $mysql;
+		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+        mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
+		$returnwert="&nbsp;";
+		
+		$sql_map="SELECT * FROM map_gebiete WHERE map_id=".$map." AND x_cord=".$x." AND y_cord=".$y;
+		$query_map=mysql_query($sql_map);
+		if (mysql_num_rows($query_map)>0) {
+			$returnwert="HIER";
+			$dastz=mysql_fetch_assoc($query_map);
+			if (check_quest($dastz['need_quest'], $user)) {
+				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-10));
+			}
+		}
+		return $returnwert;
+	}
+	function gebiet_bilder($gebiet, $pixel) {
+		$posting="";
+        $title='title="gebiet"';
+        if (file_exists("picture/gebiete/".$gebiet.".png")) {
+            $oBild=imagecreatefrompng("picture/gebiete/".$gebiet.".png");
+			imageAlphaBlending($oBild, true);
+			imageSaveAlpha($oBild, true);
+            $oBreite = imageSX($oBild);
+            $faktor=$pixel/$oBreite;
+            $title.=' class="gebiet"';
+            $nBreite=$oBreite*$faktor;
+            $bild = imagecreatetruecolor($nBreite,$nBreite);
+			imageAlphaBlending($bild, true);
+			imageSaveAlpha($bild, true);
+			$color = imagecolorallocatealpha ($bild,255,255,255,127);
+			imagefill($bild, 0, 0, $color);
+            imageCopyResampled($bild, $oBild, 0, 0, 0, 0, $nBreite, $nBreite, $oBreite, $oBreite);
+            imagepng($bild,"picture/gebiete/".'temp.png');
+            $content = file_get_contents("picture/gebiete/".'temp.png');
+            $content=base64_encode($content);
+            unlink("picture/gebiete/".'temp.png');
+            $posting='<img src="data:image/jpg;base64,'.$content.'" alt="base64 Test" '. $title.'>';
+        }
+		return $posting;
+    }
 	
 	//gen_item(1000);
 	//inventory_add(2, 1001, 1);
