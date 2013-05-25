@@ -576,7 +576,6 @@
 		$stats_anz=mysql_result($query_random_quality,0,0);
 		
 		//Bonus auswählen
-		$bonus=array();
 		$sql_getBonus="SELECT stat FROM item_stats WHERE art=".$item_art." AND min_quality<=".$quality." GROUP BY stat ORDER BY RAND() LIMIT 0,".$stats_anz;
 		$query_getBonus=mysql_query($sql_getBonus);
 		while ($row_stats=mysql_fetch_assoc($query_getBonus)) {
@@ -588,18 +587,25 @@
 			$max_wert=$max_wert*$neues_level;
 			$bonus[$row_stats['stat']]=rand($min_wert, $max_wert);
 		}
-		$bonus_text=serialize($bonus);
-		
+		if (isset($bonus)) {
+			$bonus_text=serialize($bonus);
+		} else {
+			$bonus_text="";
+		}
 		// Item hinzufügen
 		//Spalte Item brauchen wir eigentlich nicht unbedingt...
-		$sql_add="INSERT INTO item_list SET 
-			quality=".$quality.",
-			bonus='".$bonus_text."',
-			item_lvl=".$neues_level.",
-			setID=".$neu_setID.",
-			setBonus='".$neu_setBonus."'";
-		mysql_query($sql_add);
-		$id=mysql_insert_id();
+		if ($bonus_text!="") {
+			$sql_add="INSERT INTO item_list SET 
+				quality=".$quality.",
+				bonus='".$bonus_text."',
+				item_lvl=".$neues_level.",
+				setID=".$neu_setID.",
+				setBonus='".$neu_setBonus."'";
+			mysql_query($sql_add);
+			$id=mysql_insert_id();
+		} else {
+			$id=0;
+		}
 		return $id;
 	}
 	function get_gebiet_anz($map, $y, $x, $pixel, $user=0) {
