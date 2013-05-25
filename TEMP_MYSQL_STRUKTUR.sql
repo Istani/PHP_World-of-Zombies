@@ -1,11 +1,30 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Erstellungszeit: 25. Mai 2013 um 14:29
+-- Server Version: 5.5.27
+-- PHP-Version: 5.4.7
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- Datenbank: `zodgame`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `abbau_gebiet`
+--
 
 DROP TABLE IF EXISTS `abbau_gebiet`;
 CREATE TABLE IF NOT EXISTS `abbau_gebiet` (
@@ -17,6 +36,12 @@ CREATE TABLE IF NOT EXISTS `abbau_gebiet` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=4 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `abfall`
+--
+
 DROP TABLE IF EXISTS `abfall`;
 CREATE TABLE IF NOT EXISTS `abfall` (
   `zeitpunkt` int(20) NOT NULL,
@@ -24,6 +49,12 @@ CREATE TABLE IF NOT EXISTS `abfall` (
   `menge` int(11) NOT NULL,
   `spieler` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `char`
+--
 
 DROP TABLE IF EXISTS `char`;
 CREATE TABLE IF NOT EXISTS `char` (
@@ -75,11 +106,23 @@ CREATE TABLE IF NOT EXISTS `char` (
   PRIMARY KEY (`userID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `char_exp`
+--
+
 DROP TABLE IF EXISTS `char_exp`;
 CREATE TABLE IF NOT EXISTS `char_exp` (
   `level` int(11) NOT NULL,
   `exp` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `char_quest`
+--
 
 DROP TABLE IF EXISTS `char_quest`;
 CREATE TABLE IF NOT EXISTS `char_quest` (
@@ -89,6 +132,12 @@ CREATE TABLE IF NOT EXISTS `char_quest` (
   `cquest_erledigt` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `char_skill`
+--
+
 DROP TABLE IF EXISTS `char_skill`;
 CREATE TABLE IF NOT EXISTS `char_skill` (
   `userID` int(11) NOT NULL,
@@ -96,6 +145,12 @@ CREATE TABLE IF NOT EXISTS `char_skill` (
   `lvl` int(11) NOT NULL,
   PRIMARY KEY (`userID`,`skillID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `crafting_rezepte`
+--
 
 DROP TABLE IF EXISTS `crafting_rezepte`;
 CREATE TABLE IF NOT EXISTS `crafting_rezepte` (
@@ -106,6 +161,12 @@ CREATE TABLE IF NOT EXISTS `crafting_rezepte` (
   `skill_level` int(11) NOT NULL,
   PRIMARY KEY (`item`,`produkt`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_chat`
+--
 
 DROP TABLE IF EXISTS `guild_chat`;
 CREATE TABLE IF NOT EXISTS `guild_chat` (
@@ -119,6 +180,12 @@ CREATE TABLE IF NOT EXISTS `guild_chat` (
   KEY `guild_id` (`guild_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=24 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_db`
+--
+
 DROP TABLE IF EXISTS `guild_db`;
 CREATE TABLE IF NOT EXISTS `guild_db` (
   `guild_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -130,11 +197,23 @@ CREATE TABLE IF NOT EXISTS `guild_db` (
   PRIMARY KEY (`guild_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=3 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_exp`
+--
+
 DROP TABLE IF EXISTS `guild_exp`;
 CREATE TABLE IF NOT EXISTS `guild_exp` (
   `level` int(11) NOT NULL,
   `exp` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_ranking`
+--
 
 DROP TABLE IF EXISTS `guild_ranking`;
 CREATE TABLE IF NOT EXISTS `guild_ranking` (
@@ -144,12 +223,24 @@ CREATE TABLE IF NOT EXISTS `guild_ranking` (
   PRIMARY KEY (`guild_id`,`userID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_skill`
+--
+
 DROP TABLE IF EXISTS `guild_skill`;
 CREATE TABLE IF NOT EXISTS `guild_skill` (
   `guild_id` int(11) NOT NULL,
   `skill_id` int(11) NOT NULL,
   `lvl` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `guild_skill_db`
+--
 
 DROP TABLE IF EXISTS `guild_skill_db`;
 CREATE TABLE IF NOT EXISTS `guild_skill_db` (
@@ -159,6 +250,12 @@ CREATE TABLE IF NOT EXISTS `guild_skill_db` (
   PRIMARY KEY (`skill_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `inventory`
+--
+
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
   `invID` int(11) NOT NULL AUTO_INCREMENT,
@@ -167,7 +264,13 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `uniqID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=263 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=316 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_art`
+--
 
 DROP TABLE IF EXISTS `item_art`;
 CREATE TABLE IF NOT EXISTS `item_art` (
@@ -175,11 +278,23 @@ CREATE TABLE IF NOT EXISTS `item_art` (
   `beschreibung` varchar(30) COLLATE latin1_german2_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_chance_stats`
+--
+
 DROP TABLE IF EXISTS `item_chance_stats`;
 CREATE TABLE IF NOT EXISTS `item_chance_stats` (
   `anzahl_stats` int(11) NOT NULL,
   `chance_stats` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_db`
+--
 
 DROP TABLE IF EXISTS `item_db`;
 CREATE TABLE IF NOT EXISTS `item_db` (
@@ -201,6 +316,12 @@ CREATE TABLE IF NOT EXISTS `item_db` (
   PRIMARY KEY (`itemID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=20001 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_list`
+--
+
 DROP TABLE IF EXISTS `item_list`;
 CREATE TABLE IF NOT EXISTS `item_list` (
   `uniqID` int(11) NOT NULL AUTO_INCREMENT,
@@ -212,7 +333,13 @@ CREATE TABLE IF NOT EXISTS `item_list` (
   `setBonus` text NOT NULL,
   PRIMARY KEY (`uniqID`),
   UNIQUE KEY `uniqID` (`uniqID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_quality`
+--
 
 DROP TABLE IF EXISTS `item_quality`;
 CREATE TABLE IF NOT EXISTS `item_quality` (
@@ -220,6 +347,12 @@ CREATE TABLE IF NOT EXISTS `item_quality` (
   `beschreibung` text NOT NULL,
   `chance` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_sets`
+--
 
 DROP TABLE IF EXISTS `item_sets`;
 CREATE TABLE IF NOT EXISTS `item_sets` (
@@ -229,6 +362,12 @@ CREATE TABLE IF NOT EXISTS `item_sets` (
   `Info` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `item_stats`
+--
+
 DROP TABLE IF EXISTS `item_stats`;
 CREATE TABLE IF NOT EXISTS `item_stats` (
   `stat` text NOT NULL,
@@ -237,6 +376,12 @@ CREATE TABLE IF NOT EXISTS `item_stats` (
   `minwert` int(11) NOT NULL,
   `maxwert` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `login`
+--
 
 DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
@@ -251,6 +396,31 @@ CREATE TABLE IF NOT EXISTS `login` (
   PRIMARY KEY (`userID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=22 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `map_gebiete`
+--
+
+DROP TABLE IF EXISTS `map_gebiete`;
+CREATE TABLE IF NOT EXISTS `map_gebiete` (
+  `gebiet_id` int(11) NOT NULL AUTO_INCREMENT,
+  `map_id` int(11) NOT NULL,
+  `x_cord` int(11) NOT NULL,
+  `y_cord` int(11) NOT NULL,
+  `text_bez` varchar(255) NOT NULL,
+  `text_id` int(11) NOT NULL,
+  `need_quest` int(11) NOT NULL,
+  `link_bez` varchar(255) NOT NULL,
+  PRIMARY KEY (`gebiet_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `mob_db`
+--
+
 DROP TABLE IF EXISTS `mob_db`;
 CREATE TABLE IF NOT EXISTS `mob_db` (
   `mob_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -264,6 +434,12 @@ CREATE TABLE IF NOT EXISTS `mob_db` (
   PRIMARY KEY (`mob_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=29 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `nachricht_ausgang`
+--
+
 DROP TABLE IF EXISTS `nachricht_ausgang`;
 CREATE TABLE IF NOT EXISTS `nachricht_ausgang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -275,6 +451,12 @@ CREATE TABLE IF NOT EXISTS `nachricht_ausgang` (
   `nachricht` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=20 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `nachricht_eingang`
+--
 
 DROP TABLE IF EXISTS `nachricht_eingang`;
 CREATE TABLE IF NOT EXISTS `nachricht_eingang` (
@@ -288,6 +470,12 @@ CREATE TABLE IF NOT EXISTS `nachricht_eingang` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=20 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `quest_db`
+--
+
 DROP TABLE IF EXISTS `quest_db`;
 CREATE TABLE IF NOT EXISTS `quest_db` (
   `quest_id` int(11) NOT NULL,
@@ -295,6 +483,12 @@ CREATE TABLE IF NOT EXISTS `quest_db` (
   `quest_vorraussetzung` text NOT NULL,
   `quest_isStory` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `skill_db`
+--
 
 DROP TABLE IF EXISTS `skill_db`;
 CREATE TABLE IF NOT EXISTS `skill_db` (
@@ -304,6 +498,12 @@ CREATE TABLE IF NOT EXISTS `skill_db` (
   `bonus` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`skill_ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=5 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `texte`
+--
 
 DROP TABLE IF EXISTS `texte`;
 CREATE TABLE IF NOT EXISTS `texte` (
