@@ -122,10 +122,12 @@
 				    }
 				    echo 'Du benutzt: '.$item_name.'<br>';
 				    if($waffenart==1) {
-   				        $mob_schaden=rand($monster['min_schaden'],$monster['max_schaden']);
+						$mob_schaden=rand($monster['min_schaden'],$monster['max_schaden']);
 				        $mob_schaden=$mob_schaden*(1+($char['ruestung']/100));
 					$mob_schaden=(int)$mob_schaden;
 					$char['nahrung']=$char['nahrung']-$mob_schaden;
+					$char['min_schaden']=get_wert_plus_bonus($_SESSION['userID'], "schaden", $char['min_schaden']);
+					$char['max_schaden']=get_wert_plus_bonus($_SESSION['userID'], "schaden", $char['max_schaden']);
 					$char_schaden=rand($char['min_schaden'], $char['max_schaden']);
 					$char_schaden=(int)$char_schaden;
 					$monster['mob_leben']=$monster['mob_leben']-$char_schaden;

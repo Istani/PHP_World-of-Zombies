@@ -11,4 +11,8 @@
 	$bg['str_schaden_modifier']	  = "0.2";
 	$bg['luck_drop_modifier']	  = "15";
 	$bg['next_drop_modifier']	  = "0.60";
+	
+	// Rechnungen:
+	// https://docs.google.com/spreadsheet/pub?key=0AityTNNaT9hQdGZ1Vnc4RXh1OEVVM2pSdHhNQ2hfY3c&output=html
+	
 ?>

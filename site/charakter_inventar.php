@@ -88,7 +88,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_nahkampf;
 					$equip_uniq=$char_nahkampf_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -113,7 +113,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_schusswaffe;
 					$equip_uniq=$char_schusswaffe_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -139,7 +139,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_handschuhe;
 					$equip_uniq=$char_handschuhe_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -164,7 +164,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_amor;
 					$equip_uniq=$char_amor_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -206,7 +206,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_schuhe;
 					$equip_uniq=$char_schuhe_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -232,7 +232,7 @@ function handleCardDrop( event, ui ) {
 				<?php
 					$equip=$char_rucksack;
 					$equip_uniq=$char_rucksack_uniq;
-					echo item_bilder($equip, "equip");
+					echo item_bilder($equip, "equip",0,$equip_uniq);
 				?>
 				</div>
 			</div>
@@ -274,7 +274,7 @@ function handleCardDrop( event, ui ) {
 			?>
 			<div id="slot_inventar_<?php echo $i; ?>">
 				<div id="item_<?php echo $row_inv['invID']; ?>">
-					<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge']); ?>
+					<?php echo item_bilder($row_inv['itemID'], "inv", $row_inv['menge'], $row_inv['uniqID']); ?>
 				</div>
 			</div>
 			<script type="text/javascript">

@@ -16,8 +16,8 @@
 		$text=nl2br(utf8_encode($text));
 		return $text;
 	}
-    function item_bilder($item, $art="show", $menge=0) {
-        $title='title="'.item_hover($item).'"';
+    function item_bilder($item, $art="show", $menge=0, $uniqid=0) {
+        $title='title="'.item_hover($item, $uniqid).'"';
         if (!file_exists("picture/items/".$item.".png")) {
             $item=0;
         }
@@ -76,7 +76,7 @@
             return $posting;
         }
     }
-    function item_hover($item) {
+    function item_hover($item, $uniqid=0) {
         //text_ausgabe($title, $id, $sprache)
         global $mysql, $bg;
         mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -87,6 +87,14 @@
             $item_row=mysql_fetch_assoc($query_item);
             $return="<strong>".text_ausgabe("item", $item_row['itemID'], $bg['sprache'])."</strong><br>";
             $return.='<i>'.text_ausgabe("item_art", $item_row['art'], $bg['sprache']).'</i><br>';
+			$sql['level']="SELECT * FROM item_list WHERE uniqID=".$uniqid;
+			$query['level']=mysql_query($sql['level']);
+			if (mysql_num_rows($query['level'])>0) {
+				while ($row_skills=mysql_fetch_assoc($query['level'])) {
+					$return.=text_ausgabe("seltenheit", 0, $bg['sprache']).':&nbsp;';
+					$return.=text_ausgabe("seltenheit", $row_skills['quality'], $bg['sprache']).'<br>';
+				}
+			}
             switch ($item_row['art']) {
                 case 0:
                     $return.=text_ausgabe("stack", 0, $bg['sprache']).':&nbsp;';
@@ -100,6 +108,22 @@
                     $return.=$item_row['hit'].'<br>';
                     $return.=text_ausgabe("kritchance", 0, $bg['sprache']).':&nbsp;';
                     $return.=$item_row['crit'].'<br>';
+					$uniqid;
+					$sql['bonuswerte']="SELECT * FROM item_list WHERE uniqID=".$uniqid;
+					$query['bonuswerte']=mysql_query($sql['bonuswerte']);
+					if (mysql_num_rows($query['bonuswerte'])>0) {
+						$return.='<br>'.text_ausgabe("Bonuswerte", 0, $bg['sprache']).':&nbsp;<br>';
+						while ($row_skills=mysql_fetch_assoc($query['bonuswerte'])) {
+							$tmp_werte=unserialize($row_skills['bonus']);
+							foreach ($tmp_werte as $key => $value) {
+								$return.=text_ausgabe($key, 0, $bg['sprache']).':&nbsp;';
+								$return.=$value.'<br>';
+							}
+						}
+						$return.='<br>';
+					}
+					
+					
                     break;
                 case 3:
                     $return.=text_ausgabe("stack", 0, $bg['sprache']).':&nbsp;';
@@ -481,15 +505,31 @@
 		$sql['kd_stamm'] = "SELECT * FROM `char` WHERE `userID` = '" .$user . "'";
 		$query['kd_stamm']=mysql_query($sql['kd_stamm']);
 		while ($row['kd_stamm']=mysql_fetch_assoc($query['kd_stamm'])) {
-			foreach ($row['kd_stamm'] as $key => $value) {
+			$tmp_daten=$row['kd_stamm'];
+			//var_dump($tmp_daten);
+			foreach ($tmp_daten as $key => $value) {
 				// Wenn es das Feld und das Feld_uniq gibt, ist es wohl equip!
-				if (isset($row['kd_stamm'][$key]) && isset($row['kd_stamm'][$key.'uniq'])) {
-					$Uniq_ID=$row['kd_stamm'][$key.'uniq'];
-					
+				if (isset($tmp_daten[$key]) && isset($tmp_daten[$key.'_uniq'])) {
+					$Uniq_ID=$tmp_daten[$key.'_uniq'];
+					// Weiter gehts mit auslesen der Bonuswerte
+					$sql['bonuswerte']="SELECT * FROM item_list WHERE uniqID=".$Uniq_ID." AND bonus like '%".$bonuswert."%'";
+					$query['bonuswerte']=mysql_query($sql['bonuswerte']);
+					$fest_wert=0;
+					while ($row_skills=mysql_fetch_assoc($query['bonuswerte'])) {
+						$tmp_werte=unserialize($row_skills['bonus']);
+						$add_wert=$tmp_werte[$bonuswert];
+						$test_prozent=str_replace("%", "", $add_wert);
+						if ($test_prozent==$add_wert) {
+							$fest_wert=$fest_wert+$add_wert;
+						} else {
+							$fest_wert=$fest_wert+($wert*($test_prozent/100));
+						}
+					}
+					$skill_zuwachs=$skill_zuwachs+$fest_wert;
 				}
 			}
-			$max_wert_ausdauer = $row['kd_stamm']['gesundheit'];
 		}
+		
 			
 		$ausgabewert=$wert+$skill_zuwachs;
 		return $ausgabewert;
