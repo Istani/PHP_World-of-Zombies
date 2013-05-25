@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 25. Mai 2013 um 14:29
+-- Erstellungszeit: 25. Mai 2013 um 16:44
 -- Server Version: 5.5.27
 -- PHP-Version: 5.4.7
 
@@ -64,7 +64,12 @@ CREATE TABLE IF NOT EXISTS `char` (
   `skpoints` int(11) NOT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
   `exp` int(11) NOT NULL DEFAULT '0',
-  `gesundheit` int(11) NOT NULL DEFAULT '100',
+  `gesundheit` int(11) NOT NULL DEFAULT '5',
+  `power` int(11) NOT NULL DEFAULT '5',
+  `geschwindigkeit` int(11) NOT NULL DEFAULT '5',
+  `glueck` int(11) NOT NULL DEFAULT '5',
+  `wissen` int(11) NOT NULL DEFAULT '5',
+  `treffchance` int(11) NOT NULL DEFAULT '5',
   `nahrung` int(11) NOT NULL DEFAULT '100',
   `wasser` int(11) NOT NULL DEFAULT '100',
   `nahkampf` int(11) NOT NULL DEFAULT '0',
@@ -264,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `uniqID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=316 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=330 ;
 
 -- --------------------------------------------------------
 
@@ -333,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `item_list` (
   `setBonus` text NOT NULL,
   PRIMARY KEY (`uniqID`),
   UNIQUE KEY `uniqID` (`uniqID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
 
 -- --------------------------------------------------------
 
