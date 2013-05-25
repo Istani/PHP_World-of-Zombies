@@ -8,5 +8,5 @@
 	
 	$bg['sprache']	  = "deutsch";
 	$bg['luck_drop_chance']	  = "15";
-	$bg['next_drop_chance']	  = "75%";
+	$bg['next_drop_chance']	  = "60%";
 ?>
