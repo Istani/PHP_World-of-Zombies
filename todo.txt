@@ -5,6 +5,7 @@ UPDATE `char` SET `gesundheit`=5;
 
 Daten:
 Rucksack auf 28 Plätze oder 14... Damit die Zeile voll ist, von Monster bekommt man jetzt ca immer 2 Items pro Fight (glück abhänig)
+Apfel wieder auf weniger heilung 10 oder 20 eher 10 
 
 PHP:
 Schlafen Abbrechen auch heilung
