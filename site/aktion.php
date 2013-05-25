@@ -186,6 +186,27 @@
                                     WHERE userID=".$_SESSION["userID"];
                 mysql_query($sql['user_aktion']);
                 break;
+			case 'SCHLAFEN':
+				echo '<h2>'.text_ausgabe("schlafen", 0, $bg['sprache']).'</h2>';
+				echo text_ausgabe("schlafen_ok", 0, $bg['sprache']).'<br>';
+				$sql_query = "SELECT * FROM `char` WHERE userID = '" . $_SESSION['userID'] . "'";
+				$result = mysql_query($sql_query);
+				$dsatz = mysql_fetch_assoc($result);
+				
+				$max_wert_ausdauer  =   $dsatz['gesundheit'];
+				
+				$max_wasser=get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer);
+				$max_nahrung=get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer);
+				$sql['user_aktion']="UPDATE `char`
+                                    SET aktion='',
+										wasser=".$max_wasser.",
+										nahrung=".$max_nahrung.",
+                                        aktion_id=0,
+                                        aktion_start=0,
+                                        aktion_ende=0
+                                    WHERE userID=".$_SESSION["userID"];
+                mysql_query($sql['user_aktion']);
+				break;
         }
     } else {
         switch ($aktion['aktion']) {

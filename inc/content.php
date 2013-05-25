@@ -95,6 +95,9 @@ if (!isset($_SESSION['userID'])) {
 				case "wohngebiet":
                     include("world/gebiet/wohngebiet.php");
                     break;
+				case "huette":
+                    include("world/gebiet/huette.php");
+                    break;
             }
         } else {
             if ($_GET['site']=="") {
