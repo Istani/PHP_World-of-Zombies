@@ -554,7 +554,7 @@
 		return $id;
 	}
 	function get_gebiet_anz($map, $y, $x, $pixel, $user=0) {
-		global $mysql;
+		global $mysql, $bg;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		$returnwert="&nbsp;";
@@ -564,8 +564,11 @@
 		if (mysql_num_rows($query_map)>0) {
 			$returnwert="HIER";
 			$dastz=mysql_fetch_assoc($query_map);
-			if (check_quest($dastz['need_quest'], $user)) {
+			if (check_quest($dastz['need_quest'], $user) || $dastz['need_quest']==0) {
 				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-10));
+				if ($returnwert=="") {$returnwert=text_ausgabe($dastz['text_bez'], $dastz['text_id'], $bg['sprache']);}
+				//Link?
+				$returnwert='<a href="index.php?'.$dastz['link_bez'].'">'.$returnwert.'</a>';
 			}
 		}
 		return $returnwert;
