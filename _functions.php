@@ -565,7 +565,7 @@
 			$returnwert="HIER";
 			$dastz=mysql_fetch_assoc($query_map);
 			if (check_quest($dastz['need_quest'], $user) || $dastz['need_quest']==0) {
-				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-10));
+				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-20));
 				if ($returnwert=="") {$returnwert=text_ausgabe($dastz['text_bez'], $dastz['text_id'], $bg['sprache']);}
 				//Link?
 				$returnwert='<a href="index.php?'.$dastz['link_bez'].'">'.$returnwert.'</a>';
