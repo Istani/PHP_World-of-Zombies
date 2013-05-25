@@ -34,6 +34,15 @@ a img {
 .tr_bg td {
     background-color: #555555;
 }
+.karte {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	-moz-background-size: 100%; /* firefox/seamonkey [geckos] */
+	-webkit-background-size: 100%; /* safari, chrome/iron [webkits] */
+	-o-background-size: 100%; /* opera 9 */
+	-ms-background-size: 100%; /* internet explorer ab version 9 */
+	background-size: 100%; /* css definition (ab firefox 4, opera 10) */
+}
 
 .karte tr td {
 	border-style:solid;

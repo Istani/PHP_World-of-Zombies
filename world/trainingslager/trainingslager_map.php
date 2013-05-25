@@ -11,8 +11,8 @@
 	$result = mysql_query($sql_query);
 	$dsatz = mysql_fetch_assoc($result);
 	echo text_ausgabe("map", 1, $bg['sprache']); ?>&nbsp;<a href="index.php?map=weltkarte"><?php echo text_ausgabe("map", 0, $bg['sprache']); 
-	?></a>
-<table class="karte">
+	?></a><br><br>
+<table class="karte" style="background-image:url(picture/maps_background/<?php echo $_GET['map']; ?>.png);">
 	<tr>
 		<td class="karte_ueber_zeile karte_ueber_spalte"></td>
 		<td class="karte_ueber_zeile">A</td>
