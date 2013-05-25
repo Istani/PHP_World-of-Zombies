@@ -565,7 +565,7 @@
 			$returnwert="HIER";
 			$dastz=mysql_fetch_assoc($query_map);
 			if (check_quest($dastz['need_quest'], $user) || $dastz['need_quest']==0) {
-				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-20));
+				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-20), text_ausgabe($dastz['text_bez'], $dastz['text_id'], $bg['sprache']));
 				if ($returnwert=="") {$returnwert=text_ausgabe($dastz['text_bez'], $dastz['text_id'], $bg['sprache']);}
 				//Link?
 				$returnwert='<a href="index.php?'.$dastz['link_bez'].'">'.$returnwert.'</a>';
@@ -573,9 +573,9 @@
 		}
 		return $returnwert;
 	}
-	function gebiet_bilder($gebiet, $pixel) {
+	function gebiet_bilder($gebiet, $pixel, $text) {
 		$posting="";
-        $title='title="gebiet"';
+        $title='title="'.$text.'"';
         if (file_exists("picture/gebiete/".$gebiet.".png")) {
             $oBild=imagecreatefrompng("picture/gebiete/".$gebiet.".png");
 			imageAlphaBlending($oBild, true);
