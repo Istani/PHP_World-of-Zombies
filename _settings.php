@@ -7,4 +7,5 @@
     $bg["version"]    =       "Version 0.12";
 	
 	$bg['sprache']	  = "deutsch";
+	$bg['next_drop_chance']	  = "75%";
 ?>
