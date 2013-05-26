@@ -328,6 +328,16 @@
 			$char['luk']=$row_char_normal['glueck'];
 			$char['agi']=$row_char_normal['geschwindigkeit'];
 			$char['str']=$row_char_normal['power'];
+			
+			// Bonuswerte auf Stats schon bevor mit denen was gemacht wird!
+			//get_wert_plus_bonus($user, $bonuswert, $wert)
+			
+			$char['vit']=get_wert_plus_bonus($char_id, "char_vit", $char['vit']);
+			$char['int']=get_wert_plus_bonus($char_id, "char_int", $char['int']);
+			$char['dex']=get_wert_plus_bonus($char_id, "char_dex", $char['dex']);
+			$char['luk']=get_wert_plus_bonus($char_id, "char_luk", $char['luk']);
+			$char['agi']=get_wert_plus_bonus($char_id, "char_agi", $char['agi']);
+			$char['str']=get_wert_plus_bonus($char_id, "char_str", $char['str']);
 		
 			// Einzelne Status Wert
 			$char['nahrung']=$row_char_normal['nahrung'];
