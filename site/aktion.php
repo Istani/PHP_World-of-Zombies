@@ -256,7 +256,7 @@
 				$result = mysql_query($sql_query);
 				$dsatz = mysql_fetch_assoc($result);
 				
-				$max_wert_ausdauer  =   $dsatz['gesundheit'];
+				$max_wert_ausdauer  =   $dsatz['gesundheit']*$bg['vit_ausdauer_modifier'];
 				
 				$max_wasser=get_wert_plus_bonus($_SESSION['userID'], "wasser", $max_wert_ausdauer);
 				$max_nahrung=get_wert_plus_bonus($_SESSION['userID'], "nahrung", $max_wert_ausdauer);
