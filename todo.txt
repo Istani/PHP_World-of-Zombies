@@ -1,13 +1,7 @@
 ALEX DENK IMMER AN SYNC! SONST HÄTTE ICH JETZT HALT DAS ADMIN MENÜ GEMACHT!
 
 *****************Bei Upload ins Live-System unbedingt machen!*****************
-MYSQL: 
-UPDATE `char` SET `gesundheit`=5;
-
 Daten:
-Rucksack auf 28 Plätze oder 14... Damit die Zeile voll ist, von Monster bekommt man jetzt ca immer 2 Items pro Fight (glück abhänig)
-Apfel wieder auf weniger heilung 10 oder 20 eher 10 
-Heilitem usw noch ItemLevel hinzufügen wegen Monsterdrop!
 Chancen anpassen!
 
 
