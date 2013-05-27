@@ -341,6 +341,14 @@
 		
 			// Einzelne Status Wert
 			$char['nahrung']=$row_char_normal['nahrung'];
+			$char['wasser']=$row_char_normal['wasser'];
+			
+			$char['max_nahrung']=$char['vit']*$bg['vit_ausdauer_modifier'];
+			$char['max_wasser']=$char['vit']*$bg['vit_ausdauer_modifier'];
+			$char['max_nahrung']=get_wert_plus_bonus($char_id, "nahrung", $char['max_nahrung']);
+			$char['max_wasser']=get_wert_plus_bonus($char_id, "wasser", $char['max_wasser']);
+			
+			
 			$char['min_schaden']=$char['str']*$bg['str_schaden_modifier'];
 			$char['max_schaden']=$char['str']*$bg['str_schaden_modifier'];
 			$char['ruestung']=0;
