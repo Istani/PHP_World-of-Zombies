@@ -18,7 +18,7 @@ h1 {
 padding-left: 175px;
 }
 
-input[type=password],input[type=text],input[type=submit],textarea {
+input[type=password],input[type=text],input[type=submit],input[type=Reset],textarea {
     background-color: #000000;
 }
 .page {
