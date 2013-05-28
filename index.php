@@ -65,8 +65,10 @@
 			</tr>
 			<tr>
 				<td width="200">
-					
-						<?php include("inc/navigation.php"); ?>
+						<?php
+                        include("inc/admin.php");
+                        include("inc/navigation.php");
+                        ?>
 				</td>
 				<td>
 					<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">

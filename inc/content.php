@@ -66,6 +66,36 @@ if (!isset($_SESSION['userID'])) {
                 include("site/nachricht_anzeige2.php");
                 break;
         }
+        
+    // Rechte Check
+    $sql_login="SELECT * FROM `login` WHERE userID=".$_SESSION['userID'];
+	$query_login=mysql_query($sql_login);
+	$ds_admin=mysql_fetch_assoc($query_login);
+
+      if ($ds_admin['rechte'] == "4"){
+        if($_GET['site'] == "admin"){
+            switch($_GET['db']){
+                case "quests":
+                    include("admin/quests.php");
+                    break;
+                case "items":
+                    include("admin/items.php");
+                    break;
+                case "itemstats":
+                    include("admin/itemstats.php");
+                    break;
+                case "mobs":
+                    include("admin/mobs.php");
+                    break;
+                case "uniqs":
+                    include("admin/uniqs.php");
+                    break;
+                case "sets":
+                    include("admin/sets.php");
+                    break;
+                 }
+            }
+        }
 
         // Seiten vor denen eine Aktion geprüft wird
         if ($aktion['aktion']=="") {
