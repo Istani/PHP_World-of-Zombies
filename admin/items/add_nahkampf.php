@@ -1,6 +1,15 @@
 <?php 
     
+
+
     if (isset($_POST['add'])){
+
+$dateityp = GetImageSize($_FILES['datei']['tmp_name']);
+
+    if($dateityp[2] == 3)
+   {
+      move_uploaded_file($_FILES['datei']['tmp_name'], "picture/items/".$_FILES['datei']['name']);
+      echo "Das Bild wurde Erfolgreich nach picture/items/".$_FILES['datei']['name']." hochgeladen";
     
         $sql_checkitem = "SELECT * FROM `item_db` WHERE `itemID` = '". $_POST['itemID'] ."'";
 	    $result_checkitem = mysql_query($sql_checkitem);
@@ -45,9 +54,9 @@
     echo "<meta http-equiv='refresh' content='1; URL=../index.php?site=admin&db=items#tabs-1' />";  
         } 
     }
- 
+}
  ?>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <table border="0">
         <tr><td><br /></td></tr>
 
@@ -109,7 +118,11 @@
 	        <td><?php echo text_ausgabe("itemdb_info", 11, $bg['sprache']); ?><br></td>
         </tr>
     <td><br /></td></tr>
-
+        <tr>
+            <td colspan="2"><p><?php echo text_ausgabe("itemdb_text", 18, $bg['sprache']); ?>:</p><input maxlength="20" type="file" name="datei"></td>
+            <td><?php echo text_ausgabe("itemdb_info", 18, $bg['sprache']); ?><br></td>
+        </tr>
+    <td><br /></td></tr>
 	<tr>
             <td align="center"><input type="reset" name="Reset" value="Reset"/></td>
             <td align="center"><input type="submit" name="add" value="Adden"/></td>
