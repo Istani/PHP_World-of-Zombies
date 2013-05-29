@@ -1,9 +1,36 @@
 <?php 
     
     if (isset($_POST['add'])){
-        if (!isset($_POST['name']) && !isset($_POST['text']) && !isset($_POST['itemID']) && !isset($_POST['min_lvl']) && !isset($_POST['max_lvl']) && !isset($_POST['mindmg']) && !isset($_POST['maxdmg']) && !isset($_POST['hit']) && !isset($_POST['crit'])){
-            echo text_ausgabe("itemdb_error", 1, $bg['sprache']);         
-        }
+    //Item wird in die Itemdb aufgenommen
+    $sql_additemdb = "INSERT INTO `item_db` SET
+                        `Info`          =     '" .$_POST["name"]. "',
+                        `itemID`        =     '" .$_POST["itemID"]. "',
+                        `min_lvl`       =     '" .$_POST["min_lvl"]. "',
+                        `max_lvl`       =     '" .$_POST["max_lvl"]. "',
+                        `art`           =     '1',
+                        `stack`         =     '1',
+                        `mindmg`        =     '" .$_POST["mindmg"]. "',
+                        `maxdmg`        =     '" .$_POST["maxdmg"]. "',
+                        `def`           =     '0',
+                        `crit`          =     '" .$_POST["crit"]. "',
+                        `refill`        =     '0',
+                        `refillart`     =     '0',
+                        `platz`         =     '0',
+                        `munitonsart`   =     '0'";
+                mysql_query($sql_additemdb);
+    
+    // Item Name wird in Texte eingefügt    
+    $sql_additem = "INSERT INTO `texte` SET
+                        `kurz`    =     'item',
+                        `id`      =     '" .$_POST["itemID"]. "',
+                        `deutsch` =     '" .$_POST["name"]. "'";
+                mysql_query($sql_additem);
+    // Item Text wird in Texte eingefügt
+    $sql_additemtext = "INSERT INTO `texte` SET
+                        `kurz`    =     'item_text',
+                        `id`      =     '" .$_POST["itemID"]. "',
+                        `deutsch` =     '" .$_POST["text"]. "'";
+                mysql_query($sql_additemtext);  
     }
  
  ?>
@@ -18,7 +45,7 @@
 	    </tr>
 	    <tr>
             <td><p><?php echo text_ausgabe("itemdb_text", 16, $bg['sprache']); ?>:<br></p></td>
-	        <td><input placeholder="Item Text" maxlength="20" size="25" name="text" type="text" /></p></td>
+	        <td><input placeholder="Item Text" maxlength="50" size="25" name="text" type="text" /></p></td>
 	        <td><?php echo text_ausgabe("itemdb_info", 16, $bg['sprache']); ?><br></td>
 	    </tr>
 	    
