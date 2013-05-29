@@ -1,6 +1,16 @@
 <?php 
     
     if (isset($_POST['add'])){
+    
+        $sql_checkitem = "SELECT * FROM `item_db` WHERE `itemID` = '". $_POST['itemID'] ."'";
+	    $result_checkitem = mysql_query($sql_checkitem);
+	    $ds_checkitem = mysql_fetch_assoc($result_checkitem);
+
+	    $ID = $ds_checkitem['itemID'];
+	
+        if (isset($ID)){
+            echo text_ausgabe("item_db_error", 1, $bg['sprache']);
+        }else{
     //Item wird in die Itemdb aufgenommen
     $sql_additemdb = "INSERT INTO `item_db` SET
                         `Info`          =     '" .$_POST["name"]. "',
@@ -30,7 +40,10 @@
                         `kurz`    =     'item_text',
                         `id`      =     '" .$_POST["itemID"]. "',
                         `deutsch` =     '" .$_POST["text"]. "'";
-                mysql_query($sql_additemtext);  
+                mysql_query($sql_additemtext);
+    
+    echo "<meta http-equiv='refresh' content='1; URL=../index.php?site=admin&db=items#tabs-1' />";  
+        } 
     }
  
  ?>
