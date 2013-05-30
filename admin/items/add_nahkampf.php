@@ -2,11 +2,12 @@
     if (isset($_POST['add'])){
         $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
         if($dateityp[2] == 3) {
-            if (!file_exists("picture/items/".$_POST['itemID'].".png")) {
-                // Wieso benennst du das Bild nicht direkt richtig?
-                move_uploaded_file($_FILES['datei']['tmp_name'], "picture/items/".$_POST['itemID'].".png");
-                echo "Das Bild wurde Erfolgreich nach picture/items/".$_POST['itemID'].".png hochgeladen";
+            if (file_exists("picture/items/".$_POST['itemID'].".png")) {
+                unlink("picture/items/".$_POST['itemID'].".png"); // Falls schon vorhanden, Bild löschen
             }
+            // Wieso benennst du das Bild nicht direkt richtig?
+            move_uploaded_file($_FILES['datei']['tmp_name'], "picture/items/".$_POST['itemID'].".png");
+            echo "Das Bild wurde Erfolgreich nach picture/items/".$_POST['itemID'].".png hochgeladen";
             $sql_checkitem = "SELECT * FROM `item_db` WHERE `itemID` = '". $_POST['itemID'] ."'";
 	    $result_checkitem = mysql_query($sql_checkitem);
 	    $ds_checkitem = mysql_fetch_assoc($result_checkitem);
