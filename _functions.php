@@ -1,5 +1,5 @@
 <?php
-	function text_ausgabe($title, $id, $sprache) {
+    function text_ausgabe($title, $id, $sprache) {
 		$title=strtolower($title);
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -144,7 +144,7 @@
             return $return;
         }
     }
-	function inventar_platz($rucksack) {
+    function inventar_platz($rucksack) {
 		$max_plaetze=0;
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -154,7 +154,7 @@
 		$max_plaetze=@mysql_result($query_rucksack,0,0);
 		return $max_plaetze;
 	}
-	function player_inventar_platz($user) {
+    function player_inventar_platz($user) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
 		mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -170,7 +170,7 @@
         $frei=$max-$plaetze_belegt;
         return $frei;
     }
-	function inventar_belegt($user) {
+    function inventar_belegt($user) {
 		$stack=0;
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -180,7 +180,7 @@
 		$stack=mysql_num_rows($query_rucksack);
 		return $stack;
 	}
-	function item_stacknum($item) {
+    function item_stacknum($item) {
 		$stack=0;
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -190,7 +190,7 @@
 		$stack=mysql_result($query_rucksack,0,0);
 		return $stack;
 	}
-	function zeit_anzeigen($sekunden) {
+    function zeit_anzeigen($sekunden) {
 		$merken=$sekunden;
 		$stunden=(int)($sekunden/60/60);
 		$sekunden=$sekunden-($stunden*60*60);
@@ -206,7 +206,7 @@
 
         return 1;
     }
-	function player_wasser_status($user) {
+    function player_wasser_status($user) {
 		$wasser=0;
 		global $mysql;
         mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -218,7 +218,7 @@
 		}
 		return $wasser;
     }
-	function inventory_add($user, $item, $menge, $uniq_id=0, $item_quality=0, $item_level=0) {
+    function inventory_add($user, $item, $menge, $uniq_id=0, $item_quality=0, $item_level=0) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
 		mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -384,7 +384,7 @@
 		// Und Werte zurückgeen!
 		return $char;
     }
-	function array_set_mysqlstring($array) {
+    function array_set_mysqlstring($array) {
 		$sql_string="";
 		if (is_array($array)) {
 			foreach ($array as $key => $value) {
@@ -394,7 +394,7 @@
 		}
 		return $sql_string;
 	}
-	function erhalte_quest($quest, $user) {
+    function erhalte_quest($quest, $user) {
 		// Einfacher Code, wird aber bestimmt öfters gebraucht
 		global $mysql;
 	        mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -413,7 +413,7 @@
 			mysql_query("INSERT INTO quest_db SET quest_id=".$quest.", quest_belohnung='a:2:{s:5:\"quest\";i:".($quest+1).";s:3:\"exp\";i:10;}'");
 		}
 	}
-	function erledige_quest($quest, $user) {
+    function erledige_quest($quest, $user) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -450,7 +450,7 @@
 		}
 		mysql_query($sql_quest_erledigen);
 	}
-	function check_quest($quest, $user) {
+    function check_quest($quest, $user) {
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
@@ -462,7 +462,7 @@
 			return false;
 		}
 	}
-	function skill_change($user, $skill, $skill_level=1, $kostenlos=0) {
+    function skill_change($user, $skill, $skill_level=1, $kostenlos=0) {
 		// Wenn kostenlos=1 dann kostet es keinen Skillpunkt, also verwenden wenn durch bsp. Quest
 		// skill_level falls Skill erhöht werden soll
 		global $mysql;
@@ -493,7 +493,7 @@
 		}
 		return $skill_bekommen;	
 	}
-	function get_wert_plus_bonus($user, $bonuswert, $wert) {
+    function get_wert_plus_bonus($user, $bonuswert, $wert) {
 		// Bonuswert ist der Wert um den es geht (Crafting, Abbau, Wasser etc.)
 		// Wert ist der aktuelle Wert und als Rückgabe kommt dann ein neuer Wert
 		global $mysql;
@@ -549,7 +549,7 @@
 		$ausgabewert=$wert+$skill_zuwachs;
 		return $ausgabewert;
 	}
-	function gen_item($org_item, $quality=0, $item_level=0) {
+    function gen_item($org_item, $quality=0, $item_level=0) {
 		//Quality 0 weil wegen random!
 		global $mysql;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
@@ -626,8 +626,8 @@
 		}
 		return $id;
 	}
-	function get_gebiet_anz($map, $y, $x, $pixel, $user=0) {
-		global $mysql, $bg;
+    function get_gebiet_anz($map, $y, $x, $pixel, $user=0) {
+        global $mysql, $bg;
 		mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die ("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
         mysql_select_db($mysql['db']) or die ("Die Datenbank konnte nicht geöffnet werden!");
 		$returnwert="&nbsp;";
@@ -646,7 +646,7 @@
 		}
 		return $returnwert;
 	}
-	function gebiet_bilder($gebiet, $pixel, $text) {
+    function gebiet_bilder($gebiet, $pixel, $text) {
 		$posting="";
         $title='title="'.$text.'"';
         if (file_exists("picture/gebiete/".$gebiet.".png")) {
