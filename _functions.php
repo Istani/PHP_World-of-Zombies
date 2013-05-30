@@ -635,7 +635,7 @@
 		$sql_map="SELECT * FROM map_gebiete WHERE map_id=".$map." AND x_cord=".$x." AND y_cord=".$y;
 		$query_map=mysql_query($sql_map);
 		if (mysql_num_rows($query_map)>0) {
-			$returnwert="HIER";
+			$returnwert="";
 			$dastz=mysql_fetch_assoc($query_map);
 			if (check_quest($dastz['need_quest'], $user) || $dastz['need_quest']==0) {
 				$returnwert=gebiet_bilder($dastz['gebiet_id'], ($pixel-20), text_ausgabe($dastz['text_bez'], $dastz['text_id'], $bg['sprache']));
