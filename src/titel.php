@@ -23,7 +23,7 @@ function clock() {
 		year += 1900;
 	}
 
-   document.title = "ZoD Game" - " + hour + ":" + minute + ":" + second;
+   document.title = "ZoD Game - " + hour + ":" + minute + ":" + second;
    setTimeout("clock()", 1000);
 }
 </script>

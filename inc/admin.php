@@ -10,7 +10,7 @@
 	$ds_admin = mysql_fetch_assoc($result_admin);
 	$rechte = $ds_admin['rechte'];
 
-        if ($rechte = "4"){ 
+        if ($rechte == "4"){ 
     
         ?>
 	   <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">

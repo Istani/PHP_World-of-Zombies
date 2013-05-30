@@ -34,13 +34,13 @@
             mysql_query($sql_additemdb);
             echo $sql_additemdb;
     
-    // Item Name wird in Texte eingef�gt    
+    // Item Name wird in Texte eingefuegt    
     $sql_additem = "INSERT INTO `texte` SET
                         `kurz`    =     'item',
                         `id`      =     '" .$_POST["itemID"]. "',
                         `deutsch` =     '" .$_POST["name"]. "'";
                 mysql_query($sql_additem);
-    // Item Text wird in Texte eingef�gt
+    // Item Text wird in Texte eingefuegt
     $sql_additemtext = "INSERT INTO `texte` SET
                         `kurz`    =     'item_text',
                         `id`      =     '" .$_POST["itemID"]. "',
@@ -48,9 +48,9 @@
                 mysql_query($sql_additemtext);
     
     echo "<meta http-equiv='refresh' content='1; URL=index.php?site=admin&db=items#tabs-1' />";  
-        } else {
-        echo 'Falscher Dateityp?!?';
         }
+    } else {
+        echo 'Falscher Dateityp?!?';
     }
 }
  ?>
