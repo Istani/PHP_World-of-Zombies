@@ -3,6 +3,7 @@
 		echo '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
 		include("site/login.php");
 		echo '</div>';
+		
 	} else {
 
 	$sql_admin = "SELECT * FROM `login` WHERE `userID` = '". $_SESSION['userID'] ."'";
