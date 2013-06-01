@@ -5,6 +5,8 @@
 	$ds_itemdb = mysql_fetch_assoc($result_itemdb);
 	
     $rechte = $ds_admin['rechte'];
+    
+    if ($rechte = "4"){ 
 ?>  
 
 <h3><?php echo text_ausgabe("item_db_hl", 1, $bg['sprache']); ?></h3>
@@ -25,6 +27,7 @@
 		<li><a href="#tabs-9">Handschuhe</a></li>
 		<li><a href="#tabs-10">Schuhe</a></li>
 		<li><a href="#tabs-11">Fahrzeuge</a></li>
+		<li><a href="#tabs-12">etc</a></li>
 	</ul>
 	<div id="tabs-1">
 		<?php include("admin/items/add_nahkampf.php"); ?>
@@ -59,9 +62,18 @@
 	<div id="tabs-11">
 		<?php include("admin/items/add_fahrzeug.php"); ?>
 	</div>
+	<div id="tabs-12">
+		<?php include("admin/items/add_etc.php"); ?>
+	</div>
 	
 	
 </div>
+
+<?php  
+    }else{
+        echo text_ausgabe("item_db_norechte", 1, $bg['sprache']);    
+    }
+?>
 
 <script>
 	var $jq = jQuery.noConflict();
