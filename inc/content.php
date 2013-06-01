@@ -81,8 +81,11 @@ if (!isset($_SESSION['userID'])) {
                 case "items":
                     include("admin/items.php");
                     break;
-                case "itemstats":
-                    include("admin/itemstats.php");
+                case "itemsedit":
+                    include("admin/item_liste.php");
+                    break;
+               case "iedit":
+                    include("admin/item_edit.php");
                     break;
                 case "mobs":
                     include("admin/mobs.php");
