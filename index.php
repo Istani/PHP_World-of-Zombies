@@ -65,9 +65,18 @@
 			</tr>
 			<tr>
 				<td width="200">
-						<?php
+					<?php
+	                    $sql_admin = "SELECT * FROM `login` WHERE `userID` = '". $_SESSION['userID'] ."'";
+	                    $result_admin = mysql_query($sql_admin);
+	                    $ds_admin = mysql_fetch_assoc($result_admin);
+	                    $rechte = $ds_admin['rechte'];
+
+                    if ($rechte == "4"){
                         include("inc/admin.php");
                         include("inc/navigation.php");
+                            }else{
+                        include("inc/navigation.php");
+                            }
                         ?>
 				</td>
 				<td>

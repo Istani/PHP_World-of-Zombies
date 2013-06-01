@@ -6,7 +6,7 @@
 	
     $rechte = $ds_admin['rechte'];
     
-    if ($rechte = "4"){ 
+    if ($rechte == "4"){ 
 ?>  
 
 <h3><?php echo text_ausgabe("item_db_hl", 1, $bg['sprache']); ?></h3>
