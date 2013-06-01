@@ -64,7 +64,7 @@
 ?>  
 
 <h3><?php echo text_ausgabe("item_db_hl", 1, $bg['sprache']); ?></h3>
-<?php echo text_ausgabe("item_db_feld", 2, $bg['sprache']); ?>
+<?php echo text_ausgabe("item_db_feld", 1, $bg['sprache']); ?>
 
 <div id="hidden"></div>
 
