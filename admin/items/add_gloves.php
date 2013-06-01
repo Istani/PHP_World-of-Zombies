@@ -11,11 +11,6 @@
 	        <td><input placeholder="Name" maxlength="20" size="25" name="name" type="text" /></p></td>
 	        <td><?php echo text_ausgabe("itemdb_info", 1, $bg['sprache']); ?><br></td>
 	    </tr>
-	    <tr>
-            <td><?php echo text_ausgabe("itemdb_text", 16, $bg['sprache']); ?>:<br></p></td>
-	        <td><input placeholder="Item Text" maxlength="50" size="25" name="text" type="text" /></p></td>
-	        <td><?php echo text_ausgabe("itemdb_info", 16, $bg['sprache']); ?><br></td>
-	    </tr>
 
 	    <tr><td><br /></td></tr>
 
@@ -66,4 +61,6 @@
     <input value="9" name="art" type="hidden" />
     <input value="1" name="stack" type="hidden" />
     <input value="" name="text" type="hidden" />
+    <input value="0" name="mindmg" type="hidden" />
+    <input value="0" name="maxdmg" type="hidden" />
     </form>
