@@ -66,4 +66,6 @@
     <input value="9" name="art" type="hidden" />
     <input value="1" name="stack" type="hidden" />
     <input value="" name="text" type="hidden" />
+    <input value="0" name="mindmg" type="hidden" />
+    <input value="0" name="maxdmg" type="hidden" />
     </form>

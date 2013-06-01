@@ -31,15 +31,15 @@
                         `itemID`        =     '" .$_POST["itemID"]. "',
                         `min_lvl`       =     '" .$_POST["min_lvl"]. "',
                         `max_lvl`       =     '" .$_POST["max_lvl"]. "',
-                        `art`           =     '" .$_POST['art']"',
+                        `art`           =     '" .$_POST['art']. "',
                         `stack`         =     '" .$_POST['stack']. "',
-                        `mindmg`        =     '0',
-                        `maxdmg`        =     '0',
-                        `def`           =     '0',
-                        `mdef`          =     '0',
-                        `crit`          =     '0',
-                        `refill`        =     '0',
-                        `refillart`     =     '0',
+                        `mindmg`        =     '" .$_POST['mindmg']. "',
+                        `maxdmg`        =     '" .$_POST['maxdmg']. "',
+                        `def`           =     '" .$_POST['def']. "',
+                        `mdef`          =     '" .$_POST['mdef']. "',
+                        `crit`          =     '" .$_POST['crit']. "',
+                        `refill`        =     '" .$_POST['refill']. "',
+                        `refillart`     =     '" .$_POST['refillart']. "',
                         `platz`         =     '" .$_POST["platz"]. "',
                         `munitonsart`   =     '0'";
                 mysql_query($sql_additemdb);
@@ -58,6 +58,9 @@
                 mysql_query($sql_additemtext);
                 
     echo "<meta http-equiv='refresh' content='0; URL=index.php?site=admin&db=items' />";
+        }
+    }
+}
 ?>  
 
 <h3><?php echo text_ausgabe("item_db_hl", 1, $bg['sprache']); ?></h3>
@@ -120,10 +123,8 @@
 	
 </div>
 
-<?php       }
-        }
-    }
-    }else{
+<?php       
+        }else{
         echo text_ausgabe("item_db_norechte", 1, $bg['sprache']);    
 }
 ?>
