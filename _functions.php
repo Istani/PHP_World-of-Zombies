@@ -122,6 +122,42 @@
                     $return.=text_ausgabe("platz", 0, $bg['sprache']).':&nbsp;';
                     $return.=$item_row['platz'].'<br>';
                     break;
+                case 5:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
+                case 6:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
+                case 7:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
+                case 8:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
+                case 9:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
+                case 10:
+                    $return.=text_ausgabe("def", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['def'].'<br>';
+                    $return.=text_ausgabe("mdef", 0, $bg['sprache']).':&nbsp;';
+                    $return.=$item_row['mdef'].'<br>';
+                    break;
             }
             $return.=text_ausgabe("item_text", $item_row['itemID'], $bg['sprache']).'<br>';
 			$sql['bonuswerte']="SELECT * FROM item_list WHERE uniqID=".$uniqid;
