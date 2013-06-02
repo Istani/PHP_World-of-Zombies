@@ -11,13 +11,6 @@
 
         if (isset($_POST['add'])){
 
-        $sql_checkmob = "SELECT * FROM `mob_db` WHERE `mobID` = '". $_POST['itemID'] ."'";
-	    $result_checkmob = mysql_query($sql_checkmob);
-	    $ds_checkmob = mysql_fetch_assoc($result_checkmob);
-	    $ID = $ds_checkmob['mob_id'];
-            if (isset($ID)){
-                echo text_ausgabe("item_db_error", 2, $bg['sprache']);
-            }else{
     //Item wird in die Itemdb aufgenommen
     $sql_addmobdb = "INSERT INTO `mob_db` SET
                         `mob_art`       =     '" .$_POST["mob_art"]. "',
@@ -30,7 +23,7 @@
                         `mob_drop`      =     '" .$_POST['mob_drop']. "'";
                 mysql_query($sql_addmobdb);
                 
-                $lastID = mysql_insert_id();
+                //$lastID = mysql_insert_id();
                 
     // Item Name wird in Texte eingefügt
     $sql_addmobname = "INSERT INTO `texte` SET
@@ -45,9 +38,8 @@
                         `deutsch` =     '" .$_POST["text"]. "'";
                 mysql_query($sql_addmobtext);
 
-    echo "<meta http-equiv='refresh' content='0; URL=index.php?site=admin&db=mobs' />";
+   // echo "<meta http-equiv='refresh' content='0; URL=index.php?site=admin&db=mobs' />";
         }
-    }
 
 ?>
 

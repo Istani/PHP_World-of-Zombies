@@ -146,7 +146,7 @@
         <td><?php echo text_ausgabe("itemdb_info", $feld_text_id, $bg['sprache']); ?><br></td></tr>
         <?php
         
-        $feld_text_id=19;
+        $feld_text_id=12;
         $feld_art="refill";
         ?>
         <tr><td><?php echo text_ausgabe("itemdb_text", $feld_text_id, $bg['sprache']); ?>:<br></p></td>

@@ -23,6 +23,14 @@
         <tr><td><br /></td></tr>
         
         <tr>
+	        <td><p><?php echo text_ausgabe("mobdb_text", 8, $bg['sprache']); ?>:<br></td>
+	        <td><input placeholder="Die Erfahrung" maxlength="20" size="25" name="mob_exp" type="text" /></p></td>
+	        <td><?php echo text_ausgabe("mobdb_info", 8, $bg['sprache']); ?><br></td>
+        </tr>
+        
+        <tr><td><br /></td></tr>
+        
+        <tr>
 	        <td><p><?php echo text_ausgabe("mobdb_text", 3, $bg['sprache']); ?>:<br></td>
 	        <td><input placeholder="Monster Level" maxlength="20" size="25" name="mob_lvl" type="text" /></p></td>
 	        <td><?php echo text_ausgabe("mobdb_info", 3, $bg['sprache']); ?><br></td>

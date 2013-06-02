@@ -37,6 +37,7 @@
                         `maxdmg`        =     '" .$_POST['maxdmg']. "',
                         `def`           =     '" .$_POST['def']. "',
                         `mdef`          =     '" .$_POST['mdef']. "',
+                        `hit`           =     '" .$_POST['hit']. "',
                         `crit`          =     '" .$_POST['crit']. "',
                         `refill`        =     '" .$_POST['refill']. "',
                         `refillart`     =     '" .$_POST['refillart']. "',
