@@ -66,10 +66,14 @@
 			<tr>
 				<td width="200">
 					<?php
-	                    $sql_admin = "SELECT * FROM `login` WHERE `userID` = '". $_SESSION['userID'] ."'";
-	                    $result_admin = mysql_query($sql_admin);
-	                    $ds_admin = mysql_fetch_assoc($result_admin);
-	                    $rechte = $ds_admin['rechte'];
+    if (isset($_SESSION["userID"])) {
+        $sql_admin = "SELECT * FROM `login` WHERE `userID` = '". $_SESSION['userID'] ."'";
+        $result_admin = mysql_query($sql_admin);
+        $ds_admin = mysql_fetch_assoc($result_admin);
+        $rechte = $ds_admin['rechte'];
+    } else {
+        $rechte=0;
+    }
 
                     if ($rechte == "4"){
                         include("inc/admin.php");
