@@ -1,212 +1,213 @@
-git log --no-merges --date=iso8601 --pretty=format:"%h - %ad - %an : %s" 
-0a2655a - 2013-06-05 20:47:42 +0200 - Sascha Kaufmann : Update SK 
-4c8f617 - 2013-06-05 20:26:54 +0200 - Sascha Kaufmann : Fix: Fehlermeldung Logout 
-9e156ed - 2013-06-05 20:24:54 +0200 - Sascha Kaufmann : Fix: Fehlermeldung bei Leiter 
-ccfa95b - 2013-06-05 20:16:00 +0200 - Sascha Kaufmann : Update SK 
-9481f50 - 2013-06-05 20:11:50 +0200 - Sascha Kaufmann : Update SK 
-4437869 - 2013-06-02 23:37:19 +0200 - Alex Amling : ??? 
-bf851c4 - 2013-06-02 23:36:57 +0200 - Alex Amling : ItemHover in function angepasst 
-200c339 - 2013-06-02 18:57:31 +0200 - Alex Amling : changes Mobs adden funkt noch net 
-8342dc0 - 2013-06-02 00:47:27 +0200 - Sascha Kaufmann : Test 
-9137eb4 - 2013-06-02 00:44:31 +0200 - Sascha Kaufmann : Item Ändern 
-bb33ad8 - 2013-06-02 00:42:27 +0200 - Alex Amling : Bugfix Itemerstellung 
-ac892c7 - 2013-06-02 00:39:29 +0200 - Alex Amling : Mobs erstellen 
-1ec5b22 - 2013-06-01 23:21:02 +0200 - Alex Amling : Bug Fix im Admin Interface 
-7c1098e - 2013-06-01 23:09:27 +0200 - Alex Amling : Bug FIX! 
-64d9b50 - 2013-06-01 21:23:04 +0200 - Alex Amling : ka 
-8773686 - 2013-06-01 19:51:20 +0200 - Alex Amling : Admin Interface - Erstellung von alle Items möglich 
-45642b6 - 2013-05-30 14:09:22 +0200 - Sascha Kaufmann : Test Commit 
-12b13c3 - 2013-05-30 14:00:02 +0200 - Sascha Kaufmann : Formatierung 
-ac35798 - 2013-05-30 13:54:09 +0200 - Sascha Kaufmann : Karte ohne Quests 
-3511676 - 2013-05-30 13:50:40 +0200 - Sascha Kaufmann : Kleiner Fixes 
-a221f6d - 2013-05-30 13:44:14 +0200 - Sascha Kaufmann : Nun auch mit Bild überschreiben 
-77f0ad4 - 2013-05-30 13:40:09 +0200 - Sascha Kaufmann : Wo ist der Fehler? 
-3e52f4e - 2013-05-30 01:15:44 +0200 - Alex Amling : Bilder Upload sollte funken...^^ 
-65c0afc - 2013-05-29 19:23:35 +0200 - Alex Amling : Nahkampf item BUG ..? 
-05c7f2b - 2013-05-29 19:01:56 +0200 - Alex Amling : nahkampf waffen kannste nun adden 
-ac81fde - 2013-05-29 00:33:01 +0200 - Alex Amling : button Fix, hab die texte online geadded 
-1b1395d - 2013-05-29 00:31:21 +0200 - Alex Amling : kannste mal in die add_nahkampf schauen 
-3a9910c - 2013-05-28 23:11:34 +0200 - Alex Amling : kurz updaten^^ 
-760074f - 2013-05-27 22:23:17 +0200 - Sascha Kaufmann : Feierabend @Istani 
-8b73f24 - 2013-05-27 22:12:56 +0200 - Sascha Kaufmann : Fix: Check 
-65db93c - 2013-05-27 22:10:52 +0200 - Sascha Kaufmann : Check Max Ausdauer 
-04a3e2f - 2013-05-27 22:02:27 +0200 - Sascha Kaufmann : ToDo Abgearbeitet 
-a3d72d2 - 2013-05-27 21:54:32 +0200 - Sascha Kaufmann : Test Grafik entfernen 
-cded1d2 - 2013-05-27 19:36:07 +0200 - Sascha Kaufmann : ToDo Erweitert 
-f343764 - 2013-05-27 19:34:05 +0200 - Sascha Kaufmann : FIX:schlafen 
-47d34a3 - 2013-05-26 15:40:01 +0200 - Sascha Kaufmann : Fix: Bug Player status 
-97d59f0 - 2013-05-25 20:11:27 +0200 - Sascha Kaufmann : FIX: ItemGen 
-7e39343 - 2013-05-25 19:52:04 +0200 - Sascha Kaufmann : Feierabend 
-877f3aa - 2013-05-25 19:42:40 +0200 - Sascha Kaufmann : ToDo Erweitert 
-e5e10ae - 2013-05-25 19:39:49 +0200 - Sascha Kaufmann : FIX: Item Hover 
-4f033e2 - 2013-05-25 19:33:08 +0200 - Sascha Kaufmann : ADD: Item Stat - Anzeige & Benutzung 
-faa6ace - 2013-05-25 17:04:51 +0200 - Sascha Kaufmann : ToDo aktuallisiert 
-93635b0 - 2013-05-25 16:54:59 +0200 - Sascha Kaufmann : ToDo aktuallisiert 
-53e9eef - 2013-05-25 16:44:59 +0200 - Sascha Kaufmann : MySQL aenderungen 
-bc75885 - 2013-05-25 16:43:48 +0200 - Sascha Kaufmann : ToDo aktuallisiert 
-9e8bc66 - 2013-05-25 16:43:01 +0200 - Sascha Kaufmann : ToDo aktuallisiert 
-d31e7cd - 2013-05-25 16:40:16 +0200 - Sascha Kaufmann : Monster Drop 
-6b0f83d - 2013-05-25 16:34:40 +0200 - Sascha Kaufmann : ToDo aktuallisiert 
-b38ea38 - 2013-05-25 16:29:08 +0200 - Sascha Kaufmann : Monster Drop 
-191bca9 - 2013-05-25 15:56:00 +0200 - Sascha Kaufmann : char stats. DENK AN char.gesundheit=5 
-d718566 - 2013-05-25 15:16:27 +0200 - Sascha Kaufmann : Drop Vorbereitung 3 
-3db3459 - 2013-05-25 15:12:44 +0200 - Sascha Kaufmann : Drop Vorbereitung 2 
-979ed3e - 2013-05-25 14:59:30 +0200 - Sascha Kaufmann : Drop Vorbereitung 
-ac8a641 - 2013-05-25 14:46:33 +0200 - Sascha Kaufmann : Temp Map Hover 
-9dfc536 - 2013-05-25 14:35:52 +0200 - Sascha Kaufmann : Bilder Map Test, Aufloesung egal 
-c738179 - 2013-05-25 14:30:13 +0200 - Sascha Kaufmann : Standartaenderungen angepasst 
-78cdac8 - 2013-05-25 14:26:23 +0200 - Sascha Kaufmann : Beispiel Grafiken :-P 
-47f564b - 2013-05-25 14:12:28 +0200 - Sascha Kaufmann : ADD: Digitalisieren MAP 2 
-2110de0 - 2013-05-25 13:44:06 +0200 - Sascha Kaufmann : ADD: Digitalisieren MAP 1 
-c0a9da8 - 2013-05-25 12:48:34 +0200 - Sascha Kaufmann : Changelog.txt 
-94fc7c1 - 2013-05-25 12:45:49 +0200 - Sascha Kaufmann : ADD: Map Bild 
-124bf82 - 2013-05-25 11:21:14 +0200 - Sascha Kaufmann : ADD: schlafen 
-2af1b25 - 2013-05-24 22:57:10 +0200 - Sascha Kaufmann : Tabs Cookie 
-8090ba8 - 2013-05-24 22:51:13 +0200 - Sascha Kaufmann : Fix: Firefox Aktion Weiterleitung 
-74ba34f - 2013-05-24 22:21:45 +0200 - Sascha Kaufmann : Fix: Firefox 2? 
-899bca4 - 2013-05-24 21:35:26 +0200 - Sascha Kaufmann : Fix: Firefox Equip 
-22a2ba5 - 2013-05-24 20:50:51 +0200 - Sascha Kaufmann : CHANGELOG akutallisieren 
-9cea761 - 2013-05-24 20:45:35 +0200 - Sascha Kaufmann : Item Level Gen 
-b8a561e - 2013-05-24 20:02:30 +0200 - Sascha Kaufmann : Fix: ItemGen (Du hast das Feld umbenannt) 
-e001adb - 2013-05-23 23:49:26 +0200 - Sascha Kaufmann : Schritt 1 - Berechnung Stats von Waffen 
-ebf04f2 - 2013-05-23 22:16:38 +0200 - Sascha Kaufmann : Slot Check Equip 
-f690800 - 2013-05-23 22:05:43 +0200 - Sascha Kaufmann : Optimierung Ausruesten 
-fc6e800 - 2013-05-23 22:03:52 +0200 - Sascha Kaufmann : Info weg, weil erledigt 
-ff5f3da - 2013-05-23 21:43:42 +0200 - Sascha Kaufmann : Ordnung und Style Inventar 
-9bc603c - 2013-05-23 21:29:03 +0200 - Sascha Kaufmann : Optimales auslesen chardaten 
-a8cd5e8 - 2013-05-23 21:14:26 +0200 - Sascha Kaufmann : Alex alles auslesen demnächst bitte 
-a93a37d - 2013-05-23 21:00:39 +0200 - Sascha Kaufmann : Style: Char 
-d7ec0a5 - 2013-05-23 20:42:31 +0200 - Sascha Kaufmann : Style anpassungen 
-1ab5095 - 2013-05-22 21:08:01 +0200 - Sascha Kaufmann : Ordnung muss sein 2 
-7131350 - 2013-05-22 21:06:11 +0200 - Sascha Kaufmann : Ordnung muss sein 
-1195d70 - 2013-05-21 13:40:57 +0200 - Sascha Kaufmann : Bilder 
-a259bc6 - 2013-05-20 23:20:45 +0200 - Sascha Kaufmann : Fix: Menge anzeigen bei grossen bildern 
-1f54779 - 2013-05-20 23:12:54 +0200 - Sascha Kaufmann : Alex wollte die items auf 50px 
-e8213d1 - 2013-05-20 23:08:32 +0200 - Sascha Kaufmann : INFO: equip 
-ccc49ab - 2013-05-20 23:05:14 +0200 - Sascha Kaufmann : Fix: Consumable equip 
-544aae7 - 2013-05-20 22:42:41 +0200 - Sascha Kaufmann : Fix: Duplicate Item Iventar 
-6147ded - 2013-05-20 22:39:30 +0200 - Sascha Kaufmann : Fix: Dequip 
-05eadd0 - 2013-05-20 21:56:41 +0200 - Sascha Kaufmann : Fix: Equip & Dequip 
-c9f8d25 - 2013-05-20 21:02:42 +0200 - Alex Amling : update 
-a7373a8 - 2013-05-17 20:53:14 +0200 - Sascha Kaufmann : SQL Daten Online Eingetragen 
-5f193a8 - 2013-05-17 18:36:26 +0200 - Sascha Kaufmann : Abgleich 2 
-be350fc - 2013-05-17 18:33:32 +0200 - Sascha Kaufmann : Abgleich 1 
-0f31820 - 2013-05-16 21:40:26 +0200 - Sascha Kaufmann : Mehrere Monster Drops 
-5673532 - 2013-05-16 20:56:42 +0200 - Sascha Kaufmann : Testausgaben weg 
-b85d81c - 2013-05-16 20:51:35 +0200 - Sascha Kaufmann : FIX: Kämpfen ohne Wasser 
-282dc78 - 2013-05-16 20:14:24 +0200 - Alex Amling : change_item update 
-8863b5f - 2013-05-16 16:11:51 +0200 - Alex Amling : hab mich festgefahren.... kannste mal ts kommen^^? 
-47bbf5d - 2013-05-15 19:40:21 +0200 - Sascha Kaufmann : Quest X Items Drop 
-5868b03 - 2013-05-15 18:51:09 +0200 - Sascha Kaufmann : ADD: Quest drop 1 Item 
-cba83ba - 2013-05-15 18:17:00 +0200 - Sascha Kaufmann : FIX: Ausgeloggt Bar 
-ffa88a9 - 2013-05-15 00:17:50 +0200 - Alex Amling : Drag and Drop FIX 
-d1faaa5 - 2013-05-14 23:51:19 +0200 - Alex Amling : Drag and Drop bugged 
-7de15f2 - 2013-05-14 23:33:27 +0200 - Alex Amling : drag and drop start 
-4c47aa4 - 2013-05-14 22:19:17 +0200 - Sascha Kaufmann : add inventory gen item 
-9bf9ab7 - 2013-05-14 22:04:22 +0200 - Alex Amling : NAV: Änderung 
-d51c2c1 - 2013-05-14 22:00:16 +0200 - Sascha Kaufmann : Online Chance stimmte nicht 
-0ab120a - 2013-05-14 21:27:10 +0200 - Alex Amling : Guild + Bugfix 
-4b4595b - 2013-05-14 10:46:20 +0200 - Sascha Kaufmann : Upload für Alex 
-29112cf - 2013-05-14 00:01:42 +0200 - Alex Amling : Änderung Inv+Status 
-f923c62 - 2013-05-14 00:01:11 +0200 - Sascha Kaufmann : Items Generieren & Beispielitems 
-71a8a3a - 2013-05-12 15:40:53 +0200 - Sascha Kaufmann : Quest 4 
-70cd7e5 - 2013-05-12 15:27:04 +0200 - Sascha Kaufmann : Quest Beenden Text anpassen 
-7779040 - 2013-05-12 15:24:40 +0200 - Sascha Kaufmann : Quest 3 
-ed0f77f - 2013-05-12 15:11:40 +0200 - Sascha Kaufmann : TEMP: Quest erstellen 
-3bf0413 - 2013-05-12 15:04:30 +0200 - Sascha Kaufmann : Quest 2 beenden 
-639a8b1 - 2013-05-12 14:15:57 +0200 - Sascha Kaufmann : QuestBook: Quest nachlesen 
-b3ce4c7 - 2013-05-12 14:10:58 +0200 - Sascha Kaufmann : Function: Check_Quest 
-59a111a - 2013-05-12 12:57:43 +0200 - Sascha Kaufmann : FIX: Mehrer Abbau progebiet 
-eebb468 - 2013-05-12 11:57:46 +0200 - Sascha Kaufmann : ADD: Kämpfe für Statistik 
-afc7dec - 2013-05-12 11:41:16 +0200 - Sascha Kaufmann : Fix: Kampfsystem 
-6b0626f - 2013-05-12 03:27:40 +0200 - Alex Amling : Fix: Kleinigkeiten 
-b1fea2f - 2013-05-12 02:37:12 +0200 - Alex Amling : Bugfix: See, Charauswahl ; Add Pics, Änderung Information 
-9abfac0 - 2013-05-12 01:50:07 +0200 - Sascha Kaufmann : , 
-03d71d3 - 2013-05-12 01:49:12 +0200 - Sascha Kaufmann : Füf Doofi SQL Befehl geändert 
-20993a0 - 2013-05-12 01:47:17 +0200 - Sascha Kaufmann : CHANGELOG 
-170bb9f - 2013-05-12 01:38:35 +0200 - Sascha Kaufmann : FIX: Bar & Questbuch 
-872c6da - 2013-05-12 01:34:47 +0200 - Alex Amling : FIX & UPDATE: Bar.php 
-d5820b1 - 2013-05-12 01:13:01 +0200 - Sascha Kaufmann : FIX: Exp Bar 
-5bbd396 - 2013-05-12 01:11:45 +0200 - Alex Amling : FIX: Informations bar 
-54ddaa7 - 2013-05-12 01:00:15 +0200 - Alex Amling : Bar UPDATE 
-355fd9f - 2013-05-12 00:39:58 +0200 - Alex Amling : information UPDATE 
-86064a9 - 2013-05-12 00:23:13 +0200 - Sascha Kaufmann : Navigation für Questbuch 
-cf21bc6 - 2013-05-12 00:15:32 +0200 - Sascha Kaufmann : ADD: Balken 
-ed3bde1 - 2013-05-12 00:13:43 +0200 - Alex Amling : Information bearbeitet... 
-1946d0a - 2013-05-12 00:04:01 +0200 - Sascha Kaufmann : ADD: Balken in Char Status 
-0d30570 - 2013-05-11 23:55:26 +0200 - Alex Amling : Informations UPDATE 
-b6bf62d - 2013-05-11 23:28:34 +0200 - Sascha Kaufmann : FIX: Questanzeige 
-e82351f - 2013-05-11 23:27:38 +0200 - Sascha Kaufmann : ADD: Quest Anzeigen 
-fa1fca8 - 2013-05-11 23:27:08 +0200 - Sascha Kaufmann : FIX: Questanzeige 
-aefec98 - 2013-05-11 23:25:16 +0200 - Sascha Kaufmann : ADD: Quest Anzeigen 
-d06d704 - 2013-05-11 22:29:06 +0200 - Sascha Kaufmann : Fix: SkillBilder 
-0ec54a7 - 2013-05-11 22:23:21 +0200 - Sascha Kaufmann : FIX: LevelUP 
-a6469f8 - 2013-05-11 22:22:53 +0200 - Alex Amling : Function Problem 
-331a763 - 2013-05-11 21:57:14 +0200 - Alex Amling : Grafik Update 
-e325cb1 - 2013-05-11 21:53:26 +0200 - Sascha Kaufmann : FIX: Kartengröße 
-e79b6a2 - 2013-05-11 21:50:48 +0200 - Sascha Kaufmann : FIX: Seitenbreite 
-31f9108 - 2013-05-11 21:45:14 +0200 - Sascha Kaufmann : FIX: Inventar 
-bc72ab1 - 2013-05-11 21:22:09 +0200 - Alex Amling : Changes Information,Inventory,Skills 
-397a24d - 2013-05-11 21:08:50 +0200 - Alex Amling : ADD: aktueller stand 
-3fdfd57 - 2013-05-11 20:52:22 +0200 - Alex Amling : rest vom lvl system 
-c2d6614 - 2013-05-11 20:51:24 +0200 - Alex Amling : ADD: level system 
-b492c40 - 2013-05-04 19:35:11 +0200 - Sascha Kaufmann : Zwischenstandt Commiten 
-eb808f1 - 2013-05-04 19:34:58 +0200 - Sascha Kaufmann : Texte angepasst und Charerstellungs text erzeigen 
-759bcd0 - 2013-05-04 18:55:07 +0200 - Sascha Kaufmann : Zwischenstandt Commiten 
-ccfb45f - 2013-05-04 18:54:19 +0200 - Sascha Kaufmann : NUN: Gesundheit = MaxWert, Nahrung=Leben 
-f79e880 - 2013-05-04 18:41:53 +0200 - Sascha Kaufmann : ADD: Skill auswirkungen 
-336698c - 2013-05-04 17:41:43 +0200 - Alex Amling : Guild: Bugfix 
-6b0c3cf - 2013-05-04 14:05:54 +0200 - Sascha Kaufmann : BugFix: Quest beenden 
-f908cff - 2013-05-04 13:58:38 +0200 - Sascha Kaufmann : Zwischenstandt Commiten 
-fd887a0 - 2013-05-04 13:57:25 +0200 - Sascha Kaufmann : Änderungen auf Server Übertragen 
-467717a - 2013-05-04 13:43:49 +0200 - Sascha Kaufmann : Zwischenstandt Commiten 
-8e61ec0 - 2013-05-04 13:43:28 +0200 - Sascha Kaufmann : Skills bei Charerstellung 
-cd197ff - 2013-05-04 13:14:22 +0200 - Sascha Kaufmann : Quest 1 
-8a0e60b - 2013-05-04 12:42:47 +0200 - Sascha Kaufmann : BugFix: Quest1 überprüfung 
-96a3b92 - 2013-05-04 12:31:41 +0200 - Sascha Kaufmann : Edit: Quest 1 pruefen 
-43dcdc4 - 2013-05-04 12:22:00 +0200 - Sascha Kaufmann : BugFix/Edit: Skillanzeige 
-69c4088 - 2013-05-04 11:25:03 +0200 - Sascha Kaufmann : Zwischenstandt Commiten 
-ef5c13b - 2013-05-04 11:18:13 +0200 - Sascha Kaufmann : Charerstellung üerarbeitet & vorbereitung Quests 
-06e290e - 2013-05-04 09:40:40 +0200 - Sascha Kaufmann : Scripte anpassen 
-6212bd9 - 2013-05-04 09:11:34 +0200 - Sascha Kaufmann : Guten Morgen 
-9b4510d - 2013-05-03 20:23:21 +0200 - Alex Amling : Bugfix: Gilden Chat,Desc 
-3b07375 - 2013-05-03 20:03:11 +0200 - Alex Amling : Bug in Guild.php 
-3aedd78 - 2013-05-03 19:57:43 +0200 - Alex Amling : Bugfix: Guild 
-5c5a5b4 - 2013-05-03 19:45:35 +0200 - Sascha Kaufmann : BugFix: Gildentext speichern 
-48daca1 - 2013-05-03 19:16:11 +0200 - Sascha Kaufmann : BugFix: Gildentext 
-6bf468a - 2013-05-03 19:05:36 +0200 - Alex Amling : guild 
-287dd59 - 2013-05-03 10:37:47 +0200 - Sascha Kaufmann : Script Test 
-b6f74fd - 2013-05-02 23:26:46 +0200 - Sascha Kaufmann : BugFix: Werkstatt - Stand auf FTP geupdatet 
-1f658eb - 2013-05-02 23:10:02 +0200 - Sascha Kaufmann : CSS reicht so schon Alex -.- 
-4d6ce7f - 2013-05-02 22:58:37 +0200 - Sascha Kaufmann : Version 0.09 
-4f50eac - 2013-05-02 22:19:07 +0200 - Sascha Kaufmann : Mühlhalde hinzugefügt 
-859d76a - 2013-05-02 20:58:58 +0200 - Sascha Kaufmann : MYSQL STRUKTUR um änderungen festzustellen 
-b089fef - 2013-05-02 19:11:57 +0200 - Sascha Kaufmann : Aktionen bringen jetzt EXP 
-de17cdd - 2013-05-02 18:43:55 +0200 - Sascha Kaufmann : BugFix: Link Item Benutzen 
-e23971c - 2013-05-02 18:41:00 +0200 - Sascha Kaufmann : BugFix: Link abbauen 
-3a9cf37 - 2013-05-02 13:36:52 +0200 - Sascha Kaufmann : Crafting und Abbau ueberprueft Wasser 
-4c5c3de - 2013-05-02 13:19:59 +0200 - Sascha Kaufmann : Aktionen benoetigen nun Wasser 
-f7b08aa - 2013-05-01 22:52:02 +0200 - Alex Amling : guild 
-02926eb - 2013-05-01 22:07:29 +0200 - Sascha Kaufmann : Beendigung der Arbeit von heute ^SK 
-3a984d8 - 2013-05-01 21:52:58 +0200 - Sascha Kaufmann : Fix: Textausgaben bei Skills 
-1f1c495 - 2013-05-01 21:37:56 +0200 - Sascha Kaufmann : Add: Char Skills Anzeige 
-3af7f76 - 2013-05-01 20:16:38 +0200 - Sascha Kaufmann : BugFix: Natürlich nur sich selbst XP geben beim Kampf 
-6716121 - 2013-05-01 19:56:16 +0200 - Sascha Kaufmann : BugFix: Linkfehler in Traingslager 
-fd09848 - 2013-05-01 19:50:52 +0200 - Sascha Kaufmann : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird 
-5423009 - 2013-05-01 19:46:42 +0200 - Sascha Kaufmann : BugFix: Items einsammeln 
-71393ce - 2013-05-01 19:36:21 +0200 - Sascha Kaufmann : Items und EXP von Monster erhalten 
-b85a418 - 2013-05-01 19:13:26 +0200 - Sascha Kaufmann : Kampfzeit erstmal auf 3 Minuten gesetzt 
-9859c76 - 2013-05-01 19:10:50 +0200 - Sascha Kaufmann : Ein einfaches Kampfsystem 
-49ab517 - 2013-05-01 18:47:08 +0200 - Alex Amling : Da 
-2c7589f - 2013-05-01 18:42:16 +0200 - Alex Amling : Das neue Spiel "SUCH DEN FEHLER" 
-9953498 - 2013-05-01 18:42:12 +0200 - Sascha Kaufmann : Kampfsystem TEST 
-84204d7 - 2013-05-01 18:21:16 +0200 - Sascha Kaufmann : Werte Berechnung Char 
-1ad9c71 - 2013-05-01 18:03:12 +0200 - Sascha Kaufmann : Kampfzeit auf 1 SEK zum testen 
-1269807 - 2013-05-01 17:43:59 +0200 - Sascha Kaufmann : Warum löscht der die Datei nicht~ 
-eaff447 - 2013-05-01 17:41:46 +0200 - Sascha Kaufmann : Irgendwie 2 Functionen^^ + KSystem1 
-38a1632 - 2013-05-01 17:30:18 +0200 - Sascha Kaufmann : Fehlermeldung Aktion - Kampf 
-c907fa6 - 2013-05-01 17:22:37 +0200 - Alex Amling : Login - Passwortfeld Farbe 
-6defd8a - 2013-05-01 17:18:18 +0200 - Sascha Kaufmann : Funktion Fehlermeldung Bilder 
-601b3d8 - 2013-05-01 17:16:53 +0200 - Sascha Kaufmann : Lokale Mysql Einstellungen 
-4afcc68 - 2013-05-01 17:14:39 +0200 - Alex Amling : test behoben xD 
-9e2b41f - 2013-05-01 17:06:16 +0200 - Alex Amling : test 
+git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-06-05 21:04:05 +0200 : Update SK (Sascha Kaufmann)
+2013-06-05 20:47:42 +0200 : Update SK (Sascha Kaufmann)
+2013-06-05 20:26:54 +0200 : Fix: Fehlermeldung Logout (Sascha Kaufmann)
+2013-06-05 20:24:54 +0200 : Fix: Fehlermeldung bei Leiter (Sascha Kaufmann)
+2013-06-05 20:16:00 +0200 : Update SK (Sascha Kaufmann)
+2013-06-05 20:11:50 +0200 : Update SK (Sascha Kaufmann)
+2013-06-02 23:37:19 +0200 : ??? (Alex Amling)
+2013-06-02 23:36:57 +0200 : ItemHover in function angepasst (Alex Amling)
+2013-06-02 18:57:31 +0200 : changes Mobs adden funkt noch net (Alex Amling)
+2013-06-02 00:47:27 +0200 : Test (Sascha Kaufmann)
+2013-06-02 00:44:31 +0200 : Item Ändern (Sascha Kaufmann)
+2013-06-02 00:42:27 +0200 : Bugfix Itemerstellung (Alex Amling)
+2013-06-02 00:39:29 +0200 : Mobs erstellen (Alex Amling)
+2013-06-01 23:21:02 +0200 : Bug Fix im Admin Interface (Alex Amling)
+2013-06-01 23:09:27 +0200 : Bug FIX! (Alex Amling)
+2013-06-01 21:23:04 +0200 : ka (Alex Amling)
+2013-06-01 19:51:20 +0200 : Admin Interface - Erstellung von alle Items möglich (Alex Amling)
+2013-05-30 14:09:22 +0200 : Test Commit (Sascha Kaufmann)
+2013-05-30 14:00:02 +0200 : Formatierung (Sascha Kaufmann)
+2013-05-30 13:54:09 +0200 : Karte ohne Quests (Sascha Kaufmann)
+2013-05-30 13:50:40 +0200 : Kleiner Fixes (Sascha Kaufmann)
+2013-05-30 13:44:14 +0200 : Nun auch mit Bild überschreiben (Sascha Kaufmann)
+2013-05-30 13:40:09 +0200 : Wo ist der Fehler? (Sascha Kaufmann)
+2013-05-30 01:15:44 +0200 : Bilder Upload sollte funken...^^ (Alex Amling)
+2013-05-29 19:23:35 +0200 : Nahkampf item BUG ..? (Alex Amling)
+2013-05-29 19:01:56 +0200 : nahkampf waffen kannste nun adden (Alex Amling)
+2013-05-29 00:33:01 +0200 : button Fix, hab die texte online geadded (Alex Amling)
+2013-05-29 00:31:21 +0200 : kannste mal in die add_nahkampf schauen (Alex Amling)
+2013-05-28 23:11:34 +0200 : kurz updaten^^ (Alex Amling)
+2013-05-27 22:23:17 +0200 : Feierabend @Istani (Sascha Kaufmann)
+2013-05-27 22:12:56 +0200 : Fix: Check (Sascha Kaufmann)
+2013-05-27 22:10:52 +0200 : Check Max Ausdauer (Sascha Kaufmann)
+2013-05-27 22:02:27 +0200 : ToDo Abgearbeitet (Sascha Kaufmann)
+2013-05-27 21:54:32 +0200 : Test Grafik entfernen (Sascha Kaufmann)
+2013-05-27 19:36:07 +0200 : ToDo Erweitert (Sascha Kaufmann)
+2013-05-27 19:34:05 +0200 : FIX:schlafen (Sascha Kaufmann)
+2013-05-26 15:40:01 +0200 : Fix: Bug Player status (Sascha Kaufmann)
+2013-05-25 20:11:27 +0200 : FIX: ItemGen (Sascha Kaufmann)
+2013-05-25 19:52:04 +0200 : Feierabend (Sascha Kaufmann)
+2013-05-25 19:42:40 +0200 : ToDo Erweitert (Sascha Kaufmann)
+2013-05-25 19:39:49 +0200 : FIX: Item Hover (Sascha Kaufmann)
+2013-05-25 19:33:08 +0200 : ADD: Item Stat - Anzeige & Benutzung (Sascha Kaufmann)
+2013-05-25 17:04:51 +0200 : ToDo aktuallisiert (Sascha Kaufmann)
+2013-05-25 16:54:59 +0200 : ToDo aktuallisiert (Sascha Kaufmann)
+2013-05-25 16:44:59 +0200 : MySQL aenderungen (Sascha Kaufmann)
+2013-05-25 16:43:48 +0200 : ToDo aktuallisiert (Sascha Kaufmann)
+2013-05-25 16:43:01 +0200 : ToDo aktuallisiert (Sascha Kaufmann)
+2013-05-25 16:40:16 +0200 : Monster Drop (Sascha Kaufmann)
+2013-05-25 16:34:40 +0200 : ToDo aktuallisiert (Sascha Kaufmann)
+2013-05-25 16:29:08 +0200 : Monster Drop (Sascha Kaufmann)
+2013-05-25 15:56:00 +0200 : char stats. DENK AN char.gesundheit=5 (Sascha Kaufmann)
+2013-05-25 15:16:27 +0200 : Drop Vorbereitung 3 (Sascha Kaufmann)
+2013-05-25 15:12:44 +0200 : Drop Vorbereitung 2 (Sascha Kaufmann)
+2013-05-25 14:59:30 +0200 : Drop Vorbereitung (Sascha Kaufmann)
+2013-05-25 14:46:33 +0200 : Temp Map Hover (Sascha Kaufmann)
+2013-05-25 14:35:52 +0200 : Bilder Map Test, Aufloesung egal (Sascha Kaufmann)
+2013-05-25 14:30:13 +0200 : Standartaenderungen angepasst (Sascha Kaufmann)
+2013-05-25 14:26:23 +0200 : Beispiel Grafiken :-P (Sascha Kaufmann)
+2013-05-25 14:12:28 +0200 : ADD: Digitalisieren MAP 2 (Sascha Kaufmann)
+2013-05-25 13:44:06 +0200 : ADD: Digitalisieren MAP 1 (Sascha Kaufmann)
+2013-05-25 12:48:34 +0200 : Changelog.txt (Sascha Kaufmann)
+2013-05-25 12:45:49 +0200 : ADD: Map Bild (Sascha Kaufmann)
+2013-05-25 11:21:14 +0200 : ADD: schlafen (Sascha Kaufmann)
+2013-05-24 22:57:10 +0200 : Tabs Cookie (Sascha Kaufmann)
+2013-05-24 22:51:13 +0200 : Fix: Firefox Aktion Weiterleitung (Sascha Kaufmann)
+2013-05-24 22:21:45 +0200 : Fix: Firefox 2? (Sascha Kaufmann)
+2013-05-24 21:35:26 +0200 : Fix: Firefox Equip (Sascha Kaufmann)
+2013-05-24 20:50:51 +0200 : CHANGELOG akutallisieren (Sascha Kaufmann)
+2013-05-24 20:45:35 +0200 : Item Level Gen (Sascha Kaufmann)
+2013-05-24 20:02:30 +0200 : Fix: ItemGen (Du hast das Feld umbenannt) (Sascha Kaufmann)
+2013-05-23 23:49:26 +0200 : Schritt 1 - Berechnung Stats von Waffen (Sascha Kaufmann)
+2013-05-23 22:16:38 +0200 : Slot Check Equip (Sascha Kaufmann)
+2013-05-23 22:05:43 +0200 : Optimierung Ausruesten (Sascha Kaufmann)
+2013-05-23 22:03:52 +0200 : Info weg, weil erledigt (Sascha Kaufmann)
+2013-05-23 21:43:42 +0200 : Ordnung und Style Inventar (Sascha Kaufmann)
+2013-05-23 21:29:03 +0200 : Optimales auslesen chardaten (Sascha Kaufmann)
+2013-05-23 21:14:26 +0200 : Alex alles auslesen demnächst bitte (Sascha Kaufmann)
+2013-05-23 21:00:39 +0200 : Style: Char (Sascha Kaufmann)
+2013-05-23 20:42:31 +0200 : Style anpassungen (Sascha Kaufmann)
+2013-05-22 21:08:01 +0200 : Ordnung muss sein 2 (Sascha Kaufmann)
+2013-05-22 21:06:11 +0200 : Ordnung muss sein (Sascha Kaufmann)
+2013-05-21 13:40:57 +0200 : Bilder (Sascha Kaufmann)
+2013-05-20 23:20:45 +0200 : Fix: Menge anzeigen bei grossen bildern (Sascha Kaufmann)
+2013-05-20 23:12:54 +0200 : Alex wollte die items auf 50px (Sascha Kaufmann)
+2013-05-20 23:08:32 +0200 : INFO: equip (Sascha Kaufmann)
+2013-05-20 23:05:14 +0200 : Fix: Consumable equip (Sascha Kaufmann)
+2013-05-20 22:42:41 +0200 : Fix: Duplicate Item Iventar (Sascha Kaufmann)
+2013-05-20 22:39:30 +0200 : Fix: Dequip (Sascha Kaufmann)
+2013-05-20 21:56:41 +0200 : Fix: Equip & Dequip (Sascha Kaufmann)
+2013-05-20 21:02:42 +0200 : update (Alex Amling)
+2013-05-17 20:53:14 +0200 : SQL Daten Online Eingetragen (Sascha Kaufmann)
+2013-05-17 18:36:26 +0200 : Abgleich 2 (Sascha Kaufmann)
+2013-05-17 18:33:32 +0200 : Abgleich 1 (Sascha Kaufmann)
+2013-05-16 21:40:26 +0200 : Mehrere Monster Drops (Sascha Kaufmann)
+2013-05-16 20:56:42 +0200 : Testausgaben weg (Sascha Kaufmann)
+2013-05-16 20:51:35 +0200 : FIX: Kämpfen ohne Wasser (Sascha Kaufmann)
+2013-05-16 20:14:24 +0200 : change_item update (Alex Amling)
+2013-05-16 16:11:51 +0200 : hab mich festgefahren.... kannste mal ts kommen^^? (Alex Amling)
+2013-05-15 19:40:21 +0200 : Quest X Items Drop (Sascha Kaufmann)
+2013-05-15 18:51:09 +0200 : ADD: Quest drop 1 Item (Sascha Kaufmann)
+2013-05-15 18:17:00 +0200 : FIX: Ausgeloggt Bar (Sascha Kaufmann)
+2013-05-15 00:17:50 +0200 : Drag and Drop FIX (Alex Amling)
+2013-05-14 23:51:19 +0200 : Drag and Drop bugged (Alex Amling)
+2013-05-14 23:33:27 +0200 : drag and drop start (Alex Amling)
+2013-05-14 22:19:17 +0200 : add inventory gen item (Sascha Kaufmann)
+2013-05-14 22:04:22 +0200 : NAV: Änderung (Alex Amling)
+2013-05-14 22:00:16 +0200 : Online Chance stimmte nicht (Sascha Kaufmann)
+2013-05-14 21:27:10 +0200 : Guild + Bugfix (Alex Amling)
+2013-05-14 10:46:20 +0200 : Upload für Alex (Sascha Kaufmann)
+2013-05-14 00:01:42 +0200 : Änderung Inv+Status (Alex Amling)
+2013-05-14 00:01:11 +0200 : Items Generieren & Beispielitems (Sascha Kaufmann)
+2013-05-12 15:40:53 +0200 : Quest 4 (Sascha Kaufmann)
+2013-05-12 15:27:04 +0200 : Quest Beenden Text anpassen (Sascha Kaufmann)
+2013-05-12 15:24:40 +0200 : Quest 3 (Sascha Kaufmann)
+2013-05-12 15:11:40 +0200 : TEMP: Quest erstellen (Sascha Kaufmann)
+2013-05-12 15:04:30 +0200 : Quest 2 beenden (Sascha Kaufmann)
+2013-05-12 14:15:57 +0200 : QuestBook: Quest nachlesen (Sascha Kaufmann)
+2013-05-12 14:10:58 +0200 : Function: Check_Quest (Sascha Kaufmann)
+2013-05-12 12:57:43 +0200 : FIX: Mehrer Abbau progebiet (Sascha Kaufmann)
+2013-05-12 11:57:46 +0200 : ADD: Kämpfe für Statistik (Sascha Kaufmann)
+2013-05-12 11:41:16 +0200 : Fix: Kampfsystem (Sascha Kaufmann)
+2013-05-12 03:27:40 +0200 : Fix: Kleinigkeiten (Alex Amling)
+2013-05-12 02:37:12 +0200 : Bugfix: See, Charauswahl ; Add Pics, Änderung Information (Alex Amling)
+2013-05-12 01:50:07 +0200 : , (Sascha Kaufmann)
+2013-05-12 01:49:12 +0200 : Füf Doofi SQL Befehl geändert (Sascha Kaufmann)
+2013-05-12 01:47:17 +0200 : CHANGELOG (Sascha Kaufmann)
+2013-05-12 01:38:35 +0200 : FIX: Bar & Questbuch (Sascha Kaufmann)
+2013-05-12 01:34:47 +0200 : FIX & UPDATE: Bar.php (Alex Amling)
+2013-05-12 01:13:01 +0200 : FIX: Exp Bar (Sascha Kaufmann)
+2013-05-12 01:11:45 +0200 : FIX: Informations bar (Alex Amling)
+2013-05-12 01:00:15 +0200 : Bar UPDATE (Alex Amling)
+2013-05-12 00:39:58 +0200 : information UPDATE (Alex Amling)
+2013-05-12 00:23:13 +0200 : Navigation für Questbuch (Sascha Kaufmann)
+2013-05-12 00:15:32 +0200 : ADD: Balken (Sascha Kaufmann)
+2013-05-12 00:13:43 +0200 : Information bearbeitet... (Alex Amling)
+2013-05-12 00:04:01 +0200 : ADD: Balken in Char Status (Sascha Kaufmann)
+2013-05-11 23:55:26 +0200 : Informations UPDATE (Alex Amling)
+2013-05-11 23:28:34 +0200 : FIX: Questanzeige (Sascha Kaufmann)
+2013-05-11 23:27:38 +0200 : ADD: Quest Anzeigen (Sascha Kaufmann)
+2013-05-11 23:27:08 +0200 : FIX: Questanzeige (Sascha Kaufmann)
+2013-05-11 23:25:16 +0200 : ADD: Quest Anzeigen (Sascha Kaufmann)
+2013-05-11 22:29:06 +0200 : Fix: SkillBilder (Sascha Kaufmann)
+2013-05-11 22:23:21 +0200 : FIX: LevelUP (Sascha Kaufmann)
+2013-05-11 22:22:53 +0200 : Function Problem (Alex Amling)
+2013-05-11 21:57:14 +0200 : Grafik Update (Alex Amling)
+2013-05-11 21:53:26 +0200 : FIX: Kartengröße (Sascha Kaufmann)
+2013-05-11 21:50:48 +0200 : FIX: Seitenbreite (Sascha Kaufmann)
+2013-05-11 21:45:14 +0200 : FIX: Inventar (Sascha Kaufmann)
+2013-05-11 21:22:09 +0200 : Changes Information,Inventory,Skills (Alex Amling)
+2013-05-11 21:08:50 +0200 : ADD: aktueller stand (Alex Amling)
+2013-05-11 20:52:22 +0200 : rest vom lvl system (Alex Amling)
+2013-05-11 20:51:24 +0200 : ADD: level system (Alex Amling)
+2013-05-04 19:35:11 +0200 : Zwischenstandt Commiten (Sascha Kaufmann)
+2013-05-04 19:34:58 +0200 : Texte angepasst und Charerstellungs text erzeigen (Sascha Kaufmann)
+2013-05-04 18:55:07 +0200 : Zwischenstandt Commiten (Sascha Kaufmann)
+2013-05-04 18:54:19 +0200 : NUN: Gesundheit = MaxWert, Nahrung=Leben (Sascha Kaufmann)
+2013-05-04 18:41:53 +0200 : ADD: Skill auswirkungen (Sascha Kaufmann)
+2013-05-04 17:41:43 +0200 : Guild: Bugfix (Alex Amling)
+2013-05-04 14:05:54 +0200 : BugFix: Quest beenden (Sascha Kaufmann)
+2013-05-04 13:58:38 +0200 : Zwischenstandt Commiten (Sascha Kaufmann)
+2013-05-04 13:57:25 +0200 : Änderungen auf Server Übertragen (Sascha Kaufmann)
+2013-05-04 13:43:49 +0200 : Zwischenstandt Commiten (Sascha Kaufmann)
+2013-05-04 13:43:28 +0200 : Skills bei Charerstellung (Sascha Kaufmann)
+2013-05-04 13:14:22 +0200 : Quest 1 (Sascha Kaufmann)
+2013-05-04 12:42:47 +0200 : BugFix: Quest1 überprüfung (Sascha Kaufmann)
+2013-05-04 12:31:41 +0200 : Edit: Quest 1 pruefen (Sascha Kaufmann)
+2013-05-04 12:22:00 +0200 : BugFix/Edit: Skillanzeige (Sascha Kaufmann)
+2013-05-04 11:25:03 +0200 : Zwischenstandt Commiten (Sascha Kaufmann)
+2013-05-04 11:18:13 +0200 : Charerstellung üerarbeitet & vorbereitung Quests (Sascha Kaufmann)
+2013-05-04 09:40:40 +0200 : Scripte anpassen (Sascha Kaufmann)
+2013-05-04 09:11:34 +0200 : Guten Morgen (Sascha Kaufmann)
+2013-05-03 20:23:21 +0200 : Bugfix: Gilden Chat,Desc (Alex Amling)
+2013-05-03 20:03:11 +0200 : Bug in Guild.php (Alex Amling)
+2013-05-03 19:57:43 +0200 : Bugfix: Guild (Alex Amling)
+2013-05-03 19:45:35 +0200 : BugFix: Gildentext speichern (Sascha Kaufmann)
+2013-05-03 19:16:11 +0200 : BugFix: Gildentext (Sascha Kaufmann)
+2013-05-03 19:05:36 +0200 : guild (Alex Amling)
+2013-05-03 10:37:47 +0200 : Script Test (Sascha Kaufmann)
+2013-05-02 23:26:46 +0200 : BugFix: Werkstatt - Stand auf FTP geupdatet (Sascha Kaufmann)
+2013-05-02 23:10:02 +0200 : CSS reicht so schon Alex -.- (Sascha Kaufmann)
+2013-05-02 22:58:37 +0200 : Version 0.09 (Sascha Kaufmann)
+2013-05-02 22:19:07 +0200 : Mühlhalde hinzugefügt (Sascha Kaufmann)
+2013-05-02 20:58:58 +0200 : MYSQL STRUKTUR um änderungen festzustellen (Sascha Kaufmann)
+2013-05-02 19:11:57 +0200 : Aktionen bringen jetzt EXP (Sascha Kaufmann)
+2013-05-02 18:43:55 +0200 : BugFix: Link Item Benutzen (Sascha Kaufmann)
+2013-05-02 18:41:00 +0200 : BugFix: Link abbauen (Sascha Kaufmann)
+2013-05-02 13:36:52 +0200 : Crafting und Abbau ueberprueft Wasser (Sascha Kaufmann)
+2013-05-02 13:19:59 +0200 : Aktionen benoetigen nun Wasser (Sascha Kaufmann)
+2013-05-01 22:52:02 +0200 : guild (Alex Amling)
+2013-05-01 22:07:29 +0200 : Beendigung der Arbeit von heute ^SK (Sascha Kaufmann)
+2013-05-01 21:52:58 +0200 : Fix: Textausgaben bei Skills (Sascha Kaufmann)
+2013-05-01 21:37:56 +0200 : Add: Char Skills Anzeige (Sascha Kaufmann)
+2013-05-01 20:16:38 +0200 : BugFix: Natürlich nur sich selbst XP geben beim Kampf (Sascha Kaufmann)
+2013-05-01 19:56:16 +0200 : BugFix: Linkfehler in Traingslager (Sascha Kaufmann)
+2013-05-01 19:50:52 +0200 : Schon einmal auf Version 0.08 gestellt, damit das nicht vergessen wird (Sascha Kaufmann)
+2013-05-01 19:46:42 +0200 : BugFix: Items einsammeln (Sascha Kaufmann)
+2013-05-01 19:36:21 +0200 : Items und EXP von Monster erhalten (Sascha Kaufmann)
+2013-05-01 19:13:26 +0200 : Kampfzeit erstmal auf 3 Minuten gesetzt (Sascha Kaufmann)
+2013-05-01 19:10:50 +0200 : Ein einfaches Kampfsystem (Sascha Kaufmann)
+2013-05-01 18:47:08 +0200 : Da (Alex Amling)
+2013-05-01 18:42:16 +0200 : Das neue Spiel "SUCH DEN FEHLER" (Alex Amling)
+2013-05-01 18:42:12 +0200 : Kampfsystem TEST (Sascha Kaufmann)
+2013-05-01 18:21:16 +0200 : Werte Berechnung Char (Sascha Kaufmann)
+2013-05-01 18:03:12 +0200 : Kampfzeit auf 1 SEK zum testen (Sascha Kaufmann)
+2013-05-01 17:43:59 +0200 : Warum löscht der die Datei nicht~ (Sascha Kaufmann)
+2013-05-01 17:41:46 +0200 : Irgendwie 2 Functionen^^ + KSystem1 (Sascha Kaufmann)
+2013-05-01 17:30:18 +0200 : Fehlermeldung Aktion - Kampf (Sascha Kaufmann)
+2013-05-01 17:22:37 +0200 : Login - Passwortfeld Farbe (Alex Amling)
+2013-05-01 17:18:18 +0200 : Funktion Fehlermeldung Bilder (Sascha Kaufmann)
+2013-05-01 17:16:53 +0200 : Lokale Mysql Einstellungen (Sascha Kaufmann)
+2013-05-01 17:14:39 +0200 : test behoben xD (Alex Amling)
+2013-05-01 17:06:16 +0200 : test (Alex Amling)
