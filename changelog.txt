@@ -1,4 +1,8 @@
 git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-06-05 21:20:15 +0200 : Fix: MySQL Injection ? (Sascha Kaufmann)
+2013-06-05 21:09:44 +0200 : Fix: Diese Dateien sollten da nicht sein (Sascha Kaufmann)
+2013-06-05 21:08:05 +0200 : ToDo Angepasst (Sascha Kaufmann)
+2013-06-05 21:07:05 +0200 : Update SK (Sascha Kaufmann)
 2013-06-05 21:04:05 +0200 : Update SK (Sascha Kaufmann)
 2013-06-05 20:47:42 +0200 : Update SK (Sascha Kaufmann)
 2013-06-05 20:26:54 +0200 : Fix: Fehlermeldung Logout (Sascha Kaufmann)
