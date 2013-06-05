@@ -69,8 +69,8 @@ if (!isset($_SESSION['userID'])) {
         
     // Rechte Check
     $sql_login="SELECT * FROM `login` WHERE userID=".$_SESSION['userID'];
-	$query_login=mysql_query($sql_login);
-	$ds_admin=mysql_fetch_assoc($query_login);
+    $query_login=mysql_query($sql_login);
+    $ds_admin=@mysql_fetch_assoc($query_login);
 
       if ($ds_admin['rechte'] == "4"){
         if($_GET['site'] == "admin"){
