@@ -185,7 +185,7 @@ CREATE TABLE `guild_chat` (
   PRIMARY KEY (`msg_id`),
   UNIQUE KEY `msg_id` (`msg_id`),
   KEY `guild_id` (`guild_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +277,7 @@ CREATE TABLE `inventory` (
   `uniqID` int(11) NOT NULL,
   `menge` int(11) NOT NULL,
   PRIMARY KEY (`invID`)
-) ENGINE=MyISAM AUTO_INCREMENT=371 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=537 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,10 +319,12 @@ CREATE TABLE `item_db` (
   `min_lvl` int(11) NOT NULL,
   `max_lvl` int(11) NOT NULL,
   `art` int(11) NOT NULL,
+  `cat` int(11) NOT NULL DEFAULT '0',
   `stack` int(11) NOT NULL,
   `mindmg` int(11) NOT NULL,
   `maxdmg` int(11) NOT NULL,
   `def` int(11) NOT NULL,
+  `mdef` int(11) NOT NULL,
   `hit` int(11) NOT NULL,
   `crit` float(11,2) NOT NULL,
   `refill` int(11) NOT NULL,
@@ -350,7 +352,7 @@ CREATE TABLE `item_list` (
   `setBonus` text NOT NULL,
   PRIMARY KEY (`uniqID`),
   UNIQUE KEY `uniqID` (`uniqID`)
-) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,6 +409,7 @@ DROP TABLE IF EXISTS `login`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `login` (
   `userID` int(10) NOT NULL AUTO_INCREMENT,
+  `rechte` int(11) NOT NULL,
   `loginName` varchar(50) COLLATE latin1_german2_ci NOT NULL,
   `passwort` varchar(50) COLLATE latin1_german2_ci NOT NULL,
   `email` varchar(50) COLLATE latin1_german2_ci NOT NULL,
@@ -415,7 +418,7 @@ CREATE TABLE `login` (
   `lastAktion` int(20) NOT NULL DEFAULT '0',
   `onlineTimer` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -435,7 +438,7 @@ CREATE TABLE `map_gebiete` (
   `need_quest` int(11) NOT NULL,
   `link_bez` varchar(255) NOT NULL,
   PRIMARY KEY (`gebiet_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -447,6 +450,7 @@ DROP TABLE IF EXISTS `mob_db`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mob_db` (
   `mob_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mob_art` int(11) NOT NULL DEFAULT '0',
   `mob_name` varchar(100) COLLATE latin1_german2_ci NOT NULL,
   `min_schaden` int(11) NOT NULL,
   `max_schaden` int(11) NOT NULL,
@@ -474,7 +478,7 @@ CREATE TABLE `nachricht_ausgang` (
   `betreff` text COLLATE latin1_german2_ci NOT NULL,
   `nachricht` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -493,7 +497,7 @@ CREATE TABLE `nachricht_eingang` (
   `betreff` text COLLATE latin1_german2_ci NOT NULL,
   `nachricht` text COLLATE latin1_german2_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -551,4 +555,4 @@ CREATE TABLE `texte` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-05 20:15:59
+-- Dump completed on 2013-06-05 20:47:41
