@@ -1,4 +1,5 @@
 git log --no-merges --date=local --pretty=format:"%h - %ad - %an : %s" -1 
+9481f50 - Wed Jun 5 20:11:50 2013 - Sascha Kaufmann : Update SK 
 4437869 - Sun Jun 2 23:37:19 2013 - Alex Amling : ??? 
 bf851c4 - Sun Jun 2 23:36:57 2013 - Alex Amling : ItemHover in function angepasst 
 200c339 - Sun Jun 2 18:57:31 2013 - Alex Amling : changes Mobs adden funkt noch net 
