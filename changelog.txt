@@ -1,4 +1,9 @@
 git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-06-06 20:04:25 +0200 : Fix: Char Übersicht Style (Sascha Kaufmann)
+2013-06-06 20:03:27 +0200 : Add: Char Stats Übersicht (Sascha Kaufmann)
+2013-06-06 19:11:13 +0200 : Fix: Item Ändern Bild (Sascha Kaufmann)
+2013-06-06 18:58:22 +0200 : Fix: Style (Sascha Kaufmann)
+2013-06-05 22:01:23 +0200 : Update SK (Sascha Kaufmann)
 2013-06-05 21:20:15 +0200 : Fix: MySQL Injection ? (Sascha Kaufmann)
 2013-06-05 21:09:44 +0200 : Fix: Diese Dateien sollten da nicht sein (Sascha Kaufmann)
 2013-06-05 21:08:05 +0200 : ToDo Angepasst (Sascha Kaufmann)
