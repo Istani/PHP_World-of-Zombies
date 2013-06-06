@@ -1,4 +1,5 @@
 git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-06-06 22:58:55 +0200 : Update SK (Sascha Kaufmann)
 2013-06-06 21:47:45 +0200 : Update SK (Sascha Kaufmann)
 2013-06-06 21:46:38 +0200 : TEST3 (Sascha Kaufmann)
 2013-06-06 21:46:23 +0200 : TEST2 (Sascha Kaufmann)
