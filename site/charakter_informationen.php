@@ -12,7 +12,7 @@
         <td>Klasse: <?php echo text_ausgabe("char_klasse", $dsatz['klasse'], $bg['sprache']); ?></td>
         <td>&nbsp;</td>
         <td><?php echo $tage; ?> Tage <?php echo $stunden; ?> Std. <?php echo $minuten; ?> Min.</td>
-    </tr>a
+    </tr>
     <tr>
         <td colspan="4">
             <hr />
