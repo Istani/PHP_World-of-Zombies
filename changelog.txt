@@ -1,4 +1,8 @@
 git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-06-06 21:46:38 +0200 : TEST3 (Sascha Kaufmann)
+2013-06-06 21:46:23 +0200 : TEST2 (Sascha Kaufmann)
+2013-06-06 21:46:03 +0200 : TEST (Sascha Kaufmann)
+2013-06-06 21:24:32 +0200 : Update SK (Sascha Kaufmann)
 2013-06-06 20:04:25 +0200 : Fix: Char Übersicht Style (Sascha Kaufmann)
 2013-06-06 20:03:27 +0200 : Add: Char Stats Übersicht (Sascha Kaufmann)
 2013-06-06 19:11:13 +0200 : Fix: Item Ändern Bild (Sascha Kaufmann)
