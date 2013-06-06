@@ -93,21 +93,21 @@
     </tr>
     <tr>
         <td><?php echo text_ausgabe("char_gesundheit", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_gesundheit . " (" . $char_stats['vit'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_gesundheit . " (" . $char_stats['vit'] . ")"; ?></td>
         <td><?php echo text_ausgabe("char_wissen", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_wissen . " (" . $char_stats['int'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_wissen . " (" . $char_stats['int'] . ")"; ?></td>
     </tr>
     <tr>
         <td><?php echo text_ausgabe("char_power", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_power . " (" . $char_stats['str'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_power . " (" . $char_stats['str'] . ")"; ?></td>
         <td><?php echo text_ausgabe("char_geschwindigkeit", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_geschwindigkeit . " (" . $char_stats['agi'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_geschwindigkeit . " (" . $char_stats['agi'] . ")"; ?></td>
     </tr>
     <tr>
         <td><?php echo text_ausgabe("char_treffchance", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_treffchance . " (" . $char_stats['dex'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_treffchance . " (" . $char_stats['dex'] . ")"; ?></td>
         <td><?php echo text_ausgabe("char_glueck", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_glueck . " (" . $char_stats['luk'] . ")"; ?></td>
+        <td class="text_rechts"><?php echo $char_glueck . " (" . $char_stats['luk'] . ")"; ?></td>
     </tr>
     <tr>
         <td colspan="4">
@@ -117,9 +117,9 @@
 
     <tr>
         <td><?php echo text_ausgabe("char_stpoints", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_stpoints; ?></td>
+        <td class="text_rechts"><?php echo $char_stpoints; ?></td>
         <td><?php echo text_ausgabe("char_skpoints", 0, $bg['sprache']); ?></td>
-        <td><?php echo $char_skpoints; ?></td>
+        <td class="text_rechts"><?php echo $char_skpoints; ?></td>
     </tr>
 
 
