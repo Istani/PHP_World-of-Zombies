@@ -1,6 +1,6 @@
 <?php
-	include("_settings.php");
-	include("_mysql.php");
+    include("_mysql.php");
+	include("_settings.php");	
 	include("_functions.php");
 	include("site/_check.php");
 	include("site/cookiecheck.php");
