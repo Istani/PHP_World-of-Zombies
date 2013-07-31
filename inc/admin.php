@@ -22,6 +22,9 @@
        <a href="index.php?site=admin&db=mobs"><?php echo text_ausgabe("ADMIN", 4, $bg['sprache']); ?></a><br>
        <a href="index.php?site=admin&db=uniqs"><?php echo text_ausgabe("ADMIN", 5, $bg['sprache']); ?></a><br>
        <a href="index.php?site=admin&db=sets"><?php echo text_ausgabe("ADMIN", 6, $bg['sprache']); ?></a><br>
+       <br>
+       <a href="index.php?site=admin&db=alex">Spielwiese Alex</a><br>
+       <a href="index.php?site=admin&db=sascha">Spielwiese Sascha</a><br>
        </div>
     
 <?php

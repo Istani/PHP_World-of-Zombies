@@ -96,7 +96,15 @@ if (!isset($_SESSION['userID'])) {
                 case "sets":
                     include("admin/sets.php");
                     break;
-                 }
+                 
+                 case "alex":
+                    include("admin/spielwiese_alex.php");
+                    break;
+                case "sascha":
+                    include("admin/spielwiese_sascha.php");
+                    break;
+                
+                }
             }
         }
 
