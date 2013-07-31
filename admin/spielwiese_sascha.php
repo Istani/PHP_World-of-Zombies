@@ -14,7 +14,7 @@
     // Beispielwert, muss später angepasst werden, wahrscheinlich einfach das höchste agi aus der Datenbank mal 5 oder so
     $agi_attack_rate = 40;
 
-    // Init Agi Werte
+    // Init Agi Werte -> Später aus Kampf Datenbank
     // Bisher gibt es nur Spieler
     foreach ($spieler as $key => $value) {
 	$tmp_agi_wert["S"][$value] = 0;
@@ -49,6 +49,8 @@
 	if ($vergleich_agi >= $agi_attack_rate) {
 	    echo $vergleich_art . '_' . $vergleich_id . '<br>';
 	    $tmp_agi_wert[$vergleich_art][$vergleich_id] = 0;
+	    // Fertige Agi Werte in Kampfdatenbank speichern.
+	    // Nur für die 1. Runde speichern, dannach neuberechnung jede Runde!
 	    $runde++;
 	}
     }
