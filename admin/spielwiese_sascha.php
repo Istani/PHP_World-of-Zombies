@@ -1,18 +1,18 @@
 <?php
 
-    /*
-     * Sascha
-     *
-     * Du machst wer als nächstes und dannach dran ist.
-     */
-
     $spieler = array(1, 2, 3);
+    /*
+     * Bei mir hatte
+     * Spieler1 20Agi
+     * Spieler2 10Agi
+     * Spieler3 1Agi
+     */
 
     //Hier reichen später auch 5 oder 10 oder so XD Weil das Problem ist das muss ja gespeichert und wieder ausgelesen und überschrieben werden
     $max_berechnungs_runden = 50;
 
     // Beispielwert, muss später angepasst werden, wahrscheinlich einfach das höchste agi aus der Datenbank mal 5 oder so
-    $agi_attack_rate = 21;
+    $agi_attack_rate = 40;
 
     // Init Agi Werte
     // Bisher gibt es nur Spieler
