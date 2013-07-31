@@ -18,18 +18,18 @@
     // https://docs.google.com/spreadsheet/pub?key=0AityTNNaT9hQdGZ1Vnc4RXh1OEVVM2pSdHhNQ2hfY3c&output=html
 	
     // Der Sicherheit wegen:
-//    foreach ($_COOKIE as $key => $value) { 
-//        if(get_magic_quotes_gpc()) $_COOKIE[$key]=stripslashes($value); 
-//        $_COOKIE[$key] = mysql_real_escape_string($value); 
-//    } 
-//    foreach ($_POST as $key => $value) { 
-//        if(get_magic_quotes_gpc()) $_POST[$key]=stripslashes($value); 
-//        $_POST[$key] = mysql_real_escape_string($value); 
-//    } 
-//    foreach ($_GET as $key => $value) { 
-//        if(get_magic_quotes_gpc()) $_GET[$key]=stripslashes($value); 
-//        $_GET[$key] = mysql_real_escape_string($value); 
-//    } 
+    foreach ($_COOKIE as $key => $value) { 
+        if(get_magic_quotes_gpc()) $_COOKIE[$key]=stripslashes($value); 
+        $_COOKIE[$key] = mysql_real_escape_string($value); 
+    } 
+    foreach ($_POST as $key => $value) { 
+        if(get_magic_quotes_gpc()) $_POST[$key]=stripslashes($value); 
+        $_POST[$key] = mysql_real_escape_string($value); 
+    } 
+    foreach ($_GET as $key => $value) { 
+        if(get_magic_quotes_gpc()) $_GET[$key]=stripslashes($value); 
+        $_GET[$key] = mysql_real_escape_string($value); 
+    } 
     
     
 ?>
