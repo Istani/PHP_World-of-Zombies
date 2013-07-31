@@ -16,3 +16,8 @@ Das jeweils ausgewählte muss mit der Char_ID in eine Tabelle gespeichert werden
 & Wenn die Seite neu geladen wird soll das zuletzt ausgewählte noch ausgewählt sein.
 
 Standart auswahl ist immer Angriefen Nahkampf, aber das hat sich ja nach dem ersten auswählen geändert.
+
+
+
+Tipp: Viel mit Javascript...
+http://www.php-resource.de/forum/html-javascript-ajax-jquery-und-css/47736-object-nach-tastatureingabe-bewegen.html
