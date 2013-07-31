@@ -8,14 +8,16 @@
 
     $spieler = array(1, 2, 3);
 
-    $max_berechnungs_runden = 100;
+    //Hier reichen später auch 5 oder 10 oder so XD Weil das Problem ist das muss ja gespeichert und wieder ausgelesen und überschrieben werden
+    $max_berechnungs_runden = 50;
 
     // Beispielwert, muss später angepasst werden, wahrscheinlich einfach das höchste agi aus der Datenbank mal 5 oder so
-    $agi_attack_rate = 10000;
+    $agi_attack_rate = 21;
 
     // Init Agi Werte
+    // Bisher gibt es nur Spieler
     foreach ($spieler as $key => $value) {
-	$tmp_agi_wert["s"][$key] = 0;
+	$tmp_agi_wert["S"][$value] = 0;
     }
     $runde = 0;
     while ($runde <= $max_berechnungs_runden) {
@@ -23,7 +25,7 @@
 	foreach ($tmp_agi_wert as $art => $tmp_array) {
 	    // Für Spieler
 	    foreach ($tmp_array as $tmp_id => $wert) {
-		if ($art == "s") {
+		if ($art == "S") {
 		    $tmp_char = get_player_status($tmp_id);
 		    $tmp_agi_wert[$art][$tmp_id]+=$tmp_char['agi'];
 		}
