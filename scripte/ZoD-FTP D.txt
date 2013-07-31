@@ -1,0 +1,30 @@
+open wp11106940.wp388.webpack.hosteurope.de
+ftp11106940-zodikarus
+zodwa!===11
+prompt
+binary
+lcd D:\xampp\htdocs\zodgame
+cd zod
+
+lcd picture
+cd picture
+
+lcd items
+cd items 
+mget *
+
+lcd ../gebiete
+cd ../gebiete
+mget *
+
+lcd ../skills
+cd ../skills
+mget *
+
+lcd ../maps_background
+cd ../maps_background
+mget *
+
+asscii
+prompt
+by
