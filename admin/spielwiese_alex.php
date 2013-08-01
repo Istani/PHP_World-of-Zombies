@@ -24,51 +24,236 @@ Tipp: Viel mit Javascript...
 http://www.php-resource.de/forum/html-javascript-ajax-jquery-und-css/47736-object-nach-tastatureingabe-bewegen.html
 */
 ?> 
-<script type="text/javascript">
+ <table border=1>
+  <tr>
+   <td>
+    <input type="image" src="picture/blank.png" id="0" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/blank.png" id="1" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/blank.png" id="2" onKeyDown="getkey(event,this);">
+   </td>  
+  </tr>
+    <tr>
+   <td>
+    <input type="image" src="picture/blank.png" id="3" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/active.png" id="4" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/blank.png" id="5" onKeyDown="getkey(event,this);">
+   </td>
+  </tr>
+    <tr>
+   <td>
+    <input type="image" src="picture/blank.png" id="6" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/blank.png" id="7" onKeyDown="getkey(event,this);">
+   </td>
+   <td>
+    <input type="image" src="picture/blank.png" id="8" onKeyDown="getkey(event,this);">
+   </td>
+  </tr>
+ </table>
 
-function dragImage(direction, size, speed){
-switch(direction){
-case "left":
-directionToDrag = "left";
-value = "-=";
-break;
-case "right":
-directionToDrag = "left";
-value = "+=";
-break;
-case "top":
-directionToDrag = "top";
-value = "-=";
-break;
-case "bottom":
-directionToDrag = "top";
-value = "+=";
-break;
-}
+   <script language="Javascript" type="text/javascript"><!--
+   function getkey(event, obj){
+	   switch(event.keyCode){
 
-var options = {};
-options[directionToDrag] = value + size;
+	   case 38: // oberer Pfeil
+		   movesquare(obj, "up");
+		   break;
 
-$("#imageToDrag").stop().animate(options, speed)
-}
+	   case 39: // rechter Pfeil
+		   movesquare(obj, "right");
+		   break;
 
-$(document).keypress(function (event) {
-if (event.keyCode == 37) {
-dragImage("left", "10", "10")
-}
-if (event.keyCode == 38) {
-dragImage("top", "5", "500")
-}
-if (event.keyCode == 39) {
-dragImage("right", "5", "1000")
-}
-if (event.keyCode == 40) {
-dragImage("bottom", "5", "1000")
-}
-});
+	   case 40: // unterer Pfeil
+		   movesquare(obj, "down");
+		   break;
 
-</script>
+	   case 37: // linker Pfeil
+		   movesquare(obj, "left");
+		   break;
+       }
+   }
 
-<div id="imageToDrag" style="position:absolute;">
-<img src="picture/ks/menu/figur.png"/>
-</div> 
+   function movesquare(old_obj, direction){
+	    var Cols = init_cols();
+	    var Rows = init_rows(Cols);
+
+	    // Markiertes Html-Objekt holen
+
+	    var active_htmlobj = document.getElementById(old_obj.id);
+
+	    // image-pfad angaben (musse escaped werden da in regexp benutzt wird) :S
+
+	    var search_img_blank = /img\/blank\.png/;
+	    var search_img_active = /img\/active\.png/;
+	    var img_blank = "img/blank.png";
+	    var img_active = "img/active.bpng";
+
+		switch(direction)
+		{
+		case "right":
+			for(var arr in Cols)
+			{
+				var active_pos = search_in_arr(active_htmlobj.id, Cols[arr])
+				if (active_pos != -1 && active_htmlobj.src.search(search_img_active) != -1)
+				{
+					if((active_pos+1) < Cols[arr].length)
+					{
+						// wird verschoben
+						active_htmlobj.src = img_blank;
+						document.getElementById(parseInt(Cols[arr][active_pos]) + 1).src = img_active;
+						document.getElementById(parseInt(Cols[arr][active_pos]) + 1).focus();
+					}
+					else
+					{
+						// auf anderer Seite einbleden
+						active_htmlobj.src = img_blank;
+						document.getElementById(Cols[arr][0]).src = img_active;
+						document.getElementById(Cols[arr][0]).focus();
+					}
+				}
+
+			}
+			break;
+
+		case "left":
+			for(var arr in Cols)
+			{
+				var active_pos = search_in_arr(active_htmlobj.id, Cols[arr])
+				if (active_pos != -1 && active_htmlobj.src.search(search_img_active) != -1)
+				{
+					if((active_pos-1) > -1)
+					{
+						// wird verschoben
+						active_htmlobj.src = img_blank;
+						document.getElementById(parseInt(Cols[arr][active_pos]) - 1).src = img_active;
+						document.getElementById(parseInt(Cols[arr][active_pos]) - 1).focus();
+					}
+					else
+					{
+						// auf anderer Seite einbleden
+						active_htmlobj.src = img_blank;
+						document.getElementById(Cols[arr][parseInt(Cols[arr].length) -1]).src = img_active;
+						document.getElementById(Cols[arr][parseInt(Cols[arr].length) -1]).focus();
+					}
+				}
+
+			}
+			break;
+
+		case "up":
+			for(var arr in Rows)
+			{
+				var active_pos = search_in_arr(active_htmlobj.id, Rows[arr]);
+
+				if (active_pos != -1 && active_htmlobj.src.search(search_img_active) != -1)
+				{
+					if(active_pos - 1 > -1)
+					{
+						// wird verschoben
+						active_htmlobj.src = img_blank;
+						document.getElementById(parseInt(Rows[arr][active_pos-1])).src = img_active;
+						document.getElementById(parseInt(Rows[arr][active_pos-1])).focus();
+					}
+					else
+					{
+						// auf anderer Seite einbleden
+						active_htmlobj.src = img_blank;
+						document.getElementById(Rows[arr][parseInt(Rows[arr].length) -1]).src = img_active;
+						document.getElementById(Rows[arr][parseInt(Rows[arr].length) -1]).focus();
+					}
+				}
+
+			}
+			break;
+
+		case "down":
+			for(var arr in Rows)
+			{
+				var active_pos = search_in_arr(active_htmlobj.id, Rows[arr]);
+				// alert(active_pos);
+
+				if (active_pos != -1 && active_htmlobj.src.search(search_img_active) != -1)
+				{
+					if(active_pos + 1 < Rows[arr].length)
+					{
+						// wird verschoben
+						active_htmlobj.src = img_blank;
+						document.getElementById(parseInt(Rows[arr][active_pos+1])).src = img_active;
+						document.getElementById(parseInt(Rows[arr][active_pos+1])).focus();
+					}
+					else
+					{
+						// auf anderer Seite einbleden
+						active_htmlobj.src = img_blank;
+						document.getElementById(Rows[arr][0]).src = img_active;
+						document.getElementById(Rows[arr][0]).focus();
+					}
+				}
+
+			}
+			break;
+		}
+
+		function search_in_arr(value, arr){
+			 for(var i = 0; i<arr.length; i++){
+				 if (arr[i]==value){
+					 return i;
+				 }
+			 }
+		 return -1;
+		}
+
+		function cut_URL(ori_url)
+		{
+		 var new_url = "";
+		 var split_url = ori_url.split("/");
+		 for(var j = 0; j<3; j++)
+		 {
+		  new_url += split_url[j] + '/';
+		 }
+		 new_url = ori_url.substr(new_url.length,ori_url.length);
+		 return new_url;
+	 	}
+
+		function init_rows(Cols) // füllt automatisiert Arrays mit den Reihen-nummern
+	      {
+	      var Rows = new Array(Cols[0].length); // Spalten = Cols[]
+
+	      for (var i=0; i<Cols[0].length; i++)
+	       {
+	        Rows[i] = new Array(Cols.length);
+	        for(var j=0; j<Cols.length; j++)
+	         {
+	          Rows[i][j] = Cols[j][i];
+	         }
+	       }
+	       return (Rows);
+	      }
+
+	      function init_cols() // füllt automatisiert Arrays mit den Zeilen-nummern
+	      {
+	       var tr_obj = document.getElementsByTagName("tr");
+	       var Cols = new Array(tr_obj.length);
+
+	       for (var i=0; i<tr_obj.length; i++)
+	        {
+	         var td_obj = tr_obj[i].getElementsByTagName("td");
+	         Cols[i] = new Array(td_obj.length);
+	         for (var j=0; j<td_obj.length; j++)
+	          {
+	           Cols[i][j] = td_obj[j].getElementsByTagName("input")[0].id;
+	          }
+	        }
+	       return (Cols);
+	      }
+	   }
+ --></script>
