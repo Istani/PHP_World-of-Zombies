@@ -59,7 +59,7 @@ function slide()
 	}
 	
 	if(tastatur == 40)
-    {
+    {            
     f1.tpos -= 5;	
 	f1.top  = f1.tpos;
 	}	
@@ -76,4 +76,4 @@ function slide()
 //-->
 </script>
 
-     <div id="f1Div" style="position: absolute; left: 50px; top: 200px; width: 30px;"><img border="0" name="figur" src="../picture/ks/menu/figur.png" width="180" height="180"></div></a>
+     <div id="f1Div" style="position: absolute; left: 50px; top: 200px; width: 30px;"><img border="0" name="figur" src="picture/ks/menu/figur.png" width="180" height="180"></div></a>
