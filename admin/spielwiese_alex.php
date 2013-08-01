@@ -23,57 +23,52 @@ Standart auswahl ist immer Angriefen Nahkampf, aber das hat sich ja nach dem ers
 Tipp: Viel mit Javascript...
 http://www.php-resource.de/forum/html-javascript-ajax-jquery-und-css/47736-object-nach-tastatureingabe-bewegen.html
 */
-?>
+?> 
+<script type="text/javascript">
 
-<script language="JavaScript" type="text/javascript">
-<!--
-function init(){
-	f1      = document.getElementById('f1Div').style;
-	f1.lpos = parseInt(f1.left);
-	f1.tpos = parseInt(f1.top);
-	
-	slide();
+function dragImage(direction, size, speed){
+switch(direction){
+case "left":
+directionToDrag = "left";
+value = "-=";
+break;
+case "right":
+directionToDrag = "left";
+value = "+=";
+break;
+case "top":
+directionToDrag = "top";
+value = "-=";
+break;
+case "bottom":
+directionToDrag = "top";
+value = "+=";
+break;
 }
 
-function slide()
-{
-	
-	tastatur=window.event.keyCode;
-	
-	if(tastatur == 37)
-    {
-    f1.lpos -= 5;	
-	f1.left  = f1.lpos;
-	}
-	
-	if(tastatur == 39)
-    {
-    f1.lpos += 5;	
-	f1.left  = f1.lpos;
-	}
-	
-	if(tastatur == 38)
-    {
-    f1.tpos += 5;	
-	f1.top  = f1.tpos;
-	}
-	
-	if(tastatur == 40)
-    {            
-    f1.tpos -= 5;	
-	f1.top  = f1.tpos;
-	}	
+var options = {};
+options[directionToDrag] = value + size;
 
+$("#imageToDrag").stop().animate(options, speed)
 }
 
-//-->
-</script>
-<script for="document" event="onkeydown()" language="JScript" type="text/jscript">
-<!--
- {
-  init();
- }
-//-->
+$(document).keypress(function (event) {
+if (event.keyCode == 37) {
+dragImage("left", "10", "10")
+}
+if (event.keyCode == 38) {
+dragImage("top", "5", "500")
+}
+if (event.keyCode == 39) {
+dragImage("right", "5", "1000")
+}
+if (event.keyCode == 40) {
+dragImage("bottom", "5", "1000")
+}
+});
+
 </script>
 
-     <div id="f1Div" style="position: absolute; left: 50px; top: 200px; width: 30px;"><img border="0" name="figur" src="picture/ks/menu/figur.png" width="180" height="180"></div></a>
+<div id="imageToDrag" style="position:absolute;">
+<img src="picture/ks/menu/figur.png"/>
+</div> 
