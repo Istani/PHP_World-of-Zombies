@@ -1,5 +1,11 @@
 <?php
-/*Alex, bau doch das Menü?!?
+/*
+Hier Sascha denke mal , dass wir das gut für unsere weltkarte nehmen können!
+http://inc0ming.in.funpic.de/map/
+
+
+
+Alex, bau doch das Menü?!?
 
 TAB: Angreifen
 1. Nahkampf
