@@ -144,8 +144,8 @@
 
 	    </script>
 	    <canvas id="board" width="250" height="250" style="border:1px white solid">Dieser Browser ist nicht geeignet.</canvas>
-	    <img id="leer" src="picture/charset/blank.png" style="visibility:hidden;">
-	    <img id="tileset" src="picture/charset/char_0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
+	    <img id="leer" src="picture/ks/charset/blank.png" style="visibility:hidden;">
+	    <img id="tileset" src="picture/ks/charset/char_0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
 
 
 	</td>
