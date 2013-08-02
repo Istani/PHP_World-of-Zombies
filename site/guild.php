@@ -256,7 +256,7 @@ $i++;
             <td style="text-align: center; vertical-align: middle; width:225px;"><?php echo $row3['guild_name'] ;?></td>
             <td style="text-align: center; vertical-align: middle; width:25px;"><?php echo $row3['emblem'] ;?></td>
             <td style="text-align: center; vertical-align: middle; width:150px;"><?php echo $row3['loginName'] ;?></td>
-            <td style="text-align: center; vertical-align: middle; width:100px;"><a href="index?site=beitreten&guild_id=<?php echo $row3['guild_id']; ?>">Beitreten</a></td>
+            <td style="text-align: center; vertical-align: middle; width:100px;"><a href="index.php?site=beitreten&guild_id=<?php echo $row3['guild_id']; ?>">Beitreten</a></td>
         </tr>
     <?php
     $i++;
