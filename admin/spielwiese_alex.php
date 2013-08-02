@@ -83,7 +83,7 @@ BattleImageDrag("bottom", "100", "10")
 
 </script>
 
-<div id="imageToDrag" style="position:absolute; left: 250px; top: 100px; width: 80px;"><img src="picture/ks/menu/figur.png"/></div> 
+<div id="imageToDrag" style="position:absolute; left: 0px; top: 0px; width: 0px;"><img src="picture/ks/menu/figur.png"/></div> 
 
     <br>
     <a href="index.php?site=admin&db=alex">Zur&uuml;ck</a>
