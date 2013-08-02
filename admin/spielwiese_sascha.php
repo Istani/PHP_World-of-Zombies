@@ -61,11 +61,13 @@
 	<td>
 	    <!---
 	    // Animations Test
+     http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamische_Spielfelder
      !--->
 	    <script type="text/javascript">
 		var canvas;
 		var context;
 		var wobinich = 0;
+		var wobinich2 = 0;
 		var tiles = new Array();
 
 		function Nix() { /* gar nix weiter */
@@ -98,7 +100,9 @@
 		    context.drawImage(leer, 0, 0);
 
 		    context.putImageData(tiles[4], 0, 0);
-		    walking_animation();
+		    context.putImageData(tiles[10], 24, 0);
+		    window.setTimeout("walking_animation()", 1);
+		    window.setTimeout("walking_animation2()", 1);
 		}
 
 		function walking_animation() {
@@ -110,15 +114,36 @@
 		    }
 		    if (wobinich == 3) {
 			context.putImageData(tiles[6], 0, 0);
+		    }
+		    if (wobinich == 4) {
+			context.putImageData(tiles[5], 0, 0);
 			wobinich = 0;
 		    }
 		    window.setTimeout("walking_animation()", 100);
 		    wobinich++;
 		}
 
+		function walking_animation2() {
+		    if (wobinich2 == 1) {
+			context.putImageData(tiles[10], 24, 0);
+		    }
+		    if (wobinich2 == 2) {
+			context.putImageData(tiles[11], 24, 0);
+		    }
+		    if (wobinich2 == 3) {
+			context.putImageData(tiles[12], 24, 0);
+		    }
+		    if (wobinich2 == 4) {
+			context.putImageData(tiles[11], 24, 0);
+			wobinich2 = 0;
+		    }
+		    window.setTimeout("walking_animation2()", 400);
+		    wobinich2++;
+		}
+
 
 	    </script>
-	    <canvas id="board" width="100" height="100" style="border:1px white solid">Dieser Browser ist nicht geeignet.</canvas>
+	    <canvas id="board" width="250" height="250" style="border:1px white solid">Dieser Browser ist nicht geeignet.</canvas>
 	    <img id="leer" src="picture/charset/blank.png" style="visibility:hidden;">
 	    <img id="tileset" src="picture/charset/char_0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
 
