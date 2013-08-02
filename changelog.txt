@@ -1,4 +1,10 @@
 git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 
+2013-08-02 21:23:37 +0200 : Nachricht (Sascha Kaufamnn)
+2013-08-02 20:57:45 +0200 : Position geändert (Alex Amling)
+2013-08-02 20:54:45 +0200 : Bewegung Fix 1000 (Alex Amling)
+2013-08-02 20:23:35 +0200 : Bilder verschoben in KS (Sascha Kaufamnn)
+2013-08-02 19:40:05 +0200 : Update (Alex Amling)
+2013-08-02 19:19:02 +0200 : Update SK (Sascha Kaufamnn)
 2013-08-02 19:02:42 +0200 : Walking Animation 2 (Sascha Kaufamnn)
 2013-08-02 18:39:39 +0200 : Animation in Spielwiese (Sascha Kaufamnn)
 2013-08-02 00:29:55 +0200 : Last Sync für Heute (Alex Amling)
