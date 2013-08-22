@@ -64,7 +64,7 @@ $jq("#imageToDrag").stop().animate(options, speed)       ;
 
 }
 
-$jq(document).keypress(function menuDragImage(event) {
+$jq(document).keydown(function menuDragImage(event) {
 
 if (event.keyCode == 37) {
 BattleImageDrag("left", "100", "10");
