@@ -1,5 +1,5 @@
 <?php
-  echo date("d.m.Y H:i:s", time());
+  //echo date("d.m.Y H:i:s", time());
   if (!isset($_GET['kampf'])) {
     die();
   }
@@ -21,7 +21,7 @@
     $query['kampf']=mysql_query($sql['kampf']);
     $tmp_zeit=mysql_result($query['kampf'], 0, 0);
     if (time()>$tmp_zeit) {
-      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+30)." WHERE kampf_id=".$_GET['kampf'];
+      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+5)." WHERE kampf_id=".$_GET['kampf'];
       mysql_query($sql['kampf']);
 
       $sql['spieler']="SELECT km_member_id,km_member_art, km_speed FROM ks_member WHERE km_kampf_id=".$_GET['kampf'];
@@ -59,7 +59,7 @@
         //ist das schon genug füt einen HIT
         if ($vergleich_agi>=$agi_attack_rate) {
           $file_reihenfolge=fopen($_GET['kampf']."_reihenfolge.tmp", "a");
-          fputs($file_reihenfolge, $vergleich_art.'_'.$vergleich_id."\n", strlen($vergleich_art.'_'.$vergleich_id."\n"));
+          fputs($file_reihenfolge, $vergleich_art.'_'.$vergleich_id.";", strlen($vergleich_art.'_'.$vergleich_id.";"));
           fclose($file_reihenfolge);
           $tmp_agi_wert[$vergleich_art][$vergleich_id]=0;
           // Fertige Agi Werte in Kampfdatenbank speichern.
@@ -81,4 +81,31 @@
     }
   }
   unlink("berechnung.tmp");
+
+
+  $file_reihenfolge=fopen($_GET['kampf']."_reihenfolge.tmp", "r");
+  while (($buffer=fgets($file_reihenfolge, 4096))!==false) {
+    $leutz=explode(";",$buffer);
+    foreach ($leutz as $key_leutz => $value_leutz) {
+      $leutz2=explode("_",$value_leutz);
+      if ($leutz2[0]=="P") {
+        $tmp_leutz_daten=get_player_status($leutz2[1]);
+        $ausgabe=$tmp_leutz_daten["name"];
+        $pos=$key_leutz*100;
+        ?><script type="text/javascript" >
+      if (init_bild == 1) {
+        context.font = "18px 'optimer'";
+        context.strokeStyle = "rgb(0,0,0)";
+        context.textAlign = 'left';
+        context.textBaseline = 'top';
+        context.fillStyle = 'white';
+        context.fillText('<?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
+      }
+    </script>
+    <?php
+      }
+    }
+  }
+  fclose($file_reihenfolge);
 ?>
+

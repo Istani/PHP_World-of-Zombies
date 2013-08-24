@@ -18,25 +18,7 @@
           mysql_query($sql['member']);
          */
         $kampf_id=1; // Wird nachher natürlich irgendwie ausgelesen XD
-        // Init Agi Werte -> Später aus Kampf Datenbank
-        // Bisher gibt es nur Spieler
-        /*
-         * Bei mir hatte
-         * Spieler1 20Agi
-         * Spieler2 10Agi
-         * Spieler3 1Agi
-         */
-        // Spieler Array auslesen:
       ?>
-      <script type="text/javascript" >
-        var $jq = jQuery.noConflict();
-        function lade_kampf() {
-          $jq("#kampf_laden").load("kampfsystem/everytime.php?kampf=<?php echo $kampf_id; ?>");
-          window.window.setTimeout('lade_kampf()', 500);
-        }
-        lade_kampf();
-
-      </script>
     </td>
     <td>
       <!---
@@ -53,6 +35,15 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
         var wobinich3 = 0;
         var wobinich4 = 0;
         var tiles = new Array();
+        var init_bild = 0;
+
+        var $jq = jQuery.noConflict();
+
+        function lade_kampf() {
+          $jq("#kampf_laden").load("kampfsystem/everytime.php?kampf=<?php echo $kampf_id; ?>");
+          window.window.setTimeout('lade_kampf()', 500);
+        }
+        lade_kampf();
 
         function Nix() { /* gar nix weiter */
         }
@@ -85,6 +76,8 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
           tiles[12] = context2.getImageData(48, 96, 24, 32);
 
           context.drawImage(leer, 0, 40);
+
+          init_bild = 1;
 
           window.setTimeout("walking_animation1()", 1);
           window.setTimeout("walking_animation2()", 1);
