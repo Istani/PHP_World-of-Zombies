@@ -28,10 +28,9 @@ Standart auswahl ist immer Angriefen Nahkampf, aber das hat sich ja nach dem ers
 
 Tipp: Viel mit Javascript...
 http://www.php-resource.de/forum/html-javascript-ajax-jquery-und-css/47736-object-nach-tastatureingabe-bewegen.html
-*/
 
-?>
-    
+-------------------------------BAK
+
 <script type="text/javascript">
 var $jq = jQuery.noConflict();
 
@@ -59,115 +58,190 @@ break;
 var options = {};
 options[directionToDrag] = value + size;
 
-$jq("#imageToDrag").stop().animate(options, speed)       ;
-
+$jq("#imageToDrag").stop().animate(options, speed);
 
 }
+
+
 
 $jq(document).keydown(function menuDragImage(event) {
-
-if (event.keyCode == 37) {
-BattleImageDrag("left", "100", "10");
-}
-if (event.keyCode == 38) {
-BattleImageDrag("top", "100", "10")
-}
-if (event.keyCode == 39) {
-BattleImageDrag("right", "100", "10")
-}
-if (event.keyCode == 40) {
-BattleImageDrag("bottom", "100", "10")
-}
-
+if (event.keyCode == 37)
+    {
+    BattleImageDrag("left", "100", "10");
+    }
+if (event.keyCode == 38)
+    {
+    BattleImageDrag("top", "100", "10")
+    }
+if (event.keyCode == 39)
+    {
+    BattleImageDrag("right", "100", "10")
+    }
+if (event.keyCode == 40)
+    {
+    BattleImageDrag("bottom", "100", "10")
+    }
 });
 
 </script>
 
-<div id="imageToDrag" style="position:absolute; left: 250px; top: 400px; width: 0px;"><img src="picture/ks/menu/figur.png"/></div> 
+
+
+    <div id="imageToDrag" style="position:absolute; left: 250px; top: 400px; width: 0px;"><img src="picture/ks/menu/figur.png"/></div>
+
+*/
+
+?>
+
+
+<script type="text/javascript">
+		var canvas;
+		var context;
+		var canvas2;
+		var context2;
+		var player1 = 5;
+		var player2 = 0;
+		var player3 = 0;
+		var player4 = 0;
+		var tiles = new Array();
+
+		function bildinit() {
+		    canvas = document.getElementById("board");
+		    context = canvas.getContext("2d");
+
+		    canvas2 = document.getElementById("temp_board");
+		    context2 = canvas2.getContext("2d");
+
+		    var tileset = document.getElementById("tileset");
+		    var leer = document.getElementById("leer");
+		    context2.drawImage(tileset, 0, 0);
+
+		    tiles[1] = context2.getImageData(0, 0, 24, 32);
+		    tiles[2] = context2.getImageData(24, 0, 24, 32);
+		    tiles[3] = context2.getImageData(48, 0, 24, 32);
+
+		    tiles[4] = context2.getImageData(0, 32, 24, 32);
+		    tiles[5] = context2.getImageData(24, 32, 24, 32);
+		    tiles[6] = context2.getImageData(48, 32, 24, 32);
+
+		    tiles[7] = context2.getImageData(0, 64, 24, 32);
+		    tiles[8] = context2.getImageData(24, 64, 24, 32);
+		    tiles[9] = context2.getImageData(48, 64, 24, 32);
+
+		    tiles[10] = context2.getImageData(0, 96, 24, 32);
+		    tiles[11] = context2.getImageData(24, 96, 24, 32);
+		    tiles[12] = context2.getImageData(48, 96, 24, 32);
+
+		    context.drawImage(leer, 0, 40);
+
+		    window.setTimeout("walking_animation1()", 1);
+		    window.setTimeout("walking_animation2()", 1);
+		    window.setTimeout("walking_animation3()", 1);
+		    window.setTimeout("walking_animation4()", 1);
+		}
+	
+	    function walking_animation1() {
+	        if (player1 == 1) {
+			context.putImageData(tiles[10], 500, 200);
+		    }
+		    if (player1 == 2) {
+			context.putImageData(tiles[11], 500, 200);
+		    }
+		    if (player1 == 3) {
+			context.putImageData(tiles[12], 500, 200);
+		    }
+		    if (player1 == 4) {
+			context.putImageData(tiles[11], 500, 200);
+		    }
+		    window.setTimeout("walking_animation1()", 1000);
+		    player1++;
+	    }
+	    
+		function walking_animation2() {
+		    if (player2 == 1) {
+			context.putImageData(tiles[10], 550, 220);
+		    }
+		    if (player2 == 2) {
+			context.putImageData(tiles[11], 550, 220);
+		    }
+		    if (player2 == 3) {
+			context.putImageData(tiles[12], 550, 220);
+		    }
+		    if (player2 == 4) {
+			context.putImageData(tiles[11], 550, 220);
+		    player2 = 0;
+            }
+		    window.setTimeout("walking_animation2()", 200);
+		    player2++;
+		}
+
+		function walking_animation3() {
+		    if (player3 == 1) {
+			context.putImageData(tiles[10], 510, 250);
+		    }
+		    if (player3 == 2) {
+			context.putImageData(tiles[11], 510, 250);
+		    }
+		    if (player3 == 3) {
+			context.putImageData(tiles[12], 510, 250);
+		    }
+		    if (player3 == 4) {
+			context.putImageData(tiles[11], 510, 250);
+		    player3 = 0;
+            }
+		    window.setTimeout("walking_animation3()", 300);
+		    player3++;
+		}
+
+		function walking_animation4() {
+		    if (player4 == 1) {
+			context.putImageData(tiles[10], 560, 270);
+		    }
+		    if (player4 == 2) {
+			context.putImageData(tiles[11], 560, 270);
+		    }
+		    if (player4 == 3) {
+			context.putImageData(tiles[12], 560, 270);
+		    }
+		    if (player4 == 4) {
+			context.putImageData(tiles[11], 560, 270);
+			player4 = 0;
+		    }
+		    window.setTimeout("walking_animation4()", 400);
+		    player4++;
+		}
+
+function attack ()
+        {
+        player1 = 0;
+        walking_animation1();    
+        }
+function skill () {
+  alert("Folgt..");
+}
+function item () {
+  alert("Folgt..");
+}
+function escape () {
+  alert("Folgt..");
+}
+</script>
+
+<form>
+<input style="color: #000000;" type="button" value="<?php echo text_ausgabe("ks_menu", 1, $bg['sprache']); ?>" onclick="attack()">
+<input style="color: #000000;" type="button" value="<?php echo text_ausgabe("ks_menu", 2, $bg['sprache']); ?>" onclick="skill()">
+<input style="color: #000000;" type="button" value="<?php echo text_ausgabe("ks_menu", 3, $bg['sprache']); ?>" onclick="item()">
+<input style="color: #000000;" type="button" value="<?php echo text_ausgabe("ks_menu", 4, $bg['sprache']); ?>" onclick="escape()">
+</form>
+
+<canvas id="board" width="640" height="360" style="border:1px white solid">Dieser Browser ist nicht geeignet.</canvas>
+<canvas id="temp_board" width="1000" height="1000"  style="position:absolute;top:-3000px;visibility:hidden;">Dieser Browser ist nicht geeignet.</canvas>
+
+<img id="leer" src="picture/ks/background/0.jpg" style="visibility:hidden;">
+<img id="tileset" src="picture/ks/charset/0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
+
+
 
     <br>
     <a href="index.php?site=admin&db=alex">Zur&uuml;ck</a>
 
-
-<script language="javascript" type="text/javascript">  
-
-var newSkin : GUISkin;
-var mapTexture : Texture2D;
-
-function theFirstMenu() {
-    //layout start
-    GUI.BeginGroup(Rect(Screen.width / 2 - 150, 50, 300, 200));
-   
-    //the menu background box
-    GUI.Box(Rect(0, 0, 300, 200), "");
-   
-    //logo picture
-    GUI.Label(Rect(15, 10, 300, 68), logoTexture);
-   
-    ///////main menu buttons
-    //game start button
-    if(GUI.Button(Rect(55, 100, 180, 40), "Start game")) {
-    var script = GetComponent("MainMenuScript");
-    script.enabled = false;
-    var script2 = GetComponent("MapMenuScript");
-    script2.enabled = true;
-    }
-    //quit button
-    if(GUI.Button(Rect(55, 150, 180, 40), "Quit")) {
-    Application.Quit();
-    }
-   
-    //layout end
-    GUI.EndGroup();
-}
-
-function OnGUI () {
-    //load GUI skin
-    GUI.skin = newSkin;
-   
-    //execute theFirstMenu function
-    theFirstMenu();
-}
-</script>  
-
-<script language="javascript" type="text/javascript">
-var $jq = jQuery.noConflict();
-
-var newSkin : GUISkin;
-var mapTexture : Texture2D;
-
-function theMapMenu() {
-    //layout start
-    GUI.BeginGroup(Rect(Screen.width / 2 - 200, 50, 400, 300));
-   
-    //boxes
-    GUI.Box(Rect(0, 0, 400, 300), "");
-    GUI.Box(Rect(96, 20, 200, 200), "");
-    GUI.Box(Rect(96, 222, 200, 20), "Coastside Level");
-   
-    //map preview/icon
-    GUI.Label(Rect(100, 20, 198, 198), mapTexture);
-   
-    //buttons
-    if(GUI.Button(Rect(15, 250, 180, 40), "start level")) {
-    Application.LoadLevel(1);
-    }
-    if(GUI.Button(Rect(205, 250, 180, 40), "go back")) {
-    var script = GetComponent("MainMenuScript");
-    script.enabled = true;
-    var script2 = GetComponent("MapMenuScript");
-    script2.enabled = false;
-    }
-   
-    //layout end
-    GUI.EndGroup();
-}
-
-function OnGUI () {
-    //load GUI skin
-    GUI.skin = newSkin;
-   
-    //execute theMapMenu function
-    theMapMenu();
-}
-</script>
