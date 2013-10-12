@@ -1,6 +1,7 @@
 <?php
-include("../_settings.php");
 include("../_mysql.php");
+include("../_settings.php");
+
 
     if (!$_POST['username'] || !$_POST['pw']){
 

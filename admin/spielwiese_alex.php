@@ -135,9 +135,6 @@ if (event.keyCode == 40)
 		    context.drawImage(leer, 0, 40);
 
 		    window.setTimeout("walking_animation1()", 1);
-		    window.setTimeout("walking_animation2()", 1);
-		    window.setTimeout("walking_animation3()", 1);
-		    window.setTimeout("walking_animation4()", 1);
 		}
 	
 	    function walking_animation1() {
@@ -156,60 +153,6 @@ if (event.keyCode == 40)
 		    window.setTimeout("walking_animation1()", 1000);
 		    player1++;
 	    }
-	    
-		function walking_animation2() {
-		    if (player2 == 1) {
-			context.putImageData(tiles[10], 550, 220);
-		    }
-		    if (player2 == 2) {
-			context.putImageData(tiles[11], 550, 220);
-		    }
-		    if (player2 == 3) {
-			context.putImageData(tiles[12], 550, 220);
-		    }
-		    if (player2 == 4) {
-			context.putImageData(tiles[11], 550, 220);
-		    player2 = 0;
-            }
-		    window.setTimeout("walking_animation2()", 200);
-		    player2++;
-		}
-
-		function walking_animation3() {
-		    if (player3 == 1) {
-			context.putImageData(tiles[10], 510, 250);
-		    }
-		    if (player3 == 2) {
-			context.putImageData(tiles[11], 510, 250);
-		    }
-		    if (player3 == 3) {
-			context.putImageData(tiles[12], 510, 250);
-		    }
-		    if (player3 == 4) {
-			context.putImageData(tiles[11], 510, 250);
-		    player3 = 0;
-            }
-		    window.setTimeout("walking_animation3()", 300);
-		    player3++;
-		}
-
-		function walking_animation4() {
-		    if (player4 == 1) {
-			context.putImageData(tiles[10], 560, 270);
-		    }
-		    if (player4 == 2) {
-			context.putImageData(tiles[11], 560, 270);
-		    }
-		    if (player4 == 3) {
-			context.putImageData(tiles[12], 560, 270);
-		    }
-		    if (player4 == 4) {
-			context.putImageData(tiles[11], 560, 270);
-			player4 = 0;
-		    }
-		    window.setTimeout("walking_animation4()", 400);
-		    player4++;
-		}
 
 function attack ()
         {
@@ -244,4 +187,3 @@ function escape () {
 
     <br>
     <a href="index.php?site=admin&db=alex">Zur&uuml;ck</a>
-
