@@ -13,15 +13,15 @@
   // Beispielwert, muss später angepasst werden, wahrscheinlich einfach das höchste agi aus der Datenbank mal 5 oder so
   $agi_attack_rate=40;
 
-  if (!file_exists("berechnung.tmp")) {
-    $file_berechnung=fopen("berechnung.tmp", "w+");
+  if (!file_exists($_GET['kampf']."_berechnung.tmp")) {
+    $file_berechnung=fopen($_GET['kampf']."_berechnung.tmp", "w+");
 
     //Muss Kampf berechnet werden?
     $sql['kampf']="SELECT kampf_next FROM ks_main WHERE kampf_id=".$_GET['kampf'];
     $query['kampf']=mysql_query($sql['kampf']);
     $tmp_zeit=mysql_result($query['kampf'], 0, 0);
     if (time()>$tmp_zeit) {
-      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+5)." WHERE kampf_id=".$_GET['kampf'];
+      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+10)." WHERE kampf_id=".$_GET['kampf'];
       mysql_query($sql['kampf']);
 
       $sql['spieler']="SELECT km_member_id,km_member_art, km_speed FROM ks_member WHERE km_kampf_id=".$_GET['kampf'];
@@ -80,7 +80,7 @@
       die();
     }
   }
-  unlink("berechnung.tmp");
+  unlink($_GET['kampf']."_berechnung.tmp");
 
 
   $file_reihenfolge=fopen($_GET['kampf']."_reihenfolge.tmp", "r");

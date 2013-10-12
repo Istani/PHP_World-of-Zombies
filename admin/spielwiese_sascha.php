@@ -41,7 +41,7 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
 
         function lade_kampf() {
           $jq("#kampf_laden").load("kampfsystem/everytime.php?kampf=<?php echo $kampf_id; ?>");
-          window.window.setTimeout('lade_kampf()', 500);
+          window.window.setTimeout('lade_kampf()', 1000);
         }
         lade_kampf();
 
