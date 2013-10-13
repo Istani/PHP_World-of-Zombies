@@ -1,0 +1,1 @@
+git log --no-merges --date=iso8601 --pretty=format:"%ad : %s (%an)" 

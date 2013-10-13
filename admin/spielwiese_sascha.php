@@ -177,7 +177,7 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
             context.textAlign = 'left';
             context.textBaseline = 'top';
             context.fillStyle = 'red';
-            context.fillText(npc_leben[i] + '/' + npc_leben_max[i] + '_' + npc_side[i], npc_pos_x[i] - 10, npc_pos_y[i] - 20);
+            context.fillText(npc_leben[i] + '/' + npc_leben_max[i], npc_pos_x[i] - 10, npc_pos_y[i] - 20);
           }
         }
 
