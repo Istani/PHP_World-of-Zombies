@@ -101,6 +101,7 @@
                     context.textBaseline = 'top';
                     context.fillStyle = 'white';
                     context.fillText(' <?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
+                    lebensbalken();
                   }
         </script>
         <?php

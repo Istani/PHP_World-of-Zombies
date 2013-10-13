@@ -12,8 +12,8 @@
           km_kampf_id=1,
           km_member_id=3,
           km_member_art='P',
-          km_member_side=0,
-          km_leben=100,
+          km_member_npc_side=0,
+          km_npc_leben=100,
           km_speed=0";
           mysql_query($sql['member']);
          */
@@ -39,6 +39,32 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
         var tiles = new Array();
         var tilesmob = new Array();
         var init_bild = 0;
+
+        var npc_leben_max = new array();
+        var npc_leben = new Array();
+        var npc_pos_x = new array();
+        var npc_pos_y = new Array();
+        var npc_side = new Array();
+        var npc_art = new Array();
+        var npc_id = new Array();
+        // Wesen auslesen
+<?php
+  if ($kampf_id>0) {
+    $sql['kampf']="SELECT * FROM ks_member WHERE km_kampf_id=".$kampf_id;
+    $query['kampf']=mysql_query($sql['kampf']);
+    $i=0;
+    while ($row['kampf']=mysql_fetch_assoc($query['kampf'])) {
+      echo 'npc_leben['.$i.']='.$row['kampf']['km_leben'];
+      echo 'npc_leben_max['.$i.']='.$row['kampf']['km_maxleben'];
+      echo 'npc_pos_x['.$i.']='.$row['kampf']['km_pos_x'];
+      echo 'npc_pos_y['.$i.']='.$row['kampf']['km_pos_y'];
+      echo 'npc_side['.$i.']='.$row['kampf']['km_member_side'];
+      echo 'npc_art['.$i.']='.$row['kampf']['km_member_art'];
+      echo 'npc_id['.$i.']='.$row['kampf']['km_member_id'];
+      $i++;
+    }
+  }
+?>
 
         var $jq = jQuery.noConflict();
 
@@ -198,6 +224,19 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
           }
           window.setTimeout("walking_mob1()", 200);
           wobinichmob++;
+        }
+
+        function npc_lebensbalken() {
+          var length = npc_leben.length;
+          for (var i = 0; i < length; i++) {
+            context.font = "18px 'optimer'";
+            context.strokeStyle = "rgb(0,0,0)";
+            context.textAlign = 'left';
+            context.textBaseline = 'top';
+            context.fillStyle = 'red';
+            context.fillText(npc_leben[i] + '/' + npc_leben_max[i], npc_pos_x[i] - 40, npc_pos_y[i]);
+          }
+
         }
 
       </script>
