@@ -38,22 +38,25 @@
           <td>
             &nbsp;<a href="site/logout.php"><?php echo '<img src="picture/navigation/4.png" ALT="'.text_ausgabe("NAVIGATION", 4, $bg['sprache']).'">'; ?></a>&nbsp;
           </td>
-          <?php
-          if (isset($_SESSION["userID"])) {
-            $sql_admin="SELECT * FROM `login` WHERE `userID` = '".$_SESSION['userID']."'";
-            $result_admin=mysql_query($sql_admin);
-            $ds_admin=mysql_fetch_assoc($result_admin);
-            $rechte=$ds_admin['rechte'];
-          } else {
-            $rechte=0;
-          }
-
-          if ($rechte=="4") {
-            include("inc/admin.php");
-          }
-          ?>
+          <td>
+            <?php
+            if (isset($_SESSION["userID"])) {
+              $sql_admin="SELECT * FROM `login` WHERE `userID` = '".$_SESSION['userID']."'";
+              $result_admin=mysql_query($sql_admin);
+              $ds_admin=mysql_fetch_assoc($result_admin);
+              $rechte=$ds_admin['rechte'];
+            } else {
+              $rechte=0;
+            }
+            if ($rechte=="4") {
+              include("inc/admin.php");
+            }
+            ?>
+          </td>
         </tr>
       </table>
+
+
     </div>
     <?php
   }
