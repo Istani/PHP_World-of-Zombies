@@ -9,7 +9,7 @@
   ignore_user_abort(true);
 
   //Hier reichen später auch 5 oder 10 oder so XD Weil das Problem ist das muss ja gespeichert und wieder ausgelesen und überschrieben werden
-  $max_berechnungs_runden=5;
+  $max_berechnungs_runden=10;
   // Beispielwert, muss später angepasst werden, wahrscheinlich einfach das höchste agi aus der Datenbank mal 5 oder so
   $agi_attack_rate=40;
 
@@ -21,7 +21,7 @@
     $query['kampf']=mysql_query($sql['kampf']);
     $tmp_zeit=mysql_result($query['kampf'], 0, 0);
     if (time()>$tmp_zeit) {
-      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+10)." WHERE kampf_id=".$_GET['kampf'];
+      $sql['kampf']="UPDATE ks_main SET kampf_next=".(time()+$bg['ks_time'])." WHERE kampf_id=".$_GET['kampf'];
       mysql_query($sql['kampf']);
 
       $sql['spieler']="SELECT km_member_id,km_member_art, km_speed FROM ks_member WHERE km_kampf_id=".$_GET['kampf'];
@@ -85,24 +85,25 @@
 
   $file_reihenfolge=fopen($_GET['kampf']."_reihenfolge.tmp", "r");
   while (($buffer=fgets($file_reihenfolge, 4096))!==false) {
-    $leutz=explode(";",$buffer);
+    $leutz=explode(";", $buffer);
     foreach ($leutz as $key_leutz => $value_leutz) {
-      $leutz2=explode("_",$value_leutz);
+      $leutz2=explode("_", $value_leutz);
       if ($leutz2[0]=="P") {
         $tmp_leutz_daten=get_player_status($leutz2[1]);
         $ausgabe=$tmp_leutz_daten["name"];
-        $pos=$key_leutz*100;
+        $pos=$key_leutz*120;
         ?><script type="text/javascript" >
-      if (init_bild == 1) {
-        context.font = "18px 'optimer'";
-        context.strokeStyle = "rgb(0,0,0)";
-        context.textAlign = 'left';
-        context.textBaseline = 'top';
-        context.fillStyle = 'white';
-        context.fillText('<?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
-      }
-    </script>
-    <?php
+                  if (init_bild == 1) {
+                    context.drawImage(next, <?php echo $pos; ?>, 0);
+                    context.font = "18px 'optimer'";
+                    context.strokeStyle = "rgb(0,0,0)";
+                    context.textAlign = 'left';
+                    context.textBaseline = 'top';
+                    context.fillStyle = 'white';
+                    context.fillText(' <?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
+                  }
+        </script>
+        <?php
       }
     }
   }
