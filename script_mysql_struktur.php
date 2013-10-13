@@ -1,5 +1,5 @@
 <?php
-  // PFADE m�ssen angepasst werden!
+  // PFADE müssen angepasst werden!
   include("_mysql.php");
   system("C:\\xampp\\mysql\\bin\\mysqldump.exe -u ".$mysql['user']." -p".$mysql['pw']." -h ".$mysql['host']." ".$mysql['db']." > C:\\xampp\\htdocs\\Wolrd-of-Zombies\\TEMP_MYSQL_STRUKTUR.sql", $fp);
   //system("D:\\xampp\\mysql\\bin\\mysqldump.exe -u ".$mysql['user']." --no-data -h ".$mysql['host']." ".$mysql['db']." > D:\\xampp\\htdocs\\zodgame\\TEMP_MYSQL_STRUKTUR.sql", $fp);
