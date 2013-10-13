@@ -92,17 +92,29 @@
         $tmp_leutz_daten=get_player_status($leutz2[1]);
         $ausgabe=$tmp_leutz_daten["name"];
         $pos=$key_leutz*120;
-        ?><script type="text/javascript" >
-                  if (init_bild == 1) {
-                    context.drawImage(next, <?php echo $pos; ?>, 0);
-                    context.font = "18px 'optimer'";
-                    context.strokeStyle = "rgb(0,0,0)";
-                    context.textAlign = 'left';
-                    context.textBaseline = 'top';
-                    context.fillStyle = 'white';
-                    context.fillText(' <?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
-                    lebensbalken();
-                  }
+        ?>
+        <script type="text/javascript">
+        <?php
+        $sql['kampf']="SELECT * FROM ks_member WHERE km_kampf_id=".$_GET['kampf'];
+        $query['kampf']=mysql_query($sql['kampf']);
+        $i=1;
+        while ($row['kampf']=mysql_fetch_assoc($query['kampf'])) {
+          echo 'npc_leben['.$i.']='.$row['kampf']['km_leben'].";\n";
+          echo 'npc_leben_max['.$i.']='.$row['kampf']['km_maxleben'].";\n";
+          $i++;
+        }
+        $array_laenge=$i-1;
+        ?>
+
+          if (init_bild == 1) {
+            context.drawImage(next, <?php echo $pos; ?>, 0);
+            context.font = "18px 'optimer'";
+            context.strokeStyle = "rgb(0,0,0)";
+            context.textAlign = 'left';
+            context.textBaseline = 'top';
+            context.fillStyle = 'white';
+            context.fillText(' <?php echo $ausgabe; ?>', <?php echo $pos; ?>, 0);
+          }
         </script>
         <?php
       }

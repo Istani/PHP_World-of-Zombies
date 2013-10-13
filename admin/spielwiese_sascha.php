@@ -31,39 +31,37 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
         var canvas2;
         var context2;
         var mob;
-        var wobinich = 0;
-        var wobinich2 = 0;
-        var wobinich3 = 0;
-        var wobinich4 = 0;
-        var wobinichmob = 0;
         var tiles = new Array();
         var tilesmob = new Array();
         var init_bild = 0;
 
-        var npc_leben_max = new array();
+        var npc_leben_max = new Array();
         var npc_leben = new Array();
-        var npc_pos_x = new array();
+        var npc_pos_x = new Array();
         var npc_pos_y = new Array();
         var npc_side = new Array();
         var npc_art = new Array();
         var npc_id = new Array();
-        // Wesen auslesen
+        var npc_stand = new Array();
+        var npc_animation = new Array();
+
 <?php
-  if ($kampf_id>0) {
-    $sql['kampf']="SELECT * FROM ks_member WHERE km_kampf_id=".$kampf_id;
-    $query['kampf']=mysql_query($sql['kampf']);
-    $i=0;
-    while ($row['kampf']=mysql_fetch_assoc($query['kampf'])) {
-      echo 'npc_leben['.$i.']='.$row['kampf']['km_leben'];
-      echo 'npc_leben_max['.$i.']='.$row['kampf']['km_maxleben'];
-      echo 'npc_pos_x['.$i.']='.$row['kampf']['km_pos_x'];
-      echo 'npc_pos_y['.$i.']='.$row['kampf']['km_pos_y'];
-      echo 'npc_side['.$i.']='.$row['kampf']['km_member_side'];
-      echo 'npc_art['.$i.']='.$row['kampf']['km_member_art'];
-      echo 'npc_id['.$i.']='.$row['kampf']['km_member_id'];
-      $i++;
-    }
+  $sql['kampf']="SELECT * FROM ks_member WHERE km_kampf_id=".$kampf_id;
+  $query['kampf']=mysql_query($sql['kampf']);
+  $i=1;
+  while ($row['kampf']=mysql_fetch_assoc($query['kampf'])) {
+    echo 'npc_leben['.$i.']='.$row['kampf']['km_leben'].";\n";
+    echo 'npc_leben_max['.$i.']='.$row['kampf']['km_maxleben'].";\n";
+    echo 'npc_pos_x['.$i.']='.$row['kampf']['km_pos_x'].";\n";
+    echo 'npc_pos_y['.$i.']='.$row['kampf']['km_pos_y'].";\n";
+    echo 'npc_side['.$i.']='.$row['kampf']['km_member_side'].";\n";
+    echo 'npc_art['.$i.']="'.$row['kampf']['km_member_art']."\";\n";
+    echo 'npc_id['.$i.']='.$row['kampf']['km_member_id'].";\n";
+    echo 'npc_stand['.$i.']=0'.";\n";
+    echo 'npc_animation['.$i.']=0'.";\n";
+    $i++;
   }
+  $array_laenge=$i-1;
 ?>
 
         var $jq = jQuery.noConflict();
@@ -73,7 +71,6 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
           window.window.setTimeout('lade_kampf()', 1000);
         }
         lade_kampf();
-
         function Nix() { /* gar nix weiter */
         }
 
@@ -83,8 +80,6 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
 
           canvas2 = document.getElementById("temp_board");
           context2 = canvas2.getContext("2d");
-
-
           var tileset = document.getElementById("tileset");
           var tilesetmob = document.getElementById("tilesetmob");
           var leer = document.getElementById("leer");
@@ -112,15 +107,12 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
           tilesmob[1] = mob.getImageData(0, 0, 24, 32);
           tilesmob[2] = mob.getImageData(24, 0, 24, 32);
           tilesmob[3] = mob.getImageData(48, 0, 24, 32);
-
           tilesmob[4] = mob.getImageData(0, 32, 24, 32);
           tilesmob[5] = mob.getImageData(24, 32, 24, 32);
           tilesmob[6] = mob.getImageData(48, 32, 24, 32);
-
           tilesmob[7] = mob.getImageData(0, 64, 24, 32);
           tilesmob[8] = mob.getImageData(24, 64, 24, 32);
           tilesmob[9] = mob.getImageData(48, 64, 24, 32);
-
           tilesmob[10] = mob.getImageData(0, 96, 24, 32);
           tilesmob[11] = mob.getImageData(24, 96, 24, 32);
           tilesmob[12] = mob.getImageData(48, 96, 24, 32);
@@ -129,114 +121,64 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
 
           init_bild = 1;
 
-          window.setTimeout("walking_animation1()", 1);
-          window.setTimeout("walking_animation2()", 1);
-          window.setTimeout("walking_animation3()", 1);
-          window.setTimeout("walking_animation4()", 1);
-          window.setTimeout("walking_mob1()", 1);
+          window.setTimeout("animation()", 1);
         }
 
-        function walking_animation1() {
-          if (wobinich == 1) {
-            context.putImageData(tiles[10], 1000, 200);
+        function animation() {
+          lebensbalken();
+          var temp_tiles;
+          var length = <?php echo $array_laenge; ?>;
+          for (var i = 1; i <= length; i++) {
+            if (npc_art[i] == 'M') {
+              temp_tiles = tilesmob;
+            } else {
+              temp_tiles = tiles;
+            }
+            if (npc_animation[i] == 0) { // Stand - Idel Animation
+              if (npc_side[i] == 1) {
+                if (npc_stand[i] == 1) {
+                  context.putImageData(temp_tiles[10], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 2) {
+                  context.putImageData(temp_tiles[11], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 3) {
+                  context.putImageData(temp_tiles[12], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 4) {
+                  context.putImageData(temp_tiles[11], npc_pos_x[i], npc_pos_y[i]);
+                  npc_stand[i] = 0;
+                }
+              } else {
+                if (npc_stand[i] == 1) {
+                  context.putImageData(temp_tiles[4], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 2) {
+                  context.putImageData(temp_tiles[5], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 3) {
+                  context.putImageData(temp_tiles[6], npc_pos_x[i], npc_pos_y[i]);
+                }
+                if (npc_stand[i] == 4) {
+                  context.putImageData(temp_tiles[5], npc_pos_x[i], npc_pos_y[i]);
+                  npc_stand[i] = 0;
+                }
+              }
+            }
+            npc_stand[i]++;
           }
-          if (wobinich == 2) {
-            context.putImageData(tiles[11], 1000, 200);
-          }
-          if (wobinich == 3) {
-            context.putImageData(tiles[12], 1000, 200);
-          }
-          if (wobinich == 4) {
-            context.putImageData(tiles[11], 1000, 200);
-            wobinich = 0;
-          }
-          window.setTimeout("walking_animation1()", 100);
-          wobinich++;
+          window.setTimeout("animation()", 200);
         }
-
-        function walking_animation2() {
-          if (wobinich2 == 1) {
-            context.putImageData(tiles[10], 1050, 220);
-          }
-          if (wobinich2 == 2) {
-            context.putImageData(tiles[11], 1050, 220);
-          }
-          if (wobinich2 == 3) {
-            context.putImageData(tiles[12], 1050, 220);
-          }
-          if (wobinich2 == 4) {
-            context.putImageData(tiles[11], 1050, 220);
-            wobinich2 = 0;
-          }
-          window.setTimeout("walking_animation2()", 200);
-          wobinich2++;
-        }
-
-        function walking_animation3() {
-          if (wobinich3 == 1) {
-            context.putImageData(tiles[10], 1010, 250);
-          }
-          if (wobinich3 == 2) {
-            context.putImageData(tiles[11], 1010, 250);
-          }
-          if (wobinich3 == 3) {
-            context.putImageData(tiles[12], 1010, 250);
-          }
-          if (wobinich3 == 4) {
-            context.putImageData(tiles[11], 1010, 250);
-            wobinich3 = 0;
-          }
-          window.setTimeout("walking_animation3()", 300);
-          wobinich3++;
-        }
-
-        function walking_animation4() {
-          if (wobinich4 == 1) {
-            context.putImageData(tiles[10], 1060, 270);
-          }
-          if (wobinich4 == 2) {
-            context.putImageData(tiles[11], 1060, 270);
-          }
-          if (wobinich4 == 3) {
-            context.putImageData(tiles[12], 1060, 270);
-          }
-          if (wobinich4 == 4) {
-            context.putImageData(tiles[11], 1060, 270);
-            wobinich4 = 0;
-          }
-          window.setTimeout("walking_animation4()", 400);
-          wobinich4++;
-        }
-
-        function walking_mob1() {
-          if (wobinichmob == 1) {
-            context.putImageData(tilesmob[4], 100, 200);
-          }
-          if (wobinichmob == 2) {
-            context.putImageData(tilesmob[5], 100, 200);
-          }
-          if (wobinichmob == 3) {
-            context.putImageData(tilesmob[6], 100, 200);
-          }
-          if (wobinichmob == 4) {
-            context.putImageData(tilesmob[5], 100, 200);
-            wobinichmob = 0;
-          }
-          window.setTimeout("walking_mob1()", 200);
-          wobinichmob++;
-        }
-
-        function npc_lebensbalken() {
-          var length = npc_leben.length;
-          for (var i = 0; i < length; i++) {
+        function lebensbalken() {
+          var length = <?php echo $array_laenge; ?>;
+          for (var i = 1; i <= length; i++) {
             context.font = "18px 'optimer'";
             context.strokeStyle = "rgb(0,0,0)";
             context.textAlign = 'left';
             context.textBaseline = 'top';
             context.fillStyle = 'red';
-            context.fillText(npc_leben[i] + '/' + npc_leben_max[i], npc_pos_x[i] - 40, npc_pos_y[i]);
+            context.fillText(npc_leben[i] + '/' + npc_leben_max[i] + '_' + npc_side[i], npc_pos_x[i] - 10, npc_pos_y[i] - 20);
           }
-
         }
 
       </script>
