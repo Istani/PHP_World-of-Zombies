@@ -11,7 +11,7 @@
     $query=mysql_query($sql);
     $text=@mysql_result($query, 0, 0);
     if (mysql_num_rows($query)==0) {
-      $sql_akt="INSERT INTO texte SET ".$sprache."='".$title."', kurz='".$title."_".$id."', id=".$id;
+      $sql_akt="INSERT INTO texte SET ".$sprache."='".$title."_".$id."', kurz='".$title."', id=".$id;
       mysql_query($sql_akt);
       $text=$title."_".$id;
     }

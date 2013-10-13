@@ -184,11 +184,28 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
       </script>
       <canvas id="board" width="1200" height="360" style="border:1px white solid">Dieser Browser ist nicht geeignet.</canvas>
       <canvas id="temp_board" width="1000" height="1000"  style="position:absolute;top:-3000px;visibility:hidden;">Dieser Browser ist nicht geeignet.</canvas>
-      <img id="leer" src="picture/ks/background/0.jpg" style="visibility:hidden;">
-      <img id="tileset" src="picture/ks/charset/0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
-      <img id="tilesetmob" src="picture/ks/mobs/1.png" style="visibility:hidden;" OnLoad="bildinit();">
-      <img id="next" src="picture/ks/next.png" style="visibility:hidden;">
 
     </td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td>
+
+    </td>
+    <td>
+
+    </td>
+    <td>
+      <?php
+        // Skills
+      ?>
+    </td>
+  </tr>
+</table>
+
+
+<img id="leer" src="picture/ks/background/0.jpg" style="visibility:hidden;">
+<img id="tileset" src="picture/ks/charset/0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
+<img id="tilesetmob" src="picture/ks/mobs/1.png" style="visibility:hidden;" OnLoad="bildinit();">
+<img id="next" src="picture/ks/next.png" style="visibility:hidden;">
