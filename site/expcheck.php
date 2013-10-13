@@ -29,7 +29,7 @@
 	$dsatz_exp     = mysql_fetch_assoc($result_exp);
     $needxp        = $dsatz_exp['exp'];
 	
-	$sql_lvlup="UPDATE `char` SET level=level+1, skpoints=skpoints+1, exp=exp-".$needxp." WHERE `userID` = '" . $_SESSION['userID'] . "' AND exp>".$needxp;
+	$sql_lvlup="UPDATE `char` SET level=level+1, stpoints=stpoints+5,skpoints=skpoints+1, exp=exp-".$needxp." WHERE `userID` = '" . $_SESSION['userID'] . "' AND exp>".$needxp;
 	mysql_query($sql_lvlup);
 	
 	$sql_neues_level="SELECT `level` FROM `char` WHERE `userID` = '" . $_SESSION['userID'] . "'";
