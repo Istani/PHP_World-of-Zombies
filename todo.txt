@@ -1,10 +1,1 @@
-ALEX DENK IMMER AN SYNC! SONST HÄTTE ICH JETZT HALT DAS ADMIN MENÜ GEMACHT!
-ALEX ÄNDER AUCH RUHIG MAL DIE TODO
-
-*****************Bei Upload ins Live-System unbedingt machen!*****************
-
-
-*****************Demnächst machen*****************
-PHP:
-Schlafen Abbrechen auch heilung
-Craften sollte auch Zeit brauchen
+https://docs.google.com/document/d/1lVW0jffADSZo3UnBbHO7ZY4mTBHldi8VkOSBVLSBo0c/edit

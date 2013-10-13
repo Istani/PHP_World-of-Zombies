@@ -199,13 +199,22 @@ http://xtainment.net/wiki/index.php/Spieleentwicklung_mit_JavaScript_-_Dynamisch
     <td>
       <?php
         // Skills
+        $sql['skill']="SELECT `skill_db`.*, `char_skill`.`lvl` FROM `skill_db` INNER JOIN `char_skill` ON `skill_db`.`skill_ID`=`char_skill`.`skillID` WHERE userID=".$_SESSION['userID']." AND im_kampf=1 ORDER BY `reihenfolge`, `erlernbar` DESC, `maxlvl` DESC";
+        $query['skill']=mysql_query($sql['skill']);
+        while ($row['skill']=mysql_fetch_assoc($query['skill'])) {
+
+          echo skill_bilder($row['skill']['skill_ID']);
+          echo text_ausgabe("skill", $row['skill']['skill_ID'], $bg['sprache']);
+
+          echo '<br>';
+        }
       ?>
     </td>
   </tr>
 </table>
 
 
-<img id="leer" src="picture/ks/background/0.jpg" style="visibility:hidden;">
-<img id="tileset" src="picture/ks/charset/0_0_0.png" style="visibility:hidden;" OnLoad="bildinit();">
-<img id="tilesetmob" src="picture/ks/mobs/1.png" style="visibility:hidden;" OnLoad="bildinit();">
-<img id="next" src="picture/ks/next.png" style="visibility:hidden;">
+<img id="leer" src="picture/ks/background/0.jpg" style="visibility:hidden;display:none;">
+<img id="tileset" src="picture/ks/charset/0_0_0.png" style="visibility:hidden;display:none;" OnLoad="bildinit();">
+<img id="tilesetmob" src="picture/ks/mobs/1.png" style="visibility:hidden;display:none;" OnLoad="bildinit();">
+<img id="next" src="picture/ks/next.png" style="visibility:hidden;display:none;">
