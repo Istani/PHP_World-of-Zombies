@@ -2,16 +2,18 @@
   function text_ausgabe ($title, $id, $sprache) {
     $title=strtolower($title);
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
 
     $sql="SELECT ".$sprache." FROM texte WHERE kurz='".$title."' AND id=".$id;
     $query=mysql_query($sql);
     $text=@mysql_result($query, 0, 0);
     if (mysql_num_rows($query)==0) {
-      $sql_akt="INSERT INTO texte SET ".$sprache."='".$title."', kurz='".$title."', id=".$id;
+      $sql_akt="INSERT INTO texte SET ".$sprache."='".$title."', kurz='".$title."_".$id."', id=".$id;
       mysql_query($sql_akt);
-      $text=$title;
+      $text=$title."_".$id;
     }
     $text=nl2br(utf8_encode($text));
     return $text;
@@ -77,8 +79,10 @@
   function item_hover ($item, $uniqid=0) {
     //text_ausgabe($title, $id, $sprache)
     global $mysql, $bg;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_item="SELECT * FROM item_db WHERE itemID=".$item." LIMIT 0,1";
     $query_item=mysql_query($sql_item);
     if (mysql_num_rows($query_item)>0) {
@@ -181,8 +185,10 @@
   function inventar_platz ($rucksack) {
     $max_plaetze=0;
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_rucksack="SELECT platz FROM `item_db` WHERE itemID=".$rucksack;
     $query_rucksack=mysql_query($sql_rucksack);
     $max_plaetze=@mysql_result($query_rucksack, 0, 0);
@@ -190,8 +196,10 @@
   }
   function player_inventar_platz ($user) {
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_euipment="SELECT rucksack FROM `char` WHERE userID=".$user;
     $query_euipment=mysql_query($sql_euipment);
     $rucksack_id=mysql_result($query_euipment, 0, 0);
@@ -207,8 +215,10 @@
   function inventar_belegt ($user) {
     $stack=0;
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_rucksack="SELECT invID FROM `inventory` WHERE userID=".$user;
     $query_rucksack=mysql_query($sql_rucksack);
     $stack=mysql_num_rows($query_rucksack);
@@ -217,8 +227,10 @@
   function item_stacknum ($item) {
     $stack=0;
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_rucksack="SELECT stack FROM `item_db` WHERE itemID=".$item;
     $query_rucksack=mysql_query($sql_rucksack);
     $stack=mysql_result($query_rucksack, 0, 0);
@@ -243,8 +255,10 @@
   function player_wasser_status ($user) {
     $wasser=0;
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_char_normal="SELECT wasser FROM `char` WHERE userID='".$user."'";
     $query_char_normal=mysql_query($sql_char_normal);
     if (mysql_num_rows($query_char_normal)>0) {
@@ -254,8 +268,10 @@
   }
   function inventory_add ($user, $item, $menge, $uniq_id=0, $item_quality=0, $item_level=0) {
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
 
     $plaetze_max=player_inventar_platz($user);
     $plaetze_belegt=inventar_belegt($user);
@@ -318,8 +334,10 @@
   }
   function inventory_remove ($user, $item, $menge) {
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_inventory="SELECT sum(menge) FROM `inventory` WHERE userID=".$user." AND itemID=".$item;
     $query_inventory=mysql_query($sql_inventory);
     $gesamtmenge=mysql_result($query_inventory, 0, 0);
@@ -350,14 +368,16 @@
     $char=array();
     $char['name']="Keine Name";
     global $mysql, $bg;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_login_normal="SELECT * FROM `login` WHERE userID='".$char_id."'";
     $query_login_normal=mysql_query($sql_login_normal);
     while ($row_login_normal=mysql_fetch_assoc($query_login_normal)) {
       $char['name']=$row_login_normal['loginName'];
     }
-    
+
     $sql_char_normal="SELECT * FROM `char` WHERE userID='".$char_id."'";
     $query_char_normal=mysql_query($sql_char_normal);
     while ($row_char_normal=mysql_fetch_assoc($query_char_normal)) {
@@ -417,9 +437,9 @@
           $instr_mysql.=", ".$value;
         }
       }
-    $sql_ruestung="SELECT sum(def) FROM `item_db` WHERE itemID in (".$instr_mysql.")";
-    $query_ruestung=mysql_query($sql_ruestung);
-    $char['ruestung']+=mysql_result($query_ruestung, 0, 0);
+      $sql_ruestung="SELECT sum(def) FROM `item_db` WHERE itemID in (".$instr_mysql.")";
+      $query_ruestung=mysql_query($sql_ruestung);
+      $char['ruestung']+=mysql_result($query_ruestung, 0, 0);
     }
     // Und Werte zurückgeen!
     return $char;
@@ -437,8 +457,10 @@
   function erhalte_quest ($quest, $user) {
     // Einfacher Code, wird aber bestimmt öfters gebraucht
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_check="SELECT * FROM char_quest WHERE cquest_questID=".$quest." AND cquest_userID=".$user;
     $query_check=mysql_query($sql_check);
     if (mysql_num_rows($query_check)==0) {
@@ -455,8 +477,10 @@
   }
   function erledige_quest ($quest, $user) {
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     // Bla
     $sql_quest_erledigen="UPDATE char_quest SET cquest_erledigt=1 WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
     // Belohnungen erhalten
@@ -492,8 +516,10 @@
   }
   function check_quest ($quest, $user) {
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $sql_zeig="SELECT cquest_erledigt FROM char_quest WHERE cquest_userID=".$user." AND cquest_questID=".$quest;
     $query_zeig=mysql_query($sql_zeig);
     if (@mysql_result($query_zeig, 0, 0)==1) {
@@ -506,8 +532,10 @@
     // Wenn kostenlos=1 dann kostet es keinen Skillpunkt, also verwenden wenn durch bsp. Quest
     // skill_level falls Skill erhöht werden soll
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $skill_bekommen=false;
     // Check Skill Vorhanden
     $sql_check="SELECT `lvl` FROM char_skill WHERE skillID=".$skill." AND userID=".$user;
@@ -537,8 +565,10 @@
     // Bonuswert ist der Wert um den es geht (Crafting, Abbau, Wasser etc.)
     // Wert ist der aktuelle Wert und als Rückgabe kommt dann ein neuer Wert
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
 
     // Schauen ob der User Skills hat, die diesen Wert beeinflussen:
     $sql_skillliste="SELECT char_skill.`lvl`, skill_db.bonus FROM char_skill INNER JOIN skill_db ON char_skill.skillID=skill_db.skill_ID  WHERE userID=".$user." AND bonus like '%".$bonuswert."%'";
@@ -592,8 +622,10 @@
   function gen_item ($org_item, $quality=0, $item_level=0) {
     //Quality 0 weil wegen random!
     global $mysql;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     if ($quality==0) {
       $rnd_zahl=rand(0, 100);
       $sql_random_quality="SELECT quality FROM item_quality WHERE chance>=".$rnd_zahl." ORDER BY chance LIMIT 0,1";
@@ -667,8 +699,10 @@
   }
   function get_gebiet_anz ($map, $y, $x, $pixel, $user=0) {
     global $mysql, $bg;
-    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw']) or die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
-    mysql_select_db($mysql['db']) or die("Die Datenbank konnte nicht geöffnet werden!");
+    mysql_connect($mysql['host'], $mysql['user'], $mysql['pw'])or
+        die("Es konnte keine Verbindung zum Datenbankserver aufgebaut werden!");
+    mysql_select_db($mysql['db'])or
+        die("Die Datenbank konnte nicht geöffnet werden!");
     $returnwert="&nbsp;";
 
     $sql_map="SELECT * FROM map_gebiete WHERE map_id=".$map." AND x_cord=".$x." AND y_cord=".$y;
