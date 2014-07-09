@@ -79,6 +79,7 @@
               $page_ausdgabe=ob_get_contents();
               ob_end_clean();
               echo $page_ausdgabe;
+              echo 'test';
             ?>
           </div>
         </td>
